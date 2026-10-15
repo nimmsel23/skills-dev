@@ -1013,7 +1013,7 @@ function SkillDetailScreen({ skill, stage, history, holds, sessions, onBack, onM
   );
 }
 
-export default function SkillsCard() {
+export default function SkillsCard({ onWorkoutComplete } = {}) {
   const [progress, setProgress] = useState(() => loadProgress());
   const [openSkillId, setOpenSkillIdState] = useState(() => getSkillIdFromHash());
 
@@ -1072,6 +1072,22 @@ export default function SkillsCard() {
   }
 
   function logWorkout(skillId, stage, sessionData) {
+    const skillName = SKILLS.find(s => s.id === skillId)?.name;
+    const endedAt = Date.parse(sessionData.timestamp) || Date.now();
+    onWorkoutComplete?.({
+      block: 'Calisthenics',
+      source: 'skills',
+      effort: sessionData.rpe,
+      startedAt: endedAt - (sessionData.totalDurationSeconds || 0) * 1000,
+      endedAt,
+      notes: skillName ? `Skill: ${skillName}` : '',
+      exercises: (sessionData.exercises || [])
+        .filter(ex => (ex.setsCompleted || []).length > 0)
+        .map(ex => ({
+          name: ex.name,
+          sets: ex.setsCompleted.map(v => (ex.type === 'hold' ? { seconds: v } : { reps: v })),
+        })),
+    });
     const entry = progress[skillId] ?? { stage: 0, history: [], holds: [], sessions: [] };
     persist({
       ...progress,
