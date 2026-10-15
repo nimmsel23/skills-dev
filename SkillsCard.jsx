@@ -1077,6 +1077,8 @@ export default function SkillsCard({ onWorkoutComplete } = {}) {
     onWorkoutComplete?.({
       block: 'Calisthenics',
       source: 'skills',
+      modality: 'calisthenics',
+      program: { id: 'skills', skillId, stage },
       effort: sessionData.rpe,
       startedAt: endedAt - (sessionData.totalDurationSeconds || 0) * 1000,
       endedAt,
