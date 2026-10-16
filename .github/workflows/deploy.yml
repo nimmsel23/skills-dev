@@ -44,7 +44,7 @@ jobs:
       - name: Install
         run: pnpm install --ignore-scripts   # kein Lockfile im Repo
 
-      - name: Build (Stempel: Splash + Service Worker)
+      - name: "Build (Stempel = Splash + Service Worker)"
         run: pnpm run build
 
       - name: Hinweis - Secret fehlt
