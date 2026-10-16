@@ -5,3 +5,8 @@ Calisthenics-Skills als eigener Feature-Ordner. `src/views/Session/index.jsx` bi
 Fortschritt und unterbrochene Workouts bleiben in den bestehenden localStorage-Keys `fitness-skills-progress-v1` und `fitness-skills-active-runner-v1`. Der Umzug ändert weder diese Daten noch die Skill-URL (`?skill=<id>` im Hash).
 
 Die Skill- und Progressionsliste liegt derzeit noch in `SkillsCard.jsx`; die Calisthenics-YAMLs im Katalog sind eine zweite Quelle. Ein eigenständiges Deployment ist für Skills bislang nicht eingerichtet.
+
+## Standalone (2026-10-16)
+Dieses Repo ist die herausgelöste Fassung (`git subtree split` aus `~/fitness-dev`, Ordner `Skills/`).
+Start: `pnpm install && pnpm run dev`; Build mit Service Worker/Splash: `pnpm run build`.
+Details: `CLAUDE.md`.

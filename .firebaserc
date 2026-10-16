@@ -1,0 +1,4 @@
+{
+  "projects": { "default": "fitness-aos" },
+  "targets": { "fitness-aos": { "hosting": { "skills": ["vos-skills"] } } }
+}

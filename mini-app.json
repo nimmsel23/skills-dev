@@ -1,0 +1,14 @@
+{
+  "apps": {
+    "skills": {
+      "name": "Skills",
+      "short": "Skills",
+      "description": "Calisthenics-Skills mit Progression und Workout-Runner",
+      "accent": "#c8ff00",
+      "register": true,
+      "sw": {
+        "shell": ["./", "./index.html", "./manifest.webmanifest", "./icon-192.png"]
+      }
+    }
+  }
+}

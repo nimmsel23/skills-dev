@@ -1,0 +1,9 @@
+#!/bin/bash
+# pre-push: nur Build-Check (kein Deploy). Der Live-Deploy läuft per GitHub Action
+# (.github/workflows/deploy.yml) bei Push auf dev. Aktivieren: git config core.hooksPath .githooks
+cd "$(git rev-parse --show-toplevel)" || exit 1
+if ! pnpm run build >/dev/null 2>&1; then
+  echo "❌ pnpm run build fehlgeschlagen — Push abgebrochen (--no-verify überspringt den Check)." >&2
+  exit 1
+fi
+exit 0

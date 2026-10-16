@@ -1,0 +1,5 @@
+# Standalone-Build (GitHub Action) ohne vitalos-Workspace: gleiche Build-Freigaben wie ~/vitalos/pnpm-workspace.yaml
+allowBuilds:
+  '@firebase/util': true
+  esbuild: true
+  protobufjs: true

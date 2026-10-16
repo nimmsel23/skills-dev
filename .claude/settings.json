@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(claude -p * --allowedTools \"Read,Edit\" --dangerously-skip-permissions*)"
+    ]
+  },
+  "hooks": {
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/alpha/skills-dev/.claude/hooks/pre-compact-fill-docs.sh",
+            "statusMessage": "TODO/RESULTS/NEXT.md aktualisieren..."
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/alpha/skills-dev/.claude/hooks/post-edit-commit-docs.sh",
+            "statusMessage": "Doku auto-committen..."
+          }
+        ]
+      }
+    ]
+  }
+}
