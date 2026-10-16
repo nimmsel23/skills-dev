@@ -26,6 +26,9 @@ on:
       - '**.md'
       - 'docs/**'
       - '.githooks/**'
+      - '.claude/**'
+      - '**.txt'
+      - '**.bak*'
 
 concurrency:
   group: deploy-vos-skills
