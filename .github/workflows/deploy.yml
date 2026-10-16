@@ -1,4 +1,4 @@
-# Live-Deploy: jeder Push auf dev → https://vos-skills.web.app
+# Live-Deploy: jeder Push auf dev → ${{ steps.firebase_deploy.outputs.details_url }}
 # (Hosting-Ziel "skills" im Projekt fitness-aos, siehe .firebaserc).
 #
 # (Liegt seit 2026-10-15 unter .github/workflows/, vorher inaktiv in ci/.)
@@ -11,7 +11,12 @@
 #   FIREBASE_SERVICE_ACCOUNT_FITNESS_AOS (oder FIREBASE_SERVICE_ACCOUNT)
 #   TELEGRAM_TO + TELEGRAM_TOKEN (optional, für die Benachrichtigung)
 
-name: Deploy (vos-skills)
+#
+# PREVIEW statt Live (Regel 2026-10-16): echte Prod-URLs (vos-*.web.app) werden nur noch
+# aus dem Branch `vitalos` der Meta-Repo-Checkouts (~/vitalos/*-app) deployt. Dieser
+# Workflow veröffentlicht auf dem Branch `dev` ausschließlich einen 24h-Preview-Channel `dev`.
+
+name: Preview (vos-skills)
 
 on:
   workflow_dispatch:
@@ -51,7 +56,7 @@ jobs:
         if: env.FIREBASE_SA == ''
         run: echo "::warning::Secret FIREBASE_SERVICE_ACCOUNT_FITNESS_AOS fehlt - Deploy übersprungen."
 
-      - name: Deploy Live
+      - name: Preview-Channel dev (24h)
         if: env.FIREBASE_SA != ''
         id: firebase_deploy
         uses: FirebaseExtended/action-hosting-deploy@v0
@@ -60,7 +65,8 @@ jobs:
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_FITNESS_AOS || secrets.FIREBASE_SERVICE_ACCOUNT }}
           projectId: fitness-aos
           target: skills
-          channelId: live
+          channelId: dev
+          expires: 24h
 
       - name: Telegram-Benachrichtigung
         if: success() && env.FIREBASE_SA != '' && env.TELEGRAM_TO != ''
@@ -69,8 +75,8 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            🚀 6Pack ist LIVE deployed!
+            🔍 Skills-Preview (24h) deployed!
 
-            🔗 https://vos-skills.web.app
+            🔗 ${{ steps.firebase_deploy.outputs.details_url }}
 
             Commit: ${{ github.event.head_commit.message }}
