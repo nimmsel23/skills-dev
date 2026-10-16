@@ -1,4 +1,15 @@
 {
-  "projects": { "default": "fitness-aos" },
-  "targets": { "fitness-aos": { "hosting": { "skills": ["vos-skills"] } } }
+  "projects": {
+    "default": "fitness-aos"
+  },
+  "targets": {
+    "fitness-aos": {
+      "hosting": {
+        "skills": [
+          "vos-skills"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }
