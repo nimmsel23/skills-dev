@@ -28,6 +28,10 @@ Skill-Tutorials bleiben sichtbar. Bei Medienfehlern bleibt der Runner benutzbar.
 Details und Abnahmegrenzen: [docs/EXERCISE-VIDEOS.md](docs/EXERCISE-VIDEOS.md).
 
 Prüfen: `node scripts/test-exercise-videos.mjs`, anschließend `pnpm run build`.
-Diese Änderung betrifft die Standalone-Quelle `skills-dev`. Fitness verwendet
-aktuell weiterhin seinen eigenen `Skills/`-Ordner; dieser ist kein Submodule
-dieses Repos und wurde mit dieser Änderung nicht aktualisiert.
+Integration: Fitness importiert `Skills/SkillsCard.jsx` direkt aus dem
+Submodule `Skills/` (Branch `fitness` desselben Repos). `~/skills-dev/dev`
+ist die Entwicklungsquelle. Vor einem Fitness-Gitlink-Push den zugehörigen
+Skills-Commit nach `origin/fitness` pushen; keine UI-Dateien kopieren.
+Production-Releases pinnen diesen Gitlink über `~/vitalos/fitness-app`.
+Der VitalOS-Workflow `deploy-skills.yml` baut denselben verschachtelten
+Checkout für `vos-skills.web.app`; `deploy-fitness.yml` baut den Fitness-Host.

@@ -30,17 +30,14 @@ Progressionsliste steht noch in `SkillsCard.jsx`; die Calisthenics-YAMLs in
 `pnpm install`, `pnpm run dev` (Vite), `pnpm run build` (inkl. Stempel),
 `pnpm run deploy` (Build + `firebase deploy --only hosting:skills`).
 
-## Deploy / Betrieb (Stand 2026-10-16: lokal angelegt, nichts veröffentlicht)
+## Integration und Release (2026-10-17)
 
-- Firebase: `.firebaserc` Ziel `skills` → Site `vos-skills` im Projekt `fitness-aos`.
-  Die Site existiert noch nicht (`firebase hosting:sites:create vos-skills` +
-  `firebase target:apply hosting skills vos-skills`).
-- GitHub: Remote `nimmsel23/skills-dev` ist noch nicht angelegt. `deploy.yml` deployt
-  bei Push auf `dev`; ohne Secret `FIREBASE_SERVICE_ACCOUNT_FITNESS_AOS` nur Build.
-- `.githooks/pre-push` = Build-Check (aktiv über `core.hooksPath`).
-- Claude-Doku-Hooks: `.claude/hooks/` (identisch mit fitness-dev/coach-dev/plan-dev/6pack-dev).
-- Nach Anlage nötig: in `~/fitness-dev` und `~/vitalos` als Submodul einhängen
-  (wie `6pack`/`coach`/`plan`) und `vos-release` um `skills` ergänzen.
+- Entwicklung: `~/skills-dev`, Branch `dev`.
+- Fitness: direktes Git-Submodule `Skills/`, Branch `fitness`; Importpfade bleiben unverändert. Keine Dateien manuell nach Fitness kopieren.
+- Release-Vessel: `~/vitalos/fitness-app/Skills`, gepinnt durch den Fitness-Gitlink.
+- Erst Skills `dev` und `fitness` pushen, dann Fitness-Gitlink committen/pushen und im VitalOS-Fitness-Release übernehmen.
+- Production nur über VitalOS-CI: `deploy-skills.yml` für `vos-skills`, `deploy-fitness.yml` für Fitness.
+- Vor Änderungen Gitstatus/Branch/Pointer prüfen, fremde Daten und Änderungen erhalten.
 
 ## Übungsvideos
 

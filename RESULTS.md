@@ -1,3 +1,7 @@
+## 2026-10-17 — Direkte Fitness-Integration
+
+Fitness ersetzt die identische frühere Skills/-Kopie durch ein direktes Submodule auf Branch fitness. Die Standalone-Quelle bleibt skills-dev/dev. Beide Production-Builds verwenden denselben gepinnten Skills-Commit über vitalos/fitness-app.
+
 ## 2026-10-17 — Videos für alle Skills-Übungen
 
 - Alle 14 Skills / 65 unterschiedliche Progressions- und Conditioning-Übungen: 50 kurze native H.264-Demos plus 15 ausdrücklich gekennzeichnete Tutorials, mit Originalquellen. Keine fremden Clips kopiert.
