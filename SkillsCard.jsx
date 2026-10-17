@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import ExerciseVideo from './ExerciseVideo.jsx';
 import { ChevronLeft, ChevronRight, Lock, Check, Circle, Play, Pause, Flag, Trophy, ArrowUp, ArrowDown, Activity } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
@@ -469,6 +470,7 @@ function WorkoutRunner({ skill, stage, resumeState, onFinish, onExit }) {
             {phaseLabel} · Satz {setIndex + 1}/{block.sets}
           </div>
           <div className="text-lg font-black text-fit-ink mb-3">{block.name}</div>
+          {phase !== 'rest' && <ExerciseVideo key={block.name} name={block.name} autoPlay />}
 
           {phase === 'work' && !isHold && (
             <>
@@ -853,6 +855,7 @@ function SkillDetailScreen({ skill, stage, history, holds, sessions, onBack, onM
   const next = skill.progressions[stage + 1];
   const isLast = stage >= skill.progressions.length - 1;
   const [runnerActive, setRunnerActive] = useState(false);
+  const [expandedVideo, setExpandedVideo] = useState(null);
   const [resumeState, setResumeState] = useState(() => {
     const saved = loadActiveRunner();
     return saved && saved.skillId === skill.id && saved.stage === stage ? saved : null;
@@ -918,6 +921,7 @@ function SkillDetailScreen({ skill, stage, history, holds, sessions, onBack, onM
             <div className="text-[10px] font-black uppercase tracking-[0.2em]" style={{ color: 'var(--accent)' }}>Jetzt</div>
             <div className="text-2xl font-black text-fit-ink mt-2">{stageInfo.name}</div>
             <div className="text-[11px] font-bold mt-1" style={{ color: 'var(--dim)' }}>{formatTarget(stageInfo)}</div>
+            <ExerciseVideo key={stageInfo.name} name={stageInfo.name} />
             <button
               onClick={() => {
                 if (resumeState) { clearActiveRunner(); setResumeState(null); }
@@ -977,7 +981,8 @@ function SkillDetailScreen({ skill, stage, history, holds, sessions, onBack, onM
         <div className="text-[10px] font-black uppercase tracking-[0.15em] mb-2" style={{ color: 'var(--dim)' }}>Kette</div>
         <div className="flex flex-col gap-1.5">
           {skill.progressions.map((p, i) => (
-            <div key={p.name} className="flex items-center justify-between gap-2 px-3 py-2 rounded-lg" style={{ background: 'var(--bg2)', opacity: i > stage + 1 ? 0.4 : 1 }}>
+            <div key={p.name}>
+            <button type="button" onClick={() => setExpandedVideo(value => value === p.name ? null : p.name)} aria-expanded={expandedVideo === p.name} aria-label={`Video zu ${p.name}`} className="w-full text-left flex items-center justify-between gap-2 px-3 py-2 rounded-lg" style={{ background: 'var(--bg2)', opacity: i > stage + 1 ? 0.4 : 1 }}>
               <div className="flex items-center gap-2">
                 {i < stage ? <Check size={14} color="#22c55e" strokeWidth={3} />
                   : i === stage ? <Circle size={14} style={{ color: 'var(--accent)' }} fill="var(--accent)" />
@@ -985,7 +990,9 @@ function SkillDetailScreen({ skill, stage, history, holds, sessions, onBack, onM
                   : <Circle size={14} style={{ color: 'var(--dim)' }} />}
                 <span className="text-sm" style={{ color: i === stage ? 'var(--ink)' : 'var(--dim)', fontWeight: i === stage ? 700 : 500 }}>{p.name}</span>
               </div>
-              <span className="text-[10px] font-mono" style={{ color: 'var(--dim)', opacity: 0.7 }}>{formatTarget(p)}</span>
+              <span className="text-[10px] font-mono" style={{ color: 'var(--dim)', opacity: 0.7 }}>{formatTarget(p)} · Video</span>
+            </button>
+            {expandedVideo === p.name && <ExerciseVideo key={p.name} name={p.name} />}
             </div>
           ))}
         </div>

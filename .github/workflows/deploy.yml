@@ -52,6 +52,9 @@ jobs:
       - name: Install
         run: pnpm install --ignore-scripts   # kein Lockfile im Repo
 
+      - name: Exercise video regression checks
+        run: node scripts/test-exercise-videos.mjs
+
       - name: "Build (Stempel = Splash + Service Worker)"
         run: pnpm run build
 

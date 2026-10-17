@@ -1,0 +1,911 @@
+{
+  "Klimmzüge": {
+    "url": "https://cdn.caliverse.app/videos/exercises/pull-up-square.mp4",
+    "source": "https://www.caliverse.app/exercises/pull-up-73",
+    "author": "Caliverse",
+    "title": "Klimmzüge",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "Fpk1a_PxEw4",
+      "title": "How to Muscle up: Muscleups Tutorial",
+      "author": "FitnessFAQs",
+      "kind": "tutorial",
+      "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop."
+    },
+    "durationSeconds": 9.0,
+    "codec": "h264"
+  },
+  "Explosive Klimmzüge": {
+    "url": "https://cdn.caliverse.app/videos/exercises/-65d4dd719b287.mp4",
+    "source": "https://www.caliverse.app/exercises/explosive-pull-ups-1418",
+    "author": "Caliverse",
+    "title": "Explosive Klimmzüge",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "L2PJ8pT6qR0",
+      "title": "Chest to Bar Pull Up",
+      "author": "Testosterone Nation",
+      "kind": "tutorial"
+    },
+    "durationSeconds": 6.3,
+    "codec": "h264"
+  },
+  "Chest-to-Bar Pull-Ups": {
+    "url": "https://cdn.caliverse.app/videos/exercises/-65d5fdae95049.mp4",
+    "source": "https://www.caliverse.app/exercises/chest-to-bar-pull-ups-1422",
+    "author": "Caliverse",
+    "title": "Chest-to-Bar Pull-Ups",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "L2PJ8pT6qR0",
+      "title": "Chest to Bar Pull Up",
+      "author": "Testosterone Nation",
+      "kind": "tutorial"
+    },
+    "durationSeconds": 14.7,
+    "codec": "h264"
+  },
+  "Bar Dips": {
+    "url": "https://cdn.caliverse.app/videos/exercises/96-5f9016a1839f7.mp4",
+    "source": "https://www.caliverse.app/exercises/straight-bar-dips-96",
+    "author": "Caliverse",
+    "title": "Bar Dips",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "6rhowlOcTn0",
+      "title": "Straight Bar Dips Tutorial (Form & Progression)",
+      "author": "Minus The Gym",
+      "kind": "tutorial"
+    },
+    "durationSeconds": 11.1,
+    "codec": "h264"
+  },
+  "Muscle-Up Negative": {
+    "url": "https://cdn.caliverse.app/videos/exercises/-5f97e5d4d9c84.mp4",
+    "source": "https://www.caliverse.app/exercises/bar-muscle-up-negative-485",
+    "author": "Caliverse",
+    "title": "Muscle-Up Negative",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "WKf1PfMqfmU",
+      "title": "Muscle Up Progression 5: The negative muscle up (HD)",
+      "author": "Tom Morrison",
+      "kind": "tutorial"
+    },
+    "durationSeconds": 13.6,
+    "codec": "h264"
+  },
+  "Muscle-Up": {
+    "url": "https://cdn.caliverse.app/videos/exercises/61-5fb177ab53d5a.qt",
+    "source": "https://www.caliverse.app/exercises/muscle-up-61",
+    "author": "Caliverse",
+    "title": "Muscle-Up",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "Fpk1a_PxEw4",
+      "title": "How to Muscle up: Muscleups Tutorial",
+      "author": "FitnessFAQs",
+      "kind": "tutorial",
+      "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop."
+    },
+    "durationSeconds": 11.8,
+    "codec": "h264"
+  },
+  "Plank": {
+    "url": "https://cdn.caliverse.app/videos/exercises/plank-square.mp4",
+    "source": "https://www.caliverse.app/exercises/plank-69",
+    "author": "Caliverse",
+    "title": "Plank",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "9UBHs9YlPcQ",
+      "title": "Planche LVL 1 To LVL 100 (Total Beginner - World Champion)",
+      "author": "Daniel Hristov",
+      "kind": "tutorial",
+      "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop."
+    },
+    "durationSeconds": 11.1,
+    "codec": "h264"
+  },
+  "Planche Lean": {
+    "url": "https://cdn.caliverse.app/videos/exercises/-5fbd555f268de.mp4",
+    "source": "https://www.caliverse.app/exercises/planche-lean-538",
+    "author": "Caliverse",
+    "title": "Planche Lean",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "9UBHs9YlPcQ",
+      "title": "Planche LVL 1 To LVL 100 (Total Beginner - World Champion)",
+      "author": "Daniel Hristov",
+      "kind": "tutorial",
+      "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop."
+    },
+    "durationSeconds": 11.9,
+    "codec": "h264"
+  },
+  "Frog Stand": {
+    "url": "https://cdn.caliverse.app/videos/exercises/frog-stand-square.mp4",
+    "source": "https://www.caliverse.app/exercises/frog-stand-65",
+    "author": "Caliverse",
+    "title": "Frog Stand",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "9UBHs9YlPcQ",
+      "title": "Planche LVL 1 To LVL 100 (Total Beginner - World Champion)",
+      "author": "Daniel Hristov",
+      "kind": "tutorial",
+      "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop."
+    },
+    "durationSeconds": 10.9,
+    "codec": "h264"
+  },
+  "Tuck Planche": {
+    "url": "https://cdn.caliverse.app/videos/exercises/-5fbd504eeb33f.mp4",
+    "source": "https://www.caliverse.app/exercises/planche-tuck-on-the-floor-535",
+    "author": "Caliverse",
+    "title": "Tuck Planche",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "9UBHs9YlPcQ",
+      "title": "Planche LVL 1 To LVL 100 (Total Beginner - World Champion)",
+      "author": "Daniel Hristov",
+      "kind": "tutorial",
+      "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop."
+    },
+    "durationSeconds": 10.6,
+    "codec": "h264"
+  },
+  "Advanced Tuck Planche": {
+    "url": "https://cdn.caliverse.app/videos/exercises/-63d2dd557bf84.mp4",
+    "source": "https://www.caliverse.app/exercises/planche-tuck-advanced-1282",
+    "author": "Caliverse",
+    "title": "Advanced Tuck Planche",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "9UBHs9YlPcQ",
+      "title": "Planche LVL 1 To LVL 100 (Total Beginner - World Champion)",
+      "author": "Daniel Hristov",
+      "kind": "tutorial",
+      "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop."
+    },
+    "durationSeconds": 6.2,
+    "codec": "h264"
+  },
+  "Straddle Planche": {
+    "url": "https://cdn.caliverse.app/videos/exercises/147-5fb16cd71f840.qt",
+    "source": "https://www.caliverse.app/exercises/planche-straddle-147",
+    "author": "Caliverse",
+    "title": "Straddle Planche",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "9UBHs9YlPcQ",
+      "title": "Planche LVL 1 To LVL 100 (Total Beginner - World Champion)",
+      "author": "Daniel Hristov",
+      "kind": "tutorial",
+      "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop."
+    },
+    "durationSeconds": 10.4,
+    "codec": "h264"
+  },
+  "Full Planche": {
+    "url": "https://cdn.caliverse.app/videos/exercises/100-5fb17abbce031.qt",
+    "source": "https://www.caliverse.app/exercises/planche-100",
+    "author": "Caliverse",
+    "title": "Full Planche",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "9UBHs9YlPcQ",
+      "title": "Planche LVL 1 To LVL 100 (Total Beginner - World Champion)",
+      "author": "Daniel Hristov",
+      "kind": "tutorial",
+      "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop."
+    },
+    "durationSeconds": 9.9,
+    "codec": "h264"
+  },
+  "Scapula Pulls": {
+    "url": "https://cdn.caliverse.app/videos/exercises/52-5fe0df297f738.mp4",
+    "source": "https://www.caliverse.app/exercises/scapula-pull-up-52",
+    "author": "Caliverse",
+    "title": "Scapula Pulls",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "R7sqe83XsRY",
+      "title": "How to do scapular pull ups correctly",
+      "author": "Major Calisthenics",
+      "kind": "tutorial"
+    },
+    "durationSeconds": 14.0,
+    "codec": "h264"
+  },
+  "Tuck Front Lever": {
+    "url": "https://cdn.caliverse.app/videos/exercises/-63d2dd1a3acc3.mp4",
+    "source": "https://www.caliverse.app/exercises/front-lever-tuck-hold-on-bar-1271",
+    "author": "Caliverse",
+    "title": "Tuck Front Lever",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "AGhb8V8M758",
+      "title": "Front Lever for Beginners (ALL PROGRESSIONS)",
+      "author": "FitnessFAQs",
+      "kind": "tutorial",
+      "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop."
+    },
+    "durationSeconds": 7.8,
+    "codec": "h264"
+  },
+  "Advanced Tuck Front Lever": {
+    "url": "https://cdn.caliverse.app/videos/exercises/-63d2dd2f9fed2.mp4",
+    "source": "https://www.caliverse.app/exercises/front-lever-advanced-tuck-hold-1275",
+    "author": "Caliverse",
+    "title": "Advanced Tuck Front Lever",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "AGhb8V8M758",
+      "title": "Front Lever for Beginners (ALL PROGRESSIONS)",
+      "author": "FitnessFAQs",
+      "kind": "tutorial",
+      "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop."
+    },
+    "durationSeconds": 15.2,
+    "codec": "h264"
+  },
+  "One Leg Front Lever": {
+    "url": "https://cdn.caliverse.app/videos/exercises/-63d2dd3aa4511.mp4",
+    "source": "https://www.caliverse.app/exercises/front-lever-one-leg-hold-1277",
+    "author": "Caliverse",
+    "title": "One Leg Front Lever",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "K3XwSyVWOm0",
+      "title": "Front Lever Workout | Full Tutorial With Progressions",
+      "author": "Minus The Gym",
+      "kind": "tutorial"
+    },
+    "durationSeconds": 8.6,
+    "codec": "h264"
+  },
+  "Straddle Front Lever": {
+    "youtubeId": "AGhb8V8M758",
+    "title": "Front Lever for Beginners (ALL PROGRESSIONS)",
+    "author": "FitnessFAQs",
+    "kind": "tutorial",
+    "note": "Tutorial zur angegebenen Lever-Progression.",
+    "source": "https://www.youtube.com/watch?v=AGhb8V8M758"
+  },
+  "Full Front Lever": {
+    "url": "https://cdn.caliverse.app/videos/exercises/front-lever-square.mp4",
+    "source": "https://www.caliverse.app/exercises/front-lever-46",
+    "author": "Caliverse",
+    "title": "Full Front Lever",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "AGhb8V8M758",
+      "title": "Front Lever for Beginners (ALL PROGRESSIONS)",
+      "author": "FitnessFAQs",
+      "kind": "tutorial",
+      "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop."
+    },
+    "durationSeconds": 4.8,
+    "codec": "h264"
+  },
+  "Skin the Cat": {
+    "url": "https://cdn.caliverse.app/videos/exercises/150-600dda4fd3486.mp4",
+    "source": "https://www.caliverse.app/exercises/skin-the-cat-150",
+    "author": "Caliverse",
+    "title": "Skin the Cat",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "PFALmtU6J6U",
+      "title": "How to Back Lever (NEW METHOD)",
+      "author": "FitnessFAQs",
+      "kind": "tutorial",
+      "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop."
+    },
+    "durationSeconds": 29.1,
+    "codec": "h264"
+  },
+  "Tuck Back Lever": {
+    "url": "https://cdn.caliverse.app/videos/exercises/-6044151f91827.mp4",
+    "source": "https://www.caliverse.app/exercises/back-lever-tuck-779",
+    "author": "Caliverse",
+    "title": "Tuck Back Lever",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "PFALmtU6J6U",
+      "title": "How to Back Lever (NEW METHOD)",
+      "author": "FitnessFAQs",
+      "kind": "tutorial",
+      "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop."
+    },
+    "durationSeconds": 19.7,
+    "codec": "h264"
+  },
+  "Advanced Tuck Back Lever": {
+    "url": "https://cdn.caliverse.app/videos/exercises/710-603532e0ba68c.mp4",
+    "source": "https://www.caliverse.app/exercises/back-lever-tuck-advanced-710",
+    "author": "Caliverse",
+    "title": "Advanced Tuck Back Lever",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "PFALmtU6J6U",
+      "title": "How to Back Lever (NEW METHOD)",
+      "author": "FitnessFAQs",
+      "kind": "tutorial",
+      "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop."
+    },
+    "durationSeconds": 14.3,
+    "codec": "h264"
+  },
+  "Straddle Back Lever": {
+    "youtubeId": "-H0jvoX9D4U",
+    "kind": "tutorial",
+    "title": "Straddle Back Lever",
+    "author": "Jacked Gymnastics",
+    "note": "Tutorial zur angegebenen Lever-Progression.",
+    "source": "https://www.youtube.com/watch?v=-H0jvoX9D4U"
+  },
+  "Full Back Lever": {
+    "url": "https://cdn.caliverse.app/videos/exercises/back-lever-square.mp4",
+    "source": "https://www.caliverse.app/exercises/back-lever-127",
+    "author": "Caliverse",
+    "title": "Full Back Lever",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "PFALmtU6J6U",
+      "title": "How to Back Lever (NEW METHOD)",
+      "author": "FitnessFAQs",
+      "kind": "tutorial",
+      "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop."
+    },
+    "durationSeconds": 5.0,
+    "codec": "h264"
+  },
+  "Pike Push-Ups": {
+    "url": "https://cdn.caliverse.app/videos/exercises/17-5eddc0a3b2fe5.mp4",
+    "source": "https://www.caliverse.app/exercises/pike-push-up-17",
+    "author": "Caliverse",
+    "title": "Pike Push-Ups",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "eWvKVjSpIW8",
+      "title": "Handstand Push Up Tutorial | Intermediate Calisthenics",
+      "author": "yvguo",
+      "kind": "tutorial",
+      "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop."
+    },
+    "durationSeconds": 23.8,
+    "codec": "h264"
+  },
+  "Elevated Pike Push-Ups": {
+    "url": "https://cdn.caliverse.app/videos/exercises/-5fb192888541e.mp4",
+    "source": "https://www.caliverse.app/exercises/pike-push-up-feet-elevated-519",
+    "author": "Caliverse",
+    "title": "Elevated Pike Push-Ups",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "eWvKVjSpIW8",
+      "title": "Handstand Push Up Tutorial | Intermediate Calisthenics",
+      "author": "yvguo",
+      "kind": "tutorial",
+      "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop."
+    },
+    "durationSeconds": 23.8,
+    "codec": "h264"
+  },
+  "Wall Handstand Push-Ups": {
+    "url": "https://cdn.caliverse.app/videos/exercises/-6900b03fbab86.mp4",
+    "source": "https://www.caliverse.app/exercises/wall-handstand-push-up-1619",
+    "author": "Caliverse",
+    "title": "Wall Handstand Push-Ups",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "eWvKVjSpIW8",
+      "title": "Handstand Push Up Tutorial | Intermediate Calisthenics",
+      "author": "yvguo",
+      "kind": "tutorial",
+      "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop."
+    },
+    "durationSeconds": 35.3,
+    "codec": "h264"
+  },
+  "Freestanding Handstand Push-Ups": {
+    "url": "https://cdn.caliverse.app/videos/exercises/-65afcbf83d314.mp4",
+    "source": "https://www.caliverse.app/exercises/handstand-push-up-1395",
+    "author": "Caliverse",
+    "title": "Freestanding Handstand Push-Ups",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "eWvKVjSpIW8",
+      "title": "Handstand Push Up Tutorial | Intermediate Calisthenics",
+      "author": "yvguo",
+      "kind": "tutorial",
+      "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop."
+    },
+    "durationSeconds": 17.2,
+    "codec": "h264"
+  },
+  "Tuck L-Sit": {
+    "url": "https://cdn.caliverse.app/videos/exercises/-5fa9628d62909.mp4",
+    "source": "https://www.caliverse.app/exercises/l-sit-tuck-500",
+    "author": "Caliverse",
+    "title": "Tuck L-Sit",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "XblDyJlfe3k",
+      "title": "L-Sit to V-Sit Tutorial - l sit Workout & Tutorial (ft. Fitnessfaqs)",
+      "author": "SaturnoMovement",
+      "kind": "tutorial",
+      "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop."
+    },
+    "durationSeconds": 4.5,
+    "codec": "h264"
+  },
+  "L-Sit": {
+    "url": "https://cdn.caliverse.app/videos/exercises/l-sit-square.mp4",
+    "source": "https://www.caliverse.app/exercises/l-sit-26",
+    "author": "Caliverse",
+    "title": "L-Sit",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "XblDyJlfe3k",
+      "title": "L-Sit to V-Sit Tutorial - l sit Workout & Tutorial (ft. Fitnessfaqs)",
+      "author": "SaturnoMovement",
+      "kind": "tutorial",
+      "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop."
+    },
+    "durationSeconds": 11.4,
+    "codec": "h264"
+  },
+  "Straddle L-Sit": {
+    "youtubeId": "F6o417SxU1g",
+    "kind": "tutorial",
+    "title": "Straddle L Sit",
+    "author": "PowerMonkeyFitness",
+    "source": "https://www.youtube.com/watch?v=F6o417SxU1g"
+  },
+  "V-Sit": {
+    "youtubeId": "XblDyJlfe3k",
+    "title": "L-Sit to V-Sit Tutorial - l sit Workout & Tutorial (ft. Fitnessfaqs)",
+    "author": "SaturnoMovement",
+    "kind": "tutorial",
+    "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop.",
+    "source": "https://www.youtube.com/watch?v=XblDyJlfe3k"
+  },
+  "Assisted Squats": {
+    "youtubeId": "p83ngGsZhp4",
+    "title": "Learning to deep squat : the assisted squat",
+    "author": "VIVOBAREFOOT",
+    "kind": "tutorial",
+    "source": "https://www.youtube.com/watch?v=p83ngGsZhp4"
+  },
+  "Deep Squats": {
+    "url": "https://cdn.caliverse.app/videos/exercises/104-5f1906a2d2220.mp4",
+    "source": "https://www.caliverse.app/exercises/squat-104",
+    "author": "Caliverse",
+    "title": "Deep Squats",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "R1mxpLzYgxM",
+      "title": "The Complete Pistol Squat Checklist | No Mistakes!",
+      "author": "FitnessFAQs",
+      "kind": "tutorial",
+      "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop."
+    },
+    "durationSeconds": 22.4,
+    "codec": "h264"
+  },
+  "Step-Ups": {
+    "url": "https://cdn.caliverse.app/videos/exercises/-61f82b46ccbe1.mp4",
+    "source": "https://www.caliverse.app/exercises/step-up-1053",
+    "author": "Caliverse",
+    "title": "Step-Ups",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "R1mxpLzYgxM",
+      "title": "The Complete Pistol Squat Checklist | No Mistakes!",
+      "author": "FitnessFAQs",
+      "kind": "tutorial",
+      "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop."
+    },
+    "durationSeconds": 14.6,
+    "codec": "h264"
+  },
+  "Negative Pistol Squats": {
+    "url": "https://cdn.caliverse.app/videos/exercises/negative-pistol-squat-square.mp4",
+    "source": "https://www.caliverse.app/exercises/pistol-squat-negative-246",
+    "author": "Caliverse",
+    "title": "Negative Pistol Squats",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "R1mxpLzYgxM",
+      "title": "The Complete Pistol Squat Checklist | No Mistakes!",
+      "author": "FitnessFAQs",
+      "kind": "tutorial",
+      "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop."
+    },
+    "durationSeconds": 16.2,
+    "codec": "h264"
+  },
+  "Full Pistol Squat": {
+    "url": "https://cdn.caliverse.app/videos/exercises/58-5fb3103c32ec9.mp4",
+    "source": "https://www.caliverse.app/exercises/pistol-squats-58",
+    "author": "Caliverse",
+    "title": "Full Pistol Squat",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "R1mxpLzYgxM",
+      "title": "The Complete Pistol Squat Checklist | No Mistakes!",
+      "author": "FitnessFAQs",
+      "kind": "tutorial",
+      "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop."
+    },
+    "durationSeconds": 31.2,
+    "codec": "h264"
+  },
+  "Support Holds": {
+    "url": "https://cdn.caliverse.app/videos/exercises/parallel-bar-support-hold-square.mp4",
+    "source": "https://www.caliverse.app/exercises/parallel-bar-support-hold-128",
+    "author": "Caliverse",
+    "title": "Support Holds",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "CE74Ic5bHSs",
+      "title": "HUMAN FLAG in 7 Schritten l Tutorial zu Technik & Progressionen",
+      "author": "caro.upsidedown",
+      "kind": "tutorial",
+      "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop."
+    },
+    "durationSeconds": 8.1,
+    "codec": "h264"
+  },
+  "Vertical Flag": {
+    "url": "https://cdn.caliverse.app/videos/exercises/-665dc1b126784.mp4",
+    "source": "https://www.caliverse.app/exercises/vertical-flag-hold-1451",
+    "author": "Caliverse",
+    "title": "Vertical Flag",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "CE74Ic5bHSs",
+      "title": "HUMAN FLAG in 7 Schritten l Tutorial zu Technik & Progressionen",
+      "author": "caro.upsidedown",
+      "kind": "tutorial",
+      "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop."
+    },
+    "durationSeconds": 30.2,
+    "codec": "h264"
+  },
+  "Tuck Human Flag": {
+    "url": "https://cdn.caliverse.app/videos/exercises/-67bf57600c565.mp4",
+    "source": "https://www.caliverse.app/exercises/tucked-human-flag-hold-1512",
+    "author": "Caliverse",
+    "title": "Tuck Human Flag",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "CE74Ic5bHSs",
+      "title": "HUMAN FLAG in 7 Schritten l Tutorial zu Technik & Progressionen",
+      "author": "caro.upsidedown",
+      "kind": "tutorial",
+      "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop."
+    },
+    "durationSeconds": 25.6,
+    "codec": "h264"
+  },
+  "Straddle Human Flag": {
+    "url": "https://cdn.caliverse.app/videos/exercises/-67d0554b4fe8d.mp4",
+    "source": "https://www.caliverse.app/exercises/straddle-human-flag-hold-1514",
+    "author": "Caliverse",
+    "title": "Straddle Human Flag",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "CE74Ic5bHSs",
+      "title": "HUMAN FLAG in 7 Schritten l Tutorial zu Technik & Progressionen",
+      "author": "caro.upsidedown",
+      "kind": "tutorial",
+      "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop."
+    },
+    "durationSeconds": 24.7,
+    "codec": "h264"
+  },
+  "Full Human Flag": {
+    "url": "https://cdn.caliverse.app/videos/exercises/human-flag-hold-square.mp4",
+    "source": "https://www.caliverse.app/exercises/human-flag-hold-124",
+    "author": "Caliverse",
+    "title": "Full Human Flag",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "CE74Ic5bHSs",
+      "title": "HUMAN FLAG in 7 Schritten l Tutorial zu Technik & Progressionen",
+      "author": "caro.upsidedown",
+      "kind": "tutorial",
+      "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop."
+    },
+    "durationSeconds": 3.3,
+    "codec": "h264"
+  },
+  "Archer Pull-Ups": {
+    "url": "https://cdn.caliverse.app/videos/exercises/47-5fb15978dfbe3.mp4",
+    "source": "https://www.caliverse.app/exercises/archer-pull-up-47",
+    "author": "Caliverse",
+    "title": "Archer Pull-Ups",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "mTJHClMQPM8",
+      "title": "How to One Arm Pull-Up Tutorial (BEST PROGRESSIONS)",
+      "author": "FitnessFAQs",
+      "kind": "tutorial",
+      "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop."
+    },
+    "durationSeconds": 19.1,
+    "codec": "h264"
+  },
+  "Weighted Pull-Ups": {
+    "url": "https://cdn.caliverse.app/videos/exercises/-65e8633b0c699.mp4",
+    "source": "https://www.caliverse.app/exercises/weighted-pull-ups-1429",
+    "author": "Caliverse",
+    "title": "Weighted Pull-Ups",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "mTJHClMQPM8",
+      "title": "How to One Arm Pull-Up Tutorial (BEST PROGRESSIONS)",
+      "author": "FitnessFAQs",
+      "kind": "tutorial",
+      "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop."
+    },
+    "durationSeconds": 11.8,
+    "codec": "h264"
+  },
+  "One Arm Negative Pull-Ups": {
+    "youtubeId": "ps9YtCe6Gn0",
+    "kind": "tutorial",
+    "title": "ПОДТЯГИВАНИЯ НА ОДНОЙ РУКЕ! Лучшие подводящие упражнения! | neofit 46",
+    "author": "Арсений Ким",
+    "startSeconds": 102,
+    "source": "https://www.youtube.com/watch?v=ps9YtCe6Gn0"
+  },
+  "Assisted One Arm Pull-Up": {
+    "url": "https://cdn.caliverse.app/videos/exercises/-5fd28d1319607.mp4",
+    "source": "https://www.caliverse.app/exercises/one-arm-pull-up-band-assisted-591",
+    "author": "Caliverse",
+    "title": "Assisted One Arm Pull-Up",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "mTJHClMQPM8",
+      "title": "How to One Arm Pull-Up Tutorial (BEST PROGRESSIONS)",
+      "author": "FitnessFAQs",
+      "kind": "tutorial",
+      "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop."
+    },
+    "durationSeconds": 22.3,
+    "codec": "h264"
+  },
+  "Candlestick": {
+    "youtubeId": "kW_gkNKe1ls",
+    "title": "How to do a Candlestick Gymnastics exercise for beginners.#candlestick",
+    "author": "Kapoor D",
+    "kind": "tutorial",
+    "source": "https://www.youtube.com/watch?v=kW_gkNKe1ls"
+  },
+  "Dragon Flag Negatives": {
+    "url": "https://cdn.caliverse.app/videos/exercises/-67bf1caa18946.mp4",
+    "source": "https://www.caliverse.app/exercises/dragon-flag-negatives-1504",
+    "author": "Caliverse",
+    "title": "Dragon Flag Negatives",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "At0mMAHqWrQ",
+      "title": "How To DRAGON FLAG Tutorial (Beginner & Advanced Progressions)",
+      "author": "FitnessFAQs",
+      "kind": "tutorial",
+      "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop."
+    },
+    "durationSeconds": 32.9,
+    "codec": "h264"
+  },
+  "Tuck Dragon Flag": {
+    "url": "https://cdn.caliverse.app/videos/exercises/-68a4432c53b6f.mp4",
+    "source": "https://www.caliverse.app/exercises/tucked-dragon-flag-raises-1564",
+    "author": "Caliverse",
+    "title": "Tuck Dragon Flag",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "At0mMAHqWrQ",
+      "title": "How To DRAGON FLAG Tutorial (Beginner & Advanced Progressions)",
+      "author": "FitnessFAQs",
+      "kind": "tutorial",
+      "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop."
+    },
+    "durationSeconds": 17.0,
+    "codec": "h264"
+  },
+  "Full Dragon Flag": {
+    "url": "https://cdn.caliverse.app/videos/exercises/22-5f1b710a26bd1.mp4",
+    "source": "https://www.caliverse.app/exercises/dragon-flags-22",
+    "author": "Caliverse",
+    "title": "Full Dragon Flag",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "At0mMAHqWrQ",
+      "title": "How To DRAGON FLAG Tutorial (Beginner & Advanced Progressions)",
+      "author": "FitnessFAQs",
+      "kind": "tutorial",
+      "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop."
+    },
+    "durationSeconds": 22.3,
+    "codec": "h264"
+  },
+  "Korean Dips": {
+    "url": "https://cdn.caliverse.app/videos/exercises/korean-dips-square.mp4",
+    "source": "https://www.caliverse.app/exercises/korean-dips-97",
+    "author": "Caliverse",
+    "title": "Korean Dips",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "eENtk8YZBLE",
+      "title": "THIS is the HARDEST Bicep Exercise | HEFESTO",
+      "author": "THENX",
+      "kind": "tutorial",
+      "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop."
+    },
+    "durationSeconds": 12.8,
+    "codec": "h264"
+  },
+  "Back Lever Pull-Ups": {
+    "youtubeId": "eENtk8YZBLE",
+    "title": "THIS is the HARDEST Bicep Exercise | HEFESTO",
+    "author": "THENX",
+    "kind": "tutorial",
+    "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop.",
+    "source": "https://www.youtube.com/watch?v=eENtk8YZBLE"
+  },
+  "Hefesto Negatives": {
+    "youtubeId": "eENtk8YZBLE",
+    "title": "THIS is the HARDEST Bicep Exercise | HEFESTO",
+    "author": "THENX",
+    "kind": "tutorial",
+    "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop.",
+    "source": "https://www.youtube.com/watch?v=eENtk8YZBLE"
+  },
+  "Full Hefesto": {
+    "youtubeId": "eENtk8YZBLE",
+    "title": "THIS is the HARDEST Bicep Exercise | HEFESTO",
+    "author": "THENX",
+    "kind": "tutorial",
+    "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop.",
+    "source": "https://www.youtube.com/watch?v=eENtk8YZBLE"
+  },
+  "Handstand Balance": {
+    "url": "https://cdn.caliverse.app/videos/handstand-square.mp4",
+    "source": "https://www.caliverse.app/exercises/handstand-67",
+    "author": "Caliverse",
+    "title": "Handstand Balance",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "F3EH9pxNSGs",
+      "title": "How to do a Handstand for Beginners",
+      "author": "GymnasticsHQ",
+      "kind": "tutorial"
+    },
+    "durationSeconds": 5.5,
+    "codec": "h264"
+  },
+  "Handstand Shifting": {
+    "url": "https://cdn.caliverse.app/videos/exercises/-65afca4307f14.mp4",
+    "source": "https://www.caliverse.app/exercises/straddle-handstand-side-leans-1393",
+    "author": "Caliverse",
+    "title": "Handstand Shifting",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "QKRG9g_Yo5g",
+      "title": "The Only One Arm Handstand Tutorial You'll Ever Need.",
+      "author": "Anton",
+      "kind": "tutorial",
+      "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop."
+    },
+    "durationSeconds": 14.6,
+    "codec": "h264"
+  },
+  "Finger Support Handstand": {
+    "youtubeId": "QKRG9g_Yo5g",
+    "title": "The Only One Arm Handstand Tutorial You'll Ever Need.",
+    "author": "Anton",
+    "kind": "tutorial",
+    "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop.",
+    "source": "https://www.youtube.com/watch?v=QKRG9g_Yo5g",
+    "startSeconds": 725
+  },
+  "One Arm Handstand": {
+    "youtubeId": "QKRG9g_Yo5g",
+    "title": "The Only One Arm Handstand Tutorial You'll Ever Need.",
+    "author": "Anton",
+    "kind": "tutorial",
+    "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop.",
+    "source": "https://www.youtube.com/watch?v=QKRG9g_Yo5g"
+  },
+  "Incline One Arm Push-Up": {
+    "youtubeId": "efchxULAT6M",
+    "kind": "tutorial",
+    "title": "One Arm Incline Push-Up",
+    "author": "Miguel Aragoncillo",
+    "source": "https://www.youtube.com/watch?v=efchxULAT6M"
+  },
+  "Archer Push-Ups": {
+    "url": "https://cdn.caliverse.app/videos/exercises/13-5edd975cb3741.mp4",
+    "source": "https://www.caliverse.app/exercises/archer-push-up-13",
+    "author": "Caliverse",
+    "title": "Archer Push-Ups",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "YGKYL0gP9EU",
+      "title": "One Arm Pushup Progression | Proper Form & Full Tutorial",
+      "author": "Minus The Gym",
+      "kind": "tutorial",
+      "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop."
+    },
+    "durationSeconds": 36.2,
+    "codec": "h264"
+  },
+  "One Arm Push-Up": {
+    "url": "https://cdn.caliverse.app/videos/exercises/94-60160cf1c5294.mp4",
+    "source": "https://www.caliverse.app/exercises/one-arm-push-up-94",
+    "author": "Caliverse",
+    "title": "One Arm Push-Up",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "YGKYL0gP9EU",
+      "title": "One Arm Pushup Progression | Proper Form & Full Tutorial",
+      "author": "Minus The Gym",
+      "kind": "tutorial",
+      "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop."
+    },
+    "durationSeconds": 23.4,
+    "codec": "h264"
+  },
+  "Airborne Squat": {
+    "youtubeId": "xfl7SDj0Gzs",
+    "title": "Shrimp Squat | Tutorial & Progressions",
+    "author": "Flow Motion Fitness ",
+    "kind": "tutorial",
+    "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop.",
+    "source": "https://www.youtube.com/watch?v=xfl7SDj0Gzs"
+  },
+  "Shrimp Squat (einarmig halten)": {
+    "youtubeId": "xfl7SDj0Gzs",
+    "title": "Shrimp Squat | Tutorial & Progressions",
+    "author": "Flow Motion Fitness ",
+    "kind": "tutorial",
+    "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop.",
+    "source": "https://www.youtube.com/watch?v=xfl7SDj0Gzs"
+  },
+  "Full Shrimp Squat": {
+    "url": "https://cdn.caliverse.app/videos/exercises/-623c705c0f2f9.mp4",
+    "source": "https://www.caliverse.app/exercises/shrimp-squat-1118",
+    "author": "Caliverse",
+    "title": "Full Shrimp Squat",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "xfl7SDj0Gzs",
+      "title": "Shrimp Squat | Tutorial & Progressions",
+      "author": "Flow Motion Fitness ",
+      "kind": "tutorial",
+      "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop."
+    },
+    "durationSeconds": 25.9,
+    "codec": "h264"
+  },
+  "Hollow Body Hold": {
+    "url": "https://cdn.caliverse.app/videos/exercises/32-5fe0b2ec25073.mp4",
+    "source": "https://www.caliverse.app/exercises/hollow-body-hold-32",
+    "author": "Caliverse",
+    "title": "Hollow Body Hold",
+    "kind": "demo",
+    "tutorial": {
+      "youtubeId": "V9UZGo2b_T0",
+      "title": "Gymnastics Hollow Hold Progression for Bodyweight Abs Workout",
+      "author": "StreamFITtv",
+      "kind": "tutorial"
+    },
+    "durationSeconds": 15.0,
+    "codec": "h264"
+  }
+}

@@ -41,3 +41,11 @@ Progressionsliste steht noch in `SkillsCard.jsx`; die Calisthenics-YAMLs in
 - Claude-Doku-Hooks: `.claude/hooks/` (identisch mit fitness-dev/coach-dev/plan-dev/6pack-dev).
 - Nach Anlage nötig: in `~/fitness-dev` und `~/vitalos` als Submodul einhängen
   (wie `6pack`/`coach`/`plan`) und `vos-release` um `skills` ergänzen.
+
+## Übungsvideos
+
+`exerciseVideos.json` ist die explizite Medienzuordnung für alle Progressionen
+und Conditioning-Übungen. `ExerciseVideo.jsx` wird von Vorschau und Runner
+genutzt: kurze native Demos automatisch nur im Runner; Tutorials auf Wunsch.
+Quellen und Prüfgrenzen: `docs/EXERCISE-VIDEOS.md`. Bei Übungsumbenennungen
+`node scripts/test-exercise-videos.mjs` ausführen und den Katalog mitziehen.
