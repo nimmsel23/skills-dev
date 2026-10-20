@@ -8,7 +8,8 @@
     "dev": "vite",
     "build": "vite build && node scripts/mini-app-shell/cli.mjs stamp dist --app skills",
     "preview": "vite preview",
-    "deploy": "pnpm run build && firebase deploy --only hosting:skills",
+    "firebase": "pnpm run build && firebase deploy --only hosting:skills",
+    "deploy": "firebase deploy --only hosting:skills",
     "vendor:check": "node ~/vitalos/packages/mini-app-shell/cli.mjs vendor scripts/mini-app-shell --check"
   },
   "dependencies": {

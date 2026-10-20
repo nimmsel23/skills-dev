@@ -28,7 +28,8 @@ Progressionsliste steht noch in `SkillsCard.jsx`; die Calisthenics-YAMLs in
 ## Befehle
 
 `pnpm install`, `pnpm run dev` (Vite), `pnpm run build` (inkl. Stempel),
-`pnpm run deploy` (Build + `firebase deploy --only hosting:skills`).
+`pnpm run firebase` (Build + `firebase deploy --only hosting:skills`),
+`pnpm run deploy` (deployt das vorhandene `dist/` ohne Build-Schritt).
 
 ## Integration und Release (2026-10-17)
 
