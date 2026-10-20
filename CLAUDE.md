@@ -10,8 +10,11 @@ haben, sind die Historie dieses Repos (Basis `c514177`).
 - `SkillsCard.jsx` — die gesamte Skill-Logik und -Oberfläche (Default-Export,
   optionale Prop `onWorkoutComplete(workout)`), `skills.css` — Theme
   `[data-theme="skills"]` (Lime `#c8ff00`) + Slider-Styles.
-- `main.jsx` — Standalone-Hülle: setzt `data-theme="skills"` und rendert die Karte.
-  Kein Sync ins Session-Log (anders als `6pack-dev/standaloneSync.js`).
+- `main.jsx` — Standalone-Hülle: setzt `data-theme="skills"`, rendert die Karte
+  und zeigt Release-Notizen für noch nicht bestätigte Updates.
+- `scripts/write-release-info.mjs` — erstellt die Release-Metadaten für Dev und Build.
+- `APP.md` — Produktverhalten, Release-Notizen und laufender Änderungsverlauf.
+  Neue App- und Release-Änderungen dort ergänzen.
 - `mini-app.json` + `scripts/mini-app-shell/` (vendored aus
   `~/vitalos/packages/mini-app-shell`, nicht editieren; Drift: `pnpm run vendor:check`) —
   `pnpm run build` erzeugt Manifest, Splash, Service Worker (`sw.js`) und Register-Snippet.

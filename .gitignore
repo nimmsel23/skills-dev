@@ -3,6 +3,7 @@ node_modules/
 dist/
 coverage/
 *.tsbuildinfo
+public/release-info.json
 
 # Local environment and logs
 .env*

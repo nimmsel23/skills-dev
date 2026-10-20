@@ -5,7 +5,9 @@
   "type": "module",
   "packageManager": "pnpm@11.3.0",
   "scripts": {
+    "predev": "node scripts/write-release-info.mjs",
     "dev": "vite",
+    "prebuild": "node scripts/write-release-info.mjs",
     "build": "vite build && node scripts/mini-app-shell/cli.mjs stamp dist --app skills",
     "preview": "vite preview",
     "firebase": "pnpm run build && firebase deploy --only hosting:skills",

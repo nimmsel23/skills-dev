@@ -10,7 +10,7 @@ Die Skill- und Progressionsliste liegt derzeit noch in `SkillsCard.jsx`; die Cal
 Dieses Repo ist die herausgelöste Fassung (`git subtree split` aus `~/fitness-dev`, Ordner `Skills/`).
 Start: `pnpm install && pnpm run dev`; Build mit Service Worker/Splash: `pnpm run build`.
 `pnpm run firebase` baut und deployt zu Firebase; `pnpm run deploy` deployt das vorhandene `dist/` ohne Build-Schritt.
-Details: `CLAUDE.md`.
+Produktverhalten und laufender Änderungsverlauf: `APP.md`. Agent-/Repo-Details: `CLAUDE.md`.
 
 ## Übungsvideos (2026-10-17)
 
