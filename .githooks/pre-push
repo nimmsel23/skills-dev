@@ -6,4 +6,30 @@ if ! pnpm run build >/dev/null 2>&1; then
   echo "❌ pnpm run build fehlgeschlagen — Push abgebrochen (--no-verify überspringt den Check)." >&2
   exit 1
 fi
+
+pushed_refs="$(cat)"
+fitness_source_sha=""
+while read -r local_ref local_sha remote_ref remote_sha; do
+  [ -z "$local_ref" ] && continue
+  [ "${local_ref#refs/heads/}" = "dev" ] || continue
+  if [ "$remote_sha" = "0000000000000000000000000000000000000000" ]; then
+    changed=$(git diff --name-only "$(git hash-object -t tree /dev/null)" "$local_sha")
+  else
+    changed=$(git diff --name-only "$remote_sha" "$local_sha")
+  fi
+  if echo "$changed" | grep -Eq '^[^/]+\.(jsx|js|mjs|css|json)$'; then
+    fitness_source_sha="$local_sha"
+  fi
+done <<< "$pushed_refs"
+
+if [ -n "$fitness_source_sha" ]; then
+  fitness_repo="${FITNESS_DEV_REPO:-$HOME/fitness-dev}"
+  publisher="$fitness_repo/scripts/publish-mini-app-to-fitness.mjs"
+  if [ -f "$publisher" ]; then
+    echo "🔄 Skills dev → Fitness dev: synchronizing the pushed source commit…"
+    node "$publisher" skills "$fitness_source_sha" || exit $?
+  else
+    echo "⚠️ Fitness publisher not found at $publisher; source build passed, Fitness sync skipped." >&2
+  fi
+fi
 exit 0
