@@ -12,7 +12,7 @@ haben, sind die Historie dieses Repos (Basis `c514177`).
   `[data-theme="skills"]` (Lime `#c8ff00`) + Slider-Styles.
 - `main.jsx` — Standalone-Hülle: setzt `data-theme="skills"`, rendert die Karte
   und zeigt Release-Notizen für noch nicht bestätigte Updates.
-- `scripts/write-release-info.mjs` — erstellt die Release-Metadaten für Dev und Build.
+- `scripts/vos-changelog/` — gemeinsamer Vite-Plugin mit eingebetteten Release-Metadaten; in VitalOS zeigt nur die Shell den gebündelten Dialog.
 - `APP.md` — Produktverhalten, Release-Notizen und laufender Änderungsverlauf.
   Neue App- und Release-Änderungen dort ergänzen.
 - `mini-app.json` + `scripts/mini-app-shell/` (vendored aus

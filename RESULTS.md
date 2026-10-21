@@ -1,3 +1,7 @@
+## 2026-10-21 — Gemeinsamer Changelog
+
+Universalisierten VitalOS-Release-Dialog über vendorte Vite-Module eingebunden. Standalone mit eigener Bestätigung; eingebettet unterdrückt zugunsten des zentralen Shell-Dialogs.
+
 ## 2026-10-17 — Direkte Fitness-Integration
 
 Fitness ersetzt die identische frühere Skills/-Kopie durch ein direktes Submodule auf Branch fitness. Die Standalone-Quelle bleibt skills-dev/dev. Beide Production-Builds verwenden denselben gepinnten Skills-Commit über vitalos/fitness-app.

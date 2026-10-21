@@ -10,14 +10,13 @@ Oberfläche direkt aus dem Skills-Git-Submodule.
 Die App zeigt beim ersten Öffnen einer neuen Release-ID einen Dialog mit den
 Commits des Updates. Commit-Titel verlinken direkt auf GitHub; ein weiterer
 Link öffnet den vollständigen Commit-Verlauf. „Weiter“ speichert die bestätigte
-Release-ID im Browser unter `skills:seen-release`. Derselbe Release-Dialog wird
+Release-ID im Browser unter `skills:seen-release`. Der gemeinsame Release-Dialog wird
 danach nicht erneut angezeigt.
 
-`scripts/write-release-info.mjs` erzeugt `public/release-info.json` vor dem
-lokalen Dev-Server und vor jedem Build. In GitHub Actions nutzt es die Commits
-des Push-Events; lokal verwendet es den aktuellen Git-Commit. Die generierte
-Datei bleibt ignoriert und wird vom Vite-Build in die App übernommen. Die
-Standalone-Hülle in `main.jsx` lädt sie ohne Browser-Cache.
+Der gemeinsame Vite-Plugin in `scripts/vos-changelog/` bettet die Release-Daten
+beim Build ein und erzeugt zusätzlich `release-info.json`. Die Bestätigung
+bleibt unter `skills:seen-release`. Eingebettet in VitalOS wird kein eigener
+Dialog geöffnet; dort zeigt die Shell alle App-Änderungen einmal gebündelt.
 
 ## Daten und Oberfläche
 
@@ -51,3 +50,7 @@ Standalone-Hülle in `main.jsx` lädt sie ohne Browser-Cache.
   erweitert.
 
 Neue Produkt- und Release-Änderungen werden ab jetzt hier ergänzt.
+
+## 2026-10-21
+
+Gemeinsamen VitalOS-Changelog statt eigenem UpdateNotes-Dialog eingebunden; kein separater Fetch neuerer Metadaten neben einem gecachten Bundle.
