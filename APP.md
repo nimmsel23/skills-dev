@@ -98,3 +98,11 @@ um; die Wahl liegt in `skills:design` (URL-Override `?design=classic|a|b|c`).
 
 Integration beider Arbeitsstände: alle Designs nutzen den neuen versionierten
 Katalog, ausdrückliche Meisterschaft und erfolgreiche Speicherung vor Runner-Löschung.
+
+
+### Produktionsrelease 2026-10-23
+
+Skills `acdbfd7` ist über Fitness/VitalOS live veröffentlicht. Die zentralen
+Skills-Firestore-Regeln und der Katalog `calisthenics-v1` sind deployed.
+Hosting, Rules/Katalog und die zugehörigen Fitness-/Shell-CIs sind erfolgreich.
+Ohne Login bleiben die Trainings lokal; angemeldet steht Auto-Sync bereit.

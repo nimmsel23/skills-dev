@@ -61,3 +61,18 @@ Meisterschaft und wartendem Trainingsabschluss bei Speicherfehlern. Anmeldung,
 Speicherstatus und Technik-/Unterstützungsbestätigung sind auch dort verfügbar.
 Die Runner-Sicherung bleibt kontolokal; ein später Cleanup kann keine Runnerdaten
 in ein inzwischen anderes Konto schreiben.
+
+
+### Produktionsrelease 2026-10-23, 15:35 Europe/Vienna
+
+- Skills `acdbfd7` auf `origin/dev` und `origin/fitness`; Fitness `f221e52`
+  auf `vitalos`; VitalOS-Parent `ed6a7c3` auf `master` veröffentlicht.
+- Skills-, Fitness-, Shell- und VOS-Fitness-Deployments erfolgreich in CI.
+- Zentrale Firestore-Regeln und `skillsCatalogs/calisthenics-v1` veröffentlicht;
+  Regeltests des kombinierten Rulesets und zweimaliger Seed im Emulator bestanden.
+- Live https://vos-skills.web.app: HTTP 200, Release-ID `acdbfd7`, Katalog mit
+  14 Skills / 65 Stufen identisch zum Quellstand; aktuelles JS und Worker-Precache
+  für Katalog und Bundles nachgewiesen. Keine anonyme Anmeldung; ohne Login lokal.
+- Hosting-CI: https://github.com/nimmsel23/vitalos/actions/runs/39962182296
+- Rules/Katalog: https://github.com/nimmsel23/vitalos/actions/runs/39962251260
+- Echte Nutzeranmeldung und Zweigeräte-Sync wurden nicht im Browser abgenommen.

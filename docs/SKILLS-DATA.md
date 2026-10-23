@@ -167,9 +167,15 @@ großen Beständen sind später versionierte Snapshots/Paginierung erforderlich.
 - `pnpm run build && pnpm run test:sw`: gebauter Worker inklusive Offline-Katalog,
   IDB-Initialisierung und precachten Bundles.
 
-Stand dieses Worktrees: implementiert und lokal geprüft. Keine Produktionsregeln,
-kein Cloud-Katalog und kein Hosting-Release wurden veröffentlicht. Die produktive
-Cloud-Anbindung benötigt die oben beschriebene Rules-Integration.
+Produktionsstand 2026-10-23, ab 15:35 Europe/Vienna: Skills `acdbfd7` über
+Fitness `f221e52` und VitalOS `ed6a7c3` veröffentlicht. Der zentrale Rules-Deploy
+und der unveränderliche Katalog `skillsCatalogs/calisthenics-v1` sind erfolgreich
+veröffentlicht. Live-Katalog und Service-Worker-Precache stimmen mit dem
+Quellstand überein. Echte Anmeldung und Zweigeräte-Abnahme bleiben ein separater
+Nutzungstest; die lokalen Kontotrennungs-/Sync- und Emulator-Tests bestanden.
+
+CI: https://github.com/nimmsel23/vitalos/actions/runs/39962182296 (Skills),
+https://github.com/nimmsel23/vitalos/actions/runs/39962251260 (Rules + Katalog).
 
 
 ## Designvarianten
