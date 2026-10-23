@@ -1,45 +1,25 @@
-// Gemeinsamer Kern der Design-Varianten (A/B/C): liest und schreibt denselben
-// Fortschritt wie SkillsCard.jsx (fitness-skills-progress-v1, gleiche Struktur),
-// damit man zwischen den Designs und „Original“ wechseln kann, ohne etwas zu
-// verlieren. Skills und Workout-Blöcke kommen aus SkillsCard.jsx (kein Duplikat).
+// All designs use the Skills event store; there is no design-specific progress copy.
 import { SKILLS, buildWorkoutBlocks } from '../SkillsCard.jsx';
 import { videoForExercise } from '../ExerciseVideo.jsx';
-
-const KEY = 'fitness-skills-progress-v1';
+import { designProgress } from '../data/designProgress.js';
+import { progressStore } from '../data/store.js';
 const PREP_MS = 3000;
-
-let rawCache = null;
-let objCache = {};
-function all() {
-  let raw = null;
-  try { raw = localStorage.getItem(KEY); } catch { /* privat/blockiert */ }
-  if (raw !== rawCache) {
-    rawCache = raw;
-    try { objCache = JSON.parse(raw || '{}') || {}; } catch { objCache = {}; }
-  }
-  return objCache;
-}
-function write(next) {
-  objCache = next;
-  try { rawCache = JSON.stringify(next); localStorage.setItem(KEY, rawCache); } catch { /* ignorieren */ }
-}
 // Der Design-Switcher blendet sich aus, solange ein Workout läuft.
 const announce = active => window.dispatchEvent(new CustomEvent('skills-runner', { detail: active }));
-const blank = () => ({ stage: 0, history: [], holds: [], sessions: [] });
-const entry = id => all()[id] ?? blank();
+const entry = id => designProgress.entry(id);
 
 export const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
 const Core = {
   skills: SKILLS,
-  CATS: { push: 'Push', pull: 'Pull', core: 'Core' },
+  CATS: designProgress.categories,
   RPE: [{ id: 'easy', label: 'Leicht' }, { id: 'optimal', label: 'Optimal' }, { id: 'limit', label: 'Am Limit' }],
   esc,
   byId: id => SKILLS.find(s => s.id === id),
   stage: id => entry(id).stage ?? 0,
   history: id => entry(id).history ?? [],
   sessions: id => entry(id).sessions ?? [],
-  done: s => (entry(s.id).stage ?? 0) >= s.progressions.length - 1,
+  done: s => entry(s.id).mastered === true,
   target: p => (p.type === 'hold' ? `${p.sets}×${p.seconds}s halten` : `${p.sets}×${p.reps} Wdh`),
   short: p => (p.type === 'hold' ? `${p.sets}×${p.seconds}s` : `${p.sets}×${p.reps}`),
   pad: n => String(n).padStart(2, '0'),
@@ -53,32 +33,48 @@ const Core = {
     history.replaceState(null, '', `#${path}${id ? `?skill=${id}` : ''}`);
   },
 
-  // Schreiben – Struktur 1:1 wie master()/downgrade() in SkillsCard.jsx
-  master(skill) {
-    const e = entry(skill.id);
-    if (e.stage >= skill.progressions.length - 1) return;
-    write({ ...all(), [skill.id]: { ...e, stage: e.stage + 1, history: [...(e.history || []), { stage: e.stage, name: skill.progressions[e.stage].name, masteredAt: new Date().toISOString() }] } });
+  master: skill => designProgress.master(skill),
+  downgrade: skill => designProgress.downgrade(skill),
+  saveWorkout: r => designProgress.saveWorkout(r.skill,r.stage,r.sessionData(),r.quality),
+  qualityHTML(r) {
+    const q = r.quality || {};
+    return `<fieldset style="display:grid;gap:8px;padding:12px;font:12px system-ui">
+      <label><input type="checkbox" data-quality="techniqueConfirmed" ${q.techniqueConfirmed ? 'checked' : ''}> Technik sauber eingehalten</label>
+      ${r.blocks[0].sidePolicy === 'both' ? `<label><input type="checkbox" data-quality="bothSidesConfirmed" ${q.bothSidesConfirmed ? 'checked' : ''}> Zielwerte auf beiden Seiten erreicht; schwächere Seite geloggt</label>` : ''}
+      <label>Unterstützung / Band <input data-quality="assistance" value="${esc(q.assistance || '')}" style="color:#111"></label>
+      <label>Zusatzgewicht (kg) <input type="number" min="0" step="0.5" data-quality="addedLoadKg" value="${esc(q.addedLoadKg || '')}" style="color:#111"></label>
+    </fieldset>`;
   },
-  downgrade(skill) {
-    const e = entry(skill.id);
-    if (e.stage <= 0) return false;
-    if (!window.confirm(`${skill.name}: eine Stufe zurücksetzen?`)) return false;
-    const s = e.stage - 1;
-    write({ ...all(), [skill.id]: { ...e, stage: s, history: [...(e.history || []), { stage: s, name: skill.progressions[s].name, masteredAt: new Date().toISOString(), reset: true }] } });
-    return true;
+  qualityInput(r,target) {
+    if (!r || !target.dataset.quality) return;
+    r.quality ||= {};
+    r.quality[target.dataset.quality] = target.type === 'checkbox' ? target.checked : target.value;
+    r.persist?.();
   },
-  saveWorkout(r) {
-    const data = r.sessionData();
-    const e = entry(r.skill.id);
-    write({ ...all(), [r.skill.id]: { ...e, sessions: [...(e.sessions || []), { stage: r.stage, at: data.timestamp, ...data }] } });
-    if (data.metTarget && r.stage < r.skill.progressions.length - 1) Core.master(r.skill);
-    return data;
-  },
+  subscribe: designProgress.subscribe,
 
   // Runner: prep → work → rest über Primär/Sekundär/Conditioning-Blöcke (wie WorkoutRunner)
   runner(skill, stage, onUpdate) {
     const blocks = buildWorkoutBlocks(skill, stage);
+    const owner = progressStore.getSnapshot().owner;
+    const saved = progressStore.runner();
+    const resume = saved?.skillId === skill.id && saved?.stage === stage ? saved : null;
     const r = { skill, stage, blocks, bi: 0, si: 0, phase: 'prep', total: PREP_MS, left: PREP_MS, workMs: 0, paused: false, rpe: null, startedAt: Date.now(), log: blocks.map(() => []), reps: blocks[0].type === 'reps' ? blocks[0].reps : 0 };
+    if (resume) {
+      Object.assign(r,{bi:resume.blockIndex,si:resume.setIndex,phase:resume.phase === 'done' ? 'done' : 'prep',log:resume.log,rpe:resume.rpe,startedAt:resume.startedAt,quality:resume.quality || {}});
+      r.reps = resume.actualReps ?? (blocks[r.bi].reps || 0);
+    }
+    let lastSnapshot = '';
+    r.persist = () => {
+      const snapshot = {skillId:skill.id,stage,stageId:skill.progressions[stage].id,blockIndex:r.bi,setIndex:r.si,phase:r.phase,log:r.log,rpe:r.rpe,startedAt:r.startedAt,actualReps:r.reps,quality:r.quality || {}};
+      const serialized = JSON.stringify(snapshot);
+      if (serialized !== lastSnapshot) {
+        lastSnapshot = serialized;
+        progressStore.saveRunner(snapshot,owner).catch(() => {});
+      }
+    };
+    const renderUpdate = onUpdate;
+    onUpdate = value => {r.persist();renderUpdate(value);};
     Object.defineProperties(r, {
       p: { get: () => r.blocks[r.bi] },
       set: { get: () => r.si + 1 },

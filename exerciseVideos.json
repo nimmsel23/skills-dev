@@ -907,5 +907,13 @@
     },
     "durationSeconds": 15.0,
     "codec": "h264"
+  },
+  "One Arm Pull-Up": {
+    "youtubeId": "mTJHClMQPM8",
+    "title": "How to One Arm Pull-Up Tutorial (BEST PROGRESSIONS)",
+    "author": "FitnessFAQs",
+    "kind": "tutorial",
+    "note": "Skill-Tutorial mit mehreren Progressionen; kein zugeschnittener Übungsloop.",
+    "source": "https://www.youtube.com/watch?v=mTJHClMQPM8"
   }
 }

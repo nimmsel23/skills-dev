@@ -13,7 +13,7 @@ haben, sind die Historie dieses Repos (Basis `c514177`).
 - `main.jsx` — Standalone-Hülle: setzt `data-theme="skills"`, rendert die Karte
   und zeigt Release-Notizen für noch nicht bestätigte Updates.
 - `scripts/vos-changelog/` — gemeinsamer Vite-Plugin mit eingebetteten Release-Metadaten; in VitalOS zeigt nur die Shell den gebündelten Dialog.
-- `designs/` — Design-Phase (2026-10-23): drei Varianten A/B/C als Vanilla-Module im Shadow-DOM + `DesignSwitcher.jsx`/`DesignHost.jsx`; `core.js` teilt Fortschritt/Runner mit dem Original (gleiche localStorage-Struktur). Nach der Entscheidung unterlegene Varianten löschen.
+- `designs/` — Design-Phase (2026-10-23): drei Varianten A/B/C als Vanilla-Module im Shadow-DOM + `DesignSwitcher.jsx`/`DesignHost.jsx`; `core.js` nutzt `data/designProgress.js` und denselben IndexedDB-/localStorage-Ereignisspeicher wie das Original; Firestore-Sync nur nach Login. Nach der Entscheidung unterlegene Varianten löschen.
 - `APP.md` — Produktverhalten, Release-Notizen und laufender Änderungsverlauf.
   Neue App- und Release-Änderungen dort ergänzen.
 - `mini-app.json` + `scripts/mini-app-shell/` (vendored aus
@@ -23,11 +23,12 @@ haben, sind die Historie dieses Repos (Basis `c514177`).
 
 ## Daten
 
-`localStorage`-Keys bleiben identisch zur Fitness-App: `fitness-skills-progress-v1`,
-`fitness-skills-active-runner-v1`; Skill-URL `?skill=<id>` im Hash. Die Skill-/
-Progressionsliste steht noch in `SkillsCard.jsx`; die Calisthenics-YAMLs in
-`~/fitness-dev/fitness/catalog/kb/exercises/calisthenics/` sind eine zweite Quelle
-(siehe README).
+Eigenständiger Katalog: `public/skills-catalog.v1.json` (14 Skills / 65 Stufen).
+`data/` besitzt Modell, IndexedDB, localStorage und Firestore-Sync.
+Vertrag, Migration, Rules-Integration und Prüfungen: `docs/SKILLS-DATA.md`.
+Legacy-Fitness-Keys dienen nur der einmaligen, nicht destruktiven Übernahme.
+Firestore-Namespace: `skillsUsers/{uid}/events`, Katalog: `skillsCatalogs`.
+Runner bleibt lokal; ein Stufenindex allein bedeutet keine Meisterschaft.
 
 ## Befehle
 

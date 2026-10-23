@@ -89,3 +89,11 @@ Regressionen: vollständiger Katalog, wirkliche Player-Komponente (Loop/Mute/Inl
 | Shrimp Squat (einarmig halten) | Tutorial | [Flow Motion Fitness](https://www.youtube.com/watch?v=xfl7SDj0Gzs) |
 | Full Shrimp Squat | Demo-Loop | [Caliverse](https://www.caliverse.app/exercises/shrimp-squat-1118) |
 | Hollow Body Hold | Demo-Loop | [Caliverse](https://www.caliverse.app/exercises/hollow-body-hold-32) |
+
+
+## Ergänzung 2026-10-23
+
+Der eigenständige Katalog enthält jetzt die fehlende Zielstufe „One Arm Pull-Up“
+(ohne Unterstützung). Dafür wird das bereits zugeordnete FitnessFAQs-Skill-Tutorial
+verwendet, ausdrücklich als Tutorial und nicht als Demo. Damit sind 66
+unterschiedliche Übungsnamen abgedeckt (50 Demos, 16 Tutorial-Zuordnungen).

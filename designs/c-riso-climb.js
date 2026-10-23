@@ -3,7 +3,7 @@ import Core from './core.js';
 import css from './c-riso-climb.css?inline';
 
 const SEL = '[data-filter],[data-open],[data-back],[data-run],[data-master],[data-down],[data-fin],[data-skip],[data-pause],[data-add],[data-adj],[data-skipblock],[data-rpe],[data-save],[data-exit],[data-video]';
-const NAME = { push: 'push', pull: 'pull', core: 'core' };
+const NAME = Core.CATS;
 
 function mount(host) {
   const sr = host.attachShadow({ mode: 'open' });
@@ -20,14 +20,14 @@ function mount(host) {
         <h1><span data-t="skills">skills</span><br><span data-t="climb.">climb.</span></h1>
         <div class="tagline">${m} von ${Core.skills.length} gemeistert</div>
       </header>
-      <nav class="tabs">${['all', 'push', 'pull', 'core'].map(c => `<button class="tab ${filter === c ? 'on' : ''}" data-c="${c}" data-filter="${c}">${c === 'all' ? 'alle' : c}<small>${c === 'all' ? Core.skills.length : Core.skills.filter(s => s.category === c).length}</small></button>`).join('')}</nav>
+      <nav class="tabs">${['all', ...Object.keys(Core.CATS)].map(c => `<button class="tab ${filter === c ? 'on' : ''}" data-c="${c}" data-filter="${c}">${c === 'all' ? 'alle' : c}<small>${c === 'all' ? Core.skills.length : Core.skills.filter(s => s.category === c).length}</small></button>`).join('')}</nav>
       <div class="grid">
         ${list.map((s, i) => {
           const st = Core.stage(s.id), n = s.progressions.length, d = Core.done(s);
           const rot = ((i * 37) % 5 - 2) * .55;
           return `<button class="card rv ${d ? 'done' : ''}" data-cat="${s.category}" data-open="${s.id}" style="--r:${rot}deg;--i:${i}">
             ${d ? '<span class="burst">meis-<br>tert!</span>' : ''}
-            <div><div class="k"><i></i>${NAME[s.category]} · ${s.tier}</div>
+            <div><div class="k"><i></i>${NAME[s.category]}</div>
             <div class="nm">${s.name}</div>
             <div class="st">${d ? 'ganz oben angekommen.' : `stufe ${st + 1}/${n}<br>→ ${Core.esc(s.progressions[st].name)}`}</div></div>
             <div class="tower">${s.progressions.map((_, k) => `<i class="${k < st || d ? 'on' : k === st ? 'cur' : ''}" style="--o:${((k * 7) % 5 - 2) * 2}px"></i>`).join('')}</div>
@@ -38,12 +38,12 @@ function mount(host) {
   }
 
   function renderDetail(id) {
-    const s = Core.byId(id), st = Core.stage(id), p = s.progressions[st], n = s.progressions.length, last = st >= n - 1;
+    const s = Core.byId(id), st = Core.stage(id), p = s.progressions[st], n = s.progressions.length, last = Core.done(s);
     const hist = Core.history(id);
     app.innerHTML = `<div class="wrap">
       <button class="back" data-back>← zurück</button>
       <div class="d-title"><span data-t="${Core.esc(s.name.toLowerCase())}">${s.name.toLowerCase()}</span></div>
-      <div class="tagline" style="margin-top:18px">${NAME[s.category]} · ${s.tier} · ${n} stufen</div>
+      <div class="tagline" style="margin-top:18px">${NAME[s.category]} · ${n} stufen</div>
       <div class="stairs-box">
         <h3>die treppe</h3>
         <div class="stairs">
@@ -61,8 +61,8 @@ function mount(host) {
         <button class="go" data-run>workout starten <b>▶</b></button>
       </div>
       <div class="actions">
-        ${!last ? '<button class="ghost" data-master>stufe geschafft ↑</button>' : ''}
-        ${st > 0 ? '<button class="ghost" data-down>eine zurück ↓</button>' : ''}
+        ${!last ? '<button class="ghost" data-master>Stufe / Meisterschaft bestätigen ↑</button>' : ''}
+        ${st > 0 || last ? '<button class="ghost" data-down>eine zurück ↓</button>' : ''}
       </div>
       <h3 class="sub">alle stufen</h3>
       <div class="chainlist">${s.progressions.map((q, k) => `<div class="row ${k < st ? 'done' : k === st ? 'cur' : ''}" data-vrow><span>${k + 1}. ${Core.esc(q.name)}</span><span class="g">${Core.short(q)}<button class="vbtn" data-video="${k}">video</button></span></div>`).join('')}</div>
@@ -104,6 +104,7 @@ function mount(host) {
         ${r.phase === 'done' ? `<div class="rpe">${Core.RPE.map(o => `<button class="${r.rpe === o.id ? 'on' : ''}" data-rpe="${o.id}">${o.label.toLowerCase()}</button>`).join('')}</div>` : `<div class="checks">${checks}</div>`}
         <div class="r-sub">${r.phase === 'done' ? 'bewerte das workout und speichere es.' : r.phase === 'rest' ? (r.si + 1 < r.p.sets ? `gleich: satz ${r.si + 2}` : `gleich: ${Core.esc(r.blocks[r.bi + 1]?.name || 'ende')}`) : Core.target(b)}</div>
       </div>
+      ${r.phase === 'done' ? Core.qualityHTML(r) : ''}
       <div class="r-bot">
         ${r.phase === 'work' ? `<button class="rb pri" data-fin>${isHold ? 'früher beenden' : 'satz fertig ✓'}</button>` : ''}
         ${r.phase === 'rest' ? '<button class="rb" data-add>+30s</button><button class="rb pri" data-skip>weiter</button>' : ''}
@@ -116,7 +117,10 @@ function mount(host) {
   function closeRun() { if (runner) runner.stop(); runner = null; $('#run')?.remove(); }
   function route() { const id = Core.hash(); id && Core.byId(id) ? renderDetail(id) : renderList(); }
 
-  const onClick = e => {
+  let saving = false;
+  const onClick = async e => {
+    if (saving) return;
+    try {
     const t = e.target.closest(SEL);
     if (!t) return;
     const id = Core.hash(), ds = t.dataset;
@@ -125,18 +129,22 @@ function mount(host) {
     else if (ds.open) { Core.setHash(ds.open); route(); }
     else if ('back' in ds) { Core.setHash(null); route(); }
     else if ('run' in ds) { runner = Core.runner(Core.byId(id), Core.stage(id), renderRun); runner.start(); }
-    else if ('master' in ds) { Core.master(Core.byId(id)); renderDetail(id); }
-    else if ('down' in ds) { if (Core.downgrade(Core.byId(id))) renderDetail(id); }
-    else if ('save' in ds) { Core.saveWorkout(runner); closeRun(); renderDetail(id); }
+    else if ('master' in ds) { saving = true; await Core.master(Core.byId(id)); renderDetail(id); }
+    else if ('down' in ds) { saving = true; if (await Core.downgrade(Core.byId(id))) renderDetail(id); }
+    else if ('save' in ds) { saving = true; await Core.saveWorkout(runner); closeRun(); renderDetail(id); }
     else if ('exit' in ds) closeRun();
     else if ('video' in ds) Core.toggleVideo(t, Core.byId(id).progressions[+ds.video].name);
+    } catch (error) { window.alert(`Nicht gespeichert: ${error.message}`); } finally { saving = false; }
   };
   const onKey = e => { if (e.key === 'Escape') closeRun(); };
+  const onQuality = e => Core.qualityInput(runner,e.target);
+  sr.addEventListener('input',onQuality);
+  const stopProgress = Core.subscribe(() => { if (!runner) route(); });
   sr.addEventListener('click', onClick);
   addEventListener('keydown', onKey);
   route();
 
-  return () => { closeRun(); sr.removeEventListener('click', onClick); removeEventListener('keydown', onKey); };
+  return () => { stopProgress(); sr.removeEventListener('input',onQuality); closeRun(); sr.removeEventListener('click', onClick); removeEventListener('keydown', onKey); };
 }
 
 export default {

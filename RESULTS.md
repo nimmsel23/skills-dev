@@ -22,3 +22,42 @@ Vite/React/Tailwind, `mini-app.json` + vendored `mini-app-shell` (Splash, Servic
 Register), Icons, `firebase.json`/`.firebaserc` (Ziel `skills` → `vos-skills`),
 Deploy-Workflow, Build-Check-Hook, Claude-Doku-Hooks. `pnpm run build` grün.
 Nichts gepusht, keine Firebase-Site und kein GitHub-Repo angelegt.
+
+
+## 2026-10-23 — Eigenständiges Skills-Dataset und Persistenz
+
+Worktree `.worktrees/skills-progression`, Branch `feat/skills-progression`.
+14 Skills / 65 Stufen mit stabilen IDs, Technik, Equipment und expliziten
+Aufstiegsregeln. Ereignismodell mit idempotenter Legacy-Migration, kontogetrenntem
+IndexedDB/localStorage, Firestore-Sync und wiederaufnehmbarem Runner.
+Worker precacht Bundles und Katalog und schreibt den Katalog in dieselbe IDB.
+Letzte Stufe und Meisterschaft getrennt; keine automatische Freischaltung.
+
+Prüfung: Modell/Katalog, lokale Persistenz/Migration, Sync-Controller,
+Firestore-Emulator-Zugriffsregeln, Medienchecks und gebauter Worker.
+Produktions-Rules/Seed/Release und echte Geräteabnahme bleiben getrennte Schritte;
+siehe `docs/SKILLS-DATA.md`.
+
+2026-10-23: Bezeichnungen präzisiert: Ohne Login ausschließlich lokal in
+localStorage/IndexedDB. Kein anonymes Firebase-Konto; Sync nur nach Anmeldung.
+
+
+### Vorbereitung der Design-Integration
+
+Gemeinsamer `designProgress`-Adapter und wiederverwendbare Speicher-/Login-Anzeige.
+Adapter-Tests prüfen dauerhafte Speicherung vor Runner-Löschung, stabile IDs,
+explizite Meisterschaft und Fehlererhalt. `scripts/test-design-integration.mjs`
+kann einen separaten Vorschaupfad prüfen. Vorabprüfung der uncommitteten
+Designvarianten A/B/C in `/tmp/skills-merge-prep/preview`: Build und DOM-Tests für
+alle Kategorien, Stufenwechsel, Meisterschaft, Rückstufung, Speicherfehler und
+Trainingsnachweise bestanden. Hauptarbeitsverzeichnis dabei unverändert.
+
+
+### Integration nach Claudes Design-Commit
+
+Nach `bf8cd0e` Skills-Worktree in `dev` zusammengeführt. Die Designvarianten
+verwenden den gemeinsamen Ereignisspeicher mit fünf Kategorien, ausdrücklicher
+Meisterschaft und wartendem Trainingsabschluss bei Speicherfehlern. Anmeldung,
+Speicherstatus und Technik-/Unterstützungsbestätigung sind auch dort verfügbar.
+Die Runner-Sicherung bleibt kontolokal; ein später Cleanup kann keine Runnerdaten
+in ein inzwischen anderes Konto schreiben.

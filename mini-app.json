@@ -7,7 +7,15 @@
       "accent": "#c8ff00",
       "register": true,
       "sw": {
-        "shell": ["./", "./index.html", "./manifest.webmanifest", "./icon-192.png"]
+        "shell": [
+          "./",
+          "./index.html",
+          "./manifest.webmanifest",
+          "./icon-192.png",
+          "./skills-catalog.v1.json"
+        ],
+        "precacheAssets": true,
+        "extraFile": "public/skills-sw.js"
       }
     }
   }

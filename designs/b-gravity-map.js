@@ -74,14 +74,14 @@ function mount(host) {
   function renderList() {
     const m = Core.skills.filter(Core.done).length;
     let i = 0;
-    const label = { push: 'Schub', pull: 'Zug', core: 'Kern' };
+    const label = Core.CATS;
     app.innerHTML = `<div class="wrap">
       <header class="top rv">
         <div class="eyebrow">Calisthenics · Sternkarte</div>
         <h1>Gravity<br><em>Map</em></h1>
         <p class="lede">Jede Progression ist ein Sternbild. Du kletterst Stern für Stern gegen die Schwerkraft — <b>${m} von ${Core.skills.length}</b> Sternbildern sind vollständig erleuchtet.</p>
       </header>
-      ${['push', 'pull', 'core'].map(c => `
+      ${Object.keys(Core.CATS).map(c => `
         <h2 class="cat rv" style="--i:${i}">${label[c]} <span>${Core.CATS[c]}</span></h2>
         <div class="grid">${Core.skills.filter(s => s.category === c).map(s => {
           const st = Core.stage(s.id), n = s.progressions.length, d = Core.done(s);
@@ -94,7 +94,7 @@ function mount(host) {
   }
 
   function renderDetail(id) {
-    const s = Core.byId(id), st = Core.stage(id), p = s.progressions[st], n = s.progressions.length, last = st >= n - 1;
+    const s = Core.byId(id), st = Core.stage(id), p = s.progressions[st], n = s.progressions.length, last = Core.done(s);
     const hist = Core.history(id);
     app.innerHTML = `<div class="wrap">
       <button class="back" data-back>← Sternkarte</button>
@@ -108,8 +108,8 @@ function mount(host) {
         <button class="ignite" data-run><i>▶</i> Zünden</button>
       </div>
       <div class="actions">
-        ${!last ? '<button class="ghost" data-master>Stern erreicht ↑</button>' : ''}
-        ${st > 0 ? '<button class="ghost" data-down>Einen zurück ↓</button>' : ''}
+        ${!last ? '<button class="ghost" data-master>Stufe / Meisterschaft bestätigen ↑</button>' : ''}
+        ${st > 0 || last ? '<button class="ghost" data-down>Einen zurück ↓</button>' : ''}
       </div>
       <h3 class="sub">Alle Sterne</h3>
       <div class="chainlist">${s.progressions.map((q, k) => `<div class="row ${k < st ? 'done' : k === st ? 'cur' : ''}" data-vrow><em>${Core.esc(q.name)}</em><span class="g">${Core.short(q)}<button class="vbtn" data-video="${k}">Video</button></span></div>`).join('')}</div>
@@ -149,6 +149,7 @@ function mount(host) {
         ${r.phase === 'done' ? `<div class="rpe">${Core.RPE.map(o => `<button class="${r.rpe === o.id ? 'on' : ''}" data-rpe="${o.id}">${o.label}</button>`).join('')}</div>` : `<div class="moons">${moons}</div>`}
         <div class="r-sub">${r.phase === 'done' ? 'Bewerte das Workout und speichere es.' : r.phase === 'rest' ? (r.si + 1 < r.p.sets ? 'Schwerelos. Gleich folgt Umlauf ' + (r.si + 2) + '.' : 'Schwerelos. Gleich: ' + (r.blocks[r.bi + 1]?.name || 'Ende')) : Core.target(b)}</div>
       </div>
+      ${r.phase === 'done' ? Core.qualityHTML(r) : ''}
       <div class="r-bot">
         ${r.phase === 'work' ? `<button class="rb pri" data-fin>${isHold ? 'Früher beenden' : 'Satz fertig'}</button>` : ''}
         ${r.phase === 'rest' ? '<button class="rb" data-add>+30s</button><button class="rb pri" data-skip>Weiter</button>' : ''}
@@ -160,7 +161,10 @@ function mount(host) {
   function closeRun() { if (runner) runner.stop(); runner = null; $('#run')?.remove(); }
   function route() { const id = Core.hash(); id && Core.byId(id) ? renderDetail(id) : renderList(); }
 
-  const onClick = e => {
+  let saving = false;
+  const onClick = async e => {
+    if (saving) return;
+    try {
     const t = e.target.closest(SEL);
     if (!t) return;
     const id = Core.hash(), ds = t.dataset;
@@ -169,11 +173,12 @@ function mount(host) {
     if (ds.open) { Core.setHash(ds.open); route(); }
     else if ('back' in ds) { Core.setHash(null); route(); }
     else if ('run' in ds) { runner = Core.runner(Core.byId(id), Core.stage(id), renderRun); runner.start(); }
-    else if ('master' in ds) { Core.master(Core.byId(id)); renderDetail(id); }
-    else if ('down' in ds) { if (Core.downgrade(Core.byId(id))) renderDetail(id); }
-    else if ('save' in ds) { Core.saveWorkout(runner); closeRun(); renderDetail(id); }
+    else if ('master' in ds) { saving = true; await Core.master(Core.byId(id)); renderDetail(id); }
+    else if ('down' in ds) { saving = true; if (await Core.downgrade(Core.byId(id))) renderDetail(id); }
+    else if ('save' in ds) { saving = true; await Core.saveWorkout(runner); closeRun(); renderDetail(id); }
     else if ('exit' in ds) closeRun();
     else if ('video' in ds) Core.toggleVideo(t, Core.byId(id).progressions[+ds.video].name);
+    } catch (error) { window.alert(`Nicht gespeichert: ${error.message}`); } finally { saving = false; }
   };
   const onPointer = e => {
     const c = e.target.closest?.('.card') || e.composedPath?.().find(n => n.classList?.contains('card'));
@@ -181,12 +186,15 @@ function mount(host) {
     const b = c.getBoundingClientRect(); c.style.setProperty('--mx', (e.clientX - b.left) + 'px'); c.style.setProperty('--my', (e.clientY - b.top) + 'px');
   };
   const onKey = e => { if (e.key === 'Escape') closeRun(); };
+  const onQuality = e => Core.qualityInput(runner,e.target);
+  sr.addEventListener('input',onQuality);
+  const stopProgress = Core.subscribe(() => { if (!runner) route(); });
   sr.addEventListener('click', onClick); sr.addEventListener('pointermove', onPointer);
   addEventListener('keydown', onKey);
   route();
 
   return () => {
-    closeRun(); cancelAnimationFrame(raf);
+    stopProgress(); sr.removeEventListener('input',onQuality); closeRun(); cancelAnimationFrame(raf);
     removeEventListener('resize', size); removeEventListener('pointermove', onMove); removeEventListener('scroll', onScroll); removeEventListener('keydown', onKey);
   };
 }

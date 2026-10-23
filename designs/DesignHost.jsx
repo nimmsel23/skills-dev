@@ -1,12 +1,15 @@
 import { useEffect, useRef } from 'react';
+import { useProgress } from '../data/useProgress.js';
 
 // Hängt eine Design-Variante (Vanilla-Modul mit Shadow-DOM) in die React-Hülle.
 // Schriften kommen von Google Fonts; @font-face funktioniert nicht im Shadow-DOM,
 // deshalb liegt der Link im Dokument-Head.
 export default function DesignHost({ design }) {
   const ref = useRef(null);
+  const {ready,owner} = useProgress();
 
   useEffect(() => {
+    if (!ready) return;
     const id = `skills-font-${design.id}`;
     if (design.fonts && !document.getElementById(id)) {
       const link = document.createElement('link');
@@ -30,7 +33,7 @@ export default function DesignHost({ design }) {
       root.style.background = prev.bg;
       if (meta && prev.theme) meta.setAttribute('content', prev.theme);
     };
-  }, [design]);
+  }, [design, ready, owner]);
 
   return <div ref={ref} />;
 }

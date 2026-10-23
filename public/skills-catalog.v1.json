@@ -1,0 +1,2022 @@
+{
+  "id": "calisthenics-v1",
+  "schemaVersion": 1,
+  "version": 1,
+  "language": "de-AT",
+  "authoredAt": "2026-10-23",
+  "status": "app-authored-baseline",
+  "provenance": "Eigenständiger Skills-Katalog. Übungsnamen und bestehende Front-Lever-Vorgaben erhalten; Kriterien sind transparente App-Startwerte, kein übernommener Trainingsplan. Individuell anpassbare Vorgaben sind eine spätere Erweiterung.",
+  "categories": [
+    "push",
+    "pull",
+    "core",
+    "legs",
+    "balance"
+  ],
+  "skills": [
+    {
+      "id": "muscle-up",
+      "name": "Muscle-Up",
+      "category": "pull",
+      "goal": "Zug und Stütz kontrolliert verbinden.",
+      "equipment": [
+        "bar"
+      ],
+      "progressions": [
+        {
+          "id": "muscle-up/klimmzuge",
+          "name": "Klimmzüge",
+          "type": "reps",
+          "metric": "reps",
+          "sets": 3,
+          "reps": 6,
+          "restSeconds": 120,
+          "equipment": [
+            "bar"
+          ],
+          "sidePolicy": "bilateral",
+          "technique": [
+            "Ohne Kipping; Übergang symmetrisch."
+          ],
+          "prerequisites": [],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 3,
+            "minimumValue": 6,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "muscle-up/explosive-klimmzuge",
+          "name": "Explosive Klimmzüge",
+          "type": "reps",
+          "metric": "reps",
+          "sets": 3,
+          "reps": 5,
+          "restSeconds": 120,
+          "equipment": [
+            "bar"
+          ],
+          "sidePolicy": "bilateral",
+          "technique": [
+            "Ohne Kipping; Übergang symmetrisch."
+          ],
+          "prerequisites": [
+            "muscle-up/klimmzuge"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 3,
+            "minimumValue": 5,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "muscle-up/chest-to-bar-pull-ups",
+          "name": "Chest-to-Bar Pull-Ups",
+          "type": "reps",
+          "metric": "reps",
+          "sets": 3,
+          "reps": 5,
+          "restSeconds": 120,
+          "equipment": [
+            "bar"
+          ],
+          "sidePolicy": "bilateral",
+          "technique": [
+            "Ohne Kipping; Übergang symmetrisch."
+          ],
+          "prerequisites": [
+            "muscle-up/explosive-klimmzuge"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 3,
+            "minimumValue": 5,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "muscle-up/bar-dips",
+          "name": "Bar Dips",
+          "type": "reps",
+          "metric": "reps",
+          "sets": 3,
+          "reps": 8,
+          "restSeconds": 180,
+          "equipment": [
+            "bar"
+          ],
+          "sidePolicy": "bilateral",
+          "technique": [
+            "Ohne Kipping; Übergang symmetrisch."
+          ],
+          "prerequisites": [
+            "muscle-up/chest-to-bar-pull-ups"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 3,
+            "minimumValue": 8,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "muscle-up/muscle-up-negative",
+          "name": "Muscle-Up Negative",
+          "type": "reps",
+          "metric": "reps",
+          "sets": 3,
+          "reps": 3,
+          "restSeconds": 180,
+          "equipment": [
+            "bar"
+          ],
+          "sidePolicy": "bilateral",
+          "technique": [
+            "Ohne Kipping; Übergang symmetrisch."
+          ],
+          "prerequisites": [
+            "muscle-up/bar-dips"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 3,
+            "minimumValue": 3,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "muscle-up/muscle-up",
+          "name": "Muscle-Up",
+          "type": "reps",
+          "metric": "reps",
+          "sets": 3,
+          "reps": 3,
+          "restSeconds": 180,
+          "equipment": [
+            "bar"
+          ],
+          "sidePolicy": "bilateral",
+          "technique": [
+            "Ohne Kipping; Übergang symmetrisch."
+          ],
+          "prerequisites": [
+            "muscle-up/muscle-up-negative"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 3,
+            "minimumValue": 3,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        }
+      ]
+    },
+    {
+      "id": "planche",
+      "name": "Planche",
+      "category": "push",
+      "goal": "Gestreckte Arme und aktive Protraktion.",
+      "equipment": [
+        "floor",
+        "parallettes"
+      ],
+      "progressions": [
+        {
+          "id": "planche/plank",
+          "name": "Plank",
+          "type": "hold",
+          "metric": "seconds",
+          "sets": 4,
+          "seconds": 30,
+          "restSeconds": 120,
+          "equipment": [
+            "floor",
+            "parallettes"
+          ],
+          "sidePolicy": "bilateral",
+          "technique": [
+            "Ellbogen gestreckt; Becken kontrolliert."
+          ],
+          "prerequisites": [],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 4,
+            "minimumValue": 30,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "planche/planche-lean",
+          "name": "Planche Lean",
+          "type": "hold",
+          "metric": "seconds",
+          "sets": 4,
+          "seconds": 20,
+          "restSeconds": 120,
+          "equipment": [
+            "floor",
+            "parallettes"
+          ],
+          "sidePolicy": "bilateral",
+          "technique": [
+            "Ellbogen gestreckt; Becken kontrolliert."
+          ],
+          "prerequisites": [
+            "planche/plank"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 4,
+            "minimumValue": 20,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "planche/frog-stand",
+          "name": "Frog Stand",
+          "type": "hold",
+          "metric": "seconds",
+          "sets": 4,
+          "seconds": 20,
+          "restSeconds": 120,
+          "equipment": [
+            "floor",
+            "parallettes"
+          ],
+          "sidePolicy": "bilateral",
+          "technique": [
+            "Ellbogen gestreckt; Becken kontrolliert."
+          ],
+          "prerequisites": [
+            "planche/planche-lean"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 4,
+            "minimumValue": 20,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "planche/tuck-planche",
+          "name": "Tuck Planche",
+          "type": "hold",
+          "metric": "seconds",
+          "sets": 4,
+          "seconds": 10,
+          "restSeconds": 180,
+          "equipment": [
+            "floor",
+            "parallettes"
+          ],
+          "sidePolicy": "bilateral",
+          "technique": [
+            "Ellbogen gestreckt; Becken kontrolliert."
+          ],
+          "prerequisites": [
+            "planche/frog-stand"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 4,
+            "minimumValue": 10,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "planche/advanced-tuck-planche",
+          "name": "Advanced Tuck Planche",
+          "type": "hold",
+          "metric": "seconds",
+          "sets": 4,
+          "seconds": 8,
+          "restSeconds": 180,
+          "equipment": [
+            "floor",
+            "parallettes"
+          ],
+          "sidePolicy": "bilateral",
+          "technique": [
+            "Ellbogen gestreckt; Becken kontrolliert."
+          ],
+          "prerequisites": [
+            "planche/tuck-planche"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 4,
+            "minimumValue": 8,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "planche/straddle-planche",
+          "name": "Straddle Planche",
+          "type": "hold",
+          "metric": "seconds",
+          "sets": 4,
+          "seconds": 6,
+          "restSeconds": 180,
+          "equipment": [
+            "floor",
+            "parallettes"
+          ],
+          "sidePolicy": "bilateral",
+          "technique": [
+            "Ellbogen gestreckt; Becken kontrolliert."
+          ],
+          "prerequisites": [
+            "planche/advanced-tuck-planche"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 4,
+            "minimumValue": 6,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "planche/full-planche",
+          "name": "Full Planche",
+          "type": "hold",
+          "metric": "seconds",
+          "sets": 4,
+          "seconds": 5,
+          "restSeconds": 180,
+          "equipment": [
+            "floor",
+            "parallettes"
+          ],
+          "sidePolicy": "bilateral",
+          "technique": [
+            "Ellbogen gestreckt; Becken kontrolliert."
+          ],
+          "prerequisites": [
+            "planche/straddle-planche"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 4,
+            "minimumValue": 5,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        }
+      ]
+    },
+    {
+      "id": "front-lever",
+      "name": "Front Lever",
+      "category": "pull",
+      "goal": "Horizontale Zugkraft bei gestreckten Armen.",
+      "equipment": [
+        "bar",
+        "rings"
+      ],
+      "progressions": [
+        {
+          "id": "front-lever/scapula-pulls",
+          "name": "Scapula Pulls",
+          "type": "reps",
+          "metric": "reps",
+          "sets": 3,
+          "reps": 10,
+          "restSeconds": 120,
+          "equipment": [
+            "bar",
+            "rings"
+          ],
+          "sidePolicy": "bilateral",
+          "technique": [
+            "Schulter aktiv; kein Hüftknick."
+          ],
+          "prerequisites": [],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 3,
+            "minimumValue": 10,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "front-lever/tuck-front-lever",
+          "name": "Tuck Front Lever",
+          "type": "hold",
+          "metric": "seconds",
+          "sets": 4,
+          "seconds": 15,
+          "restSeconds": 120,
+          "equipment": [
+            "bar",
+            "rings"
+          ],
+          "sidePolicy": "bilateral",
+          "technique": [
+            "Schulter aktiv; kein Hüftknick."
+          ],
+          "prerequisites": [
+            "front-lever/scapula-pulls"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 4,
+            "minimumValue": 15,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "front-lever/advanced-tuck-front-lever",
+          "name": "Advanced Tuck Front Lever",
+          "type": "hold",
+          "metric": "seconds",
+          "sets": 5,
+          "seconds": 10,
+          "restSeconds": 120,
+          "equipment": [
+            "bar",
+            "rings"
+          ],
+          "sidePolicy": "bilateral",
+          "technique": [
+            "Schulter aktiv; kein Hüftknick."
+          ],
+          "prerequisites": [
+            "front-lever/tuck-front-lever"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 5,
+            "minimumValue": 10,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "front-lever/one-leg-front-lever",
+          "name": "One Leg Front Lever",
+          "type": "hold",
+          "metric": "seconds",
+          "sets": 4,
+          "seconds": 8,
+          "restSeconds": 180,
+          "equipment": [
+            "bar",
+            "rings"
+          ],
+          "sidePolicy": "bilateral",
+          "technique": [
+            "Schulter aktiv; kein Hüftknick."
+          ],
+          "prerequisites": [
+            "front-lever/advanced-tuck-front-lever"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 4,
+            "minimumValue": 8,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "front-lever/straddle-front-lever",
+          "name": "Straddle Front Lever",
+          "type": "hold",
+          "metric": "seconds",
+          "sets": 4,
+          "seconds": 8,
+          "restSeconds": 180,
+          "equipment": [
+            "bar",
+            "rings"
+          ],
+          "sidePolicy": "bilateral",
+          "technique": [
+            "Schulter aktiv; kein Hüftknick."
+          ],
+          "prerequisites": [
+            "front-lever/one-leg-front-lever"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 4,
+            "minimumValue": 8,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "front-lever/full-front-lever",
+          "name": "Full Front Lever",
+          "type": "hold",
+          "metric": "seconds",
+          "sets": 4,
+          "seconds": 5,
+          "restSeconds": 180,
+          "equipment": [
+            "bar",
+            "rings"
+          ],
+          "sidePolicy": "bilateral",
+          "technique": [
+            "Schulter aktiv; kein Hüftknick."
+          ],
+          "prerequisites": [
+            "front-lever/straddle-front-lever"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 4,
+            "minimumValue": 5,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        }
+      ]
+    },
+    {
+      "id": "back-lever",
+      "name": "Back Lever",
+      "category": "pull",
+      "goal": "Schulterextension und Körperspannung.",
+      "equipment": [
+        "rings",
+        "bar"
+      ],
+      "progressions": [
+        {
+          "id": "back-lever/skin-the-cat",
+          "name": "Skin the Cat",
+          "type": "reps",
+          "metric": "reps",
+          "sets": 3,
+          "reps": 3,
+          "restSeconds": 120,
+          "equipment": [
+            "rings",
+            "bar"
+          ],
+          "sidePolicy": "bilateral",
+          "technique": [
+            "Kontrollierter Einstieg; Ellbogen gestreckt."
+          ],
+          "prerequisites": [],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 3,
+            "minimumValue": 3,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "back-lever/tuck-back-lever",
+          "name": "Tuck Back Lever",
+          "type": "hold",
+          "metric": "seconds",
+          "sets": 4,
+          "seconds": 12,
+          "restSeconds": 120,
+          "equipment": [
+            "rings",
+            "bar"
+          ],
+          "sidePolicy": "bilateral",
+          "technique": [
+            "Kontrollierter Einstieg; Ellbogen gestreckt."
+          ],
+          "prerequisites": [
+            "back-lever/skin-the-cat"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 4,
+            "minimumValue": 12,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "back-lever/advanced-tuck-back-lever",
+          "name": "Advanced Tuck Back Lever",
+          "type": "hold",
+          "metric": "seconds",
+          "sets": 4,
+          "seconds": 10,
+          "restSeconds": 120,
+          "equipment": [
+            "rings",
+            "bar"
+          ],
+          "sidePolicy": "bilateral",
+          "technique": [
+            "Kontrollierter Einstieg; Ellbogen gestreckt."
+          ],
+          "prerequisites": [
+            "back-lever/tuck-back-lever"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 4,
+            "minimumValue": 10,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "back-lever/straddle-back-lever",
+          "name": "Straddle Back Lever",
+          "type": "hold",
+          "metric": "seconds",
+          "sets": 4,
+          "seconds": 8,
+          "restSeconds": 180,
+          "equipment": [
+            "rings",
+            "bar"
+          ],
+          "sidePolicy": "bilateral",
+          "technique": [
+            "Kontrollierter Einstieg; Ellbogen gestreckt."
+          ],
+          "prerequisites": [
+            "back-lever/advanced-tuck-back-lever"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 4,
+            "minimumValue": 8,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "back-lever/full-back-lever",
+          "name": "Full Back Lever",
+          "type": "hold",
+          "metric": "seconds",
+          "sets": 4,
+          "seconds": 5,
+          "restSeconds": 180,
+          "equipment": [
+            "rings",
+            "bar"
+          ],
+          "sidePolicy": "bilateral",
+          "technique": [
+            "Kontrollierter Einstieg; Ellbogen gestreckt."
+          ],
+          "prerequisites": [
+            "back-lever/straddle-back-lever"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 4,
+            "minimumValue": 5,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        }
+      ]
+    },
+    {
+      "id": "handstand-pushup",
+      "name": "Handstand Push-Up",
+      "category": "push",
+      "goal": "Vertikales Drücken über Kopf.",
+      "equipment": [
+        "floor",
+        "wall"
+      ],
+      "progressions": [
+        {
+          "id": "handstand-pushup/pike-push-ups",
+          "name": "Pike Push-Ups",
+          "type": "reps",
+          "metric": "reps",
+          "sets": 3,
+          "reps": 8,
+          "restSeconds": 120,
+          "equipment": [
+            "floor",
+            "wall"
+          ],
+          "sidePolicy": "bilateral",
+          "technique": [
+            "Kontrollierte Tiefe und stabiler Schultergürtel."
+          ],
+          "prerequisites": [],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 3,
+            "minimumValue": 8,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "handstand-pushup/elevated-pike-push-ups",
+          "name": "Elevated Pike Push-Ups",
+          "type": "reps",
+          "metric": "reps",
+          "sets": 3,
+          "reps": 6,
+          "restSeconds": 120,
+          "equipment": [
+            "floor",
+            "wall"
+          ],
+          "sidePolicy": "bilateral",
+          "technique": [
+            "Kontrollierte Tiefe und stabiler Schultergürtel."
+          ],
+          "prerequisites": [
+            "handstand-pushup/pike-push-ups"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 3,
+            "minimumValue": 6,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "handstand-pushup/wall-handstand-push-ups",
+          "name": "Wall Handstand Push-Ups",
+          "type": "reps",
+          "metric": "reps",
+          "sets": 3,
+          "reps": 5,
+          "restSeconds": 120,
+          "equipment": [
+            "floor",
+            "wall"
+          ],
+          "sidePolicy": "bilateral",
+          "technique": [
+            "Kontrollierte Tiefe und stabiler Schultergürtel."
+          ],
+          "prerequisites": [
+            "handstand-pushup/elevated-pike-push-ups"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 3,
+            "minimumValue": 5,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "handstand-pushup/freestanding-handstand-push-ups",
+          "name": "Freestanding Handstand Push-Ups",
+          "type": "reps",
+          "metric": "reps",
+          "sets": 3,
+          "reps": 3,
+          "restSeconds": 180,
+          "equipment": [
+            "floor",
+            "wall"
+          ],
+          "sidePolicy": "bilateral",
+          "technique": [
+            "Kontrollierte Tiefe und stabiler Schultergürtel."
+          ],
+          "prerequisites": [
+            "handstand-pushup/wall-handstand-push-ups"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 3,
+            "minimumValue": 3,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        }
+      ]
+    },
+    {
+      "id": "v-sit",
+      "name": "V-Sit",
+      "category": "core",
+      "goal": "Kompression und aktiver Stütz.",
+      "equipment": [
+        "parallettes",
+        "floor"
+      ],
+      "progressions": [
+        {
+          "id": "v-sit/tuck-l-sit",
+          "name": "Tuck L-Sit",
+          "type": "hold",
+          "metric": "seconds",
+          "sets": 4,
+          "seconds": 20,
+          "restSeconds": 120,
+          "equipment": [
+            "parallettes",
+            "floor"
+          ],
+          "sidePolicy": "bilateral",
+          "technique": [
+            "Knie gestreckt ab L-Sit; Füße ohne Bodenkontakt."
+          ],
+          "prerequisites": [],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 4,
+            "minimumValue": 20,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "v-sit/l-sit",
+          "name": "L-Sit",
+          "type": "hold",
+          "metric": "seconds",
+          "sets": 4,
+          "seconds": 15,
+          "restSeconds": 120,
+          "equipment": [
+            "parallettes",
+            "floor"
+          ],
+          "sidePolicy": "bilateral",
+          "technique": [
+            "Knie gestreckt ab L-Sit; Füße ohne Bodenkontakt."
+          ],
+          "prerequisites": [
+            "v-sit/tuck-l-sit"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 4,
+            "minimumValue": 15,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "v-sit/straddle-l-sit",
+          "name": "Straddle L-Sit",
+          "type": "hold",
+          "metric": "seconds",
+          "sets": 4,
+          "seconds": 12,
+          "restSeconds": 120,
+          "equipment": [
+            "parallettes",
+            "floor"
+          ],
+          "sidePolicy": "bilateral",
+          "technique": [
+            "Knie gestreckt ab L-Sit; Füße ohne Bodenkontakt."
+          ],
+          "prerequisites": [
+            "v-sit/l-sit"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 4,
+            "minimumValue": 12,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "v-sit/v-sit",
+          "name": "V-Sit",
+          "type": "hold",
+          "metric": "seconds",
+          "sets": 4,
+          "seconds": 5,
+          "restSeconds": 180,
+          "equipment": [
+            "parallettes",
+            "floor"
+          ],
+          "sidePolicy": "bilateral",
+          "technique": [
+            "Knie gestreckt ab L-Sit; Füße ohne Bodenkontakt."
+          ],
+          "prerequisites": [
+            "v-sit/straddle-l-sit"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 4,
+            "minimumValue": 5,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        }
+      ]
+    },
+    {
+      "id": "pistol-squat",
+      "name": "Pistol Squat",
+      "category": "legs",
+      "goal": "Einbeinige Kraft und Beweglichkeit.",
+      "equipment": [
+        "floor",
+        "box"
+      ],
+      "progressions": [
+        {
+          "id": "pistol-squat/assisted-squats",
+          "name": "Assisted Squats",
+          "type": "reps",
+          "metric": "reps",
+          "sets": 3,
+          "reps": 10,
+          "restSeconds": 120,
+          "equipment": [
+            "floor",
+            "box"
+          ],
+          "sidePolicy": "both",
+          "technique": [
+            "Standfuß stabil; Knie folgt den Zehen."
+          ],
+          "prerequisites": [],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 3,
+            "minimumValue": 10,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "record-band-or-support",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "pistol-squat/deep-squats",
+          "name": "Deep Squats",
+          "type": "reps",
+          "metric": "reps",
+          "sets": 3,
+          "reps": 10,
+          "restSeconds": 120,
+          "equipment": [
+            "floor",
+            "box"
+          ],
+          "sidePolicy": "both",
+          "technique": [
+            "Standfuß stabil; Knie folgt den Zehen."
+          ],
+          "prerequisites": [
+            "pistol-squat/assisted-squats"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 3,
+            "minimumValue": 10,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "pistol-squat/step-ups",
+          "name": "Step-Ups",
+          "type": "reps",
+          "metric": "reps",
+          "sets": 3,
+          "reps": 8,
+          "restSeconds": 120,
+          "equipment": [
+            "floor",
+            "box"
+          ],
+          "sidePolicy": "both",
+          "technique": [
+            "Standfuß stabil; Knie folgt den Zehen."
+          ],
+          "prerequisites": [
+            "pistol-squat/deep-squats"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 3,
+            "minimumValue": 8,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "pistol-squat/negative-pistol-squats",
+          "name": "Negative Pistol Squats",
+          "type": "reps",
+          "metric": "reps",
+          "sets": 3,
+          "reps": 5,
+          "restSeconds": 180,
+          "equipment": [
+            "floor",
+            "box"
+          ],
+          "sidePolicy": "both",
+          "technique": [
+            "Standfuß stabil; Knie folgt den Zehen."
+          ],
+          "prerequisites": [
+            "pistol-squat/step-ups"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 3,
+            "minimumValue": 5,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "pistol-squat/full-pistol-squat",
+          "name": "Full Pistol Squat",
+          "type": "reps",
+          "metric": "reps",
+          "sets": 3,
+          "reps": 5,
+          "restSeconds": 180,
+          "equipment": [
+            "floor",
+            "box"
+          ],
+          "sidePolicy": "both",
+          "technique": [
+            "Standfuß stabil; Knie folgt den Zehen."
+          ],
+          "prerequisites": [
+            "pistol-squat/negative-pistol-squats"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 3,
+            "minimumValue": 5,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        }
+      ]
+    },
+    {
+      "id": "human-flag",
+      "name": "Human Flag",
+      "category": "core",
+      "goal": "Seitliche Körperspannung im asymmetrischen Stütz.",
+      "equipment": [
+        "vertical-pole"
+      ],
+      "progressions": [
+        {
+          "id": "human-flag/support-holds",
+          "name": "Support Holds",
+          "type": "hold",
+          "metric": "seconds",
+          "sets": 4,
+          "seconds": 20,
+          "restSeconds": 120,
+          "equipment": [
+            "vertical-pole"
+          ],
+          "sidePolicy": "both",
+          "technique": [
+            "Beide Seiten separat; Arme aktiv."
+          ],
+          "prerequisites": [],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 4,
+            "minimumValue": 20,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "human-flag/vertical-flag",
+          "name": "Vertical Flag",
+          "type": "hold",
+          "metric": "seconds",
+          "sets": 4,
+          "seconds": 15,
+          "restSeconds": 120,
+          "equipment": [
+            "vertical-pole"
+          ],
+          "sidePolicy": "both",
+          "technique": [
+            "Beide Seiten separat; Arme aktiv."
+          ],
+          "prerequisites": [
+            "human-flag/support-holds"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 4,
+            "minimumValue": 15,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "human-flag/tuck-human-flag",
+          "name": "Tuck Human Flag",
+          "type": "hold",
+          "metric": "seconds",
+          "sets": 4,
+          "seconds": 10,
+          "restSeconds": 120,
+          "equipment": [
+            "vertical-pole"
+          ],
+          "sidePolicy": "both",
+          "technique": [
+            "Beide Seiten separat; Arme aktiv."
+          ],
+          "prerequisites": [
+            "human-flag/vertical-flag"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 4,
+            "minimumValue": 10,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "human-flag/straddle-human-flag",
+          "name": "Straddle Human Flag",
+          "type": "hold",
+          "metric": "seconds",
+          "sets": 4,
+          "seconds": 8,
+          "restSeconds": 180,
+          "equipment": [
+            "vertical-pole"
+          ],
+          "sidePolicy": "both",
+          "technique": [
+            "Beide Seiten separat; Arme aktiv."
+          ],
+          "prerequisites": [
+            "human-flag/tuck-human-flag"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 4,
+            "minimumValue": 8,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "human-flag/full-human-flag",
+          "name": "Full Human Flag",
+          "type": "hold",
+          "metric": "seconds",
+          "sets": 4,
+          "seconds": 5,
+          "restSeconds": 180,
+          "equipment": [
+            "vertical-pole"
+          ],
+          "sidePolicy": "both",
+          "technique": [
+            "Beide Seiten separat; Arme aktiv."
+          ],
+          "prerequisites": [
+            "human-flag/straddle-human-flag"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 4,
+            "minimumValue": 5,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        }
+      ]
+    },
+    {
+      "id": "one-arm-pullup",
+      "name": "One Arm Pull-Up",
+      "category": "pull",
+      "goal": "Einarmige Zugkraft mit kontrollierter Rotation.",
+      "equipment": [
+        "bar",
+        "resistance-band",
+        "weights"
+      ],
+      "progressions": [
+        {
+          "id": "one-arm-pullup/archer-pull-ups",
+          "name": "Archer Pull-Ups",
+          "type": "reps",
+          "metric": "reps",
+          "sets": 3,
+          "reps": 5,
+          "restSeconds": 120,
+          "equipment": [
+            "bar",
+            "resistance-band",
+            "weights"
+          ],
+          "sidePolicy": "both",
+          "technique": [
+            "Beide Seiten; keine Schwungunterstützung."
+          ],
+          "prerequisites": [],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 3,
+            "minimumValue": 5,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "one-arm-pullup/weighted-pull-ups",
+          "name": "Weighted Pull-Ups",
+          "type": "reps",
+          "metric": "reps",
+          "sets": 3,
+          "reps": 5,
+          "restSeconds": 120,
+          "equipment": [
+            "bar",
+            "resistance-band",
+            "weights"
+          ],
+          "sidePolicy": "both",
+          "technique": [
+            "Beide Seiten; keine Schwungunterstützung."
+          ],
+          "prerequisites": [
+            "one-arm-pullup/archer-pull-ups"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 3,
+            "minimumValue": 5,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "record-added-kg"
+        },
+        {
+          "id": "one-arm-pullup/one-arm-negative-pull-ups",
+          "name": "One Arm Negative Pull-Ups",
+          "type": "reps",
+          "metric": "reps",
+          "sets": 3,
+          "reps": 3,
+          "restSeconds": 120,
+          "equipment": [
+            "bar",
+            "resistance-band",
+            "weights"
+          ],
+          "sidePolicy": "both",
+          "technique": [
+            "Beide Seiten; keine Schwungunterstützung."
+          ],
+          "prerequisites": [
+            "one-arm-pullup/weighted-pull-ups"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 3,
+            "minimumValue": 3,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "one-arm-pullup/assisted-one-arm-pull-up",
+          "name": "Assisted One Arm Pull-Up",
+          "type": "reps",
+          "metric": "reps",
+          "sets": 3,
+          "reps": 3,
+          "restSeconds": 180,
+          "equipment": [
+            "bar",
+            "resistance-band",
+            "weights"
+          ],
+          "sidePolicy": "both",
+          "technique": [
+            "Beide Seiten; keine Schwungunterstützung."
+          ],
+          "prerequisites": [
+            "one-arm-pullup/one-arm-negative-pull-ups"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 3,
+            "minimumValue": 3,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "record-band-or-support",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "one-arm-pullup/one-arm-pull-up",
+          "name": "One Arm Pull-Up",
+          "type": "reps",
+          "metric": "reps",
+          "sets": 3,
+          "reps": 1,
+          "restSeconds": 180,
+          "equipment": [
+            "bar",
+            "resistance-band",
+            "weights"
+          ],
+          "sidePolicy": "both",
+          "technique": [
+            "Beide Seiten; keine Schwungunterstützung."
+          ],
+          "prerequisites": [
+            "one-arm-pullup/assisted-one-arm-pull-up"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 3,
+            "minimumValue": 1,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        }
+      ]
+    },
+    {
+      "id": "dragon-flag",
+      "name": "Dragon Flag",
+      "category": "core",
+      "goal": "Anti-Extension mit langem Hebel.",
+      "equipment": [
+        "bench"
+      ],
+      "progressions": [
+        {
+          "id": "dragon-flag/candlestick",
+          "name": "Candlestick",
+          "type": "reps",
+          "metric": "reps",
+          "sets": 3,
+          "reps": 6,
+          "restSeconds": 120,
+          "equipment": [
+            "bench"
+          ],
+          "sidePolicy": "bilateral",
+          "technique": [
+            "Last auf Schultergürtel; Hüfte bleibt gestreckt."
+          ],
+          "prerequisites": [],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 3,
+            "minimumValue": 6,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "dragon-flag/dragon-flag-negatives",
+          "name": "Dragon Flag Negatives",
+          "type": "reps",
+          "metric": "reps",
+          "sets": 3,
+          "reps": 3,
+          "restSeconds": 120,
+          "equipment": [
+            "bench"
+          ],
+          "sidePolicy": "bilateral",
+          "technique": [
+            "Last auf Schultergürtel; Hüfte bleibt gestreckt."
+          ],
+          "prerequisites": [
+            "dragon-flag/candlestick"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 3,
+            "minimumValue": 3,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "dragon-flag/tuck-dragon-flag",
+          "name": "Tuck Dragon Flag",
+          "type": "reps",
+          "metric": "reps",
+          "sets": 3,
+          "reps": 5,
+          "restSeconds": 120,
+          "equipment": [
+            "bench"
+          ],
+          "sidePolicy": "bilateral",
+          "technique": [
+            "Last auf Schultergürtel; Hüfte bleibt gestreckt."
+          ],
+          "prerequisites": [
+            "dragon-flag/dragon-flag-negatives"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 3,
+            "minimumValue": 5,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "dragon-flag/full-dragon-flag",
+          "name": "Full Dragon Flag",
+          "type": "reps",
+          "metric": "reps",
+          "sets": 3,
+          "reps": 3,
+          "restSeconds": 180,
+          "equipment": [
+            "bench"
+          ],
+          "sidePolicy": "bilateral",
+          "technique": [
+            "Last auf Schultergürtel; Hüfte bleibt gestreckt."
+          ],
+          "prerequisites": [
+            "dragon-flag/tuck-dragon-flag"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 3,
+            "minimumValue": 3,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        }
+      ]
+    },
+    {
+      "id": "hefesto",
+      "name": "Hefesto",
+      "category": "pull",
+      "goal": "Fortgeschrittene Zugkraft in Schulterextension.",
+      "equipment": [
+        "bar"
+      ],
+      "progressions": [
+        {
+          "id": "hefesto/korean-dips",
+          "name": "Korean Dips",
+          "type": "reps",
+          "metric": "reps",
+          "sets": 3,
+          "reps": 5,
+          "restSeconds": 120,
+          "equipment": [
+            "bar"
+          ],
+          "sidePolicy": "bilateral",
+          "technique": [
+            "Kontrollierter Bewegungsumfang; keine erzwungene Tiefe."
+          ],
+          "prerequisites": [],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 3,
+            "minimumValue": 5,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "hefesto/back-lever-pull-ups",
+          "name": "Back Lever Pull-Ups",
+          "type": "reps",
+          "metric": "reps",
+          "sets": 3,
+          "reps": 3,
+          "restSeconds": 120,
+          "equipment": [
+            "bar"
+          ],
+          "sidePolicy": "bilateral",
+          "technique": [
+            "Kontrollierter Bewegungsumfang; keine erzwungene Tiefe."
+          ],
+          "prerequisites": [
+            "hefesto/korean-dips"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 3,
+            "minimumValue": 3,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "hefesto/hefesto-negatives",
+          "name": "Hefesto Negatives",
+          "type": "reps",
+          "metric": "reps",
+          "sets": 3,
+          "reps": 2,
+          "restSeconds": 120,
+          "equipment": [
+            "bar"
+          ],
+          "sidePolicy": "bilateral",
+          "technique": [
+            "Kontrollierter Bewegungsumfang; keine erzwungene Tiefe."
+          ],
+          "prerequisites": [
+            "hefesto/back-lever-pull-ups"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 3,
+            "minimumValue": 2,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "hefesto/full-hefesto",
+          "name": "Full Hefesto",
+          "type": "reps",
+          "metric": "reps",
+          "sets": 3,
+          "reps": 2,
+          "restSeconds": 180,
+          "equipment": [
+            "bar"
+          ],
+          "sidePolicy": "bilateral",
+          "technique": [
+            "Kontrollierter Bewegungsumfang; keine erzwungene Tiefe."
+          ],
+          "prerequisites": [
+            "hefesto/hefesto-negatives"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 3,
+            "minimumValue": 2,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        }
+      ]
+    },
+    {
+      "id": "one-arm-handstand",
+      "name": "One Arm Handstand",
+      "category": "balance",
+      "goal": "Einarmiges Gleichgewicht über dem Stützarm.",
+      "equipment": [
+        "floor",
+        "wall"
+      ],
+      "progressions": [
+        {
+          "id": "one-arm-handstand/handstand-balance",
+          "name": "Handstand Balance",
+          "type": "hold",
+          "metric": "seconds",
+          "sets": 4,
+          "seconds": 30,
+          "restSeconds": 120,
+          "equipment": [
+            "floor",
+            "wall"
+          ],
+          "sidePolicy": "both",
+          "technique": [
+            "Beide Seiten; Schulter aktiv nach oben."
+          ],
+          "prerequisites": [],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 4,
+            "minimumValue": 30,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "one-arm-handstand/handstand-shifting",
+          "name": "Handstand Shifting",
+          "type": "hold",
+          "metric": "seconds",
+          "sets": 4,
+          "seconds": 15,
+          "restSeconds": 120,
+          "equipment": [
+            "floor",
+            "wall"
+          ],
+          "sidePolicy": "both",
+          "technique": [
+            "Beide Seiten; Schulter aktiv nach oben."
+          ],
+          "prerequisites": [
+            "one-arm-handstand/handstand-balance"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 4,
+            "minimumValue": 15,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "one-arm-handstand/finger-support-handstand",
+          "name": "Finger Support Handstand",
+          "type": "hold",
+          "metric": "seconds",
+          "sets": 4,
+          "seconds": 10,
+          "restSeconds": 120,
+          "equipment": [
+            "floor",
+            "wall"
+          ],
+          "sidePolicy": "both",
+          "technique": [
+            "Beide Seiten; Schulter aktiv nach oben."
+          ],
+          "prerequisites": [
+            "one-arm-handstand/handstand-shifting"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 4,
+            "minimumValue": 10,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "record-band-or-support",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "one-arm-handstand/one-arm-handstand",
+          "name": "One Arm Handstand",
+          "type": "hold",
+          "metric": "seconds",
+          "sets": 4,
+          "seconds": 5,
+          "restSeconds": 180,
+          "equipment": [
+            "floor",
+            "wall"
+          ],
+          "sidePolicy": "both",
+          "technique": [
+            "Beide Seiten; Schulter aktiv nach oben."
+          ],
+          "prerequisites": [
+            "one-arm-handstand/finger-support-handstand"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 4,
+            "minimumValue": 5,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        }
+      ]
+    },
+    {
+      "id": "one-arm-pushup",
+      "name": "One Arm Push-Up",
+      "category": "push",
+      "goal": "Einarmiges horizontales Drücken.",
+      "equipment": [
+        "floor",
+        "box"
+      ],
+      "progressions": [
+        {
+          "id": "one-arm-pushup/incline-one-arm-push-up",
+          "name": "Incline One Arm Push-Up",
+          "type": "reps",
+          "metric": "reps",
+          "sets": 3,
+          "reps": 8,
+          "restSeconds": 120,
+          "equipment": [
+            "floor",
+            "box"
+          ],
+          "sidePolicy": "both",
+          "technique": [
+            "Beide Seiten; stabile Hüfte und kontrollierte Tiefe."
+          ],
+          "prerequisites": [],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 3,
+            "minimumValue": 8,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "one-arm-pushup/archer-push-ups",
+          "name": "Archer Push-Ups",
+          "type": "reps",
+          "metric": "reps",
+          "sets": 3,
+          "reps": 6,
+          "restSeconds": 120,
+          "equipment": [
+            "floor",
+            "box"
+          ],
+          "sidePolicy": "both",
+          "technique": [
+            "Beide Seiten; stabile Hüfte und kontrollierte Tiefe."
+          ],
+          "prerequisites": [
+            "one-arm-pushup/incline-one-arm-push-up"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 3,
+            "minimumValue": 6,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "one-arm-pushup/one-arm-push-up",
+          "name": "One Arm Push-Up",
+          "type": "reps",
+          "metric": "reps",
+          "sets": 3,
+          "reps": 3,
+          "restSeconds": 120,
+          "equipment": [
+            "floor",
+            "box"
+          ],
+          "sidePolicy": "both",
+          "technique": [
+            "Beide Seiten; stabile Hüfte und kontrollierte Tiefe."
+          ],
+          "prerequisites": [
+            "one-arm-pushup/archer-push-ups"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 3,
+            "minimumValue": 3,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        }
+      ]
+    },
+    {
+      "id": "shrimp-squat",
+      "name": "Shrimp Squat",
+      "category": "legs",
+      "goal": "Einbeinige Kniebeuge mit Rückbeinbindung.",
+      "equipment": [
+        "floor"
+      ],
+      "progressions": [
+        {
+          "id": "shrimp-squat/airborne-squat",
+          "name": "Airborne Squat",
+          "type": "reps",
+          "metric": "reps",
+          "sets": 3,
+          "reps": 8,
+          "restSeconds": 120,
+          "equipment": [
+            "floor"
+          ],
+          "sidePolicy": "both",
+          "technique": [
+            "Beide Seiten; kontrollierter Bodenkontakt."
+          ],
+          "prerequisites": [],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 3,
+            "minimumValue": 8,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "shrimp-squat/shrimp-squat-einarmig-halten",
+          "name": "Shrimp Squat (einarmig halten)",
+          "type": "hold",
+          "metric": "seconds",
+          "sets": 4,
+          "seconds": 15,
+          "restSeconds": 120,
+          "equipment": [
+            "floor"
+          ],
+          "sidePolicy": "both",
+          "technique": [
+            "Beide Seiten; kontrollierter Bodenkontakt."
+          ],
+          "prerequisites": [
+            "shrimp-squat/airborne-squat"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 4,
+            "minimumValue": 15,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        },
+        {
+          "id": "shrimp-squat/full-shrimp-squat",
+          "name": "Full Shrimp Squat",
+          "type": "reps",
+          "metric": "reps",
+          "sets": 3,
+          "reps": 5,
+          "restSeconds": 120,
+          "equipment": [
+            "floor"
+          ],
+          "sidePolicy": "both",
+          "technique": [
+            "Beide Seiten; kontrollierter Bodenkontakt."
+          ],
+          "prerequisites": [
+            "shrimp-squat/shrimp-squat-einarmig-halten"
+          ],
+          "advancement": {
+            "qualifyingSessions": 2,
+            "distinctDays": 2,
+            "minimumCleanSets": 3,
+            "minimumValue": 5,
+            "requiresTechniqueConfirmation": true
+          },
+          "assistancePolicy": "none",
+          "loadPolicy": "bodyweight"
+        }
+      ]
+    }
+  ]
+}

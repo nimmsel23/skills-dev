@@ -22,3 +22,6 @@ firestore-debug.log
 .vscode/
 .DS_Store
 Thumbs.db
+
+# Isolated development checkouts
+.worktrees/

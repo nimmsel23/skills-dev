@@ -141,3 +141,15 @@ h3.sub { font: 800 28px/1 var(--disp); letter-spacing: -.03em; text-transform: l
 .rpe button.on { background: var(--ink); color: var(--lime); }
 .skipb { font: 400 11px var(--mono); text-decoration: underline; margin-top: 8px; }
 .r-bot { grid-auto-flow: column; }
+
+/* Shared persistence confirmations in completed workouts. */
+.run.done { grid-template-rows: auto minmax(0, 1fr) auto auto; }
+.run.done .r-mid { min-height: 0; overflow-y: auto; align-content: start; }
+.run.done fieldset { min-width: 0; max-height: 28dvh; overflow-y: auto; }
+.run.done fieldset input { max-width: 100%; }
+
+.tabs { flex-wrap: wrap; }
+.card[data-cat="legs"], .step[data-cat="legs"] { --c: var(--sun); }
+.card[data-cat="balance"], .step[data-cat="balance"] { --c: var(--blue); }
+.tab[data-c="legs"].on { background: var(--sun); }
+.tab[data-c="balance"].on { background: var(--blue); color: var(--paper); }

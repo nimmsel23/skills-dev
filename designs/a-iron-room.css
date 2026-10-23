@@ -143,3 +143,9 @@
 .r-bot.three { grid-template-columns: repeat(3, 1fr); }
 .r-bot .r-btn { font-size: 20px; padding: 18px 8px; }
 .verdict { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; margin-top: 10px; }
+
+/* Shared persistence confirmations in completed workouts. */
+.run.done { grid-template-rows: auto minmax(0, 1fr) auto auto; }
+.run.done .r-mid { min-height: 0; overflow-y: auto; align-content: start; }
+.run.done fieldset { min-width: 0; max-height: 28dvh; overflow-y: auto; }
+.run.done fieldset input { max-width: 100%; }

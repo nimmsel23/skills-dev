@@ -129,3 +129,9 @@ h3.sub { font: italic 400 30px/1 var(--serif); margin: 42px 0 8px; }
 .rpe button.on { background: var(--c); color: #05060c; border-color: var(--c); }
 .skipb { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--dim); margin-top: 8px; } .skipb:hover { color: var(--ink); }
 .r-bot { flex-wrap: wrap; }
+
+/* Shared persistence confirmations in completed workouts. */
+.run.done { grid-template-rows: auto minmax(0, 1fr) auto auto; }
+.run.done .r-mid { min-height: 0; overflow-y: auto; align-content: start; }
+.run.done fieldset { min-width: 0; max-height: 28dvh; overflow-y: auto; }
+.run.done fieldset input { max-width: 100%; }

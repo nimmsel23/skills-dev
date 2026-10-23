@@ -23,8 +23,9 @@ Dialog geöffnet; dort zeigt die Shell alle App-Änderungen einmal gebündelt.
 - `SkillsCard.jsx` enthält den gemeinsamen Skills-Bildschirm und Runner.
 - `ExerciseVideo.jsx` und `exerciseVideos.json` ordnen die Demos und Tutorials zu.
 - `main.jsx` setzt das Skills-Theme und ergänzt den Update-Dialog.
-- Fortschritt und aktive Workouts verwenden weiter `fitness-skills-progress-v1`
-  und `fitness-skills-active-runner-v1`.
+- `data/` speichert Fortschritt und Runner in IndexedDB/localStorage und
+  synchronisiert Fortschrittsereignisse über Firestore. Alte Fitness-Keys
+  bleiben als Migrationsquelle erhalten.
 - Die Skill-URL bleibt `?skill=<id>` im Hash.
 
 ## Build und Release
@@ -55,6 +56,26 @@ Neue Produkt- und Release-Änderungen werden ab jetzt hier ergänzt.
 
 Gemeinsamen VitalOS-Changelog statt eigenem UpdateNotes-Dialog eingebunden; kein separater Fetch neuerer Metadaten neben einem gecachten Bundle.
 
+
+## 2026-10-23 — Eigenständige Skills-Progression (Worktree)
+
+- Versionierter Katalog mit 14 Skills, 65 festen Stufen-IDs, Technik, Equipment,
+  Messgrößen und eigenen Aufstiegskriterien; Beine und Balance als Kategorien.
+- IndexedDB als lokaler Datenbestand, localStorage als Wiederherstellung und
+  Service Worker mit vollständigem App-/Katalog-Precache.
+- Nutzergetrennte Firestore-Ereignisse mit automatischem Sync, Google-Anmeldung,
+  Offline-Queue und ausdrücklich wählbarer Übernahme lokaler Daten.
+- Keine automatische Meisterschaft durch Erreichen der letzten Stufe;
+  zwei saubere Trainings an verschiedenen Tagen als Aufstiegsempfehlung.
+- Alte Daten bleiben erhalten. Workout-Abschluss erst nach erfolgreichem Speichern.
+- Bereitstellungsgrenze: Rules-Integration, Katalog-Seed und Live-Release stehen
+  separat aus. Datenvertrag und Abnahme: `docs/SKILLS-DATA.md`.
+
+### Präzisierung: Speicherung ohne Login
+
+Ohne Login ausschließlich localStorage und IndexedDB; kein anonymer Zugang und
+kein Firestore-Sync. Erst ein angemeldetes Konto aktiviert den automatischen Sync.
+
 ## 2026-10-23
 
 Design-Phase: neben der bestehenden Karte („Original“) gibt es drei Varianten
@@ -62,15 +83,18 @@ in `designs/` — A „Iron Room“ (brutalistisch), B „Gravity Map“ (Sternk
 C „Riso Climb“ (hell, Risodruck). Ein schwebender Button unten rechts schaltet
 um; die Wahl liegt in `skills:design` (URL-Override `?design=classic|a|b|c`).
 
-- Alle Varianten lesen und schreiben `fitness-skills-progress-v1` in derselben
-  Struktur wie `SkillsCard.jsx` (Stufe, Verlauf, Sessions inkl. Auto-Aufstieg
-  bei erreichtem Ziel); Wechsel zwischen den Designs verliert nichts.
+- Alle Varianten verwenden über `data/designProgress.js` denselben
+  IndexedDB-/localStorage-Datenbestand wie `SkillsCard.jsx`. Firestore-Sync
+  läuft ausschließlich nach Login. Stufenwechsel werden ausdrücklich bestätigt.
 - Skills und Workout-Blöcke kommen aus `SkillsCard.jsx` (neue Named Exports
   `SKILLS`, `buildWorkoutBlocks`) — keine zweite Datenquelle.
 - Jede Variante läuft als Vanilla-Modul in einem Shadow-DOM (kein CSS-Leck in
   Original oder Fitness); Schriften kommen von Google Fonts (offline Fallback).
 - Enthalten: Liste, Detail mit Kette/Verlauf/Videos, geführter Runner (Primär,
-  Sekundär, Conditioning, Reps-Korrektur, +30s, RPE, Speichern). Nur im
-  Original: Charts, Hold-Timer, Satz-Archiv, Fortsetzen eines unterbrochenen
-  Workouts.
+  Sekundär, Conditioning, Reps-Korrektur, +30s, RPE, Speichern). Unterbrochene Workouts bleiben auch in den Varianten gespeichert.
+  Nur im Original: Charts, Hold-Timer und Satz-Archiv.
 - Der Switcher blendet sich während eines laufenden Workouts in einer Variante aus.
+
+
+Integration beider Arbeitsstände: alle Designs nutzen den neuen versionierten
+Katalog, ausdrückliche Meisterschaft und erfolgreiche Speicherung vor Runner-Löschung.
