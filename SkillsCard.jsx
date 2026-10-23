@@ -26,7 +26,7 @@ const ACTIVE_RUNNER_STORAGE_KEY = 'fitness-skills-active-runner-v1';
 function reps(name, sets = 3, count = 8) { return { name, type: 'reps', sets, reps: count }; }
 function hold(name, sets = 3, seconds = 15) { return { name, type: 'hold', sets, seconds }; }
 
-const SKILLS = [
+export const SKILLS = [
   { id: 'muscle-up', name: 'Muscle-Up', tier: 'free', category: 'pull', progressions: [reps('Klimmzüge', 4, 8), reps('Explosive Klimmzüge'), reps('Chest-to-Bar Pull-Ups'), reps('Bar Dips'), reps('Muscle-Up Negative', 3, 5), reps('Muscle-Up', 3, 3)] },
   { id: 'planche', name: 'Planche', tier: 'free', category: 'push', progressions: [hold('Plank'), hold('Planche Lean'), hold('Frog Stand'), hold('Tuck Planche'), hold('Advanced Tuck Planche'), hold('Straddle Planche'), hold('Full Planche')] },
   { id: 'front-lever', name: 'Front Lever', tier: 'free', category: 'pull', progressions: [reps('Scapula Pulls', 3, 10), hold('Tuck Front Lever', 4, 15), hold('Advanced Tuck Front Lever', 5, 10), hold('One Leg Front Lever'), hold('Straddle Front Lever', 4, 8), hold('Full Front Lever')] },
@@ -278,7 +278,7 @@ const CONDITIONING_BY_CATEGORY = {
   core: { name: 'Plank', type: 'hold', sets: 3, seconds: 30 },
 };
 
-function buildWorkoutBlocks(skill, stage) {
+export function buildWorkoutBlocks(skill, stage) {
   const blocks = [{ ...skill.progressions[stage], role: 'Primär', restSeconds: 150 }];
   if (stage > 0) {
     blocks.push({ ...skill.progressions[stage - 1], role: 'Sekundär', restSeconds: 75 });

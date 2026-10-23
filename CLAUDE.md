@@ -13,6 +13,7 @@ haben, sind die Historie dieses Repos (Basis `c514177`).
 - `main.jsx` — Standalone-Hülle: setzt `data-theme="skills"`, rendert die Karte
   und zeigt Release-Notizen für noch nicht bestätigte Updates.
 - `scripts/vos-changelog/` — gemeinsamer Vite-Plugin mit eingebetteten Release-Metadaten; in VitalOS zeigt nur die Shell den gebündelten Dialog.
+- `designs/` — Design-Phase (2026-10-23): drei Varianten A/B/C als Vanilla-Module im Shadow-DOM + `DesignSwitcher.jsx`/`DesignHost.jsx`; `core.js` teilt Fortschritt/Runner mit dem Original (gleiche localStorage-Struktur). Nach der Entscheidung unterlegene Varianten löschen.
 - `APP.md` — Produktverhalten, Release-Notizen und laufender Änderungsverlauf.
   Neue App- und Release-Änderungen dort ergänzen.
 - `mini-app.json` + `scripts/mini-app-shell/` (vendored aus
@@ -40,6 +41,7 @@ Progressionsliste steht noch in `SkillsCard.jsx`; die Calisthenics-YAMLs in
 - Fitness: direktes Git-Submodule `Skills/`, Branch `fitness`; Importpfade bleiben unverändert. Keine Dateien manuell nach Fitness kopieren.
 - Release-Vessel: `~/vitalos/fitness-app/Skills`, gepinnt durch den Fitness-Gitlink.
 - Erst Skills `dev` und `fitness` pushen, dann Fitness-Gitlink committen/pushen und im VitalOS-Fitness-Release übernehmen.
+- Release-Kommando: `vos-release skills` (Dry-Run: `vos-release --dry-run skills`). Voraussetzung: alles auf `dev` committet (Skript committet keinen Arbeitsstand). Ablauf: `dev` pushen → `origin/fitness` per Fast-Forward → Skills-Gitlink in fitness-dev bumpen → automatisch der volle `fitness`-Flow (Merge nach `~/vitalos/fitness-app`, Parent-Bump). `skills` impliziert `fitness`.
 - Production nur über VitalOS-CI: `deploy-skills.yml` für `vos-skills`, `deploy-fitness.yml` für Fitness.
 - Vor Änderungen Gitstatus/Branch/Pointer prüfen, fremde Daten und Änderungen erhalten.
 

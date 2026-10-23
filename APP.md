@@ -54,3 +54,23 @@ Neue Produkt- und Release-Änderungen werden ab jetzt hier ergänzt.
 ## 2026-10-21
 
 Gemeinsamen VitalOS-Changelog statt eigenem UpdateNotes-Dialog eingebunden; kein separater Fetch neuerer Metadaten neben einem gecachten Bundle.
+
+## 2026-10-23
+
+Design-Phase: neben der bestehenden Karte („Original“) gibt es drei Varianten
+in `designs/` — A „Iron Room“ (brutalistisch), B „Gravity Map“ (Sternkarte),
+C „Riso Climb“ (hell, Risodruck). Ein schwebender Button unten rechts schaltet
+um; die Wahl liegt in `skills:design` (URL-Override `?design=classic|a|b|c`).
+
+- Alle Varianten lesen und schreiben `fitness-skills-progress-v1` in derselben
+  Struktur wie `SkillsCard.jsx` (Stufe, Verlauf, Sessions inkl. Auto-Aufstieg
+  bei erreichtem Ziel); Wechsel zwischen den Designs verliert nichts.
+- Skills und Workout-Blöcke kommen aus `SkillsCard.jsx` (neue Named Exports
+  `SKILLS`, `buildWorkoutBlocks`) — keine zweite Datenquelle.
+- Jede Variante läuft als Vanilla-Modul in einem Shadow-DOM (kein CSS-Leck in
+  Original oder Fitness); Schriften kommen von Google Fonts (offline Fallback).
+- Enthalten: Liste, Detail mit Kette/Verlauf/Videos, geführter Runner (Primär,
+  Sekundär, Conditioning, Reps-Korrektur, +30s, RPE, Speichern). Nur im
+  Original: Charts, Hold-Timer, Satz-Archiv, Fortsetzen eines unterbrochenen
+  Workouts.
+- Der Switcher blendet sich während eines laufenden Workouts in einer Variante aus.
