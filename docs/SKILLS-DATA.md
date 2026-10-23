@@ -135,8 +135,10 @@ werden nicht importiert und bleiben dort zur manuellen Prüfung erhalten.
 eigene Konfiguration; ein Hosting-Deploy veröffentlicht keine Firestore-Regeln.
 
 1. Die zwei `match`-Blöcke aus `firestore/skills.rules` in den tatsächlichen
-   gemeinsamen Rules-Owner des Projekts integrieren. Aktuell liegt der lokale
-   Rules-Owner unter `~/fitness-dev/firestore.rules`. Die ganze Datei dort durch
+   gemeinsamen Rules-Owner des Projekts integrieren. Der produktive
+   Rules-Owner ist `~/vitalos/firestore.rules` (`fitness-dev/firebase.json`
+   verbietet ausdrücklich einen eigenen Rules-Deploy). Das Fragment
+   `firestore/skills.rules.part` wird dort über den Modul-Marker eingebettet. Die ganze Datei dort durch
    die Skills-Datei zu ersetzen würde andere Domains sperren. Vor Release die
    vereinigten Regeln im Emulator prüfen und über den zuständigen Releaseweg
    veröffentlichen.

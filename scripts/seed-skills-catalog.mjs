@@ -1,5 +1,5 @@
 import { readFile } from 'node:fs/promises';
-const catalog = JSON.parse(await readFile(new URL('../public/skills-catalog.v1.json',import.meta.url),'utf8'));
+const catalog = JSON.parse(await readFile(process.env.SKILLS_CATALOG_FILE || new URL('../public/skills-catalog.v1.json',import.meta.url),'utf8'));
 const project = process.env.GCLOUD_PROJECT;
 if (!process.argv.includes('--apply')) {
   console.log(JSON.stringify({mode:'dry-run',path:`skillsCatalogs/${catalog.id}`,skills:catalog.skills.length,stages:catalog.skills.reduce((n,s) => n+s.progressions.length,0),version:catalog.version},null,2));

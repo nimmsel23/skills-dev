@@ -4,7 +4,7 @@ import { initializeTestEnvironment, assertSucceeds, assertFails } from '@firebas
 import { doc, setDoc, getDoc, deleteDoc, collection, getDocs } from 'firebase/firestore';
 const enabled = !!process.env.FIRESTORE_EMULATOR_HOST;
 test('Firestore: owner only, immutable events, idempotent retries, no catalog client writes', {skip:!enabled},async () => {
-  const env = await initializeTestEnvironment({projectId:'demo-skills',firestore:{rules:await readFile(new URL('../firestore/skills.rules',import.meta.url),'utf8')}});
+  const env = await initializeTestEnvironment({projectId:'demo-skills',firestore:{rules:await readFile(process.env.SKILLS_RULES_FILE || new URL('../firestore/skills.rules',import.meta.url),'utf8')}});
   try {
     const alice = env.authenticatedContext('alice').firestore();
     const bob = env.authenticatedContext('bob').firestore();
@@ -21,6 +21,10 @@ test('Firestore: owner only, immutable events, idempotent retries, no catalog cl
     await assertFails(deleteDoc(doc(alice,path)));
     await assertFails(setDoc(doc(alice,'skillsUsers/alice/events/hold-2'),{...event,id:'hold-2',payload:{duration:-1}}));
     await assertFails(setDoc(doc(alice,'skillsCatalogs/calisthenics-v1'),{skills:[]}));
-    await assertFails(setDoc(doc(alice,'fitness/alice/sessions/skills-write'),event));
+    if (!process.env.SKILLS_RULES_FILE) await assertFails(setDoc(doc(alice,'fitness/alice/sessions/skills-write'),event));
+    else {
+      await assertSucceeds(setDoc(doc(alice,'fitness/alice/sessions/skills-write'),{userId:'alice'}));
+      await assertFails(setDoc(doc(bob,'fitness/alice/sessions/foreign'),{userId:'alice'}));
+    }
   } finally { await env.cleanup(); }
 });
