@@ -37,3 +37,6 @@ Prüfung: Modell/Katalog, lokale Persistenz/Migration, Sync-Controller,
 Firestore-Emulator-Zugriffsregeln, Medienchecks und gebauter Worker.
 Produktions-Rules/Seed/Release und echte Geräteabnahme bleiben getrennte Schritte;
 siehe `docs/SKILLS-DATA.md`.
+
+2026-10-23: Bezeichnungen präzisiert: Ohne Login ausschließlich lokal in
+localStorage/IndexedDB. Kein anonymes Firebase-Konto; Sync nur nach Anmeldung.

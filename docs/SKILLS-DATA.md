@@ -94,12 +94,15 @@ Rules prüfen Besitzer, Grundschema, Typ und Unveränderlichkeit.
 
 ## Automatischer Sync
 
-Ohne Anmeldung wird ausschließlich unter `guest` auf diesem Gerät gespeichert.
+Ohne Login werden Daten ausschließlich in localStorage und IndexedDB auf diesem
+Gerät gespeichert. Es gibt keinen anonymen Firebase-Login und keinen Cloud-Sync.
+`guest` ist lediglich der interne Schlüssel des lokalen Speicherbereichs, kein
+Gastkonto oder eigener Zugang.
 Ein vorhandener Firebase-Login bestimmt die UID, niemals eine eingegebene UID.
-Nach Anmeldung erscheint der Datenbestand dieses Kontos. Gastdaten können mit
+Nach Anmeldung erscheint der Datenbestand dieses Kontos. Lokale Daten können mit
 einem ausdrücklich beschrifteten Button übernommen werden; erneute Übernahme
-ist idempotent. Automatisches Zuordnen privater Gastdaten zum nächsten Login
-findet nicht statt. Abmelden wechselt zum separaten Gastbestand.
+ist idempotent. Automatisches Zuordnen privater lokaler Daten zum nächsten Login
+findet nicht statt. Abmelden wechselt zum separaten lokalen Datenbestand.
 
 Lokale Ereignisse werden bei Anmeldung, neuem Eintrag, erneuter Verbindung und
 App-Start automatisch übertragen. Firestore hat zusätzlich seine persistente

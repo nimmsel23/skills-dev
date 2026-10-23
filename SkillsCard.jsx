@@ -1047,7 +1047,7 @@ export default function SkillsCard({ onWorkoutComplete } = {}) {
           {user ? <>
             <span>{user.displayName || user.email}</span>
             <button type="button" onClick={() => action(() => progressStore.logout())}>Abmelden</button>
-            <button type="button" onClick={() => action(() => progressStore.importGuest())}>Lokale Gastdaten in dieses Konto übernehmen</button>
+            <button type="button" onClick={() => action(() => progressStore.importGuest())}>Lokale Daten in dieses Konto übernehmen</button>
           </> : <button type="button" onClick={() => action(() => progressStore.login())}>Mit Google anmelden · Auto-Sync</button>}
           <button type="button" onClick={() => action(() => progressStore.retry())}>Speicher / Sync erneut versuchen</button>
         </div>

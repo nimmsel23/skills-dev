@@ -64,9 +64,14 @@ Gemeinsamen VitalOS-Changelog statt eigenem UpdateNotes-Dialog eingebunden; kein
 - IndexedDB als lokaler Datenbestand, localStorage als Wiederherstellung und
   Service Worker mit vollständigem App-/Katalog-Precache.
 - Nutzergetrennte Firestore-Ereignisse mit automatischem Sync, Google-Anmeldung,
-  Offline-Queue und ausdrücklich wählbarer Gastdaten-Übernahme.
+  Offline-Queue und ausdrücklich wählbarer Übernahme lokaler Daten.
 - Keine automatische Meisterschaft durch Erreichen der letzten Stufe;
   zwei saubere Trainings an verschiedenen Tagen als Aufstiegsempfehlung.
 - Alte Daten bleiben erhalten. Workout-Abschluss erst nach erfolgreichem Speichern.
 - Bereitstellungsgrenze: Rules-Integration, Katalog-Seed und Live-Release stehen
   separat aus. Datenvertrag und Abnahme: `docs/SKILLS-DATA.md`.
+
+### Präzisierung: Speicherung ohne Login
+
+Ohne Login ausschließlich localStorage und IndexedDB; kein anonymer Zugang und
+kein Firestore-Sync. Erst ein angemeldetes Konto aktiviert den automatischen Sync.
