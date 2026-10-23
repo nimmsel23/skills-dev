@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import ExerciseVideo from './ExerciseVideo.jsx';
+import PersistenceStatus from './PersistenceStatus.jsx';
 import { ChevronLeft, ChevronRight, Lock, Check, Circle, Play, Pause, Flag, Trophy, ArrowUp, ArrowDown, Activity } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
@@ -216,7 +217,7 @@ const CONDITIONING_BY_CATEGORY = {
   balance: { name: 'Hollow Body Hold', type: 'hold', sets: 2, seconds: 20 },
 };
 
-function buildWorkoutBlocks(skill, stage) {
+export function buildWorkoutBlocks(skill, stage) {
   const blocks = [{ ...skill.progressions[stage], role: 'Primär' }];
   if (stage > 0) {
     blocks.push({ ...skill.progressions[stage - 1], role: 'Sekundär', restSeconds: 75 });
@@ -960,7 +961,7 @@ function SkillDetailScreen({ skill, stage, mastered, history, holds, sessions, o
 }
 
 export default function SkillsCard({ onWorkoutComplete } = {}) {
-  const { progress, owner, user, ready, pending, status, error, storageWarning } = useProgress();
+  const { progress, owner, ready } = useProgress();
   const [openSkillId, setOpenSkillIdState] = useState(() => getSkillIdFromHash());
   const [actionError, setActionError] = useState('');
   const [busy, setBusy] = useState(false);
@@ -1041,19 +1042,8 @@ export default function SkillsCard({ onWorkoutComplete } = {}) {
         <h3 className="text-xl sm:text-2xl font-black text-fit-ink mt-1">Skills</h3>
       </div>
 
-      <div className="text-xs mb-4" role="status" aria-live="polite">
-        {status}{pending > 0 && user ? ` · ${pending} ausstehend` : ''}
-        <div className="flex flex-wrap gap-3 mt-2">
-          {user ? <>
-            <span>{user.displayName || user.email}</span>
-            <button type="button" onClick={() => action(() => progressStore.logout())}>Abmelden</button>
-            <button type="button" onClick={() => action(() => progressStore.importGuest())}>Lokale Daten in dieses Konto übernehmen</button>
-          </> : <button type="button" onClick={() => action(() => progressStore.login())}>Mit Google anmelden · Auto-Sync</button>}
-          <button type="button" onClick={() => action(() => progressStore.retry())}>Speicher / Sync erneut versuchen</button>
-        </div>
-      </div>
-      {storageWarning && <p role="alert" className="text-xs mb-3">{storageWarning}</p>}
-      {(error || actionError) && <p role="alert" className="text-sm mb-3">{actionError || error}</p>}
+      <PersistenceStatus />
+      {actionError && <p role="alert" className="text-sm mb-3">{actionError}</p>}
       <fieldset disabled={!ready || busy} style={{minWidth:0}}>
       {openSkill && <div className="text-xs flex flex-col gap-2 mb-4">
         <label><input type="checkbox" checked={techniqueConfirmed} onChange={e => setTechniqueConfirmed(e.target.checked)} /> Technik heute sauber eingehalten</label>

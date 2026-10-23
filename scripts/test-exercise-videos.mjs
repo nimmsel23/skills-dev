@@ -22,7 +22,7 @@ function nodes(tree, match) {
   return [...(match(tree) ? [tree] : []), ...(tree.children || []).flat(Infinity).flatMap(child => nodes(child, match))];
 }
 const player = await compile('../ExerciseVideo.jsx', '', { './exerciseVideos.json': { __esModule: true, default: catalog } });
-const app = await compile('../SkillsCard.jsx', '\nexport { CONDITIONING_BY_CATEGORY, WorkoutRunner, SkillDetailScreen, buildWorkoutBlocks };', { './ExerciseVideo.jsx': { __esModule: true, default: player.default }, './data/catalog.js': { SKILLS, assessStage: () => ({qualified:0,days:0,ready:false}) }, './data/store.js': { progressStore: {runner: () => null} } });
+const app = await compile('../SkillsCard.jsx', '\nexport { CONDITIONING_BY_CATEGORY, WorkoutRunner, SkillDetailScreen };', { './ExerciseVideo.jsx': { __esModule: true, default: player.default }, './data/catalog.js': { SKILLS, assessStage: () => ({qualified:0,days:0,ready:false}) }, './data/store.js': { progressStore: {runner: () => null} } });
 const names = new Set([...app.SKILLS.flatMap(skill => skill.progressions.map(p => p.name)), ...Object.values(app.CONDITIONING_BY_CATEGORY).map(p => p.name)]);
 assert.equal(names.size, Object.keys(catalog).length, 'catalog must cover every progression and conditioning exercise');
 for (const name of names) assert(player.videoForExercise(name), name);

@@ -95,8 +95,8 @@ export const progressStore = {
     });
   },
   runner() { return runner; },
-  saveRunner(value) {
-    const owner = state.owner;
+  saveRunner(value, owner = state.owner) {
+    if (owner !== state.owner) return Promise.resolve();
     runner = value;
     return serial(() => local.saveRunner(owner,value));
   },

@@ -40,3 +40,14 @@ siehe `docs/SKILLS-DATA.md`.
 
 2026-10-23: Bezeichnungen präzisiert: Ohne Login ausschließlich lokal in
 localStorage/IndexedDB. Kein anonymes Firebase-Konto; Sync nur nach Anmeldung.
+
+
+### Vorbereitung der Design-Integration
+
+Gemeinsamer `designProgress`-Adapter und wiederverwendbare Speicher-/Login-Anzeige.
+Adapter-Tests prüfen dauerhafte Speicherung vor Runner-Löschung, stabile IDs,
+explizite Meisterschaft und Fehlererhalt. `scripts/test-design-integration.mjs`
+kann einen separaten Vorschaupfad prüfen. Vorabprüfung der uncommitteten
+Designvarianten A/B/C in `/tmp/skills-merge-prep/preview`: Build und DOM-Tests für
+alle Kategorien, Stufenwechsel, Meisterschaft, Rückstufung, Speicherfehler und
+Trainingsnachweise bestanden. Hauptarbeitsverzeichnis dabei unverändert.
