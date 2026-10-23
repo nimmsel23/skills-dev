@@ -3,11 +3,7 @@ import { createRoot } from 'react-dom/client';
 import SkillsCard from './SkillsCard.jsx';
 import './styles.css';
 
-// Standalone-Hülle um die Calisthenics-Skills. Fortschritt und laufender Runner
-// liegen in denselben localStorage-Keys wie in der Fitness-App
-// (fitness-skills-progress-v1, fitness-skills-active-runner-v1).
-// Ohne onWorkoutComplete bleibt der Abschluss lokal; ein Sync ins Session-Log
-// (wie bei 6pack-dev/standaloneSync.js) ist bewusst noch nicht gebaut.
+// Skills owns its catalogue, local event journal and Firebase sync.
 document.documentElement.setAttribute('data-theme', 'skills');
 
 createRoot(document.getElementById('root')).render(

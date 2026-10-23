@@ -1,0 +1,28 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import 'fake-indexeddb/auto';
+import { SKILLS } from '../data/catalog.js';
+import * as local from '../data/local.js';
+const storage = new Map();
+globalThis.localStorage = {getItem:k => storage.get(k) ?? null,setItem:(k,v) => storage.set(k,v),removeItem:k => storage.delete(k)};
+test('catalogue + events survive reload, account separation, mirror recovery, runner clearing and idempotent migration',async () => {
+  await local.seedCatalog();
+  assert.equal((await local.transaction('catalog','readonly',s => s.get('calisthenics-v1'))).skills.length,14);
+  localStorage.setItem('fitness-skills-progress-v1',JSON.stringify({'front-lever':{stage:2,history:[],holds:[{duration:1000}],sessions:[]}}));
+  localStorage.setItem('fitness-skills-active-runner-v1',JSON.stringify({skillId:'front-lever',stage:2,log:[[10]]}));
+  await local.migrateLegacy(); await local.migrateLegacy();
+  assert.equal((await local.loadRows('guest')).length,1);
+  assert.deepEqual((await local.loadRunner('guest')).log,[[10]]);
+  assert.equal((await local.loadRows('alice')).length,0);
+  const row = {key:'alice:event-1',owner:'alice',synced:false,event:{id:'event-1',stageId:SKILLS[0].progressions[0].id}};
+  await local.saveRow(row); local.mirror('alice',[row]);
+  assert.equal((await local.loadRows('alice'))[0].synced,false);
+  await local.transaction('events','readwrite',s => s.delete(row.key));
+  assert.equal((await local.loadRows('alice')).length,1,'localStorage recovers an evicted event');
+  assert.equal((await local.transaction('events','readonly',s => s.get(row.key))).event.id,'event-1');
+  await local.saveRunner('alice',{log:[[6,5]],phase:'done'});
+  assert.equal((await local.loadRunner('alice')).phase,'done');
+  await local.saveRunner('alice',null);
+  assert.equal(await local.loadRunner('alice'),null);
+  assert(localStorage.getItem('fitness-skills-progress-v1'),'original data retained');
+});

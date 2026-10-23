@@ -22,11 +22,12 @@ haben, sind die Historie dieses Repos (Basis `c514177`).
 
 ## Daten
 
-`localStorage`-Keys bleiben identisch zur Fitness-App: `fitness-skills-progress-v1`,
-`fitness-skills-active-runner-v1`; Skill-URL `?skill=<id>` im Hash. Die Skill-/
-Progressionsliste steht noch in `SkillsCard.jsx`; die Calisthenics-YAMLs in
-`~/fitness-dev/fitness/catalog/kb/exercises/calisthenics/` sind eine zweite Quelle
-(siehe README).
+Eigenständiger Katalog: `public/skills-catalog.v1.json` (14 Skills / 65 Stufen).
+`data/` besitzt Modell, IndexedDB, localStorage und Firestore-Sync.
+Vertrag, Migration, Rules-Integration und Prüfungen: `docs/SKILLS-DATA.md`.
+Legacy-Fitness-Keys dienen nur der einmaligen, nicht destruktiven Übernahme.
+Firestore-Namespace: `skillsUsers/{uid}/events`, Katalog: `skillsCatalogs`.
+Runner bleibt lokal; ein Stufenindex allein bedeutet keine Meisterschaft.
 
 ## Befehle
 

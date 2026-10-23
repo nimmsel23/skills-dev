@@ -1,0 +1,15 @@
+{
+  "firestore": {
+    "rules": "firestore/skills.rules"
+  },
+  "emulators": {
+    "firestore": {
+      "port": 8186,
+      "websocketPort": 8187
+    },
+    "ui": {
+      "enabled": false
+    },
+    "singleProjectMode": true
+  }
+}

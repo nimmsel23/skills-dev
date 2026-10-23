@@ -23,8 +23,9 @@ Dialog geöffnet; dort zeigt die Shell alle App-Änderungen einmal gebündelt.
 - `SkillsCard.jsx` enthält den gemeinsamen Skills-Bildschirm und Runner.
 - `ExerciseVideo.jsx` und `exerciseVideos.json` ordnen die Demos und Tutorials zu.
 - `main.jsx` setzt das Skills-Theme und ergänzt den Update-Dialog.
-- Fortschritt und aktive Workouts verwenden weiter `fitness-skills-progress-v1`
-  und `fitness-skills-active-runner-v1`.
+- `data/` speichert Fortschritt und Runner in IndexedDB/localStorage und
+  synchronisiert Fortschrittsereignisse über Firestore. Alte Fitness-Keys
+  bleiben als Migrationsquelle erhalten.
 - Die Skill-URL bleibt `?skill=<id>` im Hash.
 
 ## Build und Release
@@ -54,3 +55,18 @@ Neue Produkt- und Release-Änderungen werden ab jetzt hier ergänzt.
 ## 2026-10-21
 
 Gemeinsamen VitalOS-Changelog statt eigenem UpdateNotes-Dialog eingebunden; kein separater Fetch neuerer Metadaten neben einem gecachten Bundle.
+
+
+## 2026-10-23 — Eigenständige Skills-Progression (Worktree)
+
+- Versionierter Katalog mit 14 Skills, 65 festen Stufen-IDs, Technik, Equipment,
+  Messgrößen und eigenen Aufstiegskriterien; Beine und Balance als Kategorien.
+- IndexedDB als lokaler Datenbestand, localStorage als Wiederherstellung und
+  Service Worker mit vollständigem App-/Katalog-Precache.
+- Nutzergetrennte Firestore-Ereignisse mit automatischem Sync, Google-Anmeldung,
+  Offline-Queue und ausdrücklich wählbarer Gastdaten-Übernahme.
+- Keine automatische Meisterschaft durch Erreichen der letzten Stufe;
+  zwei saubere Trainings an verschiedenen Tagen als Aufstiegsempfehlung.
+- Alte Daten bleiben erhalten. Workout-Abschluss erst nach erfolgreichem Speichern.
+- Bereitstellungsgrenze: Rules-Integration, Katalog-Seed und Live-Release stehen
+  separat aus. Datenvertrag und Abnahme: `docs/SKILLS-DATA.md`.

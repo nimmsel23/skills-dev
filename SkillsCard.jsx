@@ -3,50 +3,17 @@ import ExerciseVideo from './ExerciseVideo.jsx';
 import { ChevronLeft, ChevronRight, Lock, Check, Circle, Play, Pause, Flag, Trophy, ArrowUp, ArrowDown, Activity } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
-const SKILLS_STORAGE_KEY = 'fitness-skills-progress-v1';
-const ACTIVE_RUNNER_STORAGE_KEY = 'fitness-skills-active-runner-v1';
-
-// Skills + Progressionen 1:1 nach Thenics-App-Struktur (Nutzer-Recherche
-// 2026-08-12, Play Store + Reddit r/bodyweightfitness Community-Reihenfolge).
-// tier: 'free' | 'pro' — rein informativ (unsere App hat kein Bezahlmodell,
-// beide Tiers sind hier gleichermaßen nutzbar).
-// category: 'push' | 'pull' | 'core' — eigene Einordnung für die UI-Gliederung,
-// nicht aus der App selbst übernommen.
-// Jede Progressionsstufe ist entweder 'reps' (dynamisch, Wiederholungen
-// zählen) oder 'hold' (isometrisch, Sekunden halten) — Klassifizierung nach
-// Übungsart, keine erfundenen Werte. sets/reps/seconds sind eigene, generische
-// Default-Vorgaben (3×8 bzw. 3×15s), NICHT aus der echten Thenics-App
-// verifiziert — dort variieren die Vorgaben vermutlich pro Skill-Schwere.
-// Front-Lever-Zielwerte (sets/seconds) für Tuck/Advanced Tuck/Straddle
-// stammen aus Nutzer-Vorgabe 2026-08-12 und ersetzen die generischen
-// Defaults. (Ein zunächst mit derselben Vorgabe eingeführtes module-Feld
-// für 3 Ausbildungsmodule wurde noch am selben Tag wieder entfernt — laut
-// Nutzer war der zugrunde liegende Web-Agent vom Ausbildungskontext
-// verwirrt, das Konzept war Unsinn.)
-function reps(name, sets = 3, count = 8) { return { name, type: 'reps', sets, reps: count }; }
-function hold(name, sets = 3, seconds = 15) { return { name, type: 'hold', sets, seconds }; }
-
-const SKILLS = [
-  { id: 'muscle-up', name: 'Muscle-Up', tier: 'free', category: 'pull', progressions: [reps('Klimmzüge', 4, 8), reps('Explosive Klimmzüge'), reps('Chest-to-Bar Pull-Ups'), reps('Bar Dips'), reps('Muscle-Up Negative', 3, 5), reps('Muscle-Up', 3, 3)] },
-  { id: 'planche', name: 'Planche', tier: 'free', category: 'push', progressions: [hold('Plank'), hold('Planche Lean'), hold('Frog Stand'), hold('Tuck Planche'), hold('Advanced Tuck Planche'), hold('Straddle Planche'), hold('Full Planche')] },
-  { id: 'front-lever', name: 'Front Lever', tier: 'free', category: 'pull', progressions: [reps('Scapula Pulls', 3, 10), hold('Tuck Front Lever', 4, 15), hold('Advanced Tuck Front Lever', 5, 10), hold('One Leg Front Lever'), hold('Straddle Front Lever', 4, 8), hold('Full Front Lever')] },
-  { id: 'back-lever', name: 'Back Lever', tier: 'free', category: 'pull', progressions: [reps('Skin the Cat', 3, 5), hold('Tuck Back Lever'), hold('Advanced Tuck Back Lever'), hold('Straddle Back Lever'), hold('Full Back Lever')] },
-  { id: 'handstand-pushup', name: 'Handstand Push-Up', tier: 'free', category: 'push', progressions: [reps('Pike Push-Ups'), reps('Elevated Pike Push-Ups'), reps('Wall Handstand Push-Ups'), reps('Freestanding Handstand Push-Ups', 3, 5)] },
-  { id: 'v-sit', name: 'V-Sit', tier: 'free', category: 'core', progressions: [hold('Tuck L-Sit'), hold('L-Sit'), hold('Straddle L-Sit'), hold('V-Sit')] },
-  { id: 'pistol-squat', name: 'Pistol Squat', tier: 'free', category: 'core', progressions: [reps('Assisted Squats'), reps('Deep Squats'), reps('Step-Ups'), reps('Negative Pistol Squats'), reps('Full Pistol Squat')] },
-  { id: 'human-flag', name: 'Human Flag', tier: 'pro', category: 'core', progressions: [hold('Support Holds'), hold('Vertical Flag'), hold('Tuck Human Flag'), hold('Straddle Human Flag'), hold('Full Human Flag')] },
-  { id: 'one-arm-pullup', name: 'One Arm Pull-Up', tier: 'pro', category: 'pull', progressions: [reps('Archer Pull-Ups'), reps('Weighted Pull-Ups'), reps('One Arm Negative Pull-Ups', 3, 5), reps('Assisted One Arm Pull-Up', 3, 3)] },
-  { id: 'dragon-flag', name: 'Dragon Flag', tier: 'pro', category: 'core', progressions: [reps('Candlestick', 3, 5), reps('Dragon Flag Negatives', 3, 5), reps('Tuck Dragon Flag', 3, 5), reps('Full Dragon Flag', 3, 3)] },
-  { id: 'hefesto', name: 'Hefesto', tier: 'pro', category: 'pull', progressions: [reps('Korean Dips'), reps('Back Lever Pull-Ups', 3, 5), reps('Hefesto Negatives', 3, 3), reps('Full Hefesto', 3, 3)] },
-  { id: 'one-arm-handstand', name: 'One Arm Handstand', tier: 'pro', category: 'push', progressions: [hold('Handstand Balance'), hold('Handstand Shifting'), hold('Finger Support Handstand'), hold('One Arm Handstand', 3, 5)] },
-  { id: 'one-arm-pushup', name: 'One Arm Push-Up', tier: 'pro', category: 'push', progressions: [reps('Incline One Arm Push-Up'), reps('Archer Push-Ups'), reps('One Arm Push-Up', 3, 3)] },
-  { id: 'shrimp-squat', name: 'Shrimp Squat', tier: 'pro', category: 'core', progressions: [reps('Airborne Squat'), hold('Shrimp Squat (einarmig halten)'), reps('Full Shrimp Squat', 3, 5)] },
-];
+import { SKILLS, assessStage } from './data/catalog.js';
+import { progressStore } from './data/store.js';
+import { useProgress } from './data/useProgress.js';
+export { SKILLS };
 
 const CATEGORY_META = {
-  push: { Icon: ArrowUp },
-  pull: { Icon: ArrowDown },
-  core: { Icon: Activity },
+  push: { Icon: ArrowUp, label:'Drücken' },
+  pull: { Icon: ArrowDown, label:'Ziehen' },
+  core: { Icon: Activity, label:'Rumpf' },
+  legs: { Icon: Activity, label:'Beine' },
+  balance: { Icon: Activity, label:'Balance' },
 };
 
 // Eigenständiges Hash-Query-Param `skill=<id>` — bewusst nicht über App.jsx's
@@ -69,43 +36,13 @@ function setSkillIdInHash(skillId) {
   window.history.replaceState(null, '', `#${pathPart}${query ? `?${query}` : ''}`);
 }
 
-function loadProgress() {
-  if (typeof window === 'undefined') return {};
-  try {
-    return JSON.parse(window.localStorage.getItem(SKILLS_STORAGE_KEY) || '{}');
-  } catch {
-    return {};
-  }
-}
-
-// Crash-Sicherheit für laufende Workouts: strukturelle Fortschritts-Punkte
-// (Block/Satz-Index, bisher geloggte Sätze) landen bei jeder Änderung in
-// localStorage, NICHT die laufenden Countdown-Millisekunden (kein
-// 100ms-Schreib-Spam). Bei Wiedereinstieg wird immer bei "prep" des zuletzt
-// erreichten Satzes neu gestartet statt einen exakten Countdown-Stand zu
-// rekonstruieren — bereits geloggte Sätze bleiben aber erhalten.
-function loadActiveRunner() {
-  if (typeof window === 'undefined') return null;
-  try {
-    return JSON.parse(window.localStorage.getItem(ACTIVE_RUNNER_STORAGE_KEY) || 'null');
-  } catch {
-    return null;
-  }
-}
-
-function saveActiveRunner(state) {
-  if (typeof window === 'undefined') return;
-  window.localStorage.setItem(ACTIVE_RUNNER_STORAGE_KEY, JSON.stringify(state));
-}
-
-function clearActiveRunner() {
-  if (typeof window === 'undefined') return;
-  window.localStorage.removeItem(ACTIVE_RUNNER_STORAGE_KEY);
-}
+function loadActiveRunner() { return progressStore.runner(); }
+function saveActiveRunner(state) { progressStore.saveRunner(state).catch(() => {}); }
+function clearActiveRunner() { progressStore.saveRunner(null).catch(() => {}); }
 
 function SkillRow({ skill, progress, onOpen, isLast }) {
   const stage = progress[skill.id]?.stage ?? 0;
-  const done = stage >= skill.progressions.length - 1;
+  const done = progress[skill.id]?.mastered === true;
   return (
     <button
       onClick={() => onOpen(skill.id)}
@@ -133,7 +70,7 @@ function CategoryGroup({ category, skills, progress, onOpen }) {
   return (
     <div className="mb-4">
       <div className="mb-1 px-1">
-        <meta.Icon size={11} style={{ color: 'var(--dim)', opacity: 0.5 }} />
+        <span className="flex items-center gap-2 text-xs"><meta.Icon size={11} style={{ color: 'var(--dim)', opacity: 0.5 }} /> {meta.label}</span>
       </div>
       <div className="rounded-2xl px-3" style={{ background: 'var(--bg2)' }}>
         {skills.map((skill, i) => (
@@ -145,7 +82,7 @@ function CategoryGroup({ category, skills, progress, onOpen }) {
 }
 
 function SkillListScreen({ progress, onOpen }) {
-  const categories = ['push', 'pull', 'core'].filter(c => SKILLS.some(s => s.category === c));
+  const categories = ['push', 'pull', 'core', 'legs', 'balance'].filter(c => SKILLS.some(s => s.category === c));
   return (
     <div>
       {categories.map(category => (
@@ -200,9 +137,8 @@ function SkillHoldTimer({ stageName, holdsForStage, onLog }) {
 
   function logHold() {
     if (elapsedMs <= 0) return;
-    onLog(elapsedMs);
-    setElapsedMs(0);
     setRunning(false);
+    Promise.resolve(onLog(elapsedMs)).then(saved => { if (saved) setElapsedMs(0); });
   }
 
   const bestMs = holdsForStage.length ? Math.max(...holdsForStage.map(h => h.duration)) : null;
@@ -276,10 +212,12 @@ const CONDITIONING_BY_CATEGORY = {
   push: { name: 'Hollow Body Hold', type: 'hold', sets: 3, seconds: 20 },
   pull: { name: 'Scapula Pulls', type: 'reps', sets: 3, reps: 10 },
   core: { name: 'Plank', type: 'hold', sets: 3, seconds: 30 },
+  legs: { name: 'Deep Squats', type: 'reps', sets: 2, reps: 8 },
+  balance: { name: 'Hollow Body Hold', type: 'hold', sets: 2, seconds: 20 },
 };
 
 function buildWorkoutBlocks(skill, stage) {
-  const blocks = [{ ...skill.progressions[stage], role: 'Primär', restSeconds: 150 }];
+  const blocks = [{ ...skill.progressions[stage], role: 'Primär' }];
   if (stage > 0) {
     blocks.push({ ...skill.progressions[stage - 1], role: 'Sekundär', restSeconds: 75 });
   }
@@ -297,7 +235,7 @@ function WorkoutRunner({ skill, stage, resumeState, onFinish, onExit }) {
   const [blocks] = useState(() => buildWorkoutBlocks(skill, stage));
   const initialBlockIndex = resumeState?.blockIndex ?? 0;
   const [blockIndex, setBlockIndex] = useState(initialBlockIndex);
-  const [phase, setPhase] = useState('prep');
+  const [phase, setPhase] = useState(resumeState?.phase === 'done' ? 'done' : 'prep');
   const [setIndex, setSetIndex] = useState(resumeState?.setIndex ?? 0);
   const [remainingMs, setRemainingMs] = useState(PREP_SECONDS * 1000);
   const [workElapsedMs, setWorkElapsedMs] = useState(0);
@@ -311,11 +249,10 @@ function WorkoutRunner({ skill, stage, resumeState, onFinish, onExit }) {
   const isHold = block.type === 'hold';
 
   // Persistiert nur strukturelle Fortschritts-Punkte (kein Countdown-Ticken)
-  // — siehe loadActiveRunner()-Kommentar weiter oben.
+  // — keine Countdown-Millisekunden.
   useEffect(() => {
-    if (phase === 'done') return;
-    saveActiveRunner({ skillId: skill.id, stage, blockIndex, setIndex, log, rpe, startedAt });
-  }, [blockIndex, setIndex, log, rpe]);
+    saveActiveRunner({ skillId: skill.id, stage, stageId:skill.progressions[stage].id, phase, blockIndex, setIndex, log, rpe, startedAt });
+  }, [blockIndex, setIndex, log, rpe, phase]);
 
   function handleExit() {
     clearActiveRunner();
@@ -421,11 +358,8 @@ function WorkoutRunner({ skill, stage, resumeState, onFinish, onExit }) {
     if (phase === 'rest') advancePhase();
   }
 
-  // Workout-Log als Beweis: nur die Primär-Übung (Stufe 0 im blocks-Array,
-  // immer role "Primär") zählt für Auto-Unlock — Sekundär/Conditioning sind
-  // Zubehör und sollen die Freischaltung nicht triggern. Jeder Satz muss das
-  // Ziel erreichen oder übertreffen (reps: >=, hold: läuft aktuell immer
-  // komplett durch, siehe Auffälligkeiten).
+  // Only the primary exercise contributes to the target check. Technique and
+  // repeatability are evaluated separately; saving never advances a stage.
   const primaryBlock = blocks[0];
   const primaryLog = log[0] || [];
   const metTarget = primaryLog.length >= primaryBlock.sets && primaryLog.every(v =>
@@ -433,7 +367,6 @@ function WorkoutRunner({ skill, stage, resumeState, onFinish, onExit }) {
   );
 
   function saveWorkout() {
-    clearActiveRunner();
     const totalDurationSeconds = Math.round((Date.now() - startedAt) / 1000);
     onFinish({
       timestamp: new Date().toISOString(),
@@ -597,7 +530,7 @@ function SessionSummary({ blocks, log, startedAt, rpe, onSetRpe, onSave, metTarg
         </div>
         {metTarget && (
           <div className="text-[11px] font-black mt-2 px-3 py-1.5 rounded-lg inline-block" style={{ background: 'var(--accent-glow, rgba(200,255,0,0.12))', color: 'var(--accent)' }}>
-            ✓ Ziel erreicht — schaltet beim Speichern automatisch die nächste Stufe frei
+            ✓ Zielwerte erreicht — zählt mit Technikbestätigung als Trainingsnachweis
           </div>
         )}
       </div>
@@ -752,8 +685,6 @@ function SkillLevelChart({ history }) {
 }
 
 function VolumeChart({ sessions }) {
-  if (!sessions || sessions.length === 0) return null;
-
   // Extrahiere alle distinct Übungsnamen
   const exerciseNames = new Set();
   for (const session of sessions) {
@@ -767,7 +698,8 @@ function VolumeChart({ sessions }) {
   }
 
   const exerciseList = Array.from(exerciseNames).sort();
-  const [selectedExercise, setSelectedExercise] = useState(exerciseList[0] || null);
+  const [selection, setSelectedExercise] = useState(null);
+  const selectedExercise = exerciseList.includes(selection) ? selection : exerciseList[0];
 
   if (!selectedExercise) return null;
 
@@ -850,10 +782,11 @@ function VolumeChart({ sessions }) {
   );
 }
 
-function SkillDetailScreen({ skill, stage, history, holds, sessions, onBack, onMaster, onDowngrade, onLogHold, onLogWorkout }) {
+function SkillDetailScreen({ skill, stage, mastered, history, holds, sessions, onBack, onMaster, onDowngrade, onLogHold, onLogWorkout }) {
   const stageInfo = skill.progressions[stage];
   const next = skill.progressions[stage + 1];
   const isLast = stage >= skill.progressions.length - 1;
+  const assessment = assessStage(stageInfo, sessions);
   const [runnerActive, setRunnerActive] = useState(false);
   const [expandedVideo, setExpandedVideo] = useState(null);
   const [resumeState, setResumeState] = useState(() => {
@@ -878,9 +811,10 @@ function SkillDetailScreen({ skill, stage, history, holds, sessions, onBack, onM
           stage={stage}
           resumeState={resumeState}
           onExit={() => { setResumeState(null); setRunnerActive(false); }}
-          onFinish={(sessionData) => {
-            onLogWorkout(stage, sessionData);
-            if (sessionData.metTarget && !isLast) onMaster();
+          onFinish={async (sessionData) => {
+            const saved = await onLogWorkout(stage, sessionData);
+            if (!saved) return;
+            clearActiveRunner();
             setResumeState(null);
             setRunnerActive(false);
           }}
@@ -921,6 +855,7 @@ function SkillDetailScreen({ skill, stage, history, holds, sessions, onBack, onM
             <div className="text-[10px] font-black uppercase tracking-[0.2em]" style={{ color: 'var(--accent)' }}>Jetzt</div>
             <div className="text-2xl font-black text-fit-ink mt-2">{stageInfo.name}</div>
             <div className="text-[11px] font-bold mt-1" style={{ color: 'var(--dim)' }}>{formatTarget(stageInfo)}</div>
+            <p className="text-xs mt-2" style={{color:'var(--dim)'}}>{stageInfo.technique.join(' ')} · Pause {stageInfo.restSeconds}s</p>
             <ExerciseVideo key={stageInfo.name} name={stageInfo.name} />
             <button
               onClick={() => {
@@ -953,13 +888,17 @@ function SkillDetailScreen({ skill, stage, history, holds, sessions, onBack, onM
         onLog={(duration) => onLogHold(stage, duration)}
       />
 
-      {!isLast ? (
+      <p className="text-xs mb-2" style={{color:'var(--dim)'}}>
+        {assessment.qualified}/{stageInfo.advancement.qualifyingSessions} saubere Trainings · {assessment.days}/{stageInfo.advancement.distinctDays} Trainingstage.
+        {assessment.ready ? ' Aufstiegskriterium erfüllt.' : ' Technik und Wiederholbarkeit vor Stufenwechsel prüfen.'}
+      </p>
+      {!mastered ? (
         <button
           onClick={onMaster}
           className="w-full py-2.5 flex items-center justify-center gap-1.5 text-[11px] font-bold"
           style={{ color: 'var(--dim)' }}
         >
-          <Check size={13} strokeWidth={2.7} /> Manuell auf nächste Stufe springen
+          <Check size={13} strokeWidth={2.7} /> {isLast ? 'Meisterschaft bestätigen' : assessment.ready ? 'Nächste Stufe bestätigen' : 'Stufe manuell bestätigen'}
         </button>
       ) : (
         <div className="text-center py-3 text-sm font-black" style={{ color: 'var(--accent)' }}>
@@ -967,7 +906,7 @@ function SkillDetailScreen({ skill, stage, history, holds, sessions, onBack, onM
         </div>
       )}
 
-      {stage > 0 && (
+      {(stage > 0 || mastered) && (
         <button
           onClick={onDowngrade}
           className="w-full mt-2 py-2 text-[11px] font-bold"
@@ -1021,89 +960,60 @@ function SkillDetailScreen({ skill, stage, history, holds, sessions, onBack, onM
 }
 
 export default function SkillsCard({ onWorkoutComplete } = {}) {
-  const [progress, setProgress] = useState(() => loadProgress());
+  const { progress, owner, user, ready, pending, status, error, storageWarning } = useProgress();
   const [openSkillId, setOpenSkillIdState] = useState(() => getSkillIdFromHash());
-
+  const [actionError, setActionError] = useState('');
+  const [busy, setBusy] = useState(false);
+  const [techniqueConfirmed, setTechniqueConfirmed] = useState(false);
+  const [bothSidesConfirmed, setBothSidesConfirmed] = useState(false);
+  const [assistance, setAssistance] = useState('');
+  const [addedLoadKg, setAddedLoadKg] = useState('');
+  useEffect(() => { setTechniqueConfirmed(false); setBothSidesConfirmed(false); setAssistance(''); setAddedLoadKg(''); },[owner]);
   function setOpenSkillId(id) {
-    setOpenSkillIdState(id);
-    setSkillIdInHash(id);
+    setOpenSkillIdState(id); setSkillIdInHash(id);
+    setTechniqueConfirmed(false); setBothSidesConfirmed(false);
+    setAssistance(''); setAddedLoadKg('');
   }
-
-  function persist(next) {
-    setProgress(next);
-    if (typeof window !== 'undefined') window.localStorage.setItem(SKILLS_STORAGE_KEY, JSON.stringify(next));
+  async function action(operation) {
+    if (busy) return;
+    setBusy(true); setActionError('');
+    try { await operation(); return true; } catch (e) { setActionError(e.message); return false; } finally { setBusy(false); }
   }
-
   function master(skillId, skill) {
-    const entry = progress[skillId] ?? { stage: 0, history: [], holds: [], sessions: [] };
-    if (entry.stage >= skill.progressions.length - 1) return;
-    const masteredName = skill.progressions[entry.stage].name;
-    persist({
-      ...progress,
-      [skillId]: {
-        ...entry,
-        stage: entry.stage + 1,
-        history: [...(entry.history || []), { stage: entry.stage, name: masteredName, masteredAt: new Date().toISOString() }],
-      },
-    });
+    const entry = progress[skillId] || {stage:0};
+    const next = Math.min(entry.stage + 1, skill.progressions.length - 1);
+    const last = entry.stage === skill.progressions.length - 1;
+    const assessment = assessStage(skill.progressions[entry.stage],entry.sessions || []);
+    if (!assessment.ready && !window.confirm('Stufe ohne zwei bestätigte Trainings an unterschiedlichen Tagen manuell bestätigen? Dies wird im Verlauf vermerkt.')) return;
+    return action(() => progressStore.record('stage',skillId,skill.progressions[next].id,{mastered:last,manual:!assessment.ready}));
   }
-
-  // Reset ist kein Einweg-Ticket: bewusst symmetrisch zu master() — nur der
-  // stage-Wert (Status-Welt) ändert sich, nichts am bisherigen Verlauf/Holds/
-  // Sessions wird gelöscht. Ein eigener history-Eintrag macht den Rückschritt
-  // im Verlauf sichtbar statt ihn stillschweigend zu verstecken.
   function downgrade(skillId, skill) {
-    const entry = progress[skillId] ?? { stage: 0, history: [], holds: [], sessions: [] };
-    if (entry.stage <= 0) return;
-    if (typeof window !== 'undefined' && !window.confirm(`${skill.name}: eine Stufe zurücksetzen?`)) return;
-    const newStage = entry.stage - 1;
-    persist({
-      ...progress,
-      [skillId]: {
-        ...entry,
-        stage: newStage,
-        history: [...(entry.history || []), { stage: newStage, name: skill.progressions[newStage].name, masteredAt: new Date().toISOString(), reset: true }],
-      },
-    });
+    const entry = progress[skillId] || {stage:0};
+    const next = entry.mastered ? entry.stage : Math.max(0,entry.stage - 1);
+    return action(() => progressStore.record('stage',skillId,skill.progressions[next].id,{mastered:false,reset:true,manual:true}));
   }
-
   function logHold(skillId, stage, duration) {
-    const entry = progress[skillId] ?? { stage: 0, history: [], holds: [], sessions: [] };
-    persist({
-      ...progress,
-      [skillId]: {
-        ...entry,
-        holds: [...(entry.holds || []), { stage, duration, at: new Date().toISOString() }],
-      },
-    });
+    return action(() => progressStore.record('hold',skillId,SKILLS.find(s => s.id === skillId).progressions[stage].id,{duration}));
   }
-
   function logWorkout(skillId, stage, sessionData) {
-    const skillName = SKILLS.find(s => s.id === skillId)?.name;
-    const endedAt = Date.parse(sessionData.timestamp) || Date.now();
-    onWorkoutComplete?.({
-      block: 'Calisthenics',
-      source: 'skills',
-      modality: 'calisthenics',
-      program: { id: 'skills', skillId, stage },
-      effort: sessionData.rpe,
-      startedAt: endedAt - (sessionData.totalDurationSeconds || 0) * 1000,
-      endedAt,
-      notes: skillName ? `Skill: ${skillName}` : '',
-      exercises: (sessionData.exercises || [])
-        .filter(ex => (ex.setsCompleted || []).length > 0)
-        .map(ex => ({
-          name: ex.name,
-          sets: ex.setsCompleted.map(v => (ex.type === 'hold' ? { seconds: v } : { reps: v })),
-        })),
-    });
-    const entry = progress[skillId] ?? { stage: 0, history: [], holds: [], sessions: [] };
-    persist({
-      ...progress,
-      [skillId]: {
-        ...entry,
-        sessions: [...(entry.sessions || []), { stage, at: sessionData.timestamp, ...sessionData }],
-      },
+    const skill = SKILLS.find(s => s.id === skillId);
+    const stageId = skill.progressions[stage].id;
+    return action(async () => {
+      const day = new Date();
+      const trainingDay = `${day.getFullYear()}-${String(day.getMonth()+1).padStart(2,'0')}-${String(day.getDate()).padStart(2,'0')}`;
+      await progressStore.record('session',skillId,stageId,{
+        ...sessionData, trainingDay, techniqueConfirmed, bothSidesConfirmed, assistance,
+        addedLoadKg:Number(addedLoadKg) || 0,
+        exercises:sessionData.exercises.map((ex,i) => ({...ex,...(i === 0 ? {stageId} : {})})),
+      });
+      setTechniqueConfirmed(false); setBothSidesConfirmed(false);
+      // Optional host integration runs after Skills has saved its own record.
+      try { onWorkoutComplete?.({source:'skills',block:'Calisthenics',modality:'calisthenics',
+        program:{id:'skills',skillId,stage},effort:sessionData.rpe,
+        endedAt:Date.parse(sessionData.timestamp),
+        startedAt:Date.parse(sessionData.timestamp)-(sessionData.totalDurationSeconds || 0)*1000,
+        exercises:sessionData.exercises.map(ex => ({name:ex.name,sets:ex.setsCompleted.map(v => ex.type === 'hold' ? {seconds:v} : {reps:v})})),
+      }); } catch (error) { setActionError(`Skills gespeichert; Host-Übergabe fehlgeschlagen: ${error.message}`); }
     });
   }
 
@@ -1131,9 +1041,31 @@ export default function SkillsCard({ onWorkoutComplete } = {}) {
         <h3 className="text-xl sm:text-2xl font-black text-fit-ink mt-1">Skills</h3>
       </div>
 
-      {openSkill ? (
+      <div className="text-xs mb-4" role="status" aria-live="polite">
+        {status}{pending > 0 && user ? ` · ${pending} ausstehend` : ''}
+        <div className="flex flex-wrap gap-3 mt-2">
+          {user ? <>
+            <span>{user.displayName || user.email}</span>
+            <button type="button" onClick={() => action(() => progressStore.logout())}>Abmelden</button>
+            <button type="button" onClick={() => action(() => progressStore.importGuest())}>Lokale Gastdaten in dieses Konto übernehmen</button>
+          </> : <button type="button" onClick={() => action(() => progressStore.login())}>Mit Google anmelden · Auto-Sync</button>}
+          <button type="button" onClick={() => action(() => progressStore.retry())}>Speicher / Sync erneut versuchen</button>
+        </div>
+      </div>
+      {storageWarning && <p role="alert" className="text-xs mb-3">{storageWarning}</p>}
+      {(error || actionError) && <p role="alert" className="text-sm mb-3">{actionError || error}</p>}
+      <fieldset disabled={!ready || busy} style={{minWidth:0}}>
+      {openSkill && <div className="text-xs flex flex-col gap-2 mb-4">
+        <label><input type="checkbox" checked={techniqueConfirmed} onChange={e => setTechniqueConfirmed(e.target.checked)} /> Technik heute sauber eingehalten</label>
+        {openSkill.progressions[progress[openSkill.id]?.stage ?? 0].sidePolicy === 'both' && <label><input type="checkbox" checked={bothSidesConfirmed} onChange={e => setBothSidesConfirmed(e.target.checked)} /> Zielwerte auf beiden Seiten erreicht (jeweils schwächere Seite loggen)</label>}
+        <label>Unterstützung / Band <input className="text-black" value={assistance} onChange={e => setAssistance(e.target.value)} /></label>
+        <label>Zusatzgewicht (kg) <input className="text-black" type="number" min="0" step="0.5" value={addedLoadKg} onChange={e => setAddedLoadKg(e.target.value)} /></label>
+      </div>}
+      {ready && (openSkill ? (
         <SkillDetailScreen
+          key={`${owner}:${openSkill.id}`}
           skill={openSkill}
+          mastered={progress[openSkill.id]?.mastered === true}
           stage={progress[openSkill.id]?.stage ?? 0}
           history={progress[openSkill.id]?.history ?? []}
           holds={progress[openSkill.id]?.holds ?? []}
@@ -1146,7 +1078,8 @@ export default function SkillsCard({ onWorkoutComplete } = {}) {
         />
       ) : (
         <SkillListScreen progress={progress} onOpen={setOpenSkillId} />
-      )}
+      ))}
+      </fieldset>
     </section>
   );
 }

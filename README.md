@@ -1,10 +1,13 @@
 # Skills
 
-Calisthenics-Skills als eigener Feature-Ordner. `src/views/Session/index.jsx` bindet `SkillsCard.jsx` im Skills-Subtab ein; `src/styles.css` lädt `skills.css`. Tailwind scannt diesen Ordner separat.
+Eigenständige Calisthenics-App mit versioniertem Skills-Katalog, Trainingsrunner
+und nutzerbezogener Progression. Fitness bindet `SkillsCard.jsx` aus dem direkten
+Git-Submodule ein; der Datenbestand gehört ausschließlich Skills.
 
-Fortschritt und unterbrochene Workouts bleiben in den bestehenden localStorage-Keys `fitness-skills-progress-v1` und `fitness-skills-active-runner-v1`. Der Umzug ändert weder diese Daten noch die Skill-URL (`?skill=<id>` im Hash).
-
-Die Skill- und Progressionsliste liegt derzeit noch in `SkillsCard.jsx`; die Calisthenics-YAMLs im Katalog sind eine zweite Quelle. Ein eigenständiges Deployment ist für Skills bislang nicht eingerichtet.
+Katalog: `public/skills-catalog.v1.json` (14 Skills / 65 Stufen). Fortschritt und
+Runner liegen in IndexedDB und localStorage, angemeldete Nutzer synchronisieren
+Fortschrittsereignisse über Firestore. Die alten Fitness-Keys werden nur zur
+Bestandsübernahme gelesen. Skill-URL: `?skill=<id>` im Hash.
 
 ## Standalone (2026-10-16)
 Dieses Repo ist die herausgelöste Fassung (`git subtree split` aus `~/fitness-dev`, Ordner `Skills/`).
@@ -14,8 +17,8 @@ Produktverhalten und laufender Änderungsverlauf: `APP.md`. Agent-/Repo-Details:
 
 ## Übungsvideos (2026-10-17)
 
-Alle 65 unterschiedlichen Progressions- und Conditioning-Übungen haben eine
-Videozuordnung: 50 kurze externe H.264-Demos (ca. 3–36 Sekunden) und 15
+Alle 66 unterschiedlichen Progressions- und Conditioning-Übungen haben eine
+Videozuordnung: 50 kurze externe H.264-Demos (ca. 3–36 Sekunden) und 16
 YouTube-Tutorials. Im Skill-Detail kann jede Stufe über „Video“ angesehen
 werden, auch vor ihrer Freischaltung. Das ändert keine Trainingsstufe.
 Der aktuelle Schritt zeigt seine Demo zusätzlich direkt vor dem Workout-Start.
@@ -36,3 +39,11 @@ Skills-Commit nach `origin/fitness` pushen; keine UI-Dateien kopieren.
 Production-Releases pinnen diesen Gitlink über `~/vitalos/fitness-app`.
 Der VitalOS-Workflow `deploy-skills.yml` baut denselben verschachtelten
 Checkout für `vos-skills.web.app`; `deploy-fitness.yml` baut den Fitness-Host.
+
+
+## Eigenständige Skills-Daten (2026-10-23)
+
+Der neue Datenbestand liegt in `public/skills-catalog.v1.json`. Progression,
+Offline-Speicherung und Firebase-Sync gehören vollständig der Skills-Domain.
+Siehe [Datenvertrag und Bereitstellung](docs/SKILLS-DATA.md) für Schema,
+Migration, Regeln und Tests. Der alte Fitness-Katalog ist keine Laufzeitquelle.
