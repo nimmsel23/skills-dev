@@ -1,0 +1,44 @@
+# Check für Skills: Test + Build auf jedem PR/dev-Push, ohne Deploy und ohne Firebase-Secrets.
+#
+# Gleicher Aufbau wie deploy.yml (Preview vos-skills), aber ohne Pfadfilter und ohne Deploy
+# (Muster aus fitness-dev/check.yml). Es läuft nur der Video-Regressionstest wie im Preview;
+# `npm test` (tests/*.test.mjs) ist in der CI bisher nicht gelaufen und bleibt deshalb draußen,
+# bis jemand es dort einmal grün gesehen hat.
+
+name: Check (Skills)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [dev]
+  pull_request:
+    branches: [dev]
+
+concurrency:
+  group: check-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4   # Version aus package.json "packageManager"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install
+        run: pnpm install --ignore-scripts
+
+      - name: Exercise video regression checks
+        run: node scripts/test-exercise-videos.mjs
+
+      - name: Build (Stempel = Splash + Service Worker)
+        run: pnpm run build

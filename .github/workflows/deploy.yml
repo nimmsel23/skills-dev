@@ -29,14 +29,28 @@ on:
       - '.claude/**'
       - '**.txt'
       - '**.bak*'
+  pull_request:
+    branches: [dev]
+    paths-ignore:
+      - '**.md'
+      - 'docs/**'
+      - '.githooks/**'
+      - '.claude/**'
+      - '**.txt'
+      - '**.bak*'
 
+# Pro Ref: PR-Läufe sollen den dev-Lauf nicht abbrechen.
 concurrency:
-  group: deploy-vos-skills
+  group: deploy-vos-skills-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      checks: write
+      pull-requests: write
     env:
       TELEGRAM_TO: ${{ secrets.TELEGRAM_TO }}
       FIREBASE_SA: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_FITNESS_AOS || secrets.FIREBASE_SERVICE_ACCOUNT }}
@@ -62,7 +76,7 @@ jobs:
         if: env.FIREBASE_SA == ''
         run: echo "::warning::Secret FIREBASE_SERVICE_ACCOUNT_FITNESS_AOS fehlt - Deploy übersprungen."
 
-      - name: Preview-Channel dev (24h)
+      - name: Preview-Channel (dev-Push -> dev, PR -> PR-Channel, 24h)
         if: env.FIREBASE_SA != ''
         id: firebase_deploy
         uses: FirebaseExtended/action-hosting-deploy@v0
@@ -71,7 +85,7 @@ jobs:
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_FITNESS_AOS || secrets.FIREBASE_SERVICE_ACCOUNT }}
           projectId: fitness-aos
           target: skills
-          channelId: dev
+          channelId: ${{ github.event_name != 'pull_request' && 'dev' || '' }}
           expires: 24h
 
       - name: Telegram-Benachrichtigung
@@ -81,8 +95,8 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            🔍 Skills-Preview (24h) deployed!
+            🔍 Skills-Preview (${{ github.event_name == 'pull_request' && format('PR #{0}', github.event.pull_request.number) || 'dev' }}, 24h) deployed!
 
             🔗 ${{ steps.firebase_deploy.outputs.details_url }}
 
-            Commit: ${{ github.event.head_commit.message }}
+            Commit: ${{ github.event.pull_request.title || github.event.head_commit.message }}
