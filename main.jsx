@@ -23,7 +23,7 @@ function App() {
   return (
     <>
       {variant ? (
-        <><div className="max-w-xl mx-auto p-4"><PersistenceStatus /></div><DesignHost key={variant.id} design={variant} /></>
+        <><DesignHost key={variant.id} design={variant} /><footer className="max-w-xl mx-auto p-4 pb-20"><PersistenceStatus /></footer></>
       ) : (
         <main className="max-w-xl mx-auto py-4">
           <SkillsCard />

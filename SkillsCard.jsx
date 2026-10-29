@@ -1042,7 +1042,6 @@ export default function SkillsCard({ onWorkoutComplete } = {}) {
         <h3 className="text-xl sm:text-2xl font-black text-fit-ink mt-1">Skills</h3>
       </div>
 
-      <PersistenceStatus />
       {actionError && <p role="alert" className="text-sm mb-3">{actionError}</p>}
       <fieldset disabled={!ready || busy} style={{minWidth:0}}>
       {openSkill && <div className="text-xs flex flex-col gap-2 mb-4">
@@ -1070,6 +1069,10 @@ export default function SkillsCard({ onWorkoutComplete } = {}) {
         <SkillListScreen progress={progress} onOpen={setOpenSkillId} />
       ))}
       </fieldset>
+
+      <footer className="mt-6 pt-4" style={{ borderTop: '1px solid var(--line)' }}>
+        <PersistenceStatus />
+      </footer>
     </section>
   );
 }

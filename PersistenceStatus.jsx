@@ -12,7 +12,7 @@ export default function PersistenceStatus() {
     setBusy(true); setActionError('');
     try { await operation(); } catch(error) { setActionError(error.message); } finally {setBusy(false);}
   }
-  return <div className="text-xs mb-4" aria-live="polite">
+  return <div className="text-xs" aria-live="polite">
     <div role="status">{status}{pending > 0 && user ? ` · ${pending} ausstehend` : ''}</div>
     <fieldset disabled={busy} className="flex flex-wrap gap-3 mt-2">
       {user ? <>
