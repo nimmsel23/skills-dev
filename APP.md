@@ -106,3 +106,7 @@ Skills `acdbfd7` ist über Fitness/VitalOS live veröffentlicht. Die zentralen
 Skills-Firestore-Regeln und der Katalog `calisthenics-v1` sind deployed.
 Hosting, Rules/Katalog und die zugehörigen Fitness-/Shell-CIs sind erfolgreich.
 Ohne Login bleiben die Trainings lokal; angemeldet steht Auto-Sync bereit.
+
+## 2026-10-29 — Login/Sync im Footer
+
+Konto-, Login- und Sync-Steuerung (`PersistenceStatus`) steht jetzt am Seitenende (Footer) statt oben: in der Original-Karte unter der Skill-Liste, in den Design-Varianten unter dem Design-Host.
