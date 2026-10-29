@@ -17,6 +17,8 @@ Stand 2026-10-29. Ausführlich: `~/vitalos/docs/DEPLOYMENT.md` (GitHub: nimmsel2
   (Merge-Commit) und startet den Live-Deploy per Dispatch. Nie von Hand auf `master` pushen, außer Hotfix.
 - Shell: `vos-release skills` merged `origin/master` nach `vitalos` und bumpt den Pointer im Meta-Repo (deployt die Shell).
   Vorher `vos-overview`.
+- Branch-Schutz auf `master` (seit 2026-10-29): Merge nur per PR mit grünem Check `check`; Force-Push und Löschen gesperrt;
+  Admin darf für Hotfixes direkt pushen. Kein „Branch muss aktuell sein", sonst blockiert der Auto-Merge.
 - `master` wird nie lokal ausgecheckt; `git fetch` genügt. Das Meta-Repo `vitalos` deployt nur noch die Shell.
 - Nicht auf `dev` im Hauptordner arbeiten, wenn ein Agent-/Feature-Branch nötig ist: Worktree
   (`git worktree add .worktrees/<name> <branch>`).
