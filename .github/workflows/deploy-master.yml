@@ -1,0 +1,63 @@
+# Standalone-Prod Skills: Push auf master deployt live (nur CI). Gleiche Schritte wie das frühere
+# Meta-Repo-Workflow deploy-skills.yml; das Meta-Repo liefert nur die Nachbar-Repos (Cross-Repo-Aliase),
+# skills-app wird auf den ausgelösten Commit gesetzt.
+
+name: Live Deploy (Skills master)
+'on':
+  workflow_dispatch: null
+  push:
+    branches:
+    - master
+concurrency:
+  group: live-skills-master
+  cancel-in-progress: false
+permissions:
+  contents: read
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout vitalos (Meta-Repo, liefert Nachbar-Repos)
+      uses: actions/checkout@v4
+      with:
+        repository: nimmsel23/vitalos
+        ref: master
+    - name: Private Skills submodule access
+      uses: ./.github/actions/skills-submodule-auth
+      with:
+        deploy-key: ${{ secrets.SKILLS_DEPLOY_KEY }}
+    - name: Submodules via HTTPS + Token
+      run: |
+        git config --global url."https://x-access-token:${{ secrets.GH_SUBMODULE_TOKEN || secrets.GITHUB_TOKEN }}@github.com/".insteadOf "git@github.com:"
+        git submodule sync --recursive
+        git submodule update --init --recursive
+    - name: skills-app auf den ausgelösten Commit setzen
+      run: |
+        cd skills-app
+        SHA="${{ github.sha }}"
+        git fetch origin "$SHA"
+        git checkout "$SHA"
+    - uses: pnpm/action-setup@v4
+      with:
+        version: 11.3.0
+    - uses: actions/setup-node@v5
+      with:
+        node-version: 22
+    - name: Install Skills standalone dependencies
+      working-directory: skills-app
+      run: pnpm install --ignore-workspace --frozen-lockfile --ignore-scripts
+    - name: Verify exercise videos
+      working-directory: skills-app
+      run: node scripts/test-exercise-videos.mjs
+    - name: Build Skills
+      working-directory: skills-app
+      run: pnpm run build
+    - name: Deploy Skills to Firebase Hosting
+      working-directory: skills-app
+      env:
+        FIREBASE_SA: ${{ secrets.FIREBASE_SERVICE_ACCOUNT || secrets.FIREBASE_SERVICE_ACCOUNT_FITNESS_AOS }}
+      run: |
+        printf '%s' "$FIREBASE_SA" > "$RUNNER_TEMP/skills-sa.json"
+        GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/skills-sa.json" \
+          npx firebase-tools@latest deploy --only hosting:skills \
+          --project fitness-aos --non-interactive
