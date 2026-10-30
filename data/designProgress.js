@@ -1,5 +1,6 @@
 import { SKILLS, assessStage } from './catalog.js';
 import { progressStore } from './store.js';
+import { emitHostWorkoutComplete, toHostWorkout } from './workoutCompletion.js';
 
 // UI-independent contract for the vanilla design variants and future renderers.
 // The adapters read the exact same projection as the React card.
@@ -38,6 +39,7 @@ export const designProgress = {
     });
     // Never clear an unfinished runner before the event is durably stored.
     await progressStore.saveRunner(null);
+    emitHostWorkoutComplete(toHostWorkout(skill, stage, data));
     return data;
   },
 };

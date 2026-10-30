@@ -7,6 +7,7 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 import { SKILLS, assessStage } from './data/catalog.js';
 import { progressStore } from './data/store.js';
 import { useProgress } from './data/useProgress.js';
+import { toHostWorkout } from './data/workoutCompletion.js';
 export { SKILLS };
 
 const CATEGORY_META = {
@@ -1009,12 +1010,8 @@ export default function SkillsCard({ onWorkoutComplete } = {}) {
       });
       setTechniqueConfirmed(false); setBothSidesConfirmed(false);
       // Optional host integration runs after Skills has saved its own record.
-      try { onWorkoutComplete?.({source:'skills',block:'Calisthenics',modality:'calisthenics',
-        program:{id:'skills',skillId,stage},effort:sessionData.rpe,
-        endedAt:Date.parse(sessionData.timestamp),
-        startedAt:Date.parse(sessionData.timestamp)-(sessionData.totalDurationSeconds || 0)*1000,
-        exercises:sessionData.exercises.map(ex => ({name:ex.name,sets:ex.setsCompleted.map(v => ex.type === 'hold' ? {seconds:v} : {reps:v})})),
-      }); } catch (error) { setActionError(`Skills gespeichert; Host-Übergabe fehlgeschlagen: ${error.message}`); }
+      try { onWorkoutComplete?.(toHostWorkout(skill, stage, sessionData)); }
+      catch (error) { setActionError(`Skills gespeichert; Host-Übergabe fehlgeschlagen: ${error.message}`); }
     });
   }
 

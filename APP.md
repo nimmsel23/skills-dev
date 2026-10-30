@@ -110,3 +110,10 @@ Ohne Login bleiben die Trainings lokal; angemeldet steht Auto-Sync bereit.
 ## 2026-10-29 — Login/Sync im Footer
 
 Konto-, Login- und Sync-Steuerung (`PersistenceStatus`) steht jetzt am Seitenende (Footer) statt oben: in der Original-Karte unter der Skill-Liste, in den Design-Varianten unter dem Design-Host.
+
+## 2026-10-30 — Host-Callback für Design-Varianten
+
+Alle drei Vanilla-Designs senden nach erfolgreicher Skills-Persistierung das
+Event `skills:workout-completed`. Der Payload entspricht dem optionalen
+`onWorkoutComplete(workout)`-Callback der React-Karte; VitalOS kann dadurch auch
+bei den alternativen Designs das Workout ins Fitness-Tageslog übernehmen.
