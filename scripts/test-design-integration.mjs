@@ -38,13 +38,14 @@ for (const file of ['a-iron-room.js','b-gravity-map.js','c-riso-climb.js']) {
   };
   w.confirm=()=>true;w.alert=message=>alerts.push(message);
   w.HTMLCanvasElement.prototype.getContext=()=>({clearRect(){},beginPath(){},arc(){},fill(){}});
-  const bridge=await compile(root+'/data/designProgress.js',{'./catalog.js':{SKILLS,assessStage},'./store.js':{progressStore:store}},globals);
+  const bridge=await compile(root+'/data/designProgress.js',{'./catalog.js':{SKILLS,assessStage},'./store.js':{progressStore:store},'./workoutCompletion.js':{emitHostWorkoutComplete(){},toHostWorkout:(skill,stage,data)=>data}},globals);
+  const nav=await compile(root+'/navigation.js',{},globals);
   const card=await compile(root+'/SkillsCard.jsx',{
-    react:{useState() {},useEffect() {}},'./ExerciseVideo.jsx':{},'./PersistenceStatus.jsx':{},'lucide-react':{},recharts:{},
-    './data/catalog.js':{SKILLS,assessStage},'./data/store.js':{progressStore:store},'./data/useProgress.js':{},
+    react:{useState() {},useEffect() {},useRef() {}},'./navigation.js':nav,'./ExerciseVideo.jsx':{},'./PersistenceStatus.jsx':{},'lucide-react':{},recharts:{},
+    './data/catalog.js':{SKILLS,assessStage},'./data/store.js':{progressStore:store},'./data/useProgress.js':{},'./data/workoutCompletion.js':{toHostWorkout:(skill,stage,data)=>data},
   },globals);
   const core=await compile(root+'/designs/core.js',{
-    '../SkillsCard.jsx':card,'../ExerciseVideo.jsx':{videoForExercise:()=>null},
+    '../SkillsCard.jsx':card,'../navigation.js':nav,'../ExerciseVideo.jsx':{videoForExercise:()=>null},
     '../data/designProgress.js':bridge,'../data/store.js':{progressStore:store},
   },globals);
   let active,renderRunner;
@@ -62,6 +63,29 @@ for (const file of ['a-iron-room.js','b-gravity-map.js','c-riso-climb.js']) {
   assert.equal(snapshot().progress['front-lever'].mastered,true);
   await click('[data-down]');
   assert.equal(snapshot().progress['front-lever'].mastered,false);
+  // Navigation: Pfeiltasten und Wischen wechseln den Skill in Listenreihenfolge, Esc geht zur Liste.
+  const hash=() => new w.URLSearchParams(w.location.hash.split('?')[1]).get('skill');
+  const key=(name,init={}) => w.dispatchEvent(new w.KeyboardEvent('keydown',{key:name,bubbles:true,cancelable:true,...init}));
+  const touch=(type,x,y,time) => {
+    const e=new w.Event(type,{bubbles:true,composed:true});
+    const t={clientX:x,clientY:y};
+    Object.defineProperties(e,{touches:{value:type==='touchend'?[]:[t]},changedTouches:{value:[t]},timeStamp:{value:time}});
+    sr.querySelector('[data-run]').dispatchEvent(e);
+  };
+  const swipe=(x0,x1,y1=410) => {touch('touchstart',x0,400,1000);touch('touchend',x1,y1,1120);};
+  key('ArrowRight');assert.equal(hash(),'back-lever',`${file}: → opens next skill`);
+  assert(sr.textContent.includes(SKILLS.find(s=>s.id==='back-lever').name),`${file}: detail re-rendered`);
+  key('ArrowLeft',{shiftKey:true});assert.equal(hash(),'back-lever',`${file}: modified keys ignored`);
+  key('ArrowLeft');assert.equal(hash(),'front-lever');
+  swipe(300,100);assert.equal(hash(),'back-lever',`${file}: swipe left = next`);
+  swipe(100,300);assert.equal(hash(),'front-lever',`${file}: swipe right = previous`);
+  swipe(300,100,700);assert.equal(hash(),'front-lever',`${file}: mostly vertical drags are ignored`);
+  swipe(10,200);assert.equal(hash(),'front-lever',`${file}: edge swipes are left to the system`);
+  await click('[data-run]');
+  key('ArrowRight');swipe(300,100);
+  assert.equal(hash(),'front-lever',`${file}: navigation locked while the runner is active`);
+  active.stop();sr.querySelector('#run')?.remove();
+  await click('[data-master]');await click('[data-down]');
   await click('[data-run]');
   active.phase='done';active.log[0]=Array(active.blocks[0].sets).fill(active.blocks[0].seconds);renderRunner(active);
   assert(sr.querySelector('[data-quality="techniqueConfirmed"]'));
@@ -79,6 +103,10 @@ for (const file of ['a-iron-room.js','b-gravity-map.js','c-riso-climb.js']) {
   assert.equal(snapshot().progress['front-lever'].mastered,false,'target met never auto-masters');
   await click('[data-back]');
   assert.equal(sr.querySelectorAll('[data-open]').length,14,'every category remains visible');
+  key('ArrowDown');assert.equal(sr.activeElement,sr.querySelector('[data-open]'),`${file}: ↓ focuses the first row`);
+  key('ArrowDown');assert.equal(sr.activeElement,sr.querySelectorAll('[data-open]')[1]);
+  await click('[data-open]');assert(hash(),`${file}: row opens detail`);
+  key('Escape');assert.equal(hash(),null,`${file}: Esc returns to the list`);
   assert(!sr.textContent.includes('undefined'));
   cleanup();assert.equal(listeners.size,0,'subscription cleaned up');dom.window.close();
   console.log(`${file}: all skills, manual advancement, explicit mastery, rollback, failed-save retention and shared session persistence passed`);

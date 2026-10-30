@@ -55,3 +55,10 @@
   border-radius: 50%;
   background: var(--accent);
 }
+
+/* Skill-Wechsel per Wischen/Pfeiltaste: kurzes Einschieben aus der Wischrichtung. */
+@keyframes skill-step-in-next { from { opacity: 0; transform: translateX(28px); } to { opacity: 1; transform: none; } }
+@keyframes skill-step-in-prev { from { opacity: 0; transform: translateX(-28px); } to { opacity: 1; transform: none; } }
+.skill-step-next { animation: skill-step-in-next .2s ease-out; }
+.skill-step-prev { animation: skill-step-in-prev .2s ease-out; }
+@media (prefers-reduced-motion: reduce) { .skill-step-next, .skill-step-prev { animation: none; } }

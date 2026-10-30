@@ -136,15 +136,16 @@ function mount(host) {
     else if ('video' in ds) Core.toggleVideo(t, Core.byId(id).progressions[+ds.video].name);
     } catch (error) { window.alert(`Nicht gespeichert: ${error.message}`); } finally { saving = false; }
   };
-  const onKey = e => { if (e.key === 'Escape') closeRun(); };
+  const onKey = e => { if (e.key === 'Escape' && runner) { e.preventDefault(); closeRun(); } };
   const onQuality = e => Core.qualityInput(runner,e.target);
   sr.addEventListener('input',onQuality);
   const stopProgress = Core.subscribe(() => { if (!runner) route(); });
   sr.addEventListener('click', onClick);
   addEventListener('keydown', onKey);
+  const stopNav = Core.nav(sr, route, () => !runner && !saving);
   route();
 
-  return () => { stopProgress(); sr.removeEventListener('input',onQuality); closeRun(); sr.removeEventListener('click', onClick); removeEventListener('keydown', onKey); };
+  return () => { stopNav(); stopProgress(); sr.removeEventListener('input',onQuality); closeRun(); sr.removeEventListener('click', onClick); removeEventListener('keydown', onKey); };
 }
 
 export default {

@@ -11,7 +11,7 @@
     "firebase": "pnpm run build && firebase deploy --only hosting:skills",
     "deploy": "firebase deploy --only hosting:skills",
     "vendor:check": "node ~/vitalos/packages/mini-app-shell/cli.mjs vendor scripts/mini-app-shell --check",
-    "test": "node tests/progression.test.mjs && node tests/local.test.mjs && node --experimental-test-module-mocks tests/store.test.mjs && node --experimental-test-module-mocks tests/design-progress.test.mjs && node scripts/test-exercise-videos.mjs",
+    "test": "node tests/progression.test.mjs && node tests/navigation.test.mjs && node tests/local.test.mjs && node --experimental-test-module-mocks tests/store.test.mjs && node --experimental-test-module-mocks tests/design-progress.test.mjs && node scripts/test-exercise-videos.mjs",
     "test:rules": "firebase emulators:exec --only firestore --project demo-skills --config firebase.skills-emulator.json \"node tests/firestore.test.mjs\"",
     "test:sw": "node tests/service-worker.test.mjs",
     "catalog:seed": "node scripts/seed-skills-catalog.mjs",
