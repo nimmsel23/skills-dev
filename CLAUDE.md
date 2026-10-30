@@ -14,6 +14,7 @@ haben, sind die Historie dieses Repos (Basis `c514177`).
   und zeigt Release-Notizen für noch nicht bestätigte Updates.
 - `scripts/vos-changelog/` — gemeinsamer Vite-Plugin mit eingebetteten Release-Metadaten; in VitalOS zeigt nur die Shell den gebündelten Dialog.
 - `designs/` — Design-Phase (2026-10-23): drei Varianten A/B/C als Vanilla-Module im Shadow-DOM + `DesignSwitcher.jsx`/`DesignHost.jsx`; `core.js` nutzt `data/designProgress.js` und denselben IndexedDB-/localStorage-Ereignisspeicher wie das Original; Firestore-Sync nur nach Login. Nach der Entscheidung unterlegene Varianten löschen.
+- Nach dauerhaft gespeichertem Workout senden die Design-Varianten `skills:workout-completed` mit demselben Host-Payload wie `SkillsCard.jsx`; VitalOS kann damit auch alternative Designs ins Fitness-Tageslog übernehmen.
 - `APP.md` — Produktverhalten, Release-Notizen und laufender Änderungsverlauf.
   Neue App- und Release-Änderungen dort ergänzen.
 - `mini-app.json` + `scripts/mini-app-shell/` (vendored aus
