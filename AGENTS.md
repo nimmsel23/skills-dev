@@ -33,10 +33,11 @@ Nach „committen/releasen“ vom User gilt die Freigabe für die ganze Kette, n
 3. `vos-release-pr skills` — öffnet den PR `dev → master`. Der Check `check` läuft, Auto-Merge mergt bei Grün und
    startet den Live-Deploy (`Live Deploy (Skills master)`). Status: `gh pr view <n>`, `gh pr checks <n>`,
    `gh run list --limit 5` (ohne `-R`, sobald das Standard-Repo gesetzt ist, siehe Stolperfalle unten). Nichts von Hand auf `master` pushen.
-4. Erst wenn der PR `MERGED` und der Live-Deploy grün ist: `vos-release skills` (Shell-Seite: `origin/master` → `vitalos`,
-   Pointer im Meta-Repo bumpen). Vorher optional `vos-release --dry-run skills`.
+4. Erst wenn der PR `MERGED` und der Live-Deploy grün ist: `vos-release skills --yes` (Shell-Seite: `origin/master` → `vitalos`,
+   Pointer im Meta-Repo bumpen). `--yes` ist ohne TTY Pflicht, sonst bricht `gum confirm` mit „could not open TTY“ ab.
+   Vorher optional `vos-release --dry-run skills`.
 5. Schritt 4 blockiert der Auto-Mode-Classifier von Claude Code als „Production Deploy“. Dann nicht umgehen, sondern
-   den Befehl dem User nennen (`! vos-release skills`) oder dort eine Bash-Permission-Regel für `vos-release skills`
+   den Befehl dem User nennen (`! vos-release skills --yes`) oder dort eine Bash-Permission-Regel für `vos-release skills`
    setzen lassen. Schritte 1–3 gehen ohne Freigabe-Theater.
 
 **Stolperfalle `gh`:** Dieser Klon hat neben `origin` (skills-dev) noch den Alt-Remote `upstream` (→ fitness-dev, vom
