@@ -17,14 +17,14 @@ export default function DesignSwitcher({ value, onChange }) {
   useEffect(() => {
     const onRun = e => { setRunning(!!e.detail); if (e.detail) setOpen(false); };
     const onDoc = e => { if (box.current && !e.composedPath().includes(box.current)) setOpen(false); };
-    const onKey = e => { if (e.key === 'Escape') setOpen(false); };
+    const onKey = e => { if (e.key === 'Escape' && box.current?.querySelector('[role="menu"]')) { e.preventDefault(); setOpen(false); } };
     window.addEventListener('skills-runner', onRun);
     document.addEventListener('pointerdown', onDoc);
-    window.addEventListener('keydown', onKey);
+    window.addEventListener('keydown', onKey, true);
     return () => {
       window.removeEventListener('skills-runner', onRun);
       document.removeEventListener('pointerdown', onDoc);
-      window.removeEventListener('keydown', onKey);
+      window.removeEventListener('keydown', onKey, true);
     };
   }, []);
 

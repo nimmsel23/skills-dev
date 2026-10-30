@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import ExerciseVideo from './ExerciseVideo.jsx';
 import PersistenceStatus from './PersistenceStatus.jsx';
 import { ChevronLeft, ChevronRight, Lock, Check, Circle, Play, Pause, Flag, Trophy, ArrowUp, ArrowDown, Activity } from 'lucide-react';
@@ -8,7 +8,10 @@ import { SKILLS, assessStage } from './data/catalog.js';
 import { progressStore } from './data/store.js';
 import { useProgress } from './data/useProgress.js';
 import { toHostWorkout } from './data/workoutCompletion.js';
+import { attachNav, neighborId, orderedIds } from './navigation.js';
 export { SKILLS };
+
+const SKILL_ORDER = orderedIds(SKILLS);
 
 const CATEGORY_META = {
   push: { Icon: ArrowUp, label:'Drücken' },
@@ -47,6 +50,7 @@ function SkillRow({ skill, progress, onOpen, isLast }) {
   const done = progress[skill.id]?.mastered === true;
   return (
     <button
+      data-nav-row
       onClick={() => onOpen(skill.id)}
       className="w-full flex items-center justify-between gap-3 px-1 py-3 text-left transition-colors hover:opacity-80"
       style={{ borderBottom: isLast ? 'none' : '1px solid var(--line)' }}
@@ -656,7 +660,7 @@ function SkillLevelChart({ history }) {
   }
 
   return (
-    <div className="rounded-2xl p-4 mb-4" style={{ background: 'var(--bg2)', border: '1px solid var(--line)' }}>
+    <div data-no-swipe className="rounded-2xl p-4 mb-4" style={{ background: 'var(--bg2)', border: '1px solid var(--line)' }}>
       <div className="text-[10px] font-black uppercase tracking-[0.15em] mb-3" style={{ color: 'var(--dim)' }}>
         Progression über Zeit
       </div>
@@ -740,7 +744,7 @@ function VolumeChart({ sessions }) {
   const volumeUnit = sessions[0]?.exercises?.[0]?.type === 'hold' ? 's' : 'Wdh';
 
   return (
-    <div className="rounded-2xl p-4 mb-4" style={{ background: 'var(--bg2)', border: '1px solid var(--line)' }}>
+    <div data-no-swipe className="rounded-2xl p-4 mb-4" style={{ background: 'var(--bg2)', border: '1px solid var(--line)' }}>
       <div className="mb-3 flex items-center justify-between">
         <div className="text-[10px] font-black uppercase tracking-[0.15em]" style={{ color: 'var(--dim)' }}>
           Trainingsvolumen
@@ -784,7 +788,7 @@ function VolumeChart({ sessions }) {
   );
 }
 
-function SkillDetailScreen({ skill, stage, mastered, history, holds, sessions, onBack, onMaster, onDowngrade, onLogHold, onLogWorkout }) {
+function SkillDetailScreen({ skill, stage, mastered, history, holds, sessions, position, stepDir, onStep, onRunnerActive, onBack, onMaster, onDowngrade, onLogHold, onLogWorkout }) {
   const stageInfo = skill.progressions[stage];
   const next = skill.progressions[stage + 1];
   const isLast = stage >= skill.progressions.length - 1;
@@ -795,12 +799,39 @@ function SkillDetailScreen({ skill, stage, mastered, history, holds, sessions, o
     const saved = loadActiveRunner();
     return saved && saved.skillId === skill.id && saved.stage === stage ? saved : null;
   });
+  // Wischen/Pfeiltasten wechseln den Skill nicht, solange ein Workout läuft.
+  useEffect(() => { onRunnerActive(runnerActive); return () => onRunnerActive(false); }, [runnerActive]);
 
   return (
-    <div>
-      <button onClick={onBack} className="flex items-center gap-1 text-sm font-bold mb-5" style={{ color: 'var(--accent)' }}>
-        <ChevronLeft size={18} /> Skills
-      </button>
+    <div className={stepDir ? (stepDir > 0 ? 'skill-step-next' : 'skill-step-prev') : undefined}>
+      <div className="flex items-center justify-between mb-5">
+        <button onClick={onBack} className="flex items-center gap-1 text-sm font-bold" style={{ color: 'var(--accent)' }}>
+          <ChevronLeft size={18} /> Skills
+        </button>
+        <div className="flex items-center gap-1 text-[11px] font-bold tabular-nums" style={{ color: 'var(--dim)' }}>
+          <button
+            onClick={() => onStep(-1)}
+            disabled={runnerActive || position.index <= 0}
+            aria-label="Vorheriger Skill"
+            title="Vorheriger Skill (←)"
+            className="p-1.5 rounded-lg disabled:opacity-25"
+            style={{ color: 'var(--accent)' }}
+          >
+            <ChevronLeft size={18} />
+          </button>
+          {position.index + 1}/{position.total}
+          <button
+            onClick={() => onStep(1)}
+            disabled={runnerActive || position.index >= position.total - 1}
+            aria-label="Nächster Skill"
+            title="Nächster Skill (→)"
+            className="p-1.5 rounded-lg disabled:opacity-25"
+            style={{ color: 'var(--accent)' }}
+          >
+            <ChevronRight size={18} />
+          </button>
+        </div>
+      </div>
 
       <h3 className="text-xl font-black text-fit-ink mb-1">{skill.name}</h3>
       <div className="text-[11px] font-bold mb-5" style={{ color: 'var(--dim)' }}>
@@ -970,8 +1001,12 @@ export default function SkillsCard({ onWorkoutComplete } = {}) {
   const [bothSidesConfirmed, setBothSidesConfirmed] = useState(false);
   const [assistance, setAssistance] = useState('');
   const [addedLoadKg, setAddedLoadKg] = useState('');
+  const [stepDir, setStepDir] = useState(0);
+  const runnerActiveRef = useRef(false);
   useEffect(() => { setTechniqueConfirmed(false); setBothSidesConfirmed(false); setAssistance(''); setAddedLoadKg(''); },[owner]);
-  function setOpenSkillId(id) {
+  // dir ≠ 0: Wechsel per Wischen/Pfeil/Pager — Slide-Richtung merken und nach oben scrollen.
+  function setOpenSkillId(id, dir = 0) {
+    setStepDir(dir); if (dir) window.scrollTo(0, 0);
     setOpenSkillIdState(id); setSkillIdInHash(id);
     setTechniqueConfirmed(false); setBothSidesConfirmed(false);
     setAssistance(''); setAddedLoadKg('');
@@ -1017,6 +1052,20 @@ export default function SkillsCard({ onWorkoutComplete } = {}) {
 
   const openSkill = openSkillId ? SKILLS.find(s => s.id === openSkillId) : null;
 
+  // Der Listener wird einmal registriert und liest den aktuellen Stand über die Ref.
+  const nav = useRef();
+  nav.current = { id: openSkillId, open: setOpenSkillId, idle: ready && !busy };
+  useEffect(() => attachNav({
+    skills: SKILLS, root: document, rows: '[data-nav-row]',
+    current: () => nav.current.id,
+    go: (id, dir) => nav.current.open(id, dir),
+    enabled: () => nav.current.idle && !runnerActiveRef.current,
+  }), []);
+  const stepSkill = dir => {
+    const id = neighborId(SKILL_ORDER, openSkillId, dir);
+    if (id && !busy && !runnerActiveRef.current) setOpenSkillId(id, dir);
+  };
+
   // Lime-Akzent der Stoppuhr-Card gilt für den ganzen Skills-SubTab, gleiches
   // data-theme-Pattern wie SixPackPromiseCard.jsx.
   useEffect(() => {
@@ -1056,6 +1105,10 @@ export default function SkillsCard({ onWorkoutComplete } = {}) {
           history={progress[openSkill.id]?.history ?? []}
           holds={progress[openSkill.id]?.holds ?? []}
           sessions={progress[openSkill.id]?.sessions ?? []}
+          position={{ index: SKILL_ORDER.indexOf(openSkill.id), total: SKILL_ORDER.length }}
+          stepDir={stepDir}
+          onStep={stepSkill}
+          onRunnerActive={active => { runnerActiveRef.current = active; }}
           onBack={() => setOpenSkillId(null)}
           onMaster={() => master(openSkill.id, openSkill)}
           onDowngrade={() => downgrade(openSkill.id, openSkill)}

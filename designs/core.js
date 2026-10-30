@@ -3,6 +3,7 @@ import { SKILLS, buildWorkoutBlocks } from '../SkillsCard.jsx';
 import { videoForExercise } from '../ExerciseVideo.jsx';
 import { designProgress } from '../data/designProgress.js';
 import { progressStore } from '../data/store.js';
+import { attachNav } from '../navigation.js';
 const PREP_MS = 3000;
 // Der Design-Switcher blendet sich aus, solange ein Workout läuft.
 const announce = active => window.dispatchEvent(new CustomEvent('skills-runner', { detail: active }));
@@ -32,6 +33,12 @@ const Core = {
     const [path = ''] = location.hash.replace(/^#\/?/, '').split('?');
     history.replaceState(null, '', `#${path}${id ? `?skill=${id}` : ''}`);
   },
+
+  // Wischen + Tastatur (siehe navigation.js); `enabled` sperrt sie während eines Workouts.
+  nav: (root, route, enabled) => attachNav({
+    skills: SKILLS, root, rows: '[data-open]', current: Core.hash, enabled,
+    go: id => { Core.setHash(id); route(); if (id) scrollTo(0, 0); },
+  }),
 
   master: skill => designProgress.master(skill),
   downgrade: skill => designProgress.downgrade(skill),

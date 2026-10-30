@@ -185,16 +185,17 @@ function mount(host) {
     if (!c) return;
     const b = c.getBoundingClientRect(); c.style.setProperty('--mx', (e.clientX - b.left) + 'px'); c.style.setProperty('--my', (e.clientY - b.top) + 'px');
   };
-  const onKey = e => { if (e.key === 'Escape') closeRun(); };
+  const onKey = e => { if (e.key === 'Escape' && runner) { e.preventDefault(); closeRun(); } };
   const onQuality = e => Core.qualityInput(runner,e.target);
   sr.addEventListener('input',onQuality);
   const stopProgress = Core.subscribe(() => { if (!runner) route(); });
   sr.addEventListener('click', onClick); sr.addEventListener('pointermove', onPointer);
   addEventListener('keydown', onKey);
+  const stopNav = Core.nav(sr, route, () => !runner && !saving);
   route();
 
   return () => {
-    stopProgress(); sr.removeEventListener('input',onQuality); closeRun(); cancelAnimationFrame(raf);
+    stopNav(); stopProgress(); sr.removeEventListener('input',onQuality); closeRun(); cancelAnimationFrame(raf);
     removeEventListener('resize', size); removeEventListener('pointermove', onMove); removeEventListener('scroll', onScroll); removeEventListener('keydown', onKey);
   };
 }

@@ -117,3 +117,13 @@ Alle drei Vanilla-Designs senden nach erfolgreicher Skills-Persistierung das
 Event `skills:workout-completed`. Der Payload entspricht dem optionalen
 `onWorkoutComplete(workout)`-Callback der React-Karte; VitalOS kann dadurch auch
 bei den alternativen Designs das Workout ins Fitness-Tageslog übernehmen.
+
+## 2026-10-30 — Swipe- und Tastaturnavigation
+
+Neues gemeinsames Modul `navigation.js` für die Original-Karte und alle drei Designs.
+
+- **Detailansicht:** Wischen nach links/rechts oder `→`/`←` wechselt zum nächsten/vorherigen Skill (Reihenfolge wie in der Liste, nach Kategorie gruppiert, kein Umbruch an den Enden). `Esc` führt zurück zur Liste.
+- **Liste:** `↑ ↓ ← →` bewegen den Fokus über die Zeilen, `Enter` öffnet.
+- **Original-Karte:** zusätzlich Pager (`‹ 3/14 ›`) neben „Skills“ und kurze Slide-Animation beim Wechsel.
+- **Schutz:** Navigation ist gesperrt, solange ein Workout läuft oder gespeichert wird. Wischen ignoriert Eingabefelder, Slider, Video, Diagramme (`data-no-swipe`), horizontal scrollende Bereiche, vorwiegend vertikale oder langsame Gesten, Starts am Bildschirmrand (System-Zurück-Geste) und gezoomte Seiten. Tasten mit Strg/Alt/Meta/Shift und Tasten in Eingabefeldern oder im Design-Menü werden ignoriert.
+- Tests: `tests/navigation.test.mjs` (reine Logik), `test:designs` (Tasten/Wischen/Runner-Sperre je Design). `test:designs` und das Gerüst von `test-exercise-videos.mjs` wurden an `workoutCompletion.js` bzw. die neuen Props angepasst.
