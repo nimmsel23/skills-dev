@@ -25,3 +25,7 @@ Thumbs.db
 
 # Isolated development checkouts
 .worktrees/
+
+# Lokale Backups
+*.bak
+*.bak.*
