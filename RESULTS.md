@@ -76,3 +76,7 @@ in ein inzwischen anderes Konto schreiben.
 - Hosting-CI: https://github.com/nimmsel23/vitalos/actions/runs/39962182296
 - Rules/Katalog: https://github.com/nimmsel23/vitalos/actions/runs/39962251260
 - Echte Nutzeranmeldung und Zweigeräte-Sync wurden nicht im Browser abgenommen.
+
+## 2026-10-31 — Dependabot
+
+Enabled Dependabot alerts and security updates. Configured weekly GitHub Actions and npm/pnpm updates; version updates target `dev`. Minor/patch updates are grouped; vendored mini-app-shell copies stay maintained at their source. Validated YAML, repository manifest paths and update targets.
