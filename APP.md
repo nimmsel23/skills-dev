@@ -185,3 +185,10 @@ Hintergrund am Container; Route läuft über `route` / `onRouteChange`. Abschlü
 tragen `runId` (= `sessionId`). Designs rufen `onWorkoutComplete`, wenn die Shell
 ihn übergibt, und senden dann kein zusätzliches `skills:workout-completed`.
 Vertrag: `README.md`. Tests: `tests/embed.test.mjs`.
+
+## 2026-11-12 — Ruhiges Classic
+
+Die Karte (`design` leer oder `classic`) ist die leise Standardoberfläche:
+neutrale Flächen, ein Akzent, gleiche Abstände, große Tippflächen. Hell und
+dunkel folgen `prefers-color-scheme`. In der Shell erbt die Karte das
+umgebende Theme, ohne `documentElement` anzufassen. Designs A/B/C bleiben.

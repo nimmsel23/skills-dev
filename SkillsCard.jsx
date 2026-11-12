@@ -52,24 +52,17 @@ function SkillRow({ skill, progress, onOpen, isLast }) {
   const stage = progress[skill.id]?.stage ?? 0;
   const done = progress[skill.id]?.mastered === true;
   return (
-    <button
-      data-nav-row
-      onClick={() => onOpen(skill.id)}
-      className="w-full flex items-center justify-between gap-3 px-1 py-3 text-left transition-colors hover:opacity-80"
-      style={{ borderBottom: isLast ? 'none' : '1px solid var(--line)' }}
-    >
-      <div className="min-w-0">
-        <div className="flex items-center gap-1.5">
-          <span className="text-sm font-bold text-fit-ink truncate">{skill.name}</span>
-        </div>
-        <div className="text-[11px] mt-0.5 truncate" style={{ color: 'var(--dim)' }}>
+    <button data-nav-row onClick={() => onOpen(skill.id)} className="skills-row" style={isLast ? { borderBottom: 'none' } : undefined}>
+      <span className="min-w-0">
+        <span className="skills-row-name">{skill.name}</span>
+        <span className="skills-row-meta">
           {done ? 'Gemeistert' : `Stufe ${stage + 1}/${skill.progressions.length} · ${skill.progressions[stage].name}`}
-        </div>
-      </div>
-      <div className="flex items-center gap-2 shrink-0">
-        {done && <Trophy size={13} style={{ color: 'var(--accent)' }} />}
-        <ChevronRight size={15} style={{ color: 'var(--dim)', opacity: 0.5 }} />
-      </div>
+        </span>
+      </span>
+      <span className="skills-row-side">
+        {done && <Trophy size={15} style={{ color: 'var(--accent)' }} />}
+        <ChevronRight size={16} style={{ color: 'var(--dim)' }} />
+      </span>
     </button>
   );
 }
@@ -77,11 +70,9 @@ function SkillRow({ skill, progress, onOpen, isLast }) {
 function CategoryGroup({ category, skills, progress, onOpen }) {
   const meta = CATEGORY_META[category];
   return (
-    <div className="mb-4">
-      <div className="mb-1 px-1">
-        <span className="flex items-center gap-2 text-xs"><meta.Icon size={11} style={{ color: 'var(--dim)', opacity: 0.5 }} /> {meta.label}</span>
-      </div>
-      <div className="rounded-2xl px-3" style={{ background: 'var(--bg2)' }}>
+    <div className="skills-group">
+      <div className="skills-group-label"><meta.Icon size={14} /> {meta.label}</div>
+      <div className="skills-list">
         {skills.map((skill, i) => (
           <SkillRow key={skill.id} skill={skill} progress={progress} onOpen={onOpen} isLast={i === skills.length - 1} />
         ))}
@@ -153,46 +144,29 @@ function SkillHoldTimer({ stageName, holdsForStage, onLog }) {
   const bestMs = holdsForStage.length ? Math.max(...holdsForStage.map(h => h.duration)) : null;
 
   return (
-    <div className="rounded-2xl p-4 mb-4" style={{ background: 'var(--bg2)', border: '1px solid var(--line)' }}>
-      <div className="text-[10px] font-black uppercase tracking-[0.15em] mb-2" style={{ color: 'var(--dim)' }}>
-        Hold-Timer · {stageName}
-      </div>
-      <div className="flex items-center justify-between gap-3 mb-3">
-        <div className="text-3xl font-black tabular-nums text-fit-ink">{formatHoldTime(elapsedMs)}</div>
-        <div className="flex items-center gap-2">
-          <button
-            onClick={toggle}
-            className="w-10 h-10 rounded-xl flex items-center justify-center"
-            style={{ background: 'var(--accent)', color: '#000' }}
-          >
-            {running ? <Pause size={15} strokeWidth={3} /> : <Play size={15} strokeWidth={3} />}
+    <div className="skills-hold">
+      <div className="skills-kicker">Hold-Timer · {stageName}</div>
+      <div className="skills-hold-top">
+        <div className="skills-hold-time">{formatHoldTime(elapsedMs)}</div>
+        <div className="skills-hold-actions">
+          <button onClick={toggle} className="skills-icon-btn" aria-label={running ? 'Pause' : 'Start'}>
+            {running ? <Pause size={16} /> : <Play size={16} />}
           </button>
-          <button
-            onClick={logHold}
-            disabled={elapsedMs <= 0}
-            className="w-10 h-10 rounded-xl flex items-center justify-center disabled:opacity-30"
-            style={{ background: 'var(--card)', border: '1px solid var(--line)', color: 'var(--ink)' }}
-          >
-            <Flag size={14} strokeWidth={2.7} />
+          <button onClick={logHold} disabled={elapsedMs <= 0} className="skills-icon-btn is-quiet" aria-label="Hold speichern">
+            <Flag size={15} />
           </button>
         </div>
       </div>
-
       {holdsForStage.length > 0 && (
-        <div className="flex flex-col gap-1">
+        <div>
           {holdsForStage.slice().reverse().slice(0, 5).map((h, i) => {
             const isBest = h.duration === bestMs;
             return (
-              <div key={h.at} className="flex items-center justify-between px-2.5 py-1.5 rounded-lg" style={{ background: isBest ? 'var(--accent-glow, rgba(200,255,0,0.1))' : 'var(--card)' }}>
-                <div className="flex items-center gap-1.5">
-                  {isBest && <Trophy size={11} style={{ color: 'var(--accent)' }} />}
-                  <span className="text-[10px] font-bold" style={{ color: 'var(--dim)' }}>
-                    Versuch {holdsForStage.length - i}
-                  </span>
-                </div>
-                <span className="text-xs font-black tabular-nums" style={{ color: isBest ? 'var(--accent)' : 'var(--ink)' }}>
-                  {formatHoldTime(h.duration)}
+              <div key={h.at} className={isBest ? 'skills-hold-log is-best' : 'skills-hold-log'}>
+                <span>
+                  {isBest && <Trophy size={12} style={{ color: 'var(--accent)' }} />} Versuch {holdsForStage.length - i}
                 </span>
+                <span>{formatHoldTime(h.duration)}</span>
               </div>
             );
           })}
@@ -246,69 +220,52 @@ function WorkoutRunner({ skill, stage, resumeState, onFinish, onExit }) {
     return onFinish(runner.sessionData());
   }
 
-  const phaseColor = phase === 'rest' ? '#38bdf8' : 'var(--accent)';
   const nextPreviewLabel = (() => {
     if (phase !== 'rest') return null;
     if (setIndex + 1 < block.sets) return `Satz ${setIndex + 2}/${block.sets} ${block.name}`;
     if (nextBlock) return `${nextBlock.role}: ${nextBlock.name}`;
     return 'Letzter Satz — danach fertig';
   })();
-  const bigStyle = { color: view.reached ? 'var(--accent)' : undefined };
-
   return (
-    <div
-      className="rounded-2xl px-5 py-8 mb-4 text-center transition-colors duration-500"
-      style={{ background: phase === 'rest' ? 'rgba(56,189,248,0.1)' : 'var(--accent-glow, rgba(0,0,0,0.05))', border: `1px solid ${phase === 'rest' ? 'rgba(56,189,248,0.35)' : 'var(--line)'}` }}
-    >
-      {runner.persistenceError && <p role="alert">Nicht gesichert: {runner.persistenceError}</p>}
-      {runner.paused && phase !== 'done' && <p role="status" className="text-xs mb-2">{runner.interruption || 'Pausiert'} · Weiter zum Fortsetzen</p>}
+    <div className="skills-runner">
+      {runner.persistenceError && <p className="skills-alert" role="alert">Nicht gesichert: {runner.persistenceError}</p>}
+      {runner.paused && phase !== 'done' && <p role="status" className="skills-hint">{runner.interruption || 'Pausiert'} · Weiter zum Fortsetzen</p>}
       {phase !== 'done' && (
         <>
-          <div className="text-[10px] font-black uppercase tracking-[0.2em] mb-1" style={{ color: 'var(--dim)' }}>
-            {view.blockLabel} · {block.role}
-          </div>
-          <div className="text-[10px] font-black uppercase tracking-[0.2em] mb-1" style={{ color: phaseColor }}>
-            {view.phaseLabel} · {view.setLabel}
-          </div>
-          <div className="text-lg font-black text-fit-ink mb-3">{block.name}</div>
+          <div className="skills-phase">{view.blockLabel} · {block.role}</div>
+          <div className="skills-phase skills-phase-accent">{view.phaseLabel} · {view.setLabel}</div>
+          <div className="skills-exercise">{block.name}</div>
           {phase !== 'rest' && <ExerciseVideo key={block.name} name={block.name} autoPlay />}
 
           {phase === 'prep' && (
             <>
-              <p className="text-xs mb-4" style={{ color: 'var(--dim)' }}>{view.hint}</p>
-              <button onClick={skipRest} className="w-full min-h-12 rounded-2xl flex items-center justify-center gap-2 text-sm font-black uppercase tracking-[0.16em]" style={{ background: 'var(--accent)', color: '#fff' }}>
-                <Play size={16} strokeWidth={3} /> Start
-              </button>
+              <p className="skills-hint">{view.hint}</p>
+              <button onClick={skipRest} className="skills-btn"><Play size={16} /> Start</button>
             </>
           )}
 
           {phase === 'work' && (
             <>
-              {/* Holds: Stoppuhr zählt hoch. Wiederholungen: Zielwert, echte Zahl folgt per Slider. */}
-              <div className="text-5xl font-black tabular-nums text-fit-ink" style={bigStyle}>
+              <div className={view.reached ? 'skills-timer is-met' : 'skills-timer'}>
                 {view.hold ? `${view.value}s` : `${view.value}×`}
               </div>
-              <div className="text-[11px] font-bold mt-1 mb-1" style={{ color: 'var(--dim)' }}>
+              <div className="skills-hint">
                 {view.hold ? 'Mindestziel' : 'Ziel'} {view.target} {view.hold ? 's' : 'Wdh'}{!view.hold && ` · Laufzeit ${formatHoldTime(runner.workMs)}`}
               </div>
-              <p className="text-xs mb-4" style={{ color: view.reached ? 'var(--accent)' : 'var(--dim)' }}>{view.hint}</p>
-              <button
-                onClick={() => runner.finishSet()}
-                className="w-full min-h-12 rounded-2xl flex items-center justify-center gap-2 text-sm font-black uppercase tracking-[0.16em]"
-                style={{ background: 'var(--accent)', color: '#fff' }}
-              >
-                <Check size={16} strokeWidth={3} /> {view.primaryButton}
+              <p className="skills-hint" style={{ color: view.reached ? 'var(--accent)' : undefined }}>{view.hint}</p>
+              <button onClick={() => runner.finishSet()} className="skills-btn">
+                <Check size={16} /> {view.primaryButton}
               </button>
             </>
           )}
 
           {phase === 'rest' && (
             <>
-              <div className="text-5xl font-black tabular-nums text-fit-ink mb-1" style={{ color: view.restReached ? 'var(--accent)' : undefined }}>{view.elapsed}s</div>
-              <div className="text-[11px] font-bold mb-3" style={{ color: 'var(--dim)' }}>Pause · empfohlen {view.restTarget}s</div>
+              <div className={view.restReached ? 'skills-timer is-met' : 'skills-timer'}>{view.elapsed}s</div>
+              <div className="skills-hint">Pause · empfohlen {view.restTarget}s</div>
               {view.slider && (
-                <label className="block text-left mb-4">
-                  <span className="block text-xs font-bold text-fit-ink mb-2">
+                <label className="skills-slider">
+                  <span>
                     Letzter Satz: {view.slider.value} {view.unit}{view.slider.reachedTarget ? ' · Ziel erreicht' : ` · Ziel ${view.target} ${view.unit}`}
                   </span>
                   <input
@@ -318,21 +275,14 @@ function WorkoutRunner({ skill, stage, resumeState, onFinish, onExit }) {
                     step={view.slider.step}
                     value={view.slider.value}
                     onChange={event => correctLastSet(event.target.value)}
-                    className="skills-reps-slider w-full"
+                    className="skills-reps-slider"
+                    style={{ width: '100%' }}
                     aria-label="Ergebnis des letzten Satzes anpassen"
                   />
                 </label>
               )}
-              {nextPreviewLabel && (
-                <div className="text-[11px] font-bold mb-4" style={{ color: 'var(--dim)' }}>Als Nächstes: {nextPreviewLabel}</div>
-              )}
-              <button
-                onClick={skipRest}
-                className="w-full min-h-12 rounded-2xl flex items-center justify-center gap-2 text-sm font-black uppercase tracking-[0.16em]"
-                style={{ background: 'var(--accent)', color: '#fff' }}
-              >
-                {view.primaryButton}
-              </button>
+              {nextPreviewLabel && <div className="skills-hint">Als Nächstes: {nextPreviewLabel}</div>}
+              <button onClick={skipRest} className="skills-btn">{view.primaryButton}</button>
             </>
           )}
         </>
@@ -354,16 +304,12 @@ function WorkoutRunner({ skill, stage, resumeState, onFinish, onExit }) {
       )}
 
       {phase !== 'done' && (
-        <div className="flex items-center justify-center gap-4 mt-4">
-          <button onClick={handleExit} className="text-[11px] font-bold" style={{ color: 'var(--dim)' }}>
-            Später fortsetzen
-          </button>
-          <button className="min-h-12 px-3" onClick={() => runner.pause()}>{runner.paused ? 'Weiter' : 'Pause'}</button>
-          <button className="min-h-12 px-3" onClick={() => runner.endEarly()}>Training beenden</button>
+        <div className="skills-runner-actions">
+          <button onClick={handleExit} className="skills-btn-quiet">Später fortsetzen</button>
+          <button className="skills-btn-quiet" onClick={() => runner.pause()}>{runner.paused ? 'Weiter' : 'Pause'}</button>
+          <button className="skills-btn-quiet" onClick={() => runner.endEarly()}>Training beenden</button>
           {blockIndex >= 0 && (
-            <button onClick={skipBlock} className="text-[11px] font-bold" style={{ color: 'var(--dim)' }}>
-              {block.role} überspringen →
-            </button>
+            <button onClick={skipBlock} className="skills-btn-quiet">{block.role} überspringen →</button>
           )}
         </div>
       )}
@@ -376,66 +322,42 @@ function SessionSummary({ blocks, log, startedAt, durationSeconds, partial, rpe,
   const sumType = type => blocks.reduce((sum, b, i) => sum + (b.type === type ? log[i].reduce((s, v) => s + v, 0) : 0), 0);
 
   return (
-    <div className="text-left">
-      <div className="text-center mb-4">
-        <Trophy size={28} style={{ color: 'var(--accent)' }} className="mx-auto mb-2" />
-        <div className="text-lg font-black text-fit-ink">{partial ? 'Teiltraining abgeschlossen' : 'Training abgeschlossen'}</div>
-        <div className="text-[11px] font-bold mt-1" style={{ color: 'var(--dim)' }}>
+    <div className="skills-summary">
+      <div className="skills-summary-head">
+        <Trophy size={26} style={{ color: 'var(--accent)' }} />
+        <div className="skills-exercise">{partial ? 'Teiltraining abgeschlossen' : 'Training abgeschlossen'}</div>
+        <div className="skills-hint">
           Gesamtzeit {formatSeconds(totalSeconds)} · {sumType('hold')} Sek. Haltearbeit · {sumType('reps')} Wiederholungen
         </div>
-        {metTarget && (
-          <div className="text-[11px] font-black mt-2 px-3 py-1.5 rounded-lg inline-block" style={{ background: 'var(--accent-glow, rgba(200,255,0,0.12))', color: 'var(--accent)' }}>
-            ✓ Zielwerte erreicht
-          </div>
-        )}
+        {metTarget && <div className="skills-chip">Zielwerte erreicht</div>}
         {exp && (
-          <div className="text-[11px] font-black mt-2" style={{ color: 'var(--accent)' }}>
+          <div className="skills-hint" style={{ color: 'var(--accent)' }}>
             +{exp.session} % EXP · Stand {exp.after} %{exp.after >= 100 ? ' — nächste Stufe wird freigeschaltet' : ''}
           </div>
         )}
       </div>
-
-      <div className="flex flex-col gap-2 mb-4">
+      <div>
         {blocks.map((b, i) => (
-          <div key={i} className="px-3 py-2.5 rounded-xl" style={{ background: 'var(--bg2)' }}>
-            <div className="text-[10px] font-black uppercase tracking-[0.1em] mb-0.5" style={{ color: 'var(--dim)' }}>{b.role}</div>
-            <div className="flex items-center justify-between">
-              <span className="text-sm font-bold text-fit-ink">{b.name}</span>
-              <span className="text-xs font-mono" style={{ color: 'var(--dim)' }}>
-                {log[i].join(' | ')}{b.type === 'hold' ? 's' : ''}
-              </span>
+          <div key={i} className="skills-block">
+            <div className="skills-block-role">{b.role}</div>
+            <div className="skills-block-row">
+              <span>{b.name}</span>
+              <span className="skills-mono">{log[i].join(' | ')}{b.type === 'hold' ? 's' : ''}</span>
             </div>
           </div>
         ))}
       </div>
-
-      <div className="mb-4">
-        <div className="text-[10px] font-black uppercase tracking-[0.15em] mb-2 text-center" style={{ color: 'var(--dim)' }}>Wie hart war's?</div>
-        <div className="flex items-center justify-center gap-2">
+      <div className="skills-section">
+        <div className="skills-section-label" style={{ textAlign: 'center' }}>Wie hart war's?</div>
+        <div className="skills-rpe">
           {RPE_OPTIONS.map(opt => (
-            <button
-              key={opt.id}
-              onClick={() => onSetRpe(opt.id)}
-              className="px-4 py-2 rounded-xl text-xs font-black uppercase tracking-[0.1em]"
-              style={{
-                background: rpe === opt.id ? 'var(--accent)' : 'var(--bg2)',
-                color: rpe === opt.id ? '#fff' : 'var(--ink)',
-                border: rpe === opt.id ? 'none' : '1px solid var(--line)',
-              }}
-            >
+            <button key={opt.id} onClick={() => onSetRpe(opt.id)} className={rpe === opt.id ? 'is-on' : undefined}>
               {opt.label}
             </button>
           ))}
         </div>
       </div>
-
-      <button
-        onClick={onSave}
-        className="w-full min-h-12 rounded-2xl flex items-center justify-center gap-2 text-sm font-black uppercase tracking-[0.16em]"
-        style={{ background: 'var(--accent)', color: '#fff' }}
-      >
-        <Check size={16} strokeWidth={3} /> Workout speichern
-      </button>
+      <button onClick={onSave} className="skills-btn"><Check size={16} /> Workout speichern</button>
     </div>
   );
 }
@@ -449,47 +371,38 @@ function WorkoutArchive({ sessions }) {
   const sorted = sessions.slice().reverse();
 
   return (
-    <div className="mb-6">
-      <div className="text-[10px] font-black uppercase tracking-[0.15em] mb-2" style={{ color: 'var(--dim)' }}>
-        Archiv · {sessions.length} Workout{sessions.length === 1 ? '' : 's'}
-      </div>
-      <div className="flex flex-col gap-1.5">
-        {sorted.map((s, i) => {
-          const isOpen = openId === i;
-          const volume = type => (s.exercises || []).filter(ex => ex.type === type).reduce((sum, ex) => sum + (ex.setsCompleted || []).reduce((a, b) => a + b, 0), 0);
-          return (
-            <div key={s.timestamp || i} className="rounded-lg overflow-hidden" style={{ background: 'var(--bg2)' }}>
-              <button
-                onClick={() => setOpenId(isOpen ? null : i)}
-                className="w-full flex items-center justify-between px-3 py-2.5 text-left"
-              >
-                <div>
-                  <div className="text-sm font-bold text-fit-ink">{formatMasteredAt(s.timestamp || s.at)}</div>
-                  <div className="text-[10px] font-bold" style={{ color: 'var(--dim)' }}>
-                    {formatSeconds(s.totalDurationSeconds || 0)} · {volume('hold')} s · {volume('reps')} Wdh {s.rpe ? `· ${RPE_OPTIONS.find(o => o.id === s.rpe)?.label ?? s.rpe}` : ''}
+    <div className="skills-section">
+      <div className="skills-section-label">Archiv · {sessions.length} Workout{sessions.length === 1 ? '' : 's'}</div>
+      {sorted.map((s, i) => {
+        const isOpen = openId === i;
+        const volume = type => (s.exercises || []).filter(ex => ex.type === type).reduce((sum, ex) => sum + (ex.setsCompleted || []).reduce((a, b) => a + b, 0), 0);
+        return (
+          <div key={s.timestamp || i} className="skills-archive-item">
+            <button onClick={() => setOpenId(isOpen ? null : i)} className="skills-block-row">
+              <span>
+                <span className="skills-row-name">{formatMasteredAt(s.timestamp || s.at)}</span>
+                <span className="skills-row-meta">
+                  {formatSeconds(s.totalDurationSeconds || 0)} · {volume('hold')} s · {volume('reps')} Wdh {s.rpe ? `· ${RPE_OPTIONS.find(o => o.id === s.rpe)?.label ?? s.rpe}` : ''}
+                </span>
+              </span>
+              <ChevronRight size={16} style={{ color: 'var(--dim)', transform: isOpen ? 'rotate(90deg)' : 'none', transition: 'transform 160ms ease' }} />
+            </button>
+            {isOpen && (
+              <div style={{ padding: '0 12px 12px' }}>
+                {(s.exercises || []).map((ex, j) => (
+                  <div key={j} className="skills-hold-log">
+                    <span>
+                      <span className="skills-block-role">{ex.role}</span>
+                      <span className="skills-row-name">{ex.name}</span>
+                    </span>
+                    <span className="skills-mono">{(ex.setsCompleted || []).join(' | ')}{ex.type === 'hold' ? 's' : ''}</span>
                   </div>
-                </div>
-                <ChevronRight size={14} style={{ color: 'var(--dim)', transform: isOpen ? 'rotate(90deg)' : 'none', transition: 'transform 0.15s' }} />
-              </button>
-              {isOpen && (
-                <div className="px-3 pb-3 flex flex-col gap-1.5">
-                  {(s.exercises || []).map((ex, j) => (
-                    <div key={j} className="flex items-center justify-between px-2.5 py-1.5 rounded-lg" style={{ background: 'var(--card, var(--bg))' }}>
-                      <div>
-                        <div className="text-[10px] font-black uppercase tracking-[0.08em]" style={{ color: 'var(--dim)' }}>{ex.role}</div>
-                        <span className="text-xs font-bold text-fit-ink">{ex.name}</span>
-                      </div>
-                      <span className="text-[11px] font-mono" style={{ color: 'var(--dim)' }}>
-                        {(ex.setsCompleted || []).join(' | ')}{ex.type === 'hold' ? 's' : ''}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          );
-        })}
-      </div>
+                ))}
+              </div>
+            )}
+          </div>
+        );
+      })}
     </div>
   );
 }
@@ -514,10 +427,8 @@ function SkillLevelChart({ history }) {
   }
 
   return (
-    <div data-no-swipe className="rounded-2xl p-4 mb-4" style={{ background: 'var(--bg2)', border: '1px solid var(--line)' }}>
-      <div className="text-[10px] font-black uppercase tracking-[0.15em] mb-3" style={{ color: 'var(--dim)' }}>
-        Progression über Zeit
-      </div>
+    <div data-no-swipe className="skills-chart">
+      <div className="skills-section-label">Progression über Zeit</div>
       <ResponsiveContainer width="100%" height={220}>
         <LineChart data={data} margin={{ top: 5, right: 15, left: -20, bottom: 5 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="var(--line)" />
@@ -536,7 +447,7 @@ function SkillLevelChart({ history }) {
             strokeWidth={2}
             dot={{ fill: 'var(--accent)', r: 4 }}
             activeDot={{ r: 6 }}
-            isAnimationActive={true}
+            isAnimationActive={false}
           />
         </LineChart>
       </ResponsiveContainer>
@@ -584,13 +495,9 @@ function VolumeChart({ sessions }) {
 
   if (chartData.length < 2) {
     return (
-      <div className="rounded-2xl p-4 mb-4" style={{ background: 'var(--bg2)', border: '1px solid var(--line)' }}>
-        <div className="text-[10px] font-black uppercase tracking-[0.15em] mb-3" style={{ color: 'var(--dim)' }}>
-          Trainingsvolumen
-        </div>
-        <div className="text-xs" style={{ color: 'var(--dim)' }}>
-          Für {selectedExercise}: Noch nicht genug Trainingsdaten vorhanden.
-        </div>
+      <div className="skills-chart">
+        <div className="skills-section-label">Trainingsvolumen</div>
+        <div className="skills-hint">Für {selectedExercise}: Noch nicht genug Trainingsdaten vorhanden.</div>
       </div>
     );
   }
@@ -598,18 +505,12 @@ function VolumeChart({ sessions }) {
   const volumeUnit = sessions[0]?.exercises?.[0]?.type === 'hold' ? 's' : 'Wdh';
 
   return (
-    <div data-no-swipe className="rounded-2xl p-4 mb-4" style={{ background: 'var(--bg2)', border: '1px solid var(--line)' }}>
-      <div className="mb-3 flex items-center justify-between">
-        <div className="text-[10px] font-black uppercase tracking-[0.15em]" style={{ color: 'var(--dim)' }}>
-          Trainingsvolumen
-        </div>
-      </div>
-
+    <div data-no-swipe className="skills-chart">
+      <div className="skills-section-label">Trainingsvolumen</div>
       <select
         value={selectedExercise}
         onChange={(e) => setSelectedExercise(e.target.value)}
-        className="w-full mb-3 px-3 py-2 rounded-lg text-xs font-bold"
-        style={{ background: 'var(--bg)', border: '1px solid var(--line)', color: 'var(--ink)' }}
+        className="skills-select"
       >
         {exerciseList.map(name => (
           <option key={name} value={name}>{name}</option>
@@ -634,7 +535,7 @@ function VolumeChart({ sessions }) {
             strokeWidth={2}
             dot={{ fill: 'var(--accent)', r: 4 }}
             activeDot={{ r: 6 }}
-            isAnimationActive={true}
+            isAnimationActive={false}
           />
         </LineChart>
       </ResponsiveContainer>
@@ -661,37 +562,20 @@ function SkillDetailScreen({ skill, stage: frontier, mastered, exp, history, hol
 
   return (
     <div className={stepDir ? (stepDir > 0 ? 'skill-step-next' : 'skill-step-prev') : undefined}>
-      <div className="flex items-center justify-between mb-5">
-        <button onClick={onBack} className="flex items-center gap-1 text-sm font-bold" style={{ color: 'var(--accent)' }}>
-          <ChevronLeft size={18} /> Skills
-        </button>
-        <div className="flex items-center gap-1 text-[11px] font-bold tabular-nums" style={{ color: 'var(--dim)' }}>
-          <button
-            onClick={() => onStep(-1)}
-            disabled={runnerActive || position.index <= 0}
-            aria-label="Vorheriger Skill"
-            title="Vorheriger Skill (←)"
-            className="p-1.5 rounded-lg disabled:opacity-25"
-            style={{ color: 'var(--accent)' }}
-          >
+      <div className="skills-detail-bar">
+        <button onClick={onBack} className="skills-back"><ChevronLeft size={18} /> Skills</button>
+        <div className="skills-pager">
+          <button onClick={() => onStep(-1)} disabled={runnerActive || position.index <= 0} aria-label="Vorheriger Skill" title="Vorheriger Skill (←)" className="skills-icon-btn">
             <ChevronLeft size={18} />
           </button>
           {position.index + 1}/{position.total}
-          <button
-            onClick={() => onStep(1)}
-            disabled={runnerActive || position.index >= position.total - 1}
-            aria-label="Nächster Skill"
-            title="Nächster Skill (→)"
-            className="p-1.5 rounded-lg disabled:opacity-25"
-            style={{ color: 'var(--accent)' }}
-          >
+          <button onClick={() => onStep(1)} disabled={runnerActive || position.index >= position.total - 1} aria-label="Nächster Skill" title="Nächster Skill (→)" className="skills-icon-btn">
             <ChevronRight size={18} />
           </button>
         </div>
       </div>
-
-      <h3 className="text-xl font-black text-fit-ink mb-1">{skill.name}</h3>
-      <div className="text-[11px] font-bold mb-5" style={{ color: 'var(--dim)' }}>
+      <h3 className="skills-skill-name">{skill.name}</h3>
+      <div className="skills-skill-meta">
         Stufe {stage + 1} von {skill.progressions.length}{stage < frontier ? ' · bereits freigeschaltet' : ''}
       </div>
 
@@ -711,50 +595,31 @@ function SkillDetailScreen({ skill, stage: frontier, mastered, exp, history, hol
       ) : (
         <>
           {resumeState && (
-            <div
-              className="rounded-2xl px-5 py-4 mb-4"
-              style={{ background: 'rgba(56,189,248,0.1)', border: '1px solid rgba(56,189,248,0.35)' }}
-            >
-              <div className="text-[10px] font-black uppercase tracking-[0.2em] mb-1" style={{ color: '#38bdf8' }}>Unterbrochenes Workout gefunden</div>
-              <div className="text-xs font-bold mb-3" style={{ color: 'var(--dim)' }}>
+            <div className="skills-resume">
+              <div className="skills-kicker">Unterbrochenes Workout gefunden</div>
+              <div className="skills-hint">
                 Übung {resumeState.blockIndex + 1}, Satz {resumeState.setIndex + 1} — bisherige Sätze bleiben erhalten.
               </div>
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={() => setRunnerActive(true)}
-                  className="flex-1 min-h-11 rounded-xl flex items-center justify-center gap-2 text-xs font-black uppercase tracking-[0.12em]"
-                  style={{ background: '#38bdf8', color: '#000' }}
-                >
-                  <Play size={14} strokeWidth={3} /> Fortsetzen
-                </button>
-                <button
-                  onClick={() => { clearActiveRunner(); setResumeState(null); }}
-                  className="px-4 min-h-11 rounded-xl text-xs font-black uppercase tracking-[0.12em]"
-                  style={{ background: 'var(--bg2)', border: '1px solid var(--line)', color: 'var(--ink)' }}
-                >
-                  Verwerfen
-                </button>
+              <div className="skills-resume-actions">
+                <button onClick={() => setRunnerActive(true)} className="skills-btn"><Play size={16} /> Fortsetzen</button>
+                <button onClick={() => { clearActiveRunner(); setResumeState(null); }} className="skills-btn-secondary">Verwerfen</button>
               </div>
             </div>
           )}
-          <div
-            className="rounded-2xl px-5 py-6 mb-4 text-center"
-            style={{ background: 'var(--accent-glow, rgba(0,0,0,0.05))', border: '1px solid var(--line)' }}
-          >
-            <div className="text-[10px] font-black uppercase tracking-[0.2em]" style={{ color: 'var(--accent)' }}>Jetzt</div>
-            <div className="text-2xl font-black text-fit-ink mt-2">{stageInfo.name}</div>
-            <div className="text-[11px] font-bold mt-1" style={{ color: 'var(--dim)' }}>{formatTarget(stageInfo)}</div>
-            <p className="text-xs mt-2" style={{color:'var(--dim)'}}>{stageInfo.technique.join(' ')} · Pause {stageInfo.restSeconds}s</p>
+          <div className="skills-now">
+            <div className="skills-now-kicker">Jetzt</div>
+            <div className="skills-now-title">{stageInfo.name}</div>
+            <div className="skills-hint">{formatTarget(stageInfo)}</div>
+            <p className="skills-hint">{stageInfo.technique.join(' ')} · Pause {stageInfo.restSeconds}s</p>
             <ExerciseVideo key={stageInfo.name} name={stageInfo.name} />
             <button
               onClick={() => {
                 if (resumeState) { clearActiveRunner(); setResumeState(null); }
                 setRunnerActive(true);
               }}
-              className="w-full mt-4 min-h-12 rounded-2xl flex items-center justify-center gap-2 text-sm font-black uppercase tracking-[0.16em]"
-              style={{ background: 'var(--accent)', color: '#fff' }}
+              className="skills-btn"
             >
-              <Play size={16} strokeWidth={3} /> {resumeState ? 'Neues Workout starten' : 'Workout starten'}
+              <Play size={16} /> {resumeState ? 'Neues Workout starten' : 'Workout starten'}
             </button>
           </div>
         </>
@@ -765,11 +630,7 @@ function SkillDetailScreen({ skill, stage: frontier, mastered, exp, history, hol
       <SkillLevelChart history={history} />
       <VolumeChart sessions={sessions} />
 
-      {next && (
-        <div className="text-center text-[11px] font-bold mb-5" style={{ color: 'var(--dim)', opacity: 0.8 }}>
-          Als Nächstes: {next.name}
-        </div>
-      )}
+      {next && <div className="skills-hint" style={{ textAlign: 'center', marginBottom: 18 }}>Als Nächstes: {next.name}</div>}
 
       {stageInfo.type === 'hold' && (
         <SkillHoldTimer
@@ -779,58 +640,52 @@ function SkillDetailScreen({ skill, stage: frontier, mastered, exp, history, hol
         />
       )}
 
-      <div className="mb-4" role="group" aria-label="EXP">
-        <div className="flex justify-between text-[11px] font-bold mb-1" style={{ color: 'var(--dim)' }}>
+      <div className="skills-section" role="group" aria-label="EXP">
+        <div className="skills-exp-top">
           <span>EXP {mastered ? 100 : expPercent} %</span>
-          <span>{mastered ? '🏆 ' + skill.name + ' gemeistert' : next ? `Bei 100 % wird „${next.name}“ freigeschaltet` : 'Bei 100 % ist der Skill gemeistert'}</span>
+          <span>{mastered ? skill.name + ' gemeistert' : next ? `Bei 100 % wird „${next.name}“ freigeschaltet` : 'Bei 100 % ist der Skill gemeistert'}</span>
         </div>
-        <div className="h-2 rounded-full overflow-hidden" style={{ background: 'var(--bg2)' }}>
-          <div className="h-full" style={{ width: `${mastered ? 100 : expPercent}%`, background: 'var(--accent)' }} />
+        <div className="skills-exp-track">
+          <div className="skills-exp-fill" style={{ width: `${mastered ? 100 : expPercent}%` }} />
         </div>
-        <p className="text-[11px] mt-2" style={{ color: 'var(--dim)' }}>
+        <p className="skills-hint">
           Jeder Satz mit mindestens {stageInfo.advancement.minimumValue} {stageInfo.type === 'hold' ? 's' : 'Wdh'} bringt vollen EXP-Anteil, Mehrleistung zählt als Bonus.
         </p>
       </div>
 
-      <div className="mt-6">
-        <div className="text-[10px] font-black uppercase tracking-[0.15em] mb-2" style={{ color: 'var(--dim)' }}>Kette</div>
-        <div className="flex flex-col gap-1.5">
-          {skill.progressions.map((p, i) => {
-            const locked = i > frontier && !mastered;
-            return (
+      <div className="skills-section">
+        <div className="skills-section-label">Kette</div>
+        {skill.progressions.map((p, i) => {
+          const locked = i > frontier && !mastered;
+          return (
             <div key={p.name}>
-            <div className="w-full flex items-center justify-between gap-2 px-3 py-2 rounded-lg" style={{ background: 'var(--bg2)', opacity: locked ? 0.45 : 1, outline: i === stage ? '1px solid var(--accent)' : 'none' }}>
-              <button type="button" disabled={locked || runnerActive} onClick={() => setPicked(i)} aria-label={locked ? `${p.name} gesperrt` : `${p.name} trainieren`} className="flex items-center gap-2 text-left min-w-0">
-                {locked ? <Lock size={12} style={{ color: 'var(--dim)' }} />
-                  : i < frontier || mastered ? <Check size={14} color="#22c55e" strokeWidth={3} />
-                  : <Circle size={14} style={{ color: 'var(--accent)' }} fill="var(--accent)" />}
-                <span className="text-sm truncate" style={{ color: i === stage ? 'var(--ink)' : 'var(--dim)', fontWeight: i === stage ? 700 : 500 }}>{p.name}</span>
-              </button>
-              <button type="button" onClick={() => setExpandedVideo(value => value === p.name ? null : p.name)} aria-expanded={expandedVideo === p.name} aria-label={`Video zu ${p.name}`} className="text-[10px] font-mono shrink-0" style={{ color: 'var(--dim)', opacity: 0.7 }}>{formatTarget(p)} · Video</button>
+              <div className={`skills-chain-row${i === stage ? ' is-current' : ''}${locked ? ' is-locked' : ''}`}>
+                <button type="button" disabled={locked || runnerActive} onClick={() => setPicked(i)} aria-label={locked ? `${p.name} gesperrt` : `${p.name} trainieren`} className="skills-chain-main">
+                  {locked ? <Lock size={14} />
+                    : i < frontier || mastered ? <Check size={15} color="var(--green)" />
+                    : <Circle size={15} style={{ color: 'var(--accent)' }} />}
+                  <span className={i === stage ? 'skills-chain-name is-current' : 'skills-chain-name'}>{p.name}</span>
+                </button>
+                <button type="button" onClick={() => setExpandedVideo(value => value === p.name ? null : p.name)} aria-expanded={expandedVideo === p.name} aria-label={`Video zu ${p.name}`} className="skills-video-btn">{formatTarget(p)} · Video</button>
+              </div>
+              {expandedVideo === p.name && <ExerciseVideo key={p.name} name={p.name} />}
             </div>
-            {expandedVideo === p.name && <ExerciseVideo key={p.name} name={p.name} />}
-            </div>
-            );
-          })}
-        </div>
+          );
+        })}
       </div>
 
       {history.length > 0 && (
-        <div className="mt-6">
-          <div className="text-[10px] font-black uppercase tracking-[0.15em] mb-2" style={{ color: 'var(--dim)' }}>Verlauf</div>
-          <div className="flex flex-col gap-1.5">
-            {history.slice().reverse().map((h, i) => (
-              <div key={`${h.stage}-${h.masteredAt}-${i}`} className="flex items-center justify-between px-3 py-2 rounded-lg" style={{ background: 'var(--bg2)' }}>
-                <div className="flex items-center gap-2">
-                  {h.reset
-                    ? <ArrowDown size={13} style={{ color: '#f59e0b' }} strokeWidth={3} />
-                    : <Check size={13} color="#22c55e" strokeWidth={3} />}
-                  <span className="text-sm" style={{ color: 'var(--ink)' }}>{h.reset ? `Zurückgesetzt auf: ${h.name}` : h.name}</span>
-                </div>
-                <span className="text-[11px] font-mono" style={{ color: 'var(--dim)' }}>{formatMasteredAt(h.masteredAt)}</span>
-              </div>
-            ))}
-          </div>
+        <div className="skills-section">
+          <div className="skills-section-label">Verlauf</div>
+          {history.slice().reverse().map((h, i) => (
+            <div key={`${h.stage}-${h.masteredAt}-${i}`} className="skills-history-row">
+              <span>
+                {h.reset ? <ArrowDown size={14} style={{ color: 'var(--orange)' }} /> : <Check size={14} color="var(--green)" />}
+                {' '}{h.reset ? `Zurückgesetzt auf: ${h.name}` : h.name}
+              </span>
+              <span className="skills-mono">{formatMasteredAt(h.masteredAt)}</span>
+            </div>
+          ))}
         </div>
       )}
     </div>
@@ -929,16 +784,13 @@ export default function SkillsCard({ onWorkoutComplete, embedded = false, route,
   }, [embedded]);
 
   return (
-    <section
-      className="rounded-[2rem] p-5 sm:p-6"
-      style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01)), var(--bg)', color: 'var(--ink)', border: '1px solid var(--line)' }}
-    >
-      <div className="mb-5">
-        <div className="text-[10px] font-black uppercase tracking-[0.22em]" style={{ color: 'var(--dim)', opacity: 0.7 }}>Calisthenics</div>
-        <h3 className="text-xl sm:text-2xl font-black text-fit-ink mt-1">Skills</h3>
+    <section className="skills-classic">
+      <div className="skills-head">
+        <div className="skills-kicker">Calisthenics</div>
+        <h3 className="skills-title">Skills</h3>
       </div>
 
-      {actionError && <p role="alert" className="text-sm mb-3">{actionError}</p>}
+      {actionError && <p role="alert" className="skills-alert">{actionError}</p>}
       <fieldset disabled={!ready || busy} style={{minWidth:0}}>
       {ready && (openSkill ? (
         <SkillDetailScreen
@@ -963,7 +815,7 @@ export default function SkillsCard({ onWorkoutComplete, embedded = false, route,
       ))}
       </fieldset>
 
-      <footer className="mt-6 pt-4" style={{ borderTop: '1px solid var(--line)' }}>
+      <footer className="skills-footer">
         <PersistenceStatus />
       </footer>
     </section>
