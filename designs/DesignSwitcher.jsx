@@ -4,7 +4,7 @@ import { DESIGNS } from './index.js';
 import { IS_STORE_BUILD } from '../storeBuild.js';
 
 const OPTIONS = [
-  { id: 'classic', name: 'Original', hint: 'Aktuelle App · Charts & Hold-Timer', swatch: ['#0a0a0a', '#c8ff00', '#38bdf8'] },
+  { id: 'classic', name: 'Original', hint: 'Ruhige Karte · Charts & Hold-Timer', swatch: ['#141413', '#6ec4aa', '#f4f2ec'] },
   ...DESIGNS,
 ];
 
@@ -39,9 +39,12 @@ function DesignSwitcherMenu({ value, onChange }) {
   if (running) return null;
 
   const current = OPTIONS.find(o => o.id === value) || OPTIONS[0];
+  const classic = current.id === 'classic';
+  const mark = classic ? 'var(--accent, #6ec4aa)' : '#c8ff00';
   return (
     <div
       ref={box}
+      className={classic ? 'skills-switch is-classic' : undefined}
       style={{ position: 'fixed', right: 14, bottom: 'calc(14px + env(safe-area-inset-bottom))', zIndex: 2000, fontFamily: 'system-ui, sans-serif' }}
     >
       {open && (
@@ -56,7 +59,7 @@ function DesignSwitcherMenu({ value, onChange }) {
               role="menuitemradio"
               aria-checked={o.id === value}
               onClick={() => { onChange(o.id); setOpen(false); }}
-              style={{ display: 'flex', alignItems: 'center', gap: 10, width: '100%', padding: '9px 10px', border: 0, borderRadius: 11, background: o.id === value ? 'rgba(200,255,0,.12)' : 'transparent', color: 'inherit', textAlign: 'left', cursor: 'pointer' }}
+              style={{ display: 'flex', alignItems: 'center', gap: 10, width: '100%', padding: '9px 10px', border: 0, borderRadius: 11, background: o.id === value ? (classic ? 'rgba(110,196,170,.16)' : 'rgba(200,255,0,.12)') : 'transparent', color: 'inherit', textAlign: 'left', cursor: 'pointer' }}
             >
               <span style={{ display: 'flex', flex: 'none' }}>
                 {o.swatch.map((c, i) => (
@@ -67,7 +70,7 @@ function DesignSwitcherMenu({ value, onChange }) {
                 <span style={{ display: 'block', fontSize: 14, fontWeight: 700 }}>{o.name}</span>
                 <span style={{ display: 'block', fontSize: 11, color: '#9a9a9a', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{o.hint}</span>
               </span>
-              {o.id === value && <Check size={16} color="#c8ff00" strokeWidth={3} />}
+              {o.id === value && <Check size={16} color={mark} strokeWidth={3} />}
             </button>
           ))}
         </div>
@@ -77,9 +80,10 @@ function DesignSwitcherMenu({ value, onChange }) {
         aria-haspopup="menu"
         aria-expanded={open}
         aria-label={`Design wechseln (aktuell ${current.name})`}
-        style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '11px 16px 11px 13px', border: '1.5px solid #c8ff00', borderRadius: 999, background: '#0a0a0a', color: '#c8ff00', font: '800 12px system-ui, sans-serif', letterSpacing: '.12em', textTransform: 'uppercase', cursor: 'pointer', boxShadow: '0 8px 24px rgba(0,0,0,.45)' }}
+        className={classic ? 'skills-switch-btn' : undefined}
+        style={classic ? undefined : { display: 'flex', alignItems: 'center', gap: 8, padding: '11px 16px 11px 13px', border: '1.5px solid #c8ff00', borderRadius: 999, background: '#0a0a0a', color: '#c8ff00', font: '800 12px system-ui, sans-serif', letterSpacing: '.12em', textTransform: 'uppercase', cursor: 'pointer', boxShadow: '0 8px 24px rgba(0,0,0,.45)' }}
       >
-        <Palette size={16} strokeWidth={2.5} /> {current.name}
+        <Palette size={16} strokeWidth={classic ? 2 : 2.5} /> {current.name}
       </button>
     </div>
   );

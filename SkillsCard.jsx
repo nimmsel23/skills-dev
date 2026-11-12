@@ -48,46 +48,96 @@ function setSkillIdInHash(skillId) {
 function loadActiveRunner() { return progressStore.runner(); }
 function clearActiveRunner() { progressStore.saveRunner(null).catch(() => {}); }
 
-function SkillRow({ skill, progress, onOpen, isLast }) {
-  const stage = progress[skill.id]?.stage ?? 0;
-  const done = progress[skill.id]?.mastered === true;
+function listStats(progress) {
+  let started = 0, mastered = 0, last = null;
+  for (const skill of SKILLS) {
+    const entry = progress[skill.id] || {};
+    const sessions = entry.sessions || [];
+    if (entry.mastered || (entry.stage ?? 0) > 0 || sessions.length) started += 1;
+    if (entry.mastered) mastered += 1;
+    for (const session of sessions) {
+      const iso = session.timestamp || session.at;
+      const t = Date.parse(iso || '');
+      if (Number.isFinite(t) && (!last || t > last.t)) last = { t, iso, name: skill.name };
+    }
+  }
+  return { started, mastered, last, total: SKILLS.length };
+}
+
+function SkillRow({ skill, progress, onOpen }) {
+  const entry = progress[skill.id] || {};
+  const stage = entry.stage ?? 0;
+  const done = entry.mastered === true;
+  const total = skill.progressions.length;
+  const current = skill.progressions[Math.min(stage, total - 1)];
+  const next = !done && stage + 1 < total ? skill.progressions[stage + 1] : null;
   return (
-    <button data-nav-row onClick={() => onOpen(skill.id)} className="skills-row" style={isLast ? { borderBottom: 'none' } : undefined}>
-      <span className="min-w-0">
-        <span className="skills-row-name">{skill.name}</span>
-        <span className="skills-row-meta">
-          {done ? 'Gemeistert' : `Stufe ${stage + 1}/${skill.progressions.length} · ${skill.progressions[stage].name}`}
+    <button data-nav-row onClick={() => onOpen(skill.id)} className="skills-row">
+      <span className="skills-row-body">
+        <span className="skills-row-top">
+          <span className="skills-row-name">{skill.name}</span>
+          <span className="skills-row-frac">{done ? 'Gemeistert' : `${stage + 1} / ${total}`}</span>
+        </span>
+        <span className="skills-row-now">{done ? 'Alle Stufen durch' : current.name}</span>
+        {next && <span className="skills-row-next">danach {next.name}</span>}
+        <span className="skills-dots" aria-hidden="true">
+          {skill.progressions.map((step, i) => (
+            <i key={step.id || step.name} className={done || i < stage ? 'is-done' : i === stage ? 'is-now' : undefined} />
+          ))}
         </span>
       </span>
-      <span className="skills-row-side">
-        {done && <Trophy size={15} style={{ color: 'var(--accent)' }} />}
-        <ChevronRight size={16} style={{ color: 'var(--dim)' }} />
-      </span>
+      <ChevronRight size={16} />
     </button>
   );
 }
 
-function CategoryGroup({ category, skills, progress, onOpen }) {
+function CategoryGroup({ category, index, skills, progress, onOpen }) {
   const meta = CATEGORY_META[category];
+  const started = skills.filter(skill => {
+    const entry = progress[skill.id] || {};
+    return entry.mastered || (entry.stage ?? 0) > 0 || (entry.sessions?.length ?? 0) > 0;
+  }).length;
   return (
-    <div className="skills-group">
-      <div className="skills-group-label"><meta.Icon size={14} /> {meta.label}</div>
+    <section className="skills-group">
+      <header className="skills-cat">
+        <span className="skills-cat-index">{String(index).padStart(2, '0')}</span>
+        <span className="skills-cat-name">{meta.label}</span>
+        <span className="skills-cat-rule" />
+        <span className="skills-cat-count">{started}/{skills.length}</span>
+      </header>
       <div className="skills-list">
-        {skills.map((skill, i) => (
-          <SkillRow key={skill.id} skill={skill} progress={progress} onOpen={onOpen} isLast={i === skills.length - 1} />
+        {skills.map(skill => (
+          <SkillRow key={skill.id} skill={skill} progress={progress} onOpen={onOpen} />
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 
 function SkillListScreen({ progress, onOpen }) {
   const categories = ['push', 'pull', 'core', 'legs', 'balance'].filter(c => SKILLS.some(s => s.category === c));
+  const stats = listStats(progress);
   return (
     <div>
-      {categories.map(category => (
+      <dl className="skills-stats" aria-label="Überblick">
+        <div>
+          <dt>Begonnen</dt>
+          <dd>{stats.started}<span> / {stats.total}</span></dd>
+        </div>
+        <div>
+          <dt>Gemeistert</dt>
+          <dd>{stats.mastered}</dd>
+        </div>
+        <div>
+          <dt>Zuletzt</dt>
+          <dd className="skills-stats-last">{stats.last ? `${formatMasteredAt(stats.last.iso)} · ${stats.last.name}` : 'Noch keins'}</dd>
+        </div>
+      </dl>
+      {!stats.started && <p className="skills-empty">Noch kein Training. Wähle einen Skill, um die erste Stufe zu öffnen.</p>}
+      {categories.map((category, i) => (
         <CategoryGroup
           key={category}
+          index={i + 1}
           category={category}
           skills={SKILLS.filter(s => s.category === category)}
           progress={progress}
@@ -622,6 +672,7 @@ function SkillDetailScreen({ skill, stage: frontier, mastered, exp, history, hol
               <Play size={16} /> {resumeState ? 'Neues Workout starten' : 'Workout starten'}
             </button>
           </div>
+          {!sessions.length && <p className="skills-empty">Noch kein gespeichertes Workout für diesen Skill.</p>}
         </>
       )}
 
