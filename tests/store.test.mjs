@@ -6,7 +6,7 @@ globalThis.localStorage = {getItem:k => memory.get(k) ?? null,setItem:(k,v) => m
 globalThis.window = new EventTarget();
 let authChanged, receive, cloudUser = null, writes = [], deleteFails = false;
 const pending = [];
-mock.module('../data/cloud.js',{exports:{
+mock.module('../data/cloud.js',{namedExports:{
   auth:{get currentUser() {return cloudUser;}},
   watchAuth:fn => { authChanged = fn; },
   watchEvents:(_uid,fn) => { receive = fn; return () => {}; },

@@ -176,3 +176,12 @@ Neues gemeinsames Modul `navigation.js` für die Original-Karte und alle drei De
   freie Hold-Timer erscheint nur bei Hold-Stufen, Conditioning wiederholt keine Übung der Einheit.
   Im echten Firefox (Marionette) abgenommen: Rep-Durchlauf mit Slider bis EXP-Zusammenfassung und
   Hold-Stoppuhr (Planche); noch keine Abnahme am Android-Gerät.
+
+## 2026-11-12 — Shell-Embed
+
+`embed.jsx` exportiert `SkillsEmbed` für die VitalOS-Shell. Standalone (`main.jsx`)
+bleibt beim Dokument-Theme und bei `?skill=` im Hash. Eingebettet liegen Theme und
+Hintergrund am Container; Route läuft über `route` / `onRouteChange`. Abschlüsse
+tragen `runId` (= `sessionId`). Designs rufen `onWorkoutComplete`, wenn die Shell
+ihn übergibt, und senden dann kein zusätzliches `skills:workout-completed`.
+Vertrag: `README.md`. Tests: `tests/embed.test.mjs`.

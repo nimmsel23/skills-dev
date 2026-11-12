@@ -38,7 +38,7 @@ for (const file of ['a-iron-room.js','b-gravity-map.js','c-riso-climb.js']) {
   };
   w.confirm=()=>true;w.alert=message=>alerts.push(message);
   w.HTMLCanvasElement.prototype.getContext=()=>({clearRect(){},beginPath(){},arc(){},fill(){}});
-  const bridge=await compile(root+'/data/designProgress.js',{'./catalog.js':{SKILLS,assessStage},'./store.js':{progressStore:store},'./workoutCompletion.js':{emitHostWorkoutComplete(){},toHostWorkout:(skill,stage,data)=>data}},globals);
+  const bridge=await compile(root+'/data/designProgress.js',{'./catalog.js':{SKILLS,assessStage},'./store.js':{progressStore:store},'./workoutCompletion.js':{emitHostWorkoutComplete(){},deliverHostWorkout(){},toHostWorkout:(skill,stage,data)=>data}},globals);
   const nav=await compile(root+'/navigation.js',{},globals);
   const blocks=await compile(root+'/runner/blocks.js',{},globals);
   const engine=await compile(root+'/runner/engine.js',{},globals);

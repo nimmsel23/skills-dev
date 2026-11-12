@@ -1,6 +1,6 @@
 import { SKILLS } from './catalog.js';
 import { progressStore } from './store.js';
-import { emitHostWorkoutComplete, toHostWorkout } from './workoutCompletion.js';
+import { deliverHostWorkout, toHostWorkout } from './workoutCompletion.js';
 
 // UI-independent contract for the vanilla design variants and future renderers.
 // The adapters read the exact same projection as the React card.
@@ -26,7 +26,7 @@ export const designProgress = {
     if (expectedOwner !== progressStore.getSnapshot().owner) throw new Error('Skills gespeichert; Konto vor Abschluss gewechselt');
     await progressStore.saveRunner(null,expectedOwner,data.sessionId);
     const saved = event?.payload || data;
-    emitHostWorkoutComplete(toHostWorkout(skill, stage, saved));
+    deliverHostWorkout(toHostWorkout(skill, stage, saved));
     return saved;
   },
 };

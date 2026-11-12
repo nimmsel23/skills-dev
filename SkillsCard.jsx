@@ -837,9 +837,9 @@ function SkillDetailScreen({ skill, stage: frontier, mastered, exp, history, hol
   );
 }
 
-export default function SkillsCard({ onWorkoutComplete } = {}) {
+export default function SkillsCard({ onWorkoutComplete, embedded = false, route, onRouteChange } = {}) {
   const { progress, owner, ready } = useProgress();
-  const [openSkillId, setOpenSkillIdState] = useState(() => getSkillIdFromHash());
+  const [openSkillId, setOpenSkillIdState] = useState(() => (embedded ? (route || null) : getSkillIdFromHash()));
   const [actionError, setActionError] = useState('');
   const [busy, setBusy] = useState(false);
   const [techniqueConfirmed, setTechniqueConfirmed] = useState(false);
@@ -848,11 +848,27 @@ export default function SkillsCard({ onWorkoutComplete } = {}) {
   const [addedLoadKg, setAddedLoadKg] = useState('');
   const [stepDir, setStepDir] = useState(0);
   const runnerActiveRef = useRef(false);
+  const shownRoute = useRef(openSkillId);
   useEffect(() => { setTechniqueConfirmed(false); setBothSidesConfirmed(false); setAssistance(''); setAddedLoadKg(''); },[owner]);
+  // Shell owns the route. Echoes of the same id must not reset the form.
+  useEffect(() => {
+    if (!embedded) return;
+    const next = route || null;
+    if (shownRoute.current === next) return;
+    shownRoute.current = next;
+    setOpenSkillIdState(next);
+    setStepDir(0);
+    setTechniqueConfirmed(false); setBothSidesConfirmed(false);
+    setAssistance(''); setAddedLoadKg('');
+  }, [embedded, route]);
   // dir ≠ 0: Wechsel per Wischen/Pfeil/Pager — Slide-Richtung merken und nach oben scrollen.
   function setOpenSkillId(id, dir = 0) {
     setStepDir(dir); if (dir) window.scrollTo(0, 0);
-    setOpenSkillIdState(id); setSkillIdInHash(id);
+    const next = id || null;
+    shownRoute.current = next;
+    setOpenSkillIdState(next);
+    if (embedded) onRouteChange?.(next || '');
+    else setSkillIdInHash(id);
     setTechniqueConfirmed(false); setBothSidesConfirmed(false);
     setAssistance(''); setAddedLoadKg('');
   }
@@ -899,9 +915,10 @@ export default function SkillsCard({ onWorkoutComplete } = {}) {
     if (id && !busy && !runnerActiveRef.current) setOpenSkillId(id, dir);
   };
 
-  // Lime-Akzent der Stoppuhr-Card gilt für den ganzen Skills-SubTab, gleiches
-  // data-theme-Pattern wie SixPackPromiseCard.jsx.
+  // Standalone färbt die ganze Seite. Eingebettet bleibt das Theme am
+  // Container von SkillsEmbed — documentElement gehört der Shell.
   useEffect(() => {
+    if (embedded) return undefined;
     const root = document.documentElement;
     const previous = root.getAttribute('data-theme');
     root.setAttribute('data-theme', 'skills');
@@ -909,7 +926,7 @@ export default function SkillsCard({ onWorkoutComplete } = {}) {
       if (previous) root.setAttribute('data-theme', previous);
       else root.removeAttribute('data-theme');
     };
-  }, []);
+  }, [embedded]);
 
   return (
     <section

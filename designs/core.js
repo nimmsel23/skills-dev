@@ -9,6 +9,20 @@ import { designProgress } from '../data/designProgress.js';
 import { progressStore } from '../data/store.js';
 import { attachNav } from '../navigation.js';
 const PREP_MS = 3000;
+// Embedded hosts own the skill route. While a bridge is installed, hash reads
+// and writes stay off location/history. Standalone leaves the bridge unset.
+let routeBridge = null;
+const routeWatchers = new Set();
+
+export function bindEmbeddedRoute(bridge) {
+  const previous = routeBridge;
+  routeBridge = bridge || null;
+  return () => { if (routeBridge === bridge) routeBridge = previous; };
+}
+
+export function notifyEmbeddedRoute() {
+  for (const fn of [...routeWatchers]) fn();
+}
 // Der Design-Switcher blendet sich aus, solange ein Workout läuft.
 const announce = active => window.dispatchEvent(new CustomEvent('skills-runner', { detail: active }));
 const entry = id => designProgress.entry(id);
@@ -44,18 +58,33 @@ const Core = {
   secs: ms => Math.ceil(Math.max(0, ms) / 1000),
   date: iso => new Date(iso).toLocaleDateString('de-AT', { day: '2-digit', month: '2-digit', year: '2-digit' }),
 
-  // Skill-URL: gleicher Hash-Param wie die Original-Karte (#?skill=<id>)
-  hash() { const q = new URLSearchParams(location.hash.split('?')[1] || ''); return q.get('skill'); },
+  // Skill-URL: gleicher Hash-Param wie die Original-Karte (#?skill=<id>).
+  // Eingebettet liest und schreibt das die Shell-Route, nicht den Hash.
+  hash() {
+    if (routeBridge) return routeBridge.get() || null;
+    const q = new URLSearchParams(location.hash.split('?')[1] || '');
+    return q.get('skill');
+  },
   setHash(id) {
+    if (routeBridge) { routeBridge.set(id || ''); return; }
     const [path = ''] = location.hash.replace(/^#\/?/, '').split('?');
     history.replaceState(null, '', `#${path}${id ? `?skill=${id}` : ''}`);
   },
+  watchRoute(fn) {
+    routeWatchers.add(fn);
+    return () => routeWatchers.delete(fn);
+  },
 
   // Wischen + Tastatur (siehe navigation.js); `enabled` sperrt sie während eines Workouts.
-  nav: (root, route, enabled) => attachNav({
-    skills: SKILLS, root, rows: '[data-open]', current: Core.hash, enabled,
-    go: id => { Core.setHash(id); route(); if (id) scrollTo(0, 0); },
-  }),
+  // Externe Routenwechsel (Shell) laufen über denselben Abbau, solange kein Workout läuft.
+  nav(root, route, enabled) {
+    const stopRoute = Core.watchRoute(() => { if (enabled()) route(); });
+    const detach = attachNav({
+      skills: SKILLS, root, rows: '[data-open]', current: Core.hash, enabled,
+      go: id => { Core.setHash(id); route(); if (id) scrollTo(0, 0); },
+    });
+    return () => { stopRoute(); detach(); };
+  },
 
   // EXP bar for the unlocked frontier; the next stage stays locked until 100 %.
   expHTML(id) {

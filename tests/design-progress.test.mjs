@@ -4,7 +4,7 @@ const events = [], runners = [];
 let saved = {stage:0,mastered:false,history:[],holds:[],sessions:[]};
 let rejectSave = false, rejectClear = false, owner = 'alice', switchDuringSave = false;
 const sessions = new Map();
-mock.module('../data/store.js',{exports:{progressStore:{
+mock.module('../data/store.js',{namedExports:{progressStore:{
   getSnapshot:() => ({owner,progress:{'front-lever':saved}}),
   subscribe:() => () => {},
   record:async (...args) => {
@@ -68,11 +68,48 @@ test('stale runner owner cannot save or clear the next account draft',async () =
 });
 
 test('host completion carries a stable source session identity for deduplication',async () => {
-  const {toHostWorkout} = await import('../data/workoutCompletion.js');
+  const {toHostWorkout,deliverHostWorkout,installEmbeddedWorkoutHandler,SKILLS_WORKOUT_COMPLETE_EVENT} = await import('../data/workoutCompletion.js');
   const data = {sessionId:'host-session',timestamp:'2026-11-05T12:00:00.000Z',totalDurationSeconds:60,exercises:[]};
   const workout = toHostWorkout(skill,0,data);
   assert.equal(workout.id,'skills-host-session');
   assert.equal(workout.sourceSessionId,'host-session');
+  assert.equal(workout.runId,'host-session');
   assert.equal(workout.endedAt-workout.startedAt,60000);
   assert.deepEqual(toHostWorkout(skill,0,data),workout);
+
+  const delivered = [];
+  const events = [];
+  const previousWindow = globalThis.window;
+  globalThis.window = {
+    dispatchEvent(event) { events.push(event); },
+    CustomEvent: class CustomEvent { constructor(type, init) { this.type = type; this.detail = init?.detail; } },
+  };
+  const uninstall = installEmbeddedWorkoutHandler(value => { delivered.push(value.runId); return true; });
+  try {
+    deliverHostWorkout(workout);
+    deliverHostWorkout(toHostWorkout(skill,0,data));
+    assert.deepEqual(delivered,['host-session','host-session']);
+    assert.equal(events.length,0,'embedded callback suppresses the window event');
+    uninstall();
+    deliverHostWorkout(toHostWorkout(skill,0,data));
+    assert.equal(events.length,1);
+    assert.equal(events[0].type,SKILLS_WORKOUT_COMPLETE_EVENT);
+    assert.equal(events[0].detail.runId,'host-session');
+  } finally {
+    uninstall();
+    if (previousWindow === undefined) delete globalThis.window;
+    else globalThis.window = previousWindow;
+  }
+});
+
+test('repeated design saves deliver the same runId once per attempt',async () => {
+  const {installEmbeddedWorkoutHandler} = await import('../data/workoutCompletion.js');
+  const data = {sessionId:'repeat-run',timestamp:'2026-11-12T10:00:00.000Z',exercises:[{name:'Tuck Front Lever',type:'hold',setsCompleted:[12]}]};
+  const seen = [];
+  const uninstall = installEmbeddedWorkoutHandler(workout => { seen.push(workout.runId); return true; });
+  try {
+    await bridge.saveWorkout(skill,0,data);
+    await bridge.saveWorkout(skill,0,data);
+    assert.deepEqual(seen,['repeat-run','repeat-run']);
+  } finally { uninstall(); }
 });
