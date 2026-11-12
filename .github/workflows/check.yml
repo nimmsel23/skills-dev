@@ -37,6 +37,9 @@ jobs:
       - name: Install
         run: pnpm install --ignore-scripts
 
+      - name: Datenschutz-/Löschseiten
+        run: node tests/legal-pages.test.mjs
+
       - name: Exercise video regression checks
         run: node scripts/test-exercise-videos.mjs
 

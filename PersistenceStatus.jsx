@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { useProgress } from './data/useProgress.js';
 import { progressStore } from './data/store.js';
 
+// Absolute: also correct inside the Android app and embedded hosts (relative links would miss).
+export const LEGAL_BASE = 'https://vos-skills.web.app';
+
 // Shared account/storage controls for React and the vanilla design hosts.
 export default function PersistenceStatus() {
   const {user,pending,status,error,storageWarning} = useProgress();
@@ -25,6 +28,10 @@ export default function PersistenceStatus() {
       </> : <button type="button" onClick={() => act(() => progressStore.login())}>Mit Google anmelden · Auto-Sync</button>}
       <button type="button" onClick={() => act(() => progressStore.retry())}>Speicher / Sync erneut versuchen</button>
     </fieldset>
+    <nav aria-label="Rechtliches" className="flex flex-wrap gap-3 mt-3 opacity-70">
+      <a href={`${LEGAL_BASE}/datenschutz`} target="_blank" rel="noopener noreferrer" className="underline">Datenschutz</a>
+      <a href={`${LEGAL_BASE}/konto-loeschen`} target="_blank" rel="noopener noreferrer" className="underline">Konto &amp; Daten löschen</a>
+    </nav>
     {(error || actionError || storageWarning) && <p role="alert" className="mt-2">{actionError || error || storageWarning}</p>}
   </div>;
 }

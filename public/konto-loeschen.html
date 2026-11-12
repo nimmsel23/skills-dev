@@ -1,0 +1,60 @@
+<!doctype html>
+<!-- Quelle: PersistenceStatus.jsx, data/store.js deleteSkillsData, data/cloud.js, data/local.js deleteOwner, firestore/skills.rules (Owner-Delete). -->
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Konto und Daten löschen — Skills (VitalOS)</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body { margin: 0; font-family: system-ui, sans-serif; line-height: 1.55; }
+    main { max-width: 42rem; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+    h1 { font-size: 1.8rem; line-height: 1.2; }
+    h2 { font-size: 1.15rem; margin-top: 2rem; }
+    a { color: inherit; }
+    code { font-family: ui-monospace, monospace; font-size: 0.92em; overflow-wrap: anywhere; }
+    .notice { padding: 0.85rem 1rem; border: 1px solid color-mix(in srgb, CanvasText 25%, transparent); border-radius: 0.75rem; }
+    nav { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
+    li { margin: 0.35rem 0; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Konto und Daten löschen — Skills</h1>
+  <p>Für die App <strong>Skills</strong> (vos-skills.web.app und Android-App). Diese Seite ist ohne Anmeldung erreichbar, lädt keine Skripte und setzt keine Cookies.</p>
+
+  <h2>In der App: Skills-Daten sofort löschen</h2>
+  <ol>
+    <li>App öffnen und mit Google anmelden.</li>
+    <li>Ganz nach unten zum Bereich mit Anmeldung und Sync scrollen.</li>
+    <li>„Skills-Daten löschen“ tippen und die Rückfrage bestätigen.</li>
+  </ol>
+  <p>Die App löscht dann sofort:</p>
+  <ul>
+    <li>alle deine Trainingsereignisse in Cloud Firestore unter <code>skillsUsers/{uid}/events</code> (die Firestore-Regeln erlauben das Löschen nur dem angemeldeten Besitzer),</li>
+    <li>die lokalen Kopien dieses Kontos auf dem Gerät (IndexedDB-Ereignisse und Runner, localStorage <code>skills:v1:{uid}</code> und <code>skills:v1:{uid}:runner</code>)</li>
+  </ul>
+  <p>und meldet dich ab. Erhalten bleiben dabei: dein Google-Konto, das gemeinsame Firebase-Anmeldekonto (es wird auch von anderen VitalOS-Bereichen genutzt) und Gastdaten, die ohne Anmeldung auf diesem Gerät entstanden sind.</p>
+
+  <h2>Ohne App oder Anmeldung: per E-Mail</h2>
+  <p>Wenn du die App nicht mehr nutzen kannst oder zusätzlich dein Firebase-Anmeldekonto im Projekt <code>fitness-aos</code> löschen lassen willst, schreibe an:</p>
+  <p class="notice"><a href="mailto:nimmdaniel@gmail.com?subject=Skills%3A%20Konto%20und%20Daten%20l%C3%B6schen">nimmdaniel@gmail.com</a> — Betreff „Skills: Konto und Daten löschen“.<br>
+  Bitte nenne die E-Mail-Adresse deines Google-Kontos, mit dem du dich angemeldet hast, und ob nur die Skills-Daten oder auch das Anmeldekonto gelöscht werden sollen. Schreib nach Möglichkeit von genau dieser Adresse, damit wir die Anfrage zuordnen können.</p>
+  <p>Wir bestätigen den Eingang und erledigen die Löschung spätestens innerhalb eines Monats (Art.&nbsp;12 Abs.&nbsp;3 DSGVO). Gelöscht werden die Skills-Trainingsereignisse unter <code>skillsUsers/{uid}</code> und – falls gewünscht – das Firebase-Anmeldekonto. Wird das Anmeldekonto gelöscht, verlierst du auch den Zugang zu anderen VitalOS-Bereichen, die dieses Konto nutzen.</p>
+
+  <h2>Was nicht gelöscht wird</h2>
+  <ul>
+    <li>Der Skill-Katalog <code>skillsCatalogs/calisthenics-v1</code>: enthält keine persönlichen Daten.</li>
+    <li>Dein Google-Konto selbst: das verwaltest du bei Google.</li>
+    <li>Gastdaten auf deinen Geräten: löschbar über die Website-Daten des Browsers für vos-skills.web.app bzw. durch Deinstallieren der App.</li>
+  </ul>
+  <p>Es gibt kein eigenes Archiv gelöschter Daten und keine zusätzliche Aufbewahrungsfrist. Backups der Google-Infrastruktur liegen außerhalb dieser App.</p>
+
+  <nav>
+    <a href="/datenschutz">Datenschutz</a>
+    <a href="/">Zur App</a>
+  </nav>
+  <p><small>Stand: 11.11.2026</small></p>
+</main>
+</body>
+</html>

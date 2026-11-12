@@ -91,14 +91,17 @@ mit dem Zertifikat der von Play ausgelieferten App funktionieren.
 - **Kontolöschung (teilweise, 2026-11-05):** In-App-Button „Skills-Daten löschen"
   löscht Cloud-Events (`skillsUsers/{uid}/events`, Rules erlauben jetzt Owner-Delete)
   und lokale Kopien des Kontos und meldet ab; Gast-Daten bleiben. Der gemeinsame
-  Firebase-Nutzer wird bewusst nicht gelöscht. **Noch offen:** öffentliche Anfrageseite
-  und Löschung des Gesamtkontos; die geänderten Rules müssen über VitalOS deployt werden.
+  Firebase-Nutzer wird bewusst nicht gelöscht. Öffentliche Anfrageseite
+  https://vos-skills.web.app/konto-loeschen (2026-11-11, #19): Gesamtkonto-Löschung per
+  E-Mail an den Betreiber, Frist ein Monat (Art. 12 Abs. 3 DSGVO), manuell bearbeitet.
   Ursprünglicher Audit-Befund: In-App-Weg und öffentliche Anfrageseite fehlen.
   Skills-Daten, lokale Kopien und ausstehende Uploads müssen berücksichtigt werden.
   Firebase Auth wird mit anderen VitalOS-Modulen geteilt: den gemeinsamen Nutzer
   nicht beiläufig beim Löschen nur der Skills-Daten löschen. Umfang verständlich
   festlegen und eine vollständige Konto-Löschanforderung tatsächlich bearbeiten.
-- **Datenschutz:** Öffentliche Datenschutzerklärung und Link in der App bereitstellen.
+- **Datenschutz (erledigt 2026-11-11, #19):** https://vos-skills.web.app/datenschutz,
+  in der App unter Anmeldung/Sync verlinkt; `tests/legal-pages.test.mjs` hält Seiten,
+  Rules und Datenvertrag zusammen. Ursprüngliche Vorgabe:
   Tatsächliche Datenflüsse erfassen: optional Google/Firebase, Trainingsdaten,
   Medien-CDNs, YouTube und externe Fonts; App-Name/Betreiber/Kontakt sowie
   Aufbewahrung/Löschung aus realen Betreiberangaben übernehmen.

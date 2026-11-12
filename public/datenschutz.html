@@ -1,0 +1,71 @@
+<!doctype html>
+<!-- Quelle: docs/SKILLS-DATA.md, firestore/skills.rules, data/*.js, ExerciseVideo.jsx, designs/*. Bei Änderungen am Datenfluss mitpflegen (tests/legal-pages.test.mjs). -->
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+  <title>Datenschutz — Skills (VitalOS)</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body { margin: 0; font-family: system-ui, sans-serif; line-height: 1.55; }
+    main { max-width: 42rem; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+    h1 { font-size: 1.8rem; line-height: 1.2; }
+    h2 { font-size: 1.15rem; margin-top: 2rem; }
+    a { color: inherit; }
+    code { font-family: ui-monospace, monospace; font-size: 0.92em; overflow-wrap: anywhere; }
+    .notice { padding: 0.85rem 1rem; border: 1px solid color-mix(in srgb, CanvasText 25%, transparent); border-radius: 0.75rem; }
+    nav { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
+    li { margin: 0.35rem 0; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Datenschutz — Skills</h1>
+  <p>Diese Erklärung gilt für die Calisthenics-App <strong>Skills</strong> (Web: <a href="https://vos-skills.web.app/">vos-skills.web.app</a>, Android-App mit demselben Code). Sie beschreibt den tatsächlichen Datenfluss laut Quellcode. Diese Seite ist ohne Anmeldung lesbar, lädt keine Skripte und setzt keine Cookies.</p>
+
+  <h2>Verantwortlicher</h2>
+  <p>Daniel Nimmrichter, Wien, Österreich<br>
+  E-Mail: <a href="mailto:nimmdaniel@gmail.com">nimmdaniel@gmail.com</a></p>
+
+  <h2>Nutzung ohne Anmeldung</h2>
+  <p>Ohne Anmeldung bleiben alle Trainingsdaten auf deinem Gerät. Es gibt keinen anonymen Login und keine Übertragung an einen Server des Betreibers. Gespeichert werden im Browser bzw. in der App:</p>
+  <ul>
+    <li><strong>IndexedDB</strong> <code>skills-progression-v1</code>: Skill-Katalog, deine Trainingsereignisse (Holds, Sessions, Stufenwechsel) und der aktive Workout-Runner.</li>
+    <li><strong>localStorage</strong> <code>skills:v1:*</code>: Wiederherstellungskopie derselben Ereignisse, aktiver Runner, Katalog; <code>skills:design</code> für das gewählte Design. Ältere Einträge <code>fitness-skills-progress-v1</code> und <code>fitness-skills-active-runner-v1</code> bleiben als Sicherung unverändert liegen.</li>
+    <li><strong>Cache Storage</strong> (Service Worker): App-Dateien und Katalog für den Offline-Start. Keine persönlichen Daten.</li>
+  </ul>
+  <p>Diese Daten löschst du, indem du die Website-Daten von vos-skills.web.app im Browser löschst bzw. die App deinstallierst oder ihre Daten löschst.</p>
+
+  <h2>Nutzung mit Google-Anmeldung</h2>
+  <p>Die Anmeldung ist freiwillig und dient nur dem Sync zwischen deinen Geräten. Sie läuft über <strong>Firebase Authentication</strong> (Google) im Firebase-Projekt <code>fitness-aos</code>, Anbieter „Google“. Firebase erhält dabei die Daten deines Google-Kontos, die für die Anmeldung nötig sind: Nutzer-ID (UID), E-Mail-Adresse, Anzeigename und gegebenenfalls Profilbild-URL. Die App zeigt Anzeigename oder E-Mail an und verwendet die UID als Speicherort. Das Firebase-Konto wird auch von anderen VitalOS-Bereichen im selben Projekt genutzt.</p>
+  <p>Nach der Anmeldung speichert <strong>Cloud Firestore</strong> (Google) deine Trainingsereignisse unter <code>skillsUsers/{uid}/events/{eventId}</code>. Jedes Ereignis enthält: Ereignis-ID, Schema- und Katalogversion, Typ (<code>hold</code>, <code>session</code>, <code>stage</code>, <code>legacy</code>), Skill- und Stufen-ID, Zeitpunkt sowie die Messwerte (z.&nbsp;B. Haltedauer, erfasste Sätze und Wiederholungen, Technik-/Seitenbestätigung, Unterstützung, Zusatzgewicht, RPE, lokaler Trainingstag, Stufenwechsel/Meisterschaft). Freitext, Standort, Kontakte oder Gerätekennungen werden nicht erfasst.</p>
+  <p>Die Firestore-Regeln erlauben Lesen, Anlegen und Löschen nur dem angemeldeten Besitzer der UID; bestehende Einträge können nicht verändert werden. Den Katalog <code>skillsCatalogs/calisthenics-v1</code> (ohne Personenbezug) dürfen angemeldete Nutzer nur lesen.</p>
+  <p>Auf dem Gerät kommen bei Anmeldung hinzu: die Firebase-Anmeldesitzung und der Offline-Cache des Firestore-SDK (IndexedDB). Lokale Gastdaten werden nur übernommen, wenn du ausdrücklich „Lokale Daten in dieses Konto übernehmen“ tippst.</p>
+
+  <h2>Externe Inhalte</h2>
+  <ul>
+    <li><strong>Hosting:</strong> Die Web-App liegt bei Firebase Hosting (Google). Beim Aufruf verarbeitet Google technisch notwendige Verbindungsdaten wie deine IP-Adresse.</li>
+    <li><strong>Übungsvideos:</strong> YouTube-Videos werden über <code>youtube-nocookie.com</code> eingebettet, erst nachdem du „Video laden“ tippst; Demo-Loops kommen von <code>cdn.caliverse.app</code> und starten im Workout-Runner automatisch. Dabei erhalten Google/YouTube bzw. der Betreiber von caliverse.app deine IP-Adresse und übliche Browserdaten. Links „Original“/„Skill-Tutorial“ öffnen youtube.com in einem neuen Fenster.</li>
+    <li><strong>Schriften:</strong> Nur wenn du eines der alternativen Designs A, B oder C wählst, lädt die App Schriften von Google Fonts (<code>fonts.googleapis.com</code>); dabei erhält Google deine IP-Adresse. Das Standarddesign lädt keine externen Schriften.</li>
+  </ul>
+  <p>Die App enthält kein Analytics, kein Crash-Reporting, keine Werbung und kein Tracking. Daten werden nicht verkauft.</p>
+
+  <h2>Zweck, Rechtsgrundlage, Empfänger</h2>
+  <p>Zweck ist allein die Bereitstellung der App: Training erfassen, Fortschritt anzeigen und – bei Anmeldung – zwischen deinen Geräten synchronisieren (Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;b DSGVO). Soweit Trainingswerte als Gesundheitsdaten gelten, verarbeiten wir sie nur, weil du sie freiwillig einträgst und dich freiwillig anmeldest (Art.&nbsp;9 Abs.&nbsp;2 lit.&nbsp;a DSGVO); du kannst das jederzeit durch Löschen beenden. Empfänger ist Google als Auftragsverarbeiter für Firebase Authentication, Cloud Firestore und Firebase Hosting; dabei kann eine Übermittlung in die USA stattfinden. Bei Videos und Schriften die oben genannten Anbieter.</p>
+
+  <h2>Speicherdauer</h2>
+  <p>Lokale Daten bleiben, bis du sie löschst. Cloud-Ereignisse bleiben, bis du sie löschst oder die Löschung verlangst. Es gibt kein eigenes Archiv gelöschter Daten; eine zusätzliche Aufbewahrungsfrist ist im Produkt nicht hinterlegt. Backups der Google-Infrastruktur liegen außerhalb dieser App.</p>
+
+  <h2>Deine Rechte</h2>
+  <p>Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit und Widerspruch sowie auf Widerruf einer Einwilligung. Anfragen per E-Mail an <a href="mailto:nimmdaniel@gmail.com">nimmdaniel@gmail.com</a>. Beschwerden kannst du bei der österreichischen Datenschutzbehörde (<a href="https://www.dsb.gv.at/">dsb.gv.at</a>) einreichen.</p>
+  <p class="notice">Wie du deine Skills-Daten oder dein Konto löschst: <a href="/konto-loeschen">Konto und Daten löschen</a>.</p>
+
+  <nav>
+    <a href="/konto-loeschen">Konto löschen</a>
+    <a href="/">Zur App</a>
+  </nav>
+  <p><small>Stand: 11.11.2026</small></p>
+</main>
+</body>
+</html>

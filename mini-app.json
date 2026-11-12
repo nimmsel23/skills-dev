@@ -12,7 +12,9 @@
           "./index.html",
           "./manifest.webmanifest",
           "./icon-192.png",
-          "./skills-catalog.v1.json"
+          "./skills-catalog.v1.json",
+          "./datenschutz",
+          "./konto-loeschen"
         ],
         "precacheAssets": true,
         "extraFile": "public/skills-sw.js"

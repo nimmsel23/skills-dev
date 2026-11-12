@@ -15,7 +15,8 @@
 - [x] CTO-Nacht `c1f9b6ce` Port: `automerge-pr.yml` Dependabot base=master→dev Retarget (journal-SSOT) — AL 2026-11-12.
 - [ ] Geräteabnahme am Android-Handy (Anruf, Bildschirmsperre, Zurück-Geste, Neustart)
 - [ ] Native Google-Anmeldung (Capacitor-Plugin + SHA-1/OAuth in Firebase — braucht Konsole)
-- [ ] Datenschutzerklärung + öffentliche Löschanfrage-Seite, Release-Signierung (`SKILLS_UPLOAD_*`), Play-Eintrag
+- [x] Datenschutzerklärung + öffentliche Löschanfrage-Seite: https://vos-skills.web.app/datenschutz, https://vos-skills.web.app/konto-loeschen (#19)
+- [ ] Release-Signierung (`SKILLS_UPLOAD_*`), Play-Eintrag
 - [ ] Optional: „Letzte Einheit wiederholen“ / Vorlagen (bewusst einfach halten)
 
 - Remote `nimmsel23/skills-dev` + Firebase-Site `vos-skills` anlegen (nur auf Zuruf)
