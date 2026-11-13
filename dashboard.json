@@ -1,0 +1,430 @@
+{
+ "evidence": {
+  "generated_at": "2026-11-13T00:09:45+00:00",
+  "repo": "nimmsel23/skills-dev",
+  "meta": {
+   "name": "skills-dev",
+   "description": "Calisthenics-Skills als Standalone-Mini-App (VitalOS)",
+   "html_url": "https://github.com/nimmsel23/skills-dev",
+   "pushed_at": "2026-11-13T00:09:27Z",
+   "default_branch": "master",
+   "visibility": "public",
+   "pages_url": null
+  },
+  "package": {
+   "name": "skills",
+   "version": "0.1.0"
+  },
+  "branches": {
+   "main": "master",
+   "has_dev": true,
+   "dev_behind": 0,
+   "dev_ahead": 1,
+   "oldest_unpromoted": "2026-11-13T01:09:25+01:00",
+   "dev_head": "d900abc 2026-11-13T01:09:25+01:00",
+   "master_head": "b6bff75 2026-11-12T23:15:17+01:00"
+  },
+  "commits": [
+   {
+    "sha": "d900abc",
+    "date": "2026-11-13T01:09:25+01:00",
+    "author": "Alpha",
+    "subject": "feat(ci): Living Dashboard als GitHub Page"
+   },
+   {
+    "sha": "b6bff75",
+    "date": "2026-11-12T23:15:17+01:00",
+    "author": "Alpha",
+    "subject": "Merge PR #20: feat(legal): Datenschutz + öffentliche Löschanfrage-Seite"
+   },
+   {
+    "sha": "604bd62",
+    "date": "2026-11-12T23:14:39+01:00",
+    "author": "nimmdaniel",
+    "subject": "feat(legal): Datenschutz + öffentliche Löschanfrage-Seite (#19)"
+   },
+   {
+    "sha": "b09dc84",
+    "date": "2026-11-12T23:14:19+01:00",
+    "author": "nimmsel23",
+    "subject": "Calm classic Skills design (#22)"
+   },
+   {
+    "sha": "8d7ccd3",
+    "date": "2026-11-12T22:32:59+01:00",
+    "author": "Alpha",
+    "subject": "fix(store): Skills lesbar auf hellem Shell-Hintergrund, Design-Umschalter im Store-Build aus"
+   },
+   {
+    "sha": "cdbd035",
+    "date": "2026-11-12T16:47:01+01:00",
+    "author": "Alpha",
+    "subject": "docs(al): AL-LOG 2026-11-12 — Refs ed2a84e Check/Promote"
+   },
+   {
+    "sha": "ed2a84e",
+    "date": "2026-11-12T16:42:08+01:00",
+    "author": "Alpha",
+    "subject": "fix(ci): Dependabot base=master→dev Retarget vor Squash (Org c1f9b6ce)"
+   },
+   {
+    "sha": "9bb430e",
+    "date": "2026-11-12T16:41:53+01:00",
+    "author": "Alpha",
+    "subject": "docs: auto-update NEXT.md"
+   },
+   {
+    "sha": "cbe22c8",
+    "date": "2026-11-12T16:41:51+01:00",
+    "author": "Alpha",
+    "subject": "docs: auto-update RESULTS.md"
+   },
+   {
+    "sha": "6073486",
+    "date": "2026-11-12T14:06:10+01:00",
+    "author": "nimmsel23",
+    "subject": "Add a shell embed entry that keeps theme and routes local. (#21)"
+   },
+   {
+    "sha": "0395efa",
+    "date": "2026-11-12T02:19:33+01:00",
+    "author": "Alpha",
+    "subject": "ci: restore Gemini repair + Merge-Agent (full automation)"
+   },
+   {
+    "sha": "e8ec919",
+    "date": "2026-11-11T19:14:28+01:00",
+    "author": "Alpha",
+    "subject": "docs(agents): simplicity pointer — CI.md §1 spine"
+   },
+   {
+    "sha": "37f34dd",
+    "date": "2026-11-11T19:12:21+01:00",
+    "author": "Alpha",
+    "subject": "ci: drop Gemini repair and Merge-Agent (simplicity)"
+   },
+   {
+    "sha": "2ffc973",
+    "date": "2026-11-11T16:48:13+01:00",
+    "author": "Alpha",
+    "subject": "docs(al): AL-LOG Lauf 2 — CI-Refs Check/Promote/Deploy"
+   },
+   {
+    "sha": "a239362",
+    "date": "2026-11-11T16:45:25+01:00",
+    "author": "Alpha",
+    "subject": "docs(al): AL-LOG Lauf 2 — Push-Refs c966a90..9d14bad"
+   },
+   {
+    "sha": "9d14bad",
+    "date": "2026-11-11T16:45:04+01:00",
+    "author": "Alpha",
+    "subject": "docs(al): Offline/SW re-check + AL-LOG Lauf 2"
+   },
+   {
+    "sha": "efef9d4",
+    "date": "2026-11-11T16:43:58+01:00",
+    "author": "Alpha",
+    "subject": "docs: auto-update RESULTS.md"
+   },
+   {
+    "sha": "6f8567c",
+    "date": "2026-11-11T16:43:55+01:00",
+    "author": "Alpha",
+    "subject": "docs: auto-update TODO.md"
+   },
+   {
+    "sha": "c966a90",
+    "date": "2026-11-11T04:46:02+01:00",
+    "author": "Alpha",
+    "subject": "docs(al): AL-LOG 2026-11-11 — Push-Refs 24d5d0b..b39281a"
+   },
+   {
+    "sha": "b39281a",
+    "date": "2026-11-11T04:44:16+01:00",
+    "author": "Alpha",
+    "subject": "docs(al): Fitness-Skills-Merge als Sibling-Checkout dokumentieren"
+   }
+  ],
+  "activity": [
+   {
+    "day": "2026-10-24",
+    "n": 0
+   },
+   {
+    "day": "2026-10-25",
+    "n": 0
+   },
+   {
+    "day": "2026-10-26",
+    "n": 0
+   },
+   {
+    "day": "2026-10-27",
+    "n": 0
+   },
+   {
+    "day": "2026-10-28",
+    "n": 2
+   },
+   {
+    "day": "2026-10-29",
+    "n": 12
+   },
+   {
+    "day": "2026-10-30",
+    "n": 8
+   },
+   {
+    "day": "2026-10-31",
+    "n": 3
+   },
+   {
+    "day": "2026-11-01",
+    "n": 0
+   },
+   {
+    "day": "2026-11-02",
+    "n": 0
+   },
+   {
+    "day": "2026-11-03",
+    "n": 0
+   },
+   {
+    "day": "2026-11-04",
+    "n": 1
+   },
+   {
+    "day": "2026-11-05",
+    "n": 17
+   },
+   {
+    "day": "2026-11-06",
+    "n": 9
+   },
+   {
+    "day": "2026-11-07",
+    "n": 16
+   },
+   {
+    "day": "2026-11-08",
+    "n": 0
+   },
+   {
+    "day": "2026-11-09",
+    "n": 12
+   },
+   {
+    "day": "2026-11-10",
+    "n": 11
+   },
+   {
+    "day": "2026-11-11",
+    "n": 13
+   },
+   {
+    "day": "2026-11-12",
+    "n": 10
+   },
+   {
+    "day": "2026-11-13",
+    "n": 1
+   }
+  ],
+  "workflows": [
+   {
+    "name": "Check (Skills)",
+    "branch": "dev",
+    "event": "push",
+    "status": "in_progress",
+    "conclusion": null,
+    "created_at": "2026-11-13T00:09:29Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43334782292",
+    "sha": "d900abc"
+   },
+   {
+    "name": "Preview (vos-skills)",
+    "branch": "dev",
+    "event": "push",
+    "status": "in_progress",
+    "conclusion": null,
+    "created_at": "2026-11-13T00:09:29Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43334782287",
+    "sha": "d900abc"
+   },
+   {
+    "name": "Auto-Promote dev -> master (Check (Skills))",
+    "branch": "master",
+    "event": "schedule",
+    "status": "completed",
+    "conclusion": "success",
+    "created_at": "2026-11-12T22:44:49Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43322723409",
+    "sha": "b6bff75"
+   },
+   {
+    "name": "Gemini CI Agent",
+    "branch": "master",
+    "event": "workflow_run",
+    "status": "completed",
+    "conclusion": "success",
+    "created_at": "2026-11-12T22:16:14Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43318341869",
+    "sha": "b6bff75"
+   },
+   {
+    "name": "Live Deploy (Skills master)",
+    "branch": "master",
+    "event": "workflow_dispatch",
+    "status": "completed",
+    "conclusion": "success",
+    "created_at": "2026-11-12T22:16:06Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43318317027",
+    "sha": "b6bff75"
+   },
+   {
+    "name": "PR-AutoMerge (Dependabot -> dev)",
+    "branch": "master",
+    "event": "workflow_run",
+    "status": "completed",
+    "conclusion": "skipped",
+    "created_at": "2026-11-12T22:15:56Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43318289367",
+    "sha": "b09dc84"
+   },
+   {
+    "name": "Preview (vos-skills)",
+    "branch": "feat/legal-pages-19",
+    "event": "pull_request",
+    "status": "completed",
+    "conclusion": "failure",
+    "created_at": "2026-11-12T22:14:55Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43318130209",
+    "sha": "604bd62"
+   },
+   {
+    "name": "Check (Skills)",
+    "branch": "feat/legal-pages-19",
+    "event": "pull_request",
+    "status": "completed",
+    "conclusion": "failure",
+    "created_at": "2026-11-12T22:14:55Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43318130106",
+    "sha": "604bd62"
+   },
+   {
+    "name": "Gemini CI Agent",
+    "branch": "feat/legal-pages-19",
+    "event": "pull_request_target",
+    "status": "completed",
+    "conclusion": "skipped",
+    "created_at": "2026-11-12T22:14:54Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43318126725",
+    "sha": "604bd62"
+   },
+   {
+    "name": "Check (Skills)",
+    "branch": "cursor/classic-calm-design-8783",
+    "event": "pull_request",
+    "status": "completed",
+    "conclusion": "success",
+    "created_at": "2026-11-12T22:14:18Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43318033031",
+    "sha": "83e8982"
+   },
+   {
+    "name": "Gemini CI Agent",
+    "branch": "cursor/classic-calm-design-8783",
+    "event": "pull_request_target",
+    "status": "completed",
+    "conclusion": "failure",
+    "created_at": "2026-11-12T22:14:16Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43318028957",
+    "sha": "83e8982"
+   },
+   {
+    "name": "Gemini CI Agent",
+    "branch": "cursor/skills-embed-entry-8783",
+    "event": "pull_request_target",
+    "status": "completed",
+    "conclusion": "success",
+    "created_at": "2026-11-12T11:05:22Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43206075466",
+    "sha": "2390a76"
+   },
+   {
+    "name": "Check (Skills)",
+    "branch": "cursor/skills-embed-entry-8783",
+    "event": "pull_request",
+    "status": "completed",
+    "conclusion": "success",
+    "created_at": "2026-11-12T11:05:22Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43206075286",
+    "sha": "2390a76"
+   }
+  ],
+  "issues": [
+   {
+    "number": 23,
+    "title": "Classic design: understated major redesign (owner exception to the freeze, 12.11.)",
+    "created_at": "2026-11-12T13:15:48Z",
+    "updated_at": "2026-11-12T13:15:48Z",
+    "labels": [],
+    "url": "https://github.com/nimmsel23/skills-dev/issues/23",
+    "author": "nimmsel23"
+   },
+   {
+    "number": 19,
+    "title": "[fitness] Datenschutzerklärung + öffentliche Löschanfrage-Seite für Skills",
+    "created_at": "2026-11-11T20:48:34Z",
+    "updated_at": "2026-11-11T21:05:14Z",
+    "labels": [],
+    "url": "https://github.com/nimmsel23/skills-dev/issues/19",
+    "author": "nimmdaniel"
+   }
+  ],
+  "pulls": [],
+  "live_sites": [
+   "https://vos-skills.web.app"
+  ]
+ },
+ "assessment": {
+  "status": "green",
+  "signals": [],
+  "ai": {
+   "headline": "skills-dev: Dev-Branch führt mit CI-Änderung, Master aktuell deployed",
+   "lage": "Der dev-Branch ist mit einem Commit (d900abc) für ein Living Dashboard als GitHub Page einen Commit vor master. Auf dev laufen aktuell zwei Workflows. Der master-Branch wurde zuletzt mit rechtlichen Seiten (Merge PR #20) aktualisiert und erfolgreich deployed.",
+   "auffaelligkeiten": [
+    {
+     "level": "hoch",
+     "text": "Zwei Workflows ('Check (Skills)', 'Preview (vos-skills)') für Commit d900abc auf dem dev-Branch sind 'in_progress' und haben noch keinen Abschluss."
+    },
+    {
+     "level": "mittel",
+     "text": "Der 'Gemini CI Agent'-Workflow auf dem Branch 'cursor/classic-calm-design-8783' schlug fehl, obwohl der 'Check (Skills)'-Workflow auf demselben Branch erfolgreich war."
+    },
+    {
+     "level": "info",
+     "text": "Der Gemini CI Agent wurde kürzlich wiederhergestellt (Commit 0395efa), nachdem er zuvor entfernt wurde (Commit 37f34dd), was auf eine aktive Anpassung der CI-Automatisierung hindeutet."
+    },
+    {
+     "level": "info",
+     "text": "Issue #23 'Classic design: understated major redesign' wurde mit einer 'owner exception to the freeze' erstellt, was eine Abweichung vom geplanten Freeze signalisiert."
+    }
+   ],
+   "naechste_schritte": [
+    "Überprüfen: Status der laufenden Workflows auf dev für d900abc.",
+    "Untersuchen: Ursache des 'Gemini CI Agent'-Fehlers auf cursor/classic-calm-design-8783.",
+    "Prüfen: GitHub Pages für skills-dev auf Branch dev im Ordner /docs."
+   ],
+   "veraendert": "",
+   "fragen": [
+    "Sind die Repository-Secrets SYNC_TOKEN und GEMINI_API_KEY korrekt eingerichtet?",
+    "Wann soll der echte Offline-/Zweigeräte-Sync mit Anmeldung abgenommen werden (Owner-Gate laut TODO.md)?"
+   ],
+   "model": "gemini-2.5-flash"
+  },
+  "ai_at": "2026-11-13T00:09:48+00:00"
+ }
+}
