@@ -209,6 +209,6 @@ completed	success	Gemini CI Agent	Gemini CI Agent	master	workflow_run	4333527156
 - Arbeitsbaum: sauber
 
 _Vom AL ausfüllen (knapp & belegbar, je 1–3 Zeilen, Commit-/PR-Referenzen statt Erzählung):_
-- Erledigt: NEXT CI-Betrieb geprüft — Pages aktiv via Actions (`dashboard.yml` `d900abc1`, Deploy `eef76a0e` Run `43335162374`); Secrets `SYNC_TOKEN`/`GEMINI_API_KEY` vorhanden. NEXT/RESULTS abgehakt. dev=master `eef76a0e` (0/0).
-- Offen/Weiter: Echter roter Check → Gemini-Reparaturpfad beobachten; Demo-Loops / Handy-Autoplay / Zweigeräte-Sync (Owner-Gates). Task `16c5fba2`: PR-AutoMerge `43347748590` success, kein Dependabot-PR. Feature-Freeze.
-- Blocker: keine.
+- Erledigt: Task `16c5fba2` per UUID annotiert; PR-AutoMerge `43401847522` success, `origin/dev` `62f97f50`, keine offenen PRs.
+- Offen/Weiter: Stabilitätswache `16c5fba2`: nächster Dependabot-Lauf Mo 07:00 Wien; 2 grüne Tage + PR-Merge-Beleg stehen aus.
+- Blocker: keiner; kein roter Check, kein Dependabot-Merge-Beleg.
