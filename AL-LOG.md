@@ -183,3 +183,32 @@ _Vom AL ausfüllen (knapp & belegbar, je 1–3 Zeilen, Commit-/PR-Referenzen sta
 - Erledigt: CTO-Nacht Port Org `c1f9b6ce` — `.github/workflows/automerge-pr.yml` journal-SSOT Retarget (nur `dependabot/*`, base=master→dev); Push `6073486..ed2a84e`; Check `43251340937` success; Auto-Promote `43251416022` success → `origin/master=ed2a84e`.
 - Offen/Weiter: Punkt 2 Rest Demo-Loops / Handy-Autoplay / Zweigeräte-Sync — Owner-Gates. Task `16c5fba2` (+betta/+cto): kein Dependabot-PR offen. Feature-Freeze. Fleet-Restport `c1f9b6ce` (fuel/relax/plan/6pack/coach).
 - Blocker: keine. Fremd-WIP Checkout (`docs/apps.*`, `scripts/portal.mjs`) + lokaler Tip `b27cd88` unberührt.
+
+## 2026-11-13 (Freitag) — Abteilungsleiter-Lauf
+
+_Automatik (vos-al-log Vorlage 2026-11-13):_
+- Commits seit 2026-11-08: eef76a0e chore(portal): portal.mjs + docs/apps.* aus vitalos vos-portal --all synchronisiert
+d900abc1 feat(ci): Living Dashboard als GitHub Page
+b6bff754 Merge PR #20: feat(legal): Datenschutz + öffentliche Löschanfrage-Seite
+604bd62e feat(legal): Datenschutz + öffentliche Löschanfrage-Seite (#19)
+b09dc84f Calm classic Skills design (#22)
+8d7ccd3d fix(store): Skills lesbar auf hellem Shell-Hintergrund, Design-Umschalter im Store-Build aus
+cdbd0353 docs(al): AL-LOG 2026-11-12 — Refs ed2a84e Check/Promote
+ed2a84e6 fix(ci): Dependabot base=master→dev Retarget vor Squash (Org c1f9b6ce)
+9bb430ef docs: auto-update NEXT.md
+cbe22c82 docs: auto-update RESULTS.md
+60734866 Add a shell embed entry that keeps theme and routes local. (#21)
+0395efab ci: restore Gemini repair + Merge-Agent (full automation)
+e8ec919c docs(agents): simplicity pointer — CI.md §1 spine
+37f34dd4 ci: drop Gemini repair and Merge-Agent (simplicity)
+2ffc973b docs(al): AL-LOG Lauf 2 — CI-Refs Check/Promote/Deploy
+- Offene PRs: (keine offenen PRs / gh nicht verfuegbar)
+- CI (letzte Läufe): completed	success	Auto-Promote dev -> master (Check (Skills))	Auto-Promote dev -> master (Check (Skills))	master	schedule	43355707233	7s	2026-11-13T02:57:46Z
+completed	success	PR-AutoMerge (Dependabot -> dev)	PR-AutoMerge (Dependabot -> dev)	master	schedule	43347748590	9s	2026-11-13T01:49:41Z
+completed	success	Gemini CI Agent	Gemini CI Agent	master	workflow_run	43335271560	23s	2026-11-13T00:13:02Z
+- Arbeitsbaum: sauber
+
+_Vom AL ausfüllen (knapp & belegbar, je 1–3 Zeilen, Commit-/PR-Referenzen statt Erzählung):_
+- Erledigt: NEXT CI-Betrieb geprüft — Pages aktiv via Actions (`dashboard.yml` `d900abc1`, Deploy `eef76a0e` Run `43335162374`); Secrets `SYNC_TOKEN`/`GEMINI_API_KEY` vorhanden. NEXT/RESULTS abgehakt. dev=master `eef76a0e` (0/0).
+- Offen/Weiter: Echter roter Check → Gemini-Reparaturpfad beobachten; Demo-Loops / Handy-Autoplay / Zweigeräte-Sync (Owner-Gates). Task `16c5fba2`: PR-AutoMerge `43347748590` success, kein Dependabot-PR. Feature-Freeze.
+- Blocker: keine.

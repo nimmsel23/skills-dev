@@ -3,7 +3,8 @@
 
 # CI-Agent — offener Betriebspunkt
 
-- [ ] Repository-Secrets `SYNC_TOKEN` und `GEMINI_API_KEY` einrichten/prüfen; echten roten Check bis Reparatur, Check, Promote und Deploy beobachten.
+- [x] 2026-11-13: Repository-Secrets `SYNC_TOKEN` (2026-11-09) und `GEMINI_API_KEY` (2026-11-07) vorhanden (`gh secret list`).
+- [ ] Echten roten Check bis Reparatur, Check, Promote und Deploy beobachten.
 - [ ] Gmail-Ausgang mit Run-Diagnose und Gmail-Eingang `[ci:betta]` bis zur Agenten-Routing-Übergabe nachweisen.
 # NEXT — skills-dev
 
@@ -28,5 +29,5 @@
 
 - [ ] Einen echten roten, code-behebbaren CI-Lauf beobachten und bestätigen, dass Reparatur-Commit, grüner Check und vorgesehener Promote/Deploy enden.
 - [ ] Fehler außerhalb des Codes (fehlende Deploy-Credentials, externe Dienste, Runner-Ausfälle) separat als Diagnose melden; keine ungeprüften Änderungen an Secrets oder Deploy-Konfiguration.
-- [ ] GitHub Pages fuer `skills-dev` auf Branch `dev`, Ordner `/docs` prüfen/aktivieren; Pages-Admin-Einstellungen sind über die aktuelle GitHub-Schnittstelle nicht erreichbar.
+- [x] 2026-11-13: GitHub Pages aktiv — Quelle GitHub Actions (`build_type: workflow`, `dashboard.yml` seit `d900abc1`) statt Branch `dev` `/docs`; letzter Pages-Deploy aus `dev` `eef76a0e` (Run `43335162374`, build+deploy success) → https://nimmsel23.github.io/skills-dev/
 - [ ] Gemini-Reparaturpfad nach dem Feld-Fix anhand eines isolierten roten Checks verifizieren: Diagnose, Commit, Check-Neustart und nachgelagerter Deploy.

@@ -1,3 +1,9 @@
+# 2026-11-13 — AL: CI-Betriebspunkte geprüft (Pages + Secrets)
+
+- GitHub Pages aktiv über Actions (`dashboard.yml`, `d900abc1`); Deploy `eef76a0e` (Run `43335162374`) → https://nimmsel23.github.io/skills-dev/. NEXT-Punkt „Branch dev /docs“ damit überholt.
+- Secrets `SYNC_TOKEN` + `GEMINI_API_KEY` vorhanden. Offen bleibt nur die Beobachtung eines echten roten Checks (Gemini-Reparaturpfad).
+- dev = master (`eef76a0e`, 0/0); PR-AutoMerge schedule `43347748590` success ohne Dependabot-PR.
+
 # 2026-11-12 — AL: automerge-pr Dependabot Retarget (Org c1f9b6ce Port)
 
 - journal-SSOT: vor Squash Dependabot-PRs mit `base=master` auf `base=dev` retargeten (nur `dependabot/*`).
