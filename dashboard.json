@@ -1,12 +1,12 @@
 {
  "evidence": {
-  "generated_at": "2026-11-13T00:12:33+00:00",
+  "generated_at": "2026-11-13T03:41:56+00:00",
   "repo": "nimmsel23/skills-dev",
   "meta": {
    "name": "skills-dev",
    "description": "Calisthenics-Skills als Standalone-Mini-App (VitalOS)",
    "html_url": "https://github.com/nimmsel23/skills-dev",
-   "pushed_at": "2026-11-13T00:12:13Z",
+   "pushed_at": "2026-11-13T03:41:33Z",
    "default_branch": "master",
    "visibility": "public",
    "pages_url": "https://nimmsel23.github.io/skills-dev/"
@@ -20,11 +20,17 @@
    "has_dev": true,
    "dev_behind": 0,
    "dev_ahead": 1,
-   "oldest_unpromoted": "2026-11-13T01:12:06+01:00",
-   "dev_head": "eef76a0 2026-11-13T01:12:06+01:00",
-   "master_head": "d900abc 2026-11-13T01:09:25+01:00"
+   "oldest_unpromoted": "2026-11-13T04:41:26+01:00",
+   "dev_head": "62f97f5 2026-11-13T04:41:26+01:00",
+   "master_head": "eef76a0 2026-11-13T01:12:06+01:00"
   },
   "commits": [
+   {
+    "sha": "62f97f5",
+    "date": "2026-11-13T04:41:26+01:00",
+    "author": "Alpha",
+    "subject": "docs(al): AL-LOG 2026-11-13 — Pages via Actions + CI-Secrets geprüft (NEXT abgehakt)"
+   },
    {
     "sha": "eef76a0",
     "date": "2026-11-13T01:12:06+01:00",
@@ -138,12 +144,6 @@
     "date": "2026-11-11T16:43:55+01:00",
     "author": "Alpha",
     "subject": "docs: auto-update TODO.md"
-   },
-   {
-    "sha": "c966a90",
-    "date": "2026-11-11T04:46:02+01:00",
-    "author": "Alpha",
-    "subject": "docs(al): AL-LOG 2026-11-11 — Push-Refs 24d5d0b..b39281a"
    }
   ],
   "activity": [
@@ -229,7 +229,7 @@
    },
    {
     "day": "2026-11-13",
-    "n": 2
+    "n": 3
    }
   ],
   "workflows": [
@@ -237,20 +237,30 @@
     "name": "Check (Skills)",
     "branch": "dev",
     "event": "push",
-    "status": "in_progress",
-    "conclusion": null,
-    "created_at": "2026-11-13T00:12:14Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43335162043",
+    "status": "completed",
+    "conclusion": "success",
+    "created_at": "2026-11-13T03:41:35Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43360643943",
+    "sha": "62f97f5"
+   },
+   {
+    "name": "Auto-Promote dev -> master (Check (Skills))",
+    "branch": "master",
+    "event": "schedule",
+    "status": "completed",
+    "conclusion": "success",
+    "created_at": "2026-11-13T02:57:46Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43355707233",
     "sha": "eef76a0"
    },
    {
-    "name": "Preview (vos-skills)",
-    "branch": "dev",
-    "event": "push",
-    "status": "in_progress",
-    "conclusion": null,
-    "created_at": "2026-11-13T00:12:14Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43335162032",
+    "name": "PR-AutoMerge (Dependabot -> dev)",
+    "branch": "master",
+    "event": "schedule",
+    "status": "completed",
+    "conclusion": "success",
+    "created_at": "2026-11-13T01:49:41Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43347748590",
     "sha": "eef76a0"
    },
    {
@@ -259,9 +269,9 @@
     "event": "workflow_run",
     "status": "completed",
     "conclusion": "success",
-    "created_at": "2026-11-13T00:10:14Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43334887703",
-    "sha": "d900abc"
+    "created_at": "2026-11-13T00:13:02Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43335271560",
+    "sha": "eef76a0"
    },
    {
     "name": "Live Deploy (Skills master)",
@@ -269,29 +279,19 @@
     "event": "workflow_dispatch",
     "status": "completed",
     "conclusion": "success",
-    "created_at": "2026-11-13T00:10:03Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43334858564",
-    "sha": "d900abc"
+    "created_at": "2026-11-13T00:12:46Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43335234245",
+    "sha": "eef76a0"
    },
    {
-    "name": "Auto-Promote dev -> master (Check (Skills))",
-    "branch": "master",
-    "event": "workflow_run",
+    "name": "Preview (vos-skills)",
+    "branch": "dev",
+    "event": "push",
     "status": "completed",
     "conclusion": "success",
-    "created_at": "2026-11-13T00:09:54Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43334837538",
-    "sha": "b6bff75"
-   },
-   {
-    "name": "PR-AutoMerge (Dependabot -> dev)",
-    "branch": "master",
-    "event": "workflow_run",
-    "status": "completed",
-    "conclusion": "skipped",
-    "created_at": "2026-11-13T00:09:54Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43334837400",
-    "sha": "b6bff75"
+    "created_at": "2026-11-13T00:12:14Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43335162032",
+    "sha": "eef76a0"
    },
    {
     "name": "Preview (vos-skills)",
@@ -393,34 +393,34 @@
   "status": "green",
   "signals": [],
   "ai": {
-   "headline": "skills-dev: dev führt mit Portal-Synchronisation, master mit Living Dashboard deployed",
-   "lage": "Der dev-Branch führt mit einem Commit (eef76a0) zur Portal-Synchronisation, für den zwei Workflows laufen. Der master-Branch wurde zuletzt mit dem Living Dashboard (d900abc) aktualisiert und erfolgreich deployed.",
+   "headline": "skills-dev: dev mit Doku-Updates, master mit Portal-Synchronisation aktualisiert",
+   "lage": "Der dev-Branch führt mit einem Commit (62f97f5) zu Doku-Updates und geprüften CI-Secrets. Der master-Branch wurde zuletzt mit der Portal-Synchronisation (eef76a0) aktualisiert und erfolgreich deployed. GitHub Pages sind nun aktiv via Actions.",
    "auffaelligkeiten": [
     {
-     "level": "hoch",
-     "text": "Der 'Gemini CI Agent'-Workflow auf Branch cursor/classic-calm-design-8783 ist mit 'failure' abgeschlossen (https://github.com/nimmsel23/skills-dev/actions/runs/43318028957)."
+     "level": "mittel",
+     "text": "Der 'Gemini CI Agent'-Workflow auf dem Branch cursor/classic-calm-design-8783 schlug weiterhin fehl (Run 43318028957)."
+    },
+    {
+     "level": "mittel",
+     "text": "Workflows 'Preview (vos-skills)' und 'Check (Skills)' auf Branch feat/legal-pages-19 schlugen fehl."
     },
     {
      "level": "info",
-     "text": "Zwei Workflows ('Check (Skills)', 'Preview (vos-skills)') für Commit eef76a0 auf dev sind 'in_progress'."
-    },
-    {
-     "level": "info",
-     "text": "Die Prüfung und Aktivierung der GitHub Pages für dev im Ordner /docs ist laut NEXT.md noch offen, da die Admin-Einstellungen über die aktuelle GitHub-Schnittstelle nicht erreichbar sind."
+     "text": "Die GitHub Pages sind nun aktiv und werden über GitHub Actions bereitgestellt, nicht mehr über den /docs-Ordner auf dev."
     }
    ],
    "naechste_schritte": [
-    "Überprüfen: Status der laufenden Workflows auf dev für eef76a0.",
     "Untersuchen: Ursache des 'Gemini CI Agent'-Fehlers auf cursor/classic-calm-design-8783 (Workflow-URL: https://github.com/nimmsel23/skills-dev/actions/runs/43318028957).",
-    "Prüfen: Erreichbarkeit und Aktivierung der GitHub Pages für skills-dev auf Branch dev im Ordner /docs."
+    "Prüfen: Fehlerursache der fehlgeschlagenen Workflows auf feat/legal-pages-19.",
+    "Beobachten: Einen echten roten, code-behebbaren CI-Lauf bis zur Reparatur, Check, Promote und Deploy."
    ],
-   "veraendert": "Der dev-Branch führt nun mit einem neuen Commit (eef76a0) zur Portal-Synchronisation, während der master-Branch den zuvor auf dev befindlichen Living Dashboard-Commit (d900abc) erfolgreich deployed hat.",
+   "veraendert": "Der dev-Branch hat einen neuen Head-Commit (62f97f5), der master-Branch wurde mit dem zuvor auf dev befindlichen Commit eef76a0 aktualisiert und die GitHub Pages sind nun aktiv über GitHub Actions konfiguriert.",
    "fragen": [
-    "Soll die Wiedergabe/Autoplay auf dem Android-Handy abgenommen werden?",
-    "Soll der echte Offline-/Zweigeräte-Sync mit Anmeldung abgenommen werden (Owner-Gate)?"
+    "Gibt es einen Plan zur Geräteabnahme am Android-Handy (Anruf, Bildschirmsperre, Zurück-Geste, Neustart)?",
+    "Wann ist die native Google-Anmeldung (Capacitor-Plugin + SHA-1/OAuth in Firebase) geplant?"
    ],
    "model": "gemini-2.5-flash"
   },
-  "ai_at": "2026-11-13T00:12:35+00:00"
+  "ai_at": "2026-11-13T03:41:59+00:00"
  }
 }
