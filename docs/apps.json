@@ -10,7 +10,13 @@
       "accent": "#c8ff00",
       "site": "vos-skills",
       "url": "https://vos-skills.web.app",
-      "tab": null
+      "tab": null,
+      "bundledAuthDomain": "fitness-aos.firebaseapp.com",
+      "authMode": "project-domain",
+      "loginGate": "local-first",
+      "note": "authDomain fitness-aos.firebaseapp.com; Offline als guest ohne Login; Sync optional"
     }
-  ]
+  ],
+  "pages": "https://nimmsel23.github.io/skills-dev/",
+  "bundledAuthDomain": "fitness-aos.firebaseapp.com"
 }
