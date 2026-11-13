@@ -1,15 +1,15 @@
 {
  "evidence": {
-  "generated_at": "2026-11-13T00:09:45+00:00",
+  "generated_at": "2026-11-13T00:12:33+00:00",
   "repo": "nimmsel23/skills-dev",
   "meta": {
    "name": "skills-dev",
    "description": "Calisthenics-Skills als Standalone-Mini-App (VitalOS)",
    "html_url": "https://github.com/nimmsel23/skills-dev",
-   "pushed_at": "2026-11-13T00:09:27Z",
+   "pushed_at": "2026-11-13T00:12:13Z",
    "default_branch": "master",
    "visibility": "public",
-   "pages_url": null
+   "pages_url": "https://nimmsel23.github.io/skills-dev/"
   },
   "package": {
    "name": "skills",
@@ -20,11 +20,17 @@
    "has_dev": true,
    "dev_behind": 0,
    "dev_ahead": 1,
-   "oldest_unpromoted": "2026-11-13T01:09:25+01:00",
-   "dev_head": "d900abc 2026-11-13T01:09:25+01:00",
-   "master_head": "b6bff75 2026-11-12T23:15:17+01:00"
+   "oldest_unpromoted": "2026-11-13T01:12:06+01:00",
+   "dev_head": "eef76a0 2026-11-13T01:12:06+01:00",
+   "master_head": "d900abc 2026-11-13T01:09:25+01:00"
   },
   "commits": [
+   {
+    "sha": "eef76a0",
+    "date": "2026-11-13T01:12:06+01:00",
+    "author": "Alpha",
+    "subject": "chore(portal): portal.mjs + docs/apps.* aus vitalos vos-portal --all synchronisiert"
+   },
    {
     "sha": "d900abc",
     "date": "2026-11-13T01:09:25+01:00",
@@ -138,12 +144,6 @@
     "date": "2026-11-11T04:46:02+01:00",
     "author": "Alpha",
     "subject": "docs(al): AL-LOG 2026-11-11 — Push-Refs 24d5d0b..b39281a"
-   },
-   {
-    "sha": "b39281a",
-    "date": "2026-11-11T04:44:16+01:00",
-    "author": "Alpha",
-    "subject": "docs(al): Fitness-Skills-Merge als Sibling-Checkout dokumentieren"
    }
   ],
   "activity": [
@@ -229,7 +229,7 @@
    },
    {
     "day": "2026-11-13",
-    "n": 1
+    "n": 2
    }
   ],
   "workflows": [
@@ -239,9 +239,9 @@
     "event": "push",
     "status": "in_progress",
     "conclusion": null,
-    "created_at": "2026-11-13T00:09:29Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43334782292",
-    "sha": "d900abc"
+    "created_at": "2026-11-13T00:12:14Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43335162043",
+    "sha": "eef76a0"
    },
    {
     "name": "Preview (vos-skills)",
@@ -249,19 +249,9 @@
     "event": "push",
     "status": "in_progress",
     "conclusion": null,
-    "created_at": "2026-11-13T00:09:29Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43334782287",
-    "sha": "d900abc"
-   },
-   {
-    "name": "Auto-Promote dev -> master (Check (Skills))",
-    "branch": "master",
-    "event": "schedule",
-    "status": "completed",
-    "conclusion": "success",
-    "created_at": "2026-11-12T22:44:49Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43322723409",
-    "sha": "b6bff75"
+    "created_at": "2026-11-13T00:12:14Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43335162032",
+    "sha": "eef76a0"
    },
    {
     "name": "Gemini CI Agent",
@@ -269,9 +259,9 @@
     "event": "workflow_run",
     "status": "completed",
     "conclusion": "success",
-    "created_at": "2026-11-12T22:16:14Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43318341869",
-    "sha": "b6bff75"
+    "created_at": "2026-11-13T00:10:14Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43334887703",
+    "sha": "d900abc"
    },
    {
     "name": "Live Deploy (Skills master)",
@@ -279,8 +269,18 @@
     "event": "workflow_dispatch",
     "status": "completed",
     "conclusion": "success",
-    "created_at": "2026-11-12T22:16:06Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43318317027",
+    "created_at": "2026-11-13T00:10:03Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43334858564",
+    "sha": "d900abc"
+   },
+   {
+    "name": "Auto-Promote dev -> master (Check (Skills))",
+    "branch": "master",
+    "event": "workflow_run",
+    "status": "completed",
+    "conclusion": "success",
+    "created_at": "2026-11-13T00:09:54Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43334837538",
     "sha": "b6bff75"
    },
    {
@@ -289,9 +289,9 @@
     "event": "workflow_run",
     "status": "completed",
     "conclusion": "skipped",
-    "created_at": "2026-11-12T22:15:56Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43318289367",
-    "sha": "b09dc84"
+    "created_at": "2026-11-13T00:09:54Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43334837400",
+    "sha": "b6bff75"
    },
    {
     "name": "Preview (vos-skills)",
@@ -393,38 +393,34 @@
   "status": "green",
   "signals": [],
   "ai": {
-   "headline": "skills-dev: Dev-Branch führt mit CI-Änderung, Master aktuell deployed",
-   "lage": "Der dev-Branch ist mit einem Commit (d900abc) für ein Living Dashboard als GitHub Page einen Commit vor master. Auf dev laufen aktuell zwei Workflows. Der master-Branch wurde zuletzt mit rechtlichen Seiten (Merge PR #20) aktualisiert und erfolgreich deployed.",
+   "headline": "skills-dev: dev führt mit Portal-Synchronisation, master mit Living Dashboard deployed",
+   "lage": "Der dev-Branch führt mit einem Commit (eef76a0) zur Portal-Synchronisation, für den zwei Workflows laufen. Der master-Branch wurde zuletzt mit dem Living Dashboard (d900abc) aktualisiert und erfolgreich deployed.",
    "auffaelligkeiten": [
     {
      "level": "hoch",
-     "text": "Zwei Workflows ('Check (Skills)', 'Preview (vos-skills)') für Commit d900abc auf dem dev-Branch sind 'in_progress' und haben noch keinen Abschluss."
-    },
-    {
-     "level": "mittel",
-     "text": "Der 'Gemini CI Agent'-Workflow auf dem Branch 'cursor/classic-calm-design-8783' schlug fehl, obwohl der 'Check (Skills)'-Workflow auf demselben Branch erfolgreich war."
+     "text": "Der 'Gemini CI Agent'-Workflow auf Branch cursor/classic-calm-design-8783 ist mit 'failure' abgeschlossen (https://github.com/nimmsel23/skills-dev/actions/runs/43318028957)."
     },
     {
      "level": "info",
-     "text": "Der Gemini CI Agent wurde kürzlich wiederhergestellt (Commit 0395efa), nachdem er zuvor entfernt wurde (Commit 37f34dd), was auf eine aktive Anpassung der CI-Automatisierung hindeutet."
+     "text": "Zwei Workflows ('Check (Skills)', 'Preview (vos-skills)') für Commit eef76a0 auf dev sind 'in_progress'."
     },
     {
      "level": "info",
-     "text": "Issue #23 'Classic design: understated major redesign' wurde mit einer 'owner exception to the freeze' erstellt, was eine Abweichung vom geplanten Freeze signalisiert."
+     "text": "Die Prüfung und Aktivierung der GitHub Pages für dev im Ordner /docs ist laut NEXT.md noch offen, da die Admin-Einstellungen über die aktuelle GitHub-Schnittstelle nicht erreichbar sind."
     }
    ],
    "naechste_schritte": [
-    "Überprüfen: Status der laufenden Workflows auf dev für d900abc.",
-    "Untersuchen: Ursache des 'Gemini CI Agent'-Fehlers auf cursor/classic-calm-design-8783.",
-    "Prüfen: GitHub Pages für skills-dev auf Branch dev im Ordner /docs."
+    "Überprüfen: Status der laufenden Workflows auf dev für eef76a0.",
+    "Untersuchen: Ursache des 'Gemini CI Agent'-Fehlers auf cursor/classic-calm-design-8783 (Workflow-URL: https://github.com/nimmsel23/skills-dev/actions/runs/43318028957).",
+    "Prüfen: Erreichbarkeit und Aktivierung der GitHub Pages für skills-dev auf Branch dev im Ordner /docs."
    ],
-   "veraendert": "",
+   "veraendert": "Der dev-Branch führt nun mit einem neuen Commit (eef76a0) zur Portal-Synchronisation, während der master-Branch den zuvor auf dev befindlichen Living Dashboard-Commit (d900abc) erfolgreich deployed hat.",
    "fragen": [
-    "Sind die Repository-Secrets SYNC_TOKEN und GEMINI_API_KEY korrekt eingerichtet?",
-    "Wann soll der echte Offline-/Zweigeräte-Sync mit Anmeldung abgenommen werden (Owner-Gate laut TODO.md)?"
+    "Soll die Wiedergabe/Autoplay auf dem Android-Handy abgenommen werden?",
+    "Soll der echte Offline-/Zweigeräte-Sync mit Anmeldung abgenommen werden (Owner-Gate)?"
    ],
    "model": "gemini-2.5-flash"
   },
-  "ai_at": "2026-11-13T00:09:48+00:00"
+  "ai_at": "2026-11-13T00:12:35+00:00"
  }
 }
