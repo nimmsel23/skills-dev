@@ -1,12 +1,12 @@
 {
  "evidence": {
-  "generated_at": "2026-11-14T03:42:55+00:00",
+  "generated_at": "2026-11-14T11:44:40+00:00",
   "repo": "nimmsel23/skills-dev",
   "meta": {
    "name": "skills-dev",
    "description": "Calisthenics-Skills als Standalone-Mini-App (VitalOS)",
    "html_url": "https://github.com/nimmsel23/skills-dev",
-   "pushed_at": "2026-11-14T03:42:51Z",
+   "pushed_at": "2026-11-14T07:07:25Z",
    "default_branch": "master",
    "visibility": "public",
    "pages_url": "https://nimmsel23.github.io/skills-dev/"
@@ -234,24 +234,34 @@
   ],
   "workflows": [
    {
-    "name": "Live Deploy (Skills master)",
+    "name": "Auto-Promote dev -> master (Check (Skills))",
     "branch": "master",
-    "event": "workflow_dispatch",
-    "status": "pending",
-    "conclusion": null,
-    "created_at": "2026-11-14T03:42:53Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43553035373",
+    "event": "schedule",
+    "status": "completed",
+    "conclusion": "success",
+    "created_at": "2026-11-14T06:28:11Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43566483056",
     "sha": "2b76b29"
    },
    {
     "name": "PR-AutoMerge (Dependabot -> dev)",
     "branch": "master",
-    "event": "workflow_run",
+    "event": "schedule",
     "status": "completed",
-    "conclusion": "skipped",
-    "created_at": "2026-11-14T03:42:40Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43553019295",
-    "sha": "9138502"
+    "conclusion": "success",
+    "created_at": "2026-11-14T06:20:39Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43565869647",
+    "sha": "2b76b29"
+   },
+   {
+    "name": "Live Deploy (Skills master)",
+    "branch": "master",
+    "event": "workflow_dispatch",
+    "status": "completed",
+    "conclusion": "success",
+    "created_at": "2026-11-14T03:42:53Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43553035373",
+    "sha": "2b76b29"
    },
    {
     "name": "Gemini CI Agent",
@@ -261,16 +271,6 @@
     "conclusion": "success",
     "created_at": "2026-11-14T03:42:40Z",
     "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43553018978",
-    "sha": "9138502"
-   },
-   {
-    "name": "Auto-Promote dev -> master (Check (Skills))",
-    "branch": "master",
-    "event": "workflow_run",
-    "status": "in_progress",
-    "conclusion": null,
-    "created_at": "2026-11-14T03:42:40Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43553018961",
     "sha": "9138502"
    },
    {
@@ -364,35 +364,34 @@
   "status": "green",
   "signals": [],
   "ai": {
-   "headline": "skills-dev: dev und master synchron, alte CI-Fehler auf Feature-Branches bestehen",
-   "lage": "Die Branches dev und master sind auf Commit 2b76b29 synchronisiert. Der Check (Skills) Workflow auf dev (Run 43552992854) wurde erfolgreich abgeschlossen. Die in der letzten Einschätzung genannten CI-Fehler auf den Feature-Branches feat/legal-pages-19 und cursor/classic-calm-design-8783 bestehen weiterhin.",
+   "headline": "skills-dev: dev/master synchron, CI-Fehler auf Feature-Branches bestehen",
+   "lage": "Die Branches dev und master sind weiterhin auf Commit 2b76b29 synchronisiert. Der Auto-Promote dev -> master (Check (Skills)) Workflow (Run 43566483056) wurde erfolgreich abgeschlossen. Die Workflows Preview (vos-skills) und Check (Skills) auf feat/legal-pages-19 (Runs 43318130209, 43318130106) schlagen weiterhin fehl, während der Gemini CI Agent auf cursor/classic-calm-design-8783 (Run 43318028957) fehlerhaft bleibt, obwohl der Check (Skills) Workflow auf diesem Branch (Run 43318033031) erfolgreich war.",
    "auffaelligkeiten": [
     {
      "level": "hoch",
-     "text": "Die Workflows 'Preview (vos-skills)' und 'Check (Skills)' auf feat/legal-pages-19 (Runs 43318130209, 43318130106) sind seit 2026-11-12 fehlgeschlagen. Der 'Gemini CI Agent' Workflow auf cursor/classic-calm-design-8783 (Run 43318028957) ist seit 2026-11-12 fehlgeschlagen."
+     "text": "Die Workflows 'Preview (vos-skills)' und 'Check (Skills)' auf dem Branch feat/legal-pages-19 (Runs 43318130209, 43318130106) schlagen weiterhin fehl."
+    },
+    {
+     "level": "mittel",
+     "text": "Der 'Gemini CI Agent' Workflow auf cursor/classic-calm-design-8783 (Run 43318028957) schlägt fehl, während der 'Check (Skills)' Workflow auf demselben Branch (Run 43318033031) erfolgreich war."
     },
     {
      "level": "info",
-     "text": "Ein 'Dependabot-Alarm #27 (minimatch)' wurde in Commit 2b76b29 vermerkt."
-    },
-    {
-     "level": "info",
-     "text": "Der 'Auto-Promote dev -> master (Check (Skills))' Workflow (Run 43553018961) ist aktuell in Bearbeitung."
-    },
-    {
-     "level": "info",
-     "text": "Ein 'Live Deploy (Skills master)' Workflow (Run 43553035373) ist pending."
+     "text": "Der 'Gemini CI Agent' Workflow auf feat/legal-pages-19 (Run 43318126725) wurde übersprungen."
     }
    ],
    "naechste_schritte": [
-    "Untersuchen: Ursache der fehlgeschlagenen Workflows 'Preview (vos-skills)' und 'Check (Skills)' auf feat/legal-pages-19.",
-    "Untersuchen: Ursache des 'Gemini CI Agent'-Fehlers auf cursor/classic-calm-design-8783 (Workflow-URL: https://github.com/nimmsel23/skills-dev/actions/runs/43318028957).",
-    "Beobachten: Abschluss des aktuell laufenden 'Auto-Promote dev -> master (Check (Skills))' Workflows (Run 43553018961)."
+    "Untersuchen: Ursache der fehlgeschlagenen Workflows 'Preview (vos-skills)' und 'Check (Skills)' auf feat/legal-pages-19 (Runs 43318130209, 43318130106).",
+    "Untersuchen: Ursache des 'Gemini CI Agent'-Fehlers auf cursor/classic-calm-design-8783 (Run 43318028957) im Kontext des erfolgreichen 'Check (Skills)' auf diesem Branch.",
+    "Prüfen: Offene Punkte im NEXT.md bezüglich des Gemini CI-Agenten, insbesondere die Beobachtung eines echten roten Checks."
    ],
-   "veraendert": "Die Branches dev und master sind nun synchronisiert, und der Check (Skills) Workflow auf dev (Run 43552992854) wurde erfolgreich abgeschlossen.",
-   "fragen": [],
+   "veraendert": "Der 'Auto-Promote dev -> master (Check (Skills))' Workflow (Run 43566483056) wurde erfolgreich abgeschlossen und der 'Check (Skills)' Workflow auf 'cursor/classic-calm-design-8783' (Run 43318033031) war erfolgreich.",
+   "fragen": [
+    "Soll die Geräteabnahme am Android-Handy durchgeführt werden?",
+    "Soll die native Google-Anmeldung (Capacitor-Plugin + SHA-1/OAuth in Firebase) implementiert werden?"
+   ],
    "model": "gemini-2.5-flash"
   },
-  "ai_at": "2026-11-14T03:42:57+00:00"
+  "ai_at": "2026-11-14T11:44:42+00:00"
  }
 }
