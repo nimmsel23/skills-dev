@@ -17,8 +17,11 @@ export function readRoute(hash) {
 }
 
 // 6Pack keeps its complete UI and durable workout/program storage.
-export default function CoreSkills() {
-  const [route, setRoute] = useState(() => readRoute(location.hash));
+// Optional kontrolliert (Einbettung in Fitness): route/onRouteChange statt location.hash, onClose = Zurück.
+export default function CoreSkills({ route: controlledRoute, onRouteChange, onClose } = {}) {
+  const controlled = controlledRoute !== undefined;
+  const [hashRoute, setRoute] = useState(() => controlled ? '' : readRoute(location.hash));
+  const route = controlled ? controlledRoute : hashRoute;
   const [design, setDesign] = useState(readDesign);
   const [sync, setSync] = useState({ user: null });
   useEffect(() => subscribeSync(setSync), []);
@@ -28,18 +31,22 @@ export default function CoreSkills() {
     return () => { disposed = true; stop?.(); };
   }, []);
   useEffect(() => {
+    if (controlled) return;
     const read = () => setRoute(readRoute(location.hash));
     window.addEventListener('hashchange', read);
     return () => window.removeEventListener('hashchange', read);
   }, []);
-  const navigate = (next) => { location.hash = next; };
+  const navigate = (next) => { if (controlled) onRouteChange?.(next); else location.hash = next; };
   const settings = route === 'settings' || route === 'setup';
   const sixpack = settings || route === 'sixpack' || route.startsWith('sixpack/');
   return <main data-theme="skills" className="core-skills min-h-dvh">
     <header className="max-w-xl mx-auto p-4">
       <h1 className="text-2xl font-bold">Core Skills</h1>
       <nav aria-label="Core Skills" className="flex gap-4 py-3">
-        <a href="#">Skills</a><a href="#sixpack">6Pack</a><a href="#settings">Setup</a>
+        {onClose && <button type="button" onClick={onClose}>← Fitness</button>}
+        {controlled
+          ? <><button type="button" onClick={() => navigate('')}>Skills</button><button type="button" onClick={() => navigate('sixpack')}>6Pack</button><button type="button" onClick={() => navigate('settings')}>Setup</button></>
+          : <><a href="#">Skills</a><a href="#sixpack">6Pack</a><a href="#settings">Setup</a></>}
       </nav>
     </header>
     {sixpack ? <div className="core-skills-sixpack max-w-xl mx-auto h-[85dvh]">
