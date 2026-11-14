@@ -3,6 +3,9 @@
     "target": "skills",
     "public": "dist",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "redirects": [
+      { "source": "/@(6pack|sixpack)", "destination": "/#sixpack", "type": 302 }
+    ],
     "rewrites": [
       { "source": "/datenschutz", "destination": "/datenschutz.html" },
       { "source": "/konto-loeschen", "destination": "/konto-loeschen.html" },
