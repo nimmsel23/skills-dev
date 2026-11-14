@@ -53,7 +53,7 @@ export default function CoreSkills({ route: controlledRoute, onRouteChange, onCl
       <SixPackEmbed uid={sync.user?.uid || 'local'} route={settings ? 'settings' : route.replace(/^sixpack\/?/, '')}
         onRouteChange={next => navigate(next.startsWith('skills') ? next.replace(/^skills\/?/, '') : next === 'settings' ? 'settings' : `sixpack/${next}`)}
         onWorkoutComplete={submitWorkout} loadRemoteProgram={loadProgram} saveRemoteProgram={saveProgram}
-        enablePush={isNativeApp ? undefined : enableSixpackPush} localReminders={nativeReminderDelivery}
+        enablePush={isNativeApp || controlled ? undefined : enableSixpackPush} localReminders={nativeReminderDelivery}
         setupContent={<><PersistenceStatus /><DesignSwitcher value={design} onChange={id => { saveDesign(id); setDesign(id); }} /></>}
         onNavigate={target => { if (target === 'fuel') window.location.assign('https://fuel-vos.web.app'); }} />
     </div> : <SkillsEmbed route={route} onRouteChange={navigate} design={design} />}
