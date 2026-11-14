@@ -29,3 +29,5 @@ Thumbs.db
 # Lokale Backups
 *.bak
 *.bak.*
+
+.sixpack-dependency/

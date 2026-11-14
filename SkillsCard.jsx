@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 import ExerciseVideo from './ExerciseVideo.jsx';
-import PersistenceStatus from './PersistenceStatus.jsx';
 import { ChevronLeft, ChevronRight, Lock, Check, Circle, Play, Pause, Flag, Trophy, ArrowUp, ArrowDown, Activity } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
@@ -866,9 +865,7 @@ export default function SkillsCard({ onWorkoutComplete, embedded = false, route,
       ))}
       </fieldset>
 
-      <footer className="skills-footer">
-        <PersistenceStatus />
-      </footer>
+
     </section>
   );
 }

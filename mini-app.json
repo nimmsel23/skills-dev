@@ -1,10 +1,10 @@
 {
   "apps": {
     "skills": {
-      "name": "Skills",
-      "short": "Skills",
-      "description": "Calisthenics-Skills mit Progression und Workout-Runner",
-      "accent": "#c8ff00",
+      "name": "Core Skills",
+      "short": "Core Skills",
+      "description": "Skills-Progression und vollständiges 6Pack-Training mit gemeinsamem Setup",
+      "accent": "#6ec4aa",
       "register": true,
       "sw": {
         "shell": [

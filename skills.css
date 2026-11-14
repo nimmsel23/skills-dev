@@ -591,3 +591,31 @@
   box-shadow: none;
 }
 .skills-switch-btn:hover { border-color: var(--accent, #6ec4aa); color: var(--ink, #f4f2ec); }
+
+/* The complete 6Pack UI uses Skills tokens inside Core Skills. */
+.core-skills { background: var(--bg); color: var(--ink); }
+.core-skills-sixpack { --text: var(--ink); --border: var(--line); }
+.core-skills-sixpack [style*="background: rgb(10, 10, 10)"],
+.core-skills-sixpack [style*="background: rgb(0, 0, 0)"] { background: var(--bg) !important; }
+.core-skills-sixpack [style*="background: rgb(26, 26, 26)"],
+.core-skills-sixpack [style*="background: rgb(17, 17, 17)"] { background: var(--card) !important; }
+.core-skills-sixpack [style*="color: rgb(255, 255, 255)"] { color: var(--ink) !important; }
+.core-skills-sixpack [style*="color: rgb(136, 136, 136)"],
+.core-skills-sixpack [style*="color: rgb(170, 170, 170)"] { color: var(--dim) !important; }
+.core-skills-sixpack [style*="color: rgb(226, 0, 26)"] { color: var(--accent) !important; }
+.core-skills-sixpack [style*="background: rgb(226, 0, 26)"] { background: var(--accent) !important; color: var(--accent-ink) !important; }
+
+.core-skills-sixpack [style*="background: rgb(20, 20, 20)"],
+.core-skills-sixpack [style*="background: rgb(21, 21, 21)"],
+.core-skills-sixpack [style*="background: rgb(30, 30, 30)"],
+.core-skills-sixpack [style*="background: rgb(34, 34, 34)"],
+.core-skills-sixpack [style*="background: rgb(14, 14, 14)"] { background: var(--card) !important; color: var(--ink); }
+.core-skills-sixpack [style*="gradient("] { background: linear-gradient(135deg, var(--card), var(--bg2)) !important; }
+.core-skills-sixpack svg[color="#e2001a"],
+.core-skills-sixpack [class~="text-[#e2001a]"] { color: var(--accent) !important; }
+.core-skills-sixpack svg[color="#333"],
+.core-skills-sixpack [style*="color: rgb(51, 51, 51)"] { color: var(--dim) !important; }
+.core-skills-sixpack [style*="border"] { border-color: var(--line) !important; }
+
+.core-skills-sixpack svg[stroke="#e2001a"] { stroke: var(--accent); }
+.core-skills-sixpack svg[stroke="#333"] { stroke: var(--dim); }

@@ -1,15 +1,21 @@
-# Skills
+# Core Skills
 
-Eigenständige Calisthenics-App mit versioniertem Skills-Katalog, Trainingsrunner
-und nutzerbezogener Progression. Fitness bindet `SkillsCard.jsx` über den
-Nachbar-Checkout (`skills-app`/`skills-dev`, `vite-miniapp-submodules.mjs`) ein;
-der Datenbestand gehört ausschließlich Skills.
+Core Skills verbindet Skills-Progressionen mit der vollständigen 6Pack-Oberfläche
+(Runner, Track, Learn, Shuffle, Favoriten und private Selfies im Owner-Build).
+`CoreSkills.jsx` importiert den gemeinsamen `SixPackEmbed`; keine UI-Kopie.
+6Pack läuft im Skills-CSS-Wrapper. Store-Grenzen der importierten App bleiben erhalten.
 
-Katalog: `public/skills-catalog.v1.json` (14 Skills / 65 Stufen). Fortschritt und
-Runner liegen in IndexedDB und localStorage, angemeldete Nutzer synchronisieren
-Fortschrittsereignisse über Firestore. Die alten Fitness-Keys werden nur zur
-Bestandsübernahme gelesen. Standalone-Skill-URL: `?skill=<id>` im Hash.
-Die VitalOS-Shell bindet stattdessen `embed.jsx` ein (Vertrag unten).
+Standalone-Routen: `#`, `#<skill-id>`, `#sixpack`, `#sixpack/track`, `#settings`
+(Alias `#setup`). Alte `#?skill=<id>`-Links bleiben lesbar. Setup verwendet
+6Packs Settings-Screen; Konto, Sync, Gastdaten-Import, Löschen und Rechtliches
+stehen ausschließlich dort. Die Trainingsansicht hat keinen Account-Footer.
+
+Lokal liegt `6pack-dev` neben diesem Repo. Die drei Build-Workflows checken
+6Pack `master` nach `.sixpack-dependency` aus und installieren dessen eigene
+Abhängigkeiten. Skills und 6Pack verwenden dieselbe Firebase-Instanz; Programme,
+Workout-Outbox und Fortschrittsdaten behalten ihre bestehenden Speicherverträge.
+Die Shell verwendet weiter `embed.jsx` für einzelne Skills und setzt ihren
+Core-Skills-Host aus den beiden Embed-Einstiegen zusammen.
 
 ## Standalone (2026-10-16)
 Dieses Repo ist die herausgelöste Fassung (`git subtree split` aus `~/fitness-dev`, Ordner `Skills/`).

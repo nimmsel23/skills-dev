@@ -28,6 +28,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Checkout shared 6Pack source
+        uses: actions/checkout@v4
+        with:
+          repository: nimmsel23/6pack-dev
+          ref: master
+          path: .sixpack-dependency
+          persist-credentials: false
+
       - uses: pnpm/action-setup@v4   # Version aus package.json "packageManager"
 
       - uses: actions/setup-node@v4
@@ -42,6 +50,9 @@ jobs:
 
       - name: Exercise video regression checks
         run: node scripts/test-exercise-videos.mjs
+
+      - name: Install shared 6Pack dependencies
+        run: pnpm --dir .sixpack-dependency install --ignore-scripts --frozen-lockfile
 
       - name: Build (Stempel = Splash + Service Worker)
         run: pnpm run build

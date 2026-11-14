@@ -12,3 +12,6 @@ html {
 body {
   margin: 0;
 }
+
+@source "../6pack-dev/**/*.{js,jsx}";
+@source "./.sixpack-dependency/**/*.{js,jsx}";

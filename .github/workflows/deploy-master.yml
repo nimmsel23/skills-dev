@@ -40,6 +40,14 @@ jobs:
           # Volle Historie: der Changelog liest bei workflow_dispatch `git log <parent>..HEAD`.
           fetch-depth: 0
 
+      - name: Checkout shared 6Pack source
+        uses: actions/checkout@v4
+        with:
+          repository: nimmsel23/6pack-dev
+          ref: master
+          path: skills-dev/.sixpack-dependency
+          persist-credentials: false
+
       - uses: pnpm/action-setup@v4
         with:
           version: 11.3.0
@@ -57,6 +65,9 @@ jobs:
       - name: Verify exercise videos
         working-directory: skills-dev
         run: node scripts/test-exercise-videos.mjs
+
+      - name: Install shared 6Pack dependencies
+        run: pnpm --dir skills-dev/.sixpack-dependency install --ignore-scripts --frozen-lockfile
 
       - name: Build Skills
         working-directory: skills-dev

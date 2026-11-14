@@ -1,3 +1,5 @@
+import { existsSync, readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import { vosChangelog } from './scripts/vos-changelog/vos-changelog-vite.mjs'
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
@@ -18,10 +20,17 @@ function fixRolldownPreloadMarker() {
   };
 }
 
+const sixpackRoot = resolve(existsSync(resolve('.sixpack-dependency')) ? '.sixpack-dependency' : '../6pack-dev');
+
 export default defineConfig({
   base: './',
+  resolve: {
+    dedupe: ['react', 'react-dom', 'firebase'],
+    alias: { '@vos-sixpack': sixpackRoot },
+  },
   plugins: [
-    vosChangelog({ appId: 'skills', appName: 'Skills', accent: '#fb923c' }),
+    { name: 'sixpack-push-worker', generateBundle() { this.emitFile({ type: 'asset', fileName: 'sixpack-messaging-sw.js', source: readFileSync(resolve(sixpackRoot, 'public/sixpack-messaging-sw.js'), 'utf8') }); } },
+    vosChangelog({ appId: 'skills', appName: 'Core Skills', accent: '#6ec4aa' }),
     react(),
     fixRolldownPreloadMarker(),
   ],
