@@ -239,5 +239,5 @@ completed	success	Auto-Promote dev -> master (Check (Skills))	Auto-Promote dev -
 
 _Vom AL ausfüllen (knapp & belegbar, je 1–3 Zeilen, Commit-/PR-Referenzen statt Erzählung):_
 - Erledigt: Liegengebliebenen AL-Commit `a6a36581` (Stabilitätswache 13.11.) + diesen Eintrag auf `origin/dev` nachgeschoben (Basis `62f97f50`). CI zuletzt grün: Auto-Promote `43530541235`, PR-AutoMerge `43527829968`; keine offenen PRs (letzter Dependabot-Merge #18 am 09.11.).
-- Offen/Weiter: Stabilitätswache `16c5fba2` (+betta/+cto) wartet auf Dependabot-Lauf Mo 16.11. 07:00 Wien. TODO-Rest Owner-Gates (15 Demo-Loops, Handy-Autoplay, Zweigeräte-Sync); NEXT: echter roter Check für den Gemini-Reparaturpfad.
+- Offen/Weiter: Stabilitätswache `16c5fba2` (+betta/+cto) wartet auf Dependabot-Lauf Mo 16.11. 07:00 Wien. TODO-Rest Owner-Gates (15 Demo-Loops, Handy-Autoplay, Zweigeräte-Sync); NEXT: echter roter Check für den Gemini-Reparaturpfad. Neu: Dependabot-Alarm #27 (`minimatch` <11.0.1, GHSA-g3hv-75wg-m249, moderate, nur dev-scope über `pnpm-lock.yaml`, offen seit 05.11.); lässt sich als Deps-Fix im Feature-Freeze per Override + Lockfile beheben.
 - Blocker: `pnpm audit` und `node scripts/test-exercise-videos.mjs` brauchten in diesem Lauf eine Freigabe, deshalb nicht ausgeführt. Kein roter Befund.
