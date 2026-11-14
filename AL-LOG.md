@@ -212,3 +212,32 @@ _Vom AL ausfüllen (knapp & belegbar, je 1–3 Zeilen, Commit-/PR-Referenzen sta
 - Erledigt: Task `16c5fba2` per UUID annotiert; PR-AutoMerge `43401847522` success, `origin/dev` `62f97f50`, keine offenen PRs.
 - Offen/Weiter: Stabilitätswache `16c5fba2`: nächster Dependabot-Lauf Mo 07:00 Wien; 2 grüne Tage + PR-Merge-Beleg stehen aus.
 - Blocker: keiner; kein roter Check, kein Dependabot-Merge-Beleg.
+
+## 2026-11-14 (Samstag) — Abteilungsleiter-Lauf
+
+_Automatik (vos-al-log Vorlage 2026-11-14):_
+- Commits seit 2026-11-08: a6a36581 docs(al): record skills Dependabot stability watch
+62f97f50 docs(al): AL-LOG 2026-11-13 — Pages via Actions + CI-Secrets geprüft (NEXT abgehakt)
+eef76a0e chore(portal): portal.mjs + docs/apps.* aus vitalos vos-portal --all synchronisiert
+d900abc1 feat(ci): Living Dashboard als GitHub Page
+b6bff754 Merge PR #20: feat(legal): Datenschutz + öffentliche Löschanfrage-Seite
+604bd62e feat(legal): Datenschutz + öffentliche Löschanfrage-Seite (#19)
+b09dc84f Calm classic Skills design (#22)
+8d7ccd3d fix(store): Skills lesbar auf hellem Shell-Hintergrund, Design-Umschalter im Store-Build aus
+cdbd0353 docs(al): AL-LOG 2026-11-12 — Refs ed2a84e Check/Promote
+ed2a84e6 fix(ci): Dependabot base=master→dev Retarget vor Squash (Org c1f9b6ce)
+9bb430ef docs: auto-update NEXT.md
+cbe22c82 docs: auto-update RESULTS.md
+60734866 Add a shell embed entry that keeps theme and routes local. (#21)
+0395efab ci: restore Gemini repair + Merge-Agent (full automation)
+e8ec919c docs(agents): simplicity pointer — CI.md §1 spine
+- Offene PRs: (keine offenen PRs / gh nicht verfuegbar)
+- CI (letzte Läufe): completed	success	Auto-Promote dev -> master (Check (Skills))	Auto-Promote dev -> master (Check (Skills))	master	schedule	43530541235	9s	2026-11-13T23:54:40Z
+completed	success	PR-AutoMerge (Dependabot -> dev)	PR-AutoMerge (Dependabot -> dev)	master	schedule	43527829968	8s	2026-11-13T23:32:12Z
+completed	success	Auto-Promote dev -> master (Check (Skills))	Auto-Promote dev -> master (Check (Skills))	master	schedule	43483591403	8s	2026-11-13T18:32:18Z
+- Arbeitsbaum: sauber
+
+_Vom AL ausfüllen (knapp & belegbar, je 1–3 Zeilen, Commit-/PR-Referenzen statt Erzählung):_
+- Erledigt: Liegengebliebenen AL-Commit `a6a36581` (Stabilitätswache 13.11.) + diesen Eintrag auf `origin/dev` nachgeschoben (Basis `62f97f50`). CI zuletzt grün: Auto-Promote `43530541235`, PR-AutoMerge `43527829968`; keine offenen PRs (letzter Dependabot-Merge #18 am 09.11.).
+- Offen/Weiter: Stabilitätswache `16c5fba2` (+betta/+cto) wartet auf Dependabot-Lauf Mo 16.11. 07:00 Wien. TODO-Rest Owner-Gates (15 Demo-Loops, Handy-Autoplay, Zweigeräte-Sync); NEXT: echter roter Check für den Gemini-Reparaturpfad.
+- Blocker: `pnpm audit` und `node scripts/test-exercise-videos.mjs` brauchten in diesem Lauf eine Freigabe, deshalb nicht ausgeführt. Kein roter Befund.
