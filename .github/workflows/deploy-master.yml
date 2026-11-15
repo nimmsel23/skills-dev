@@ -25,6 +25,7 @@ concurrency:
 
 permissions:
   contents: read
+  actions: read
 
 jobs:
   deploy:
@@ -33,6 +34,24 @@ jobs:
     env:
       DO_DEPLOY: ${{ github.ref == 'refs/heads/master' && (github.event_name == 'push' || inputs.deploy) }}
     steps:
+      # Gate: live nur, wenn Check (Skills) fuer GENAU diesen SHA gruen ist (auch bei direktem Push auf master,
+      # z. B. vos-ship). So geht ein roter Stand nie live, egal wie er auf master gelandet ist.
+      - name: Gate - Check (Skills) gruen fuer diesen SHA
+        if: env.DO_DEPLOY == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SHA: ${{ github.sha }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          res=$(gh api "repos/$REPO/actions/workflows/check.yml/runs?head_sha=$SHA&per_page=20" \
+            --jq '[.workflow_runs[]|select(.head_sha==env.SHA)]|sort_by(.run_number)|last|if .==null then "none" elif .status!="completed" then "pending" else (.conclusion // "none") end')
+          echo "Check (Skills) fuer $SHA: $res"
+          if [ "$res" != "success" ]; then
+            echo "::error::Check (Skills) fuer $SHA ist '$res' -> kein Live-Deploy. Erst auf dev gruen machen; Auto-Promote zieht dann nach."
+            exit 1
+          fi
+
       - name: Checkout skills-dev
         uses: actions/checkout@v4
         with:
@@ -68,6 +87,11 @@ jobs:
 
       - name: Install shared 6Pack dependencies
         run: pnpm --dir skills-dev/.sixpack-dependency install --ignore-scripts --frozen-lockfile
+
+      # sixpackData.generated.js ist in 6pack-dev gitignored und wird dort per prebuild erzeugt;
+      # --ignore-scripts ueberspringt das -> Generator explizit laufen lassen (sonst: Could not resolve).
+      - name: Generate shared 6Pack data
+        run: pnpm --dir skills-dev/.sixpack-dependency run build:data
 
       - name: Build Skills
         working-directory: skills-dev

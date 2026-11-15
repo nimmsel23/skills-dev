@@ -80,6 +80,11 @@ jobs:
       - name: Install shared 6Pack dependencies
         run: pnpm --dir .sixpack-dependency install --ignore-scripts --frozen-lockfile
 
+      # sixpackData.generated.js ist in 6pack-dev gitignored und wird dort per prebuild erzeugt;
+      # --ignore-scripts ueberspringt das -> Generator explizit laufen lassen (sonst: Could not resolve).
+      - name: Generate shared 6Pack data
+        run: pnpm --dir .sixpack-dependency run build:data
+
       - name: "Build (Stempel = Splash + Service Worker)"
         run: pnpm run build
 
