@@ -65,8 +65,15 @@ jobs:
             exit 1
           fi
 
-          # Nur ein Check, den ein normaler Push ausgeloest hat, erfuellt den Branch-Schutz; per Dispatch gestartete Checks nicht.
-          res=$(gh api "repos/$REPO/commits/$dev/check-runs" --jq '[.check_runs[]|select(.name=="check")]|first|if .==null then "none" elif .status!="completed" then "pending" else .conclusion end')
+          # Nur der juengste Lauf von Check (Skills) (check.yml) fuer GENAU diesen SHA zaehlt (Push oder Dispatch,
+          # z. B. nach Dependabot-Squash). Fruehere Fassung nahm den ersten beliebigen
+          # Check-Run namens "check" -> per Name/Reihenfolge verwechselbar.
+          res=$(gh api "repos/$REPO/actions/workflows/$CHECK_FILE/runs?head_sha=$dev&per_page=20" \
+            --jq '[.workflow_runs[]|select(.head_sha=="'"$dev"'")]|sort_by(.run_number)|last|if .==null then "none" elif .status!="completed" then "pending" else (.conclusion // "none") end')
+          # Ausloesender Lauf (workflow_run) muss denselben SHA meinen, sonst nicht auf fremdes Gruen promoten.
+          if [ "${{ github.event_name }}" = "workflow_run" ] && [ "${{ github.event.workflow_run.head_sha }}" != "$dev" ]; then
+            echo "Ausloesender Check war fuer ${{ github.event.workflow_run.head_sha }}, dev steht auf $dev -> nur Status von $dev zaehlt."
+          fi
           case "$res" in
             success)
               echo "Check gruen auf $dev -> master per Fast-Forward, Live-Deploy per Dispatch."
