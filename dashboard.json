@@ -1,12 +1,12 @@
 {
  "evidence": {
-  "generated_at": "2026-11-14T18:44:54+00:00",
+  "generated_at": "2026-11-15T12:14:49+00:00",
   "repo": "nimmsel23/skills-dev",
   "meta": {
    "name": "skills-dev",
    "description": "Calisthenics-Skills als Standalone-Mini-App (VitalOS)",
    "html_url": "https://github.com/nimmsel23/skills-dev",
-   "pushed_at": "2026-11-14T18:44:36Z",
+   "pushed_at": "2026-11-15T07:11:56Z",
    "default_branch": "master",
    "visibility": "public",
    "pages_url": "https://nimmsel23.github.io/skills-dev/"
@@ -19,10 +19,10 @@
    "main": "master",
    "has_dev": true,
    "dev_behind": 0,
-   "dev_ahead": 4,
-   "oldest_unpromoted": "2026-11-14T19:42:54+01:00",
+   "dev_ahead": 0,
+   "oldest_unpromoted": null,
    "dev_head": "6098a12 2026-11-14T19:42:54+01:00",
-   "master_head": "6a4fa30 2026-11-14T18:58:36+01:00"
+   "master_head": "6098a12 2026-11-14T19:42:54+01:00"
   },
   "commits": [
    {
@@ -148,10 +148,6 @@
   ],
   "activity": [
    {
-    "day": "2026-10-25",
-    "n": 0
-   },
-   {
     "day": "2026-10-26",
     "n": 0
    },
@@ -230,27 +226,31 @@
    {
     "day": "2026-11-14",
     "n": 7
+   },
+   {
+    "day": "2026-11-15",
+    "n": 0
    }
   ],
   "workflows": [
    {
-    "name": "Preview (vos-skills)",
-    "branch": "dev",
-    "event": "push",
-    "status": "in_progress",
-    "conclusion": null,
-    "created_at": "2026-11-14T18:44:39Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43628292350",
+    "name": "PR-AutoMerge (Dependabot -> dev)",
+    "branch": "master",
+    "event": "schedule",
+    "status": "completed",
+    "conclusion": "success",
+    "created_at": "2026-11-15T10:51:21Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43706079402",
     "sha": "6098a12"
    },
    {
-    "name": "Check (Skills)",
-    "branch": "dev",
-    "event": "push",
-    "status": "in_progress",
-    "conclusion": null,
-    "created_at": "2026-11-14T18:44:39Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43628292346",
+    "name": "Auto-Promote dev -> master (Check (Skills))",
+    "branch": "master",
+    "event": "schedule",
+    "status": "completed",
+    "conclusion": "success",
+    "created_at": "2026-11-15T09:56:58Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43701680841",
     "sha": "6098a12"
    },
    {
@@ -259,39 +259,69 @@
     "event": "workflow_run",
     "status": "completed",
     "conclusion": "success",
-    "created_at": "2026-11-14T17:59:30Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43624067996",
-    "sha": "6a4fa30"
+    "created_at": "2026-11-15T06:40:25Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43686510750",
+    "sha": "6098a12"
    },
    {
-    "name": "Auto-Promote dev -> master (Check (Skills))",
-    "branch": "master",
-    "event": "workflow_run",
+    "name": "Preview (vos-skills)",
+    "branch": "fix/issue-24",
+    "event": "pull_request",
     "status": "completed",
     "conclusion": "success",
-    "created_at": "2026-11-14T17:59:03Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43624030092",
-    "sha": "6a4fa30"
+    "created_at": "2026-11-15T06:39:55Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43686470410",
+    "sha": "288ccf8"
    },
    {
-    "name": "PR-AutoMerge (Dependabot -> dev)",
-    "branch": "master",
-    "event": "workflow_run",
+    "name": "Gemini CI Agent",
+    "branch": "fix/issue-24",
+    "event": "pull_request_target",
     "status": "completed",
     "conclusion": "skipped",
-    "created_at": "2026-11-14T17:59:03Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43624030076",
-    "sha": "6a4fa30"
+    "created_at": "2026-11-15T06:39:54Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43686470257",
+    "sha": "288ccf8"
+   },
+   {
+    "name": "Check (Skills)",
+    "branch": "fix/issue-24",
+    "event": "pull_request",
+    "status": "completed",
+    "conclusion": "success",
+    "created_at": "2026-11-15T06:39:54Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43686470253",
+    "sha": "288ccf8"
    },
    {
     "name": "Live Deploy (Skills master)",
     "branch": "master",
     "event": "push",
     "status": "completed",
-    "conclusion": "success",
-    "created_at": "2026-11-14T17:58:41Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43623999045",
-    "sha": "6a4fa30"
+    "conclusion": "failure",
+    "created_at": "2026-11-14T22:12:13Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43646839030",
+    "sha": "6098a12"
+   },
+   {
+    "name": "Preview (vos-skills)",
+    "branch": "dev",
+    "event": "push",
+    "status": "completed",
+    "conclusion": "failure",
+    "created_at": "2026-11-14T18:44:39Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43628292350",
+    "sha": "6098a12"
+   },
+   {
+    "name": "Check (Skills)",
+    "branch": "dev",
+    "event": "push",
+    "status": "completed",
+    "conclusion": "failure",
+    "created_at": "2026-11-14T18:44:39Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43628292346",
+    "sha": "6098a12"
    },
    {
     "name": "Preview (vos-skills)",
@@ -322,29 +352,18 @@
     "created_at": "2026-11-12T22:14:54Z",
     "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43318126725",
     "sha": "604bd62"
-   },
-   {
-    "name": "Check (Skills)",
-    "branch": "cursor/classic-calm-design-8783",
-    "event": "pull_request",
-    "status": "completed",
-    "conclusion": "success",
-    "created_at": "2026-11-12T22:14:18Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43318033031",
-    "sha": "83e8982"
-   },
-   {
-    "name": "Gemini CI Agent",
-    "branch": "cursor/classic-calm-design-8783",
-    "event": "pull_request_target",
-    "status": "completed",
-    "conclusion": "failure",
-    "created_at": "2026-11-12T22:14:16Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43318028957",
-    "sha": "83e8982"
    }
   ],
   "issues": [
+   {
+    "number": 24,
+    "title": "[fitness] Check + Live Deploy rot: sixpackData.generated.js fehlt; roter Stand wurde promotet",
+    "created_at": "2026-11-15T06:36:33Z",
+    "updated_at": "2026-11-15T06:39:53Z",
+    "labels": [],
+    "url": "https://github.com/nimmsel23/skills-dev/issues/24",
+    "author": "nimmdaniel"
+   },
    {
     "number": 23,
     "title": "Classic design: understated major redesign (owner exception to the freeze, 12.11.)",
@@ -355,47 +374,87 @@
     "author": "nimmsel23"
    }
   ],
-  "pulls": [],
+  "pulls": [
+   {
+    "number": 25,
+    "title": "fix(ci): 6Pack-Daten generieren; Promote/Deploy nur bei grünem Check für genau den SHA (#24)",
+    "created_at": "2026-11-15T06:39:51Z",
+    "updated_at": "2026-11-15T06:39:51Z",
+    "labels": [],
+    "url": "https://github.com/nimmsel23/skills-dev/pull/25",
+    "author": "nimmdaniel",
+    "head": "fix/issue-24",
+    "base": "dev",
+    "draft": false
+   }
+  ],
   "live_sites": [
    "https://vos-skills.web.app"
   ]
  },
  "assessment": {
-  "status": "green",
-  "signals": [],
+  "status": "red",
+  "signals": [
+   {
+    "level": "red",
+    "key": "ci:Live Deploy (Skills master):master",
+    "text": "„Live Deploy (Skills master)“ auf master ist rot (failure, 6098a12)",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43646839030"
+   },
+   {
+    "level": "red",
+    "key": "ci:Preview (vos-skills):dev",
+    "text": "„Preview (vos-skills)“ auf dev ist rot (failure, 6098a12)",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43628292350"
+   },
+   {
+    "level": "red",
+    "key": "ci:Check (Skills):dev",
+    "text": "„Check (Skills)“ auf dev ist rot (failure, 6098a12)",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43628292346"
+   }
+  ],
   "ai": {
-   "headline": "dev ist 4 Commits voraus, CI-Fehler auf Feature-Branches bestehen",
-   "lage": "dev ist mit Commit 6098a12 vier Commits vor master (Commit 6a4fa30). Die Workflows \"Preview (vos-skills)\" (Run 43628292350) und \"Check (Skills)\" (Run 43628292346) laufen aktuell auf dev. Die CI-Fehler auf feat/legal-pages-19 und der \"Gemini CI Agent\"-Fehler auf cursor/classic-calm-design-8783 bestehen weiterhin.",
+   "headline": "CI-Fehler auf dev/master blockieren Live Deploy; Fix-PR #25 aktiv",
+   "lage": "dev und master sind auf Commit 6098a12 synchronisiert. Die Workflows \"Live Deploy (Skills master)\" auf master (Run 43646839030), \"Preview (vos-skills)\" auf dev (Run 43628292350) und \"Check (Skills)\" auf dev (Run 43628292346) sind fehlgeschlagen, wie in Issue #24 beschrieben. Ein Pull Request #25 (fix/issue-24) mit erfolgreichen CI-Läufen ist zur Behebung dieser Fehler offen.",
    "auffaelligkeiten": [
     {
      "level": "hoch",
-     "text": "Die Workflows \"Preview (vos-skills)\" (Run 43318130209) und \"Check (Skills)\" (Run 43318130106) auf feat/legal-pages-19 schlagen weiterhin fehl."
+     "text": "„Live Deploy (Skills master)“ auf master ist rot (failure, 6098a12, Run 43646839030)."
+    },
+    {
+     "level": "hoch",
+     "text": "„Preview (vos-skills)“ auf dev ist rot (failure, 6098a12, Run 43628292350)."
+    },
+    {
+     "level": "hoch",
+     "text": "„Check (Skills)“ auf dev ist rot (failure, 6098a12, Run 43628292346)."
     },
     {
      "level": "mittel",
-     "text": "Der \"Gemini CI Agent\"-Workflow (Run 43318028957) auf cursor/classic-calm-design-8783 schlägt weiterhin fehl, obwohl der \"Check (Skills)\"-Workflow (Run 43318033031) auf demselben Branch erfolgreich war."
+     "text": "Issue #24 beschreibt die Ursache der CI-Fehler als fehlende sixpackData.generated.js und das Promoten eines roten Stands."
     },
     {
      "level": "info",
-     "text": "dev ist 4 Commits vor master (Head 6098a12), was neue in_progress Workflows auf dev ausgelöst hat."
+     "text": "Pull Request #25 (fix/issue-24) mit erfolgreichen CI-Läufen ist offen und adressiert Issue #24."
     },
     {
      "level": "info",
-     "text": "Der \"Live Deploy (Skills master)\" (Run 43623999045) wurde erfolgreich abgeschlossen."
+     "text": "Die CI-Fehler auf feat/legal-pages-19 (Runs 43318130209, 43318130106) bestehen weiterhin."
     }
    ],
    "naechste_schritte": [
+    "Mergen: Pull Request #25, um die aktuellen CI-Fehler auf dev und master zu beheben.",
     "Untersuchen: Ursache der fehlgeschlagenen Workflows auf feat/legal-pages-19 (Runs 43318130209, 43318130106).",
-    "Analysieren: Grund für den \"Gemini CI Agent\"-Fehler auf cursor/classic-calm-design-8783 (Run 43318028957).",
-    "Prüfen: Offene Punkte im NEXT.md bezüglich des Gemini CI-Agenten und der Geräteabnahme."
+    "Prüfen: Offene Punkte im NEXT.md bezüglich Geräteabnahme und nativer Google-Anmeldung."
    ],
-   "veraendert": "dev ist nun 4 Commits vor master, und der \"Live Deploy (Skills master)\" (Run 43623999045) wurde erfolgreich abgeschlossen.",
+   "veraendert": "dev und master sind nun auf Commit 6098a12 synchronisiert, und der „Gemini CI Agent“-Fehler auf cursor/classic-calm-design-8783 ist nicht mehr ersichtlich.",
    "fragen": [
-    "Sollen die ausstehenden Punkte im NEXT.md für \"Geräteabnahme am Android-Handy\" und \"Native Google-Anmeldung\" priorisiert werden?",
-    "Wie soll mit den persistenten CI-Fehlern auf feat/legal-pages-19 und dem \"Gemini CI Agent\"-Fehler auf cursor/classic-calm-design-8783 verfahren werden?"
+    "Soll Pull Request #25 gemergt werden, um die aktuellen CI-Fehler zu beheben und den Live Deploy zu ermöglichen?",
+    "Wann sollen die ausstehenden Punkte zur Geräteabnahme und nativen Google-Anmeldung aus NEXT.md angegangen werden?"
    ],
    "model": "gemini-2.5-flash"
   },
-  "ai_at": "2026-11-14T18:44:56+00:00"
+  "ai_at": "2026-11-15T12:14:51+00:00"
  }
 }
