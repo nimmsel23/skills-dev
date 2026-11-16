@@ -1,12 +1,12 @@
 {
  "evidence": {
-  "generated_at": "2026-11-15T14:58:38+00:00",
+  "generated_at": "2026-11-16T11:36:11+00:00",
   "repo": "nimmsel23/skills-dev",
   "meta": {
    "name": "skills-dev",
    "description": "Calisthenics-Skills als Standalone-Mini-App (VitalOS)",
    "html_url": "https://github.com/nimmsel23/skills-dev",
-   "pushed_at": "2026-11-15T14:58:20Z",
+   "pushed_at": "2026-11-16T11:35:53Z",
    "default_branch": "master",
    "visibility": "public",
    "pages_url": "https://nimmsel23.github.io/skills-dev/"
@@ -19,12 +19,30 @@
    "main": "master",
    "has_dev": true,
    "dev_behind": 0,
-   "dev_ahead": 1,
-   "oldest_unpromoted": "2026-11-15T15:58:20+01:00",
-   "dev_head": "422fe84 2026-11-15T15:58:20+01:00",
-   "master_head": "6098a12 2026-11-14T19:42:54+01:00"
+   "dev_ahead": 3,
+   "oldest_unpromoted": "2026-11-16T11:26:47Z",
+   "dev_head": "d1d63ec 2026-11-16T11:35:50Z",
+   "master_head": "422fe84 2026-11-15T15:58:20+01:00"
   },
   "commits": [
+   {
+    "sha": "d1d63ec",
+    "date": "2026-11-16T11:35:50Z",
+    "author": "Cursor Agent",
+    "subject": "dashboard: Check und Dashboard starten"
+   },
+   {
+    "sha": "6a68ccf",
+    "date": "2026-11-16T11:33:36Z",
+    "author": "Cursor Agent",
+    "subject": "dashboard: Check und Dashboard auf dev starten"
+   },
+   {
+    "sha": "cd57f7e",
+    "date": "2026-11-16T11:26:47Z",
+    "author": "Cursor Agent",
+    "subject": "dashboard: master-Push baut ebenfalls dev"
+   },
    {
     "sha": "422fe84",
     "date": "2026-11-15T15:58:20+01:00",
@@ -126,31 +144,9 @@
     "date": "2026-11-12T16:47:01+01:00",
     "author": "Alpha",
     "subject": "docs(al): AL-LOG 2026-11-12 — Refs ed2a84e Check/Promote"
-   },
-   {
-    "sha": "ed2a84e",
-    "date": "2026-11-12T16:42:08+01:00",
-    "author": "Alpha",
-    "subject": "fix(ci): Dependabot base=master→dev Retarget vor Squash (Org c1f9b6ce)"
-   },
-   {
-    "sha": "9bb430e",
-    "date": "2026-11-12T16:41:53+01:00",
-    "author": "Alpha",
-    "subject": "docs: auto-update NEXT.md"
-   },
-   {
-    "sha": "cbe22c8",
-    "date": "2026-11-12T16:41:51+01:00",
-    "author": "Alpha",
-    "subject": "docs: auto-update RESULTS.md"
    }
   ],
   "activity": [
-   {
-    "day": "2026-10-26",
-    "n": 0
-   },
    {
     "day": "2026-10-27",
     "n": 0
@@ -230,6 +226,10 @@
    {
     "day": "2026-11-15",
     "n": 1
+   },
+   {
+    "day": "2026-11-16",
+    "n": 3
    }
   ],
   "workflows": [
@@ -239,19 +239,9 @@
     "event": "push",
     "status": "in_progress",
     "conclusion": null,
-    "created_at": "2026-11-15T14:58:23Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43727238003",
-    "sha": "422fe84"
-   },
-   {
-    "name": "Preview (vos-skills)",
-    "branch": "dev",
-    "event": "push",
-    "status": "in_progress",
-    "conclusion": null,
-    "created_at": "2026-11-15T14:58:23Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43727237995",
-    "sha": "422fe84"
+    "created_at": "2026-11-16T11:35:56Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43859150097",
+    "sha": "d1d63ec"
    },
    {
     "name": "PR-AutoMerge (Dependabot -> dev)",
@@ -259,9 +249,9 @@
     "event": "schedule",
     "status": "completed",
     "conclusion": "success",
-    "created_at": "2026-11-15T10:51:21Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43706079402",
-    "sha": "6098a12"
+    "created_at": "2026-11-16T11:15:15Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43856106452",
+    "sha": "422fe84"
    },
    {
     "name": "Auto-Promote dev -> master (Check (Skills))",
@@ -269,9 +259,9 @@
     "event": "schedule",
     "status": "completed",
     "conclusion": "success",
-    "created_at": "2026-11-15T09:56:58Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43701680841",
-    "sha": "6098a12"
+    "created_at": "2026-11-16T09:48:13Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43843038998",
+    "sha": "422fe84"
    },
    {
     "name": "Gemini CI Agent",
@@ -279,9 +269,29 @@
     "event": "workflow_run",
     "status": "completed",
     "conclusion": "success",
-    "created_at": "2026-11-15T06:40:25Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43686510750",
-    "sha": "6098a12"
+    "created_at": "2026-11-15T14:59:20Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43727319078",
+    "sha": "422fe84"
+   },
+   {
+    "name": "Live Deploy (Skills master)",
+    "branch": "master",
+    "event": "workflow_dispatch",
+    "status": "completed",
+    "conclusion": "success",
+    "created_at": "2026-11-15T14:59:01Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43727292319",
+    "sha": "422fe84"
+   },
+   {
+    "name": "Preview (vos-skills)",
+    "branch": "dev",
+    "event": "push",
+    "status": "completed",
+    "conclusion": "success",
+    "created_at": "2026-11-15T14:58:23Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43727237995",
+    "sha": "422fe84"
    },
    {
     "name": "Preview (vos-skills)",
@@ -312,16 +322,6 @@
     "created_at": "2026-11-15T06:39:54Z",
     "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43686470253",
     "sha": "288ccf8"
-   },
-   {
-    "name": "Live Deploy (Skills master)",
-    "branch": "master",
-    "event": "push",
-    "status": "completed",
-    "conclusion": "failure",
-    "created_at": "2026-11-14T22:12:13Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43646839030",
-    "sha": "6098a12"
    }
   ],
   "issues": [
@@ -329,7 +329,7 @@
     "number": 26,
     "title": "Dashboard-Lage: rot",
     "created_at": "2026-11-15T12:15:11Z",
-    "updated_at": "2026-11-15T12:15:11Z",
+    "updated_at": "2026-11-15T14:59:00Z",
     "labels": [
      "dashboard"
     ],
@@ -361,44 +361,37 @@
   ]
  },
  "assessment": {
-  "status": "red",
-  "signals": [
-   {
-    "level": "red",
-    "key": "ci:Live Deploy (Skills master):master",
-    "text": "„Live Deploy (Skills master)“ auf master ist rot (failure, 6098a12)",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43646839030"
-   }
-  ],
+  "status": "green",
+  "signals": [],
   "ai": {
-   "headline": "Live Deploy auf master weiterhin rot; dev mit Fix-Commit 422fe84 voraus",
-   "lage": "Der Workflow „Live Deploy (Skills master)“ auf master (Commit 6098a12) ist weiterhin fehlgeschlagen (Run 43646839030). Der dev-Branch ist mit Commit 422fe84 (Merge von PR #25, der Issue #24 adressiert) einen Commit voraus. Die zugehörigen Workflows „Check (Skills)“ und „Preview (vos-skills)“ auf dev für 422fe84 sind in Bearbeitung.",
+   "headline": "Master Live Deploy grün nach Fix-Promotion; dev mit neuen Dashboard-Commits",
+   "lage": "Der Workflow „Live Deploy (Skills master)“ für Commit 422fe84 auf master ist erfolgreich abgeschlossen (Run 43727292319). Der dev-Branch ist mit drei Commits (Head d1d63ec) gegenüber master voraus, wobei der Workflow „Check (Skills)“ für d1d63ec aktuell läuft.",
    "auffaelligkeiten": [
     {
-     "level": "hoch",
-     "text": "„Live Deploy (Skills master)“ auf master ist rot (failure, 6098a12)"
-    },
-    {
-     "level": "mittel",
-     "text": "Issue #24 ([fitness] Check + Live Deploy rot) ist noch offen, obwohl der Fix-Commit 422fe84 (Merge von PR #25) auf dev liegt."
+     "level": "info",
+     "text": "Der Workflow „Auto-Promote dev -> master (Check (Skills))“ für Commit 422fe84 war erfolgreich (Run 43843038998), was den Fix für Issue #24 auf master gebracht hat."
     },
     {
      "level": "info",
-     "text": "Die Workflows „Check (Skills)“ und „Preview (vos-skills)“ auf dev (422fe84) sind in Bearbeitung."
+     "text": "Issue #26 „Dashboard-Lage: rot“ wurde vor dem erfolgreichen Live Deploy für 422fe84 erstellt; die aktuellen dev-Commits (d1d63ec, 6a68ccf) deuten auf weitere Dashboard-Arbeiten hin."
+    },
+    {
+     "level": "info",
+     "text": "Die Punkte „Geräteabnahme am Android-Handy“ und „Native Google-Anmeldung“ in NEXT.md sind weiterhin offen."
     }
    ],
    "naechste_schritte": [
-    "Promoten: dev (422fe84) nach master, um den Fix für Issue #24 auf master zu bringen.",
-    "Beobachten: Die CI-Läufe auf master nach der Promotion, insbesondere den Live Deploy.",
+    "Beobachten: Den laufenden „Check (Skills)“ Workflow für d1d63ec auf dev verfolgen.",
+    "Prüfen: Den Status von Issue #26 „Dashboard-Lage: rot“ im Kontext des erfolgreichen Live Deploy auf master bewerten.",
     "Prüfen: Offene Punkte in NEXT.md bezüglich Geräteabnahme und nativer Google-Anmeldung."
    ],
-   "veraendert": "Pull Request #25 wurde gemergt, wodurch dev mit Commit 422fe84 nun einen Commit vor master liegt und die dev-Workflows für diesen Commit in Bearbeitung sind.",
+   "veraendert": "Der „Live Deploy (Skills master)“ auf master ist nun erfolgreich, nachdem Commit 422fe84 (Fix für Issue #24) erfolgreich promotet wurde; dev ist mit neuen Commits voraus.",
    "fragen": [
-    "Soll der offene Punkt „Echten roten Check bis Reparatur, Check, Promote und Deploy beobachten“ im NEXT.md als erledigt markiert werden, da ein solcher Zyklus (Issue #24, PR #25, Merge) stattgefunden hat?",
-    "Wann sollen die Punkte „Geräteabnahme am Android-Handy“ und „Native Google-Anmeldung“ aus NEXT.md angegangen werden?"
+    "Soll Issue #26 „Dashboard-Lage: rot“ nach dem erfolgreichen Live Deploy auf master neu bewertet oder geschlossen werden?",
+    "Wann sollen die offenen Punkte „Geräteabnahme am Android-Handy“ und „Native Google-Anmeldung“ aus NEXT.md angegangen werden?"
    ],
    "model": "gemini-2.5-flash"
   },
-  "ai_at": "2026-11-15T14:58:40+00:00"
+  "ai_at": "2026-11-16T11:36:14+00:00"
  }
 }
