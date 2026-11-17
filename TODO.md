@@ -1,5 +1,15 @@
 # TODO — skills-dev
 
+## Core Skills (Skills + 6Pack), Stand 2026-11-17
+
+- [x] 2026-11-14: Skills und vollständiges 6Pack als Core Skills zusammengeführt (`f84d966`); `CoreSkills.jsx` bindet `SixPackEmbed` aus `6pack-dev` ein, keine UI-Kopie. Routen `#`, `#<skill-id>`, `#sixpack`, `#sixpack/track`, `#settings`.
+- [x] 2026-11-14: `/6pack` und `/sixpack` führen in derselben App zu 6Pack (`4878251`).
+- [x] 2026-11-14: Kontrollierter Modus (`route`/`onRouteChange`/`onClose`) für die Einbettung in Fitness (`2f503b8`); eingebettet kein 6Pack-Push (`6098a12`).
+- [x] 2026-11-15: CI generiert 6Pack-Daten vor dem Build; Promote/Deploy nur bei grünem Check für genau den SHA (`422fe84`).
+- [x] 2026-11-17: Fitness lädt Core Skills statisch statt per `React.lazy` (fitness-dev, Regel „Keine Dynamic Imports“).
+- [ ] Core Skills auf dem Handy abnehmen: Wechsel Skills ↔ 6Pack ↔ Setup, 6Pack-Runner (Ansagen, Wake Lock, Musik) innerhalb von Core Skills, Zurück nach Fitness.
+- [ ] Gemeinsamer Login/Sync von Skills- und 6Pack-Daten auf zwei Geräten prüfen (Owner-Gate).
+
 
 - [x] 2026-10-17: Videos für alle Skills-Progressionen und Conditioning-Übungen: Vorschau und Runner.
 - [ ] 15 Tutorial-Zuordnungen bei Gelegenheit um exakte kurze Demo-Loops ergänzen.
