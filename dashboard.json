@@ -1,12 +1,12 @@
 {
  "evidence": {
-  "generated_at": "2026-11-17T13:50:25+00:00",
+  "generated_at": "2026-11-17T16:05:56+00:00",
   "repo": "nimmsel23/skills-dev",
   "meta": {
    "name": "skills-dev",
    "description": "Calisthenics-Skills als Standalone-Mini-App (VitalOS)",
    "html_url": "https://github.com/nimmsel23/skills-dev",
-   "pushed_at": "2026-11-17T07:54:33Z",
+   "pushed_at": "2026-11-17T16:05:45Z",
    "default_branch": "master",
    "visibility": "public",
    "pages_url": "https://nimmsel23.github.io/skills-dev/"
@@ -21,10 +21,16 @@
    "dev_behind": 0,
    "dev_ahead": 0,
    "oldest_unpromoted": null,
-   "dev_head": "d1d63ec 2026-11-16T11:35:50Z",
-   "master_head": "d1d63ec 2026-11-16T11:35:50Z"
+   "dev_head": "2c66301 2026-11-17T17:05:34+01:00",
+   "master_head": "2c66301 2026-11-17T17:05:34+01:00"
   },
   "commits": [
+   {
+    "sha": "2c66301",
+    "date": "2026-11-17T17:05:34+01:00",
+    "author": "nimmsel23",
+    "subject": "org-bot: Workflow installieren (Org-Autonomie 16.11.2026)"
+   },
    {
     "sha": "d1d63ec",
     "date": "2026-11-16T11:35:50Z",
@@ -138,12 +144,6 @@
     "date": "2026-11-12T22:32:59+01:00",
     "author": "Alpha",
     "subject": "fix(store): Skills lesbar auf hellem Shell-Hintergrund, Design-Umschalter im Store-Build aus"
-   },
-   {
-    "sha": "cdbd035",
-    "date": "2026-11-12T16:47:01+01:00",
-    "author": "Alpha",
-    "subject": "docs(al): AL-LOG 2026-11-12 — Refs ed2a84e Check/Promote"
    }
   ],
   "activity": [
@@ -229,10 +229,40 @@
    },
    {
     "day": "2026-11-17",
-    "n": 0
+    "n": 1
    }
   ],
   "workflows": [
+   {
+    "name": "Gemini CI Agent",
+    "branch": "master",
+    "event": "workflow_run",
+    "status": "in_progress",
+    "conclusion": null,
+    "created_at": "2026-11-17T16:05:51Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/44121822988",
+    "sha": "2c66301"
+   },
+   {
+    "name": "Auto-Promote dev -> master (Check (Skills))",
+    "branch": "master",
+    "event": "push",
+    "status": "completed",
+    "conclusion": "success",
+    "created_at": "2026-11-17T16:05:37Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/44121782317",
+    "sha": "2c66301"
+   },
+   {
+    "name": "Live Deploy (Skills master)",
+    "branch": "master",
+    "event": "push",
+    "status": "completed",
+    "conclusion": "failure",
+    "created_at": "2026-11-17T16:05:37Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/44121782253",
+    "sha": "2c66301"
+   },
    {
     "name": "PR-AutoMerge (Dependabot -> dev)",
     "branch": "master",
@@ -242,36 +272,6 @@
     "created_at": "2026-11-17T13:24:39Z",
     "url": "https://github.com/nimmsel23/skills-dev/actions/runs/44092443837",
     "sha": "d1d63ec"
-   },
-   {
-    "name": "Auto-Promote dev -> master (Check (Skills))",
-    "branch": "master",
-    "event": "schedule",
-    "status": "completed",
-    "conclusion": "success",
-    "created_at": "2026-11-17T11:55:51Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/44078423499",
-    "sha": "d1d63ec"
-   },
-   {
-    "name": "Live Deploy (Skills master)",
-    "branch": "master",
-    "event": "workflow_dispatch",
-    "status": "completed",
-    "conclusion": "success",
-    "created_at": "2026-11-16T11:36:39Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43859260464",
-    "sha": "d1d63ec"
-   },
-   {
-    "name": "Gemini CI Agent",
-    "branch": "master",
-    "event": "workflow_run",
-    "status": "completed",
-    "conclusion": "success",
-    "created_at": "2026-11-16T11:36:23Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43859217036",
-    "sha": "422fe84"
    },
    {
     "name": "Check (Skills)",
@@ -350,30 +350,40 @@
   ]
  },
  "assessment": {
-  "status": "green",
-  "signals": [],
+  "status": "red",
+  "signals": [
+   {
+    "level": "red",
+    "key": "ci:Live Deploy (Skills master):master",
+    "text": "„Live Deploy (Skills master)“ auf master ist rot (failure, 2c66301)",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/44121782253"
+   }
+  ],
   "ai": {
-   "headline": "Branches synchronisiert; automatische Workflows erfolgreich",
-   "lage": "Die Branches dev und master sind weiterhin auf Commit d1d63ec (\"dashboard: Check und Dashboard starten\") synchronisiert. Alle relevanten Workflows für diesen Commit, inklusive „Check (Skills)“ (Run 43859150097) und „Live Deploy (Skills master)“ (Run 43859260464), sind erfolgreich abgeschlossen. Zusätzlich wurden automatische Promote- und PR-Merge-Workflows erfolgreich ausgeführt.",
+   "headline": "Live Deploy fehlgeschlagen; Branches auf neuem Commit synchronisiert",
+   "lage": "Die Branches dev und master sind auf Commit 2c66301 (\"org-bot: Workflow installieren\") synchronisiert. Der Workflow „Live Deploy (Skills master)“ für diesen Commit ist fehlgeschlagen, während der „Auto-Promote dev -> master (Check (Skills))“ Workflow erfolgreich war.",
    "auffaelligkeiten": [
     {
-     "level": "info",
-     "text": "Issue #24 ist offen, obwohl der Fehler durch Commit 422fe84 behoben und der aktuelle Head d1d63ec erfolgreich deployed wurde."
+     "level": "hoch",
+     "text": "„Live Deploy (Skills master)“ auf master ist rot (failure, 2c66301)."
     },
     {
-     "level": "info",
-     "text": "Der Gemini CI-Agenten-Reparaturpfad konnte noch nicht anhand eines isolierten roten Checks verifiziert werden, obwohl der Workflow für 422fe84 erfolgreich lief."
+     "level": "mittel",
+     "text": "Commit 2c66301 wurde erfolgreich nach master promotet, obwohl der anschliessende „Live Deploy“ fehlschlägt. Dies widerspricht der in Commit 422fe84 implementierten Regel, nur bei grünem Check zu promoten/deployen."
     }
    ],
    "naechste_schritte": [
-    "Schliessen: Issue #24, da der Fehler durch Commit 422fe84 behoben ist und der aktuelle Head d1d63ec erfolgreich deployed wurde.",
-    "Starten: Geräteabnahme am Android-Handy gemäss NEXT.md.",
-    "Implementieren: Native Google-Anmeldung gemäss NEXT.md."
+    "Analysieren: Ursache des Fehlers im „Live Deploy (Skills master)“ für Commit 2c66301 untersuchen.",
+    "Prüfen: Die Logik des „Auto-Promote dev -> master (Check (Skills))“ Workflows im Kontext von Commit 2c66301 und dem fehlgeschlagenen Deploy verifizieren.",
+    "Starten: Geräteabnahme am Android-Handy gemäss NEXT.md."
    ],
-   "veraendert": "Gegenüber der letzten Einschätzung wurden zusätzliche automatische Workflows wie „PR-AutoMerge (Dependabot -> dev)“ und „Auto-Promote dev -> master (Check (Skills))“ erfolgreich ausgeführt.",
-   "fragen": [],
+   "veraendert": "Die Branches dev und master sind nun auf Commit 2c66301 synchronisiert, und der „Live Deploy (Skills master)“ ist im Gegensatz zur letzten Einschätzung fehlgeschlagen.",
+   "fragen": [
+    "Soll Issue #24 angesichts des erneuten Deploy-Fehlers offen bleiben oder neu bewertet werden?",
+    "Soll die Implementierung der nativen Google-Anmeldung (gemäss NEXT.md) unter den aktuellen Umständen priorisiert werden?"
+   ],
    "model": "gemini-2.5-flash"
   },
-  "ai_at": "2026-11-17T13:50:28+00:00"
+  "ai_at": "2026-11-17T16:05:58+00:00"
  }
 }
