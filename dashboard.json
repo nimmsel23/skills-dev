@@ -1,12 +1,12 @@
 {
  "evidence": {
-  "generated_at": "2026-11-16T13:05:56+00:00",
+  "generated_at": "2026-11-17T13:50:25+00:00",
   "repo": "nimmsel23/skills-dev",
   "meta": {
    "name": "skills-dev",
    "description": "Calisthenics-Skills als Standalone-Mini-App (VitalOS)",
    "html_url": "https://github.com/nimmsel23/skills-dev",
-   "pushed_at": "2026-11-16T11:36:38Z",
+   "pushed_at": "2026-11-17T07:54:33Z",
    "default_branch": "master",
    "visibility": "public",
    "pages_url": "https://nimmsel23.github.io/skills-dev/"
@@ -148,10 +148,6 @@
   ],
   "activity": [
    {
-    "day": "2026-10-27",
-    "n": 0
-   },
-   {
     "day": "2026-10-28",
     "n": 2
    },
@@ -230,9 +226,33 @@
    {
     "day": "2026-11-16",
     "n": 3
+   },
+   {
+    "day": "2026-11-17",
+    "n": 0
    }
   ],
   "workflows": [
+   {
+    "name": "PR-AutoMerge (Dependabot -> dev)",
+    "branch": "master",
+    "event": "schedule",
+    "status": "completed",
+    "conclusion": "success",
+    "created_at": "2026-11-17T13:24:39Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/44092443837",
+    "sha": "d1d63ec"
+   },
+   {
+    "name": "Auto-Promote dev -> master (Check (Skills))",
+    "branch": "master",
+    "event": "schedule",
+    "status": "completed",
+    "conclusion": "success",
+    "created_at": "2026-11-17T11:55:51Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/44078423499",
+    "sha": "d1d63ec"
+   },
    {
     "name": "Live Deploy (Skills master)",
     "branch": "master",
@@ -242,26 +262,6 @@
     "created_at": "2026-11-16T11:36:39Z",
     "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43859260464",
     "sha": "d1d63ec"
-   },
-   {
-    "name": "PR-AutoMerge (Dependabot -> dev)",
-    "branch": "master",
-    "event": "workflow_run",
-    "status": "completed",
-    "conclusion": "skipped",
-    "created_at": "2026-11-16T11:36:23Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43859217444",
-    "sha": "422fe84"
-   },
-   {
-    "name": "Auto-Promote dev -> master (Check (Skills))",
-    "branch": "master",
-    "event": "workflow_run",
-    "status": "completed",
-    "conclusion": "success",
-    "created_at": "2026-11-16T11:36:23Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43859217048",
-    "sha": "422fe84"
    },
    {
     "name": "Gemini CI Agent",
@@ -353,30 +353,27 @@
   "status": "green",
   "signals": [],
   "ai": {
-   "headline": "Master und dev synchronisiert; alle Checks erfolgreich",
-   "lage": "Die Branches dev und master sind auf Commit d1d63ec (\"dashboard: Check und Dashboard starten\") synchronisiert. Der Workflow „Check (Skills)“ für d1d63ec auf dev ist erfolgreich abgeschlossen (Run 43859150097). Der Workflow „Live Deploy (Skills master)“ für d1d63ec auf master ist ebenfalls erfolgreich (Run 43859260464).",
+   "headline": "Branches synchronisiert; automatische Workflows erfolgreich",
+   "lage": "Die Branches dev und master sind weiterhin auf Commit d1d63ec (\"dashboard: Check und Dashboard starten\") synchronisiert. Alle relevanten Workflows für diesen Commit, inklusive „Check (Skills)“ (Run 43859150097) und „Live Deploy (Skills master)“ (Run 43859260464), sind erfolgreich abgeschlossen. Zusätzlich wurden automatische Promote- und PR-Merge-Workflows erfolgreich ausgeführt.",
    "auffaelligkeiten": [
     {
      "level": "info",
-     "text": "Der Workflow „Auto-Promote dev -> master (Check (Skills))“ für Commit 422fe84 wurde erfolgreich abgeschlossen, was die Synchronisierung von dev und master auf d1d63ec ermöglichte."
+     "text": "Issue #24 ist offen, obwohl der Fehler durch Commit 422fe84 behoben und der aktuelle Head d1d63ec erfolgreich deployed wurde."
     },
     {
      "level": "info",
-     "text": "Issue #24 \"[fitness] Check + Live Deploy rot: sixpackData.generated.js fehlt; roter Stand wurde promotet\" ist offen, obwohl der zugehörige Fix 422fe84 erfolgreich promotet und deployed wurde."
+     "text": "Der Gemini CI-Agenten-Reparaturpfad konnte noch nicht anhand eines isolierten roten Checks verifiziert werden, obwohl der Workflow für 422fe84 erfolgreich lief."
     }
    ],
    "naechste_schritte": [
-    "Prüfen: Den Status von Issue #24 im Kontext der erfolgreichen Promotion und des Live Deploy bewerten.",
-    "Abnehmen: Die Punkte „Geräteabnahme am Android-Handy“ und „Native Google-Anmeldung“ in NEXT.md angehen.",
-    "Verifizieren: Den Gemini CI-Agenten-Reparaturpfad anhand eines isolierten roten Checks beobachten und bestätigen."
+    "Schliessen: Issue #24, da der Fehler durch Commit 422fe84 behoben ist und der aktuelle Head d1d63ec erfolgreich deployed wurde.",
+    "Starten: Geräteabnahme am Android-Handy gemäss NEXT.md.",
+    "Implementieren: Native Google-Anmeldung gemäss NEXT.md."
    ],
-   "veraendert": "Der dev-Branch ist nicht mehr gegenüber master voraus, beide sind auf Commit d1d63ec synchronisiert, und der zuvor laufende „Check (Skills)“ Workflow auf dev ist erfolgreich abgeschlossen.",
-   "fragen": [
-    "Soll die Geräteabnahme am Android-Handy und die native Google-Anmeldung (NEXT.md) jetzt priorisiert werden?",
-    "Wann soll die Verifizierung des Gemini CI-Agenten-Reparaturpfads (NEXT.md) erfolgen?"
-   ],
+   "veraendert": "Gegenüber der letzten Einschätzung wurden zusätzliche automatische Workflows wie „PR-AutoMerge (Dependabot -> dev)“ und „Auto-Promote dev -> master (Check (Skills))“ erfolgreich ausgeführt.",
+   "fragen": [],
    "model": "gemini-2.5-flash"
   },
-  "ai_at": "2026-11-16T13:05:59+00:00"
+  "ai_at": "2026-11-17T13:50:28+00:00"
  }
 }
