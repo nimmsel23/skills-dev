@@ -1,12 +1,12 @@
 {
  "evidence": {
-  "generated_at": "2026-11-18T07:56:39+00:00",
+  "generated_at": "2026-11-18T13:25:46+00:00",
   "repo": "nimmsel23/skills-dev",
   "meta": {
    "name": "skills-dev",
    "description": "Calisthenics-Skills als Standalone-Mini-App (VitalOS)",
    "html_url": "https://github.com/nimmsel23/skills-dev",
-   "pushed_at": "2026-11-18T07:56:28Z",
+   "pushed_at": "2026-11-18T10:37:15Z",
    "default_branch": "master",
    "visibility": "public",
    "pages_url": "https://nimmsel23.github.io/skills-dev/"
@@ -149,7 +149,7 @@
   "activity": [
    {
     "day": "2026-10-29",
-    "n": 12
+    "n": 4
    },
    {
     "day": "2026-10-30",
@@ -234,33 +234,33 @@
   ],
   "workflows": [
    {
-    "name": "Gemini CI Agent",
+    "name": "Auto-Promote dev -> master (Check (Skills))",
     "branch": "master",
-    "event": "workflow_run",
-    "status": "in_progress",
-    "conclusion": null,
-    "created_at": "2026-11-18T07:56:34Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/44262807759",
+    "event": "schedule",
+    "status": "completed",
+    "conclusion": "success",
+    "created_at": "2026-11-18T11:47:10Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/44297819716",
     "sha": "041f369"
    },
    {
-    "name": "Auto-Promote dev -> master (Check (Skills))",
+    "name": "Gemini CI Agent",
     "branch": "master",
-    "event": "push",
+    "event": "workflow_run",
     "status": "completed",
     "conclusion": "success",
-    "created_at": "2026-11-18T07:56:23Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/44262782869",
+    "created_at": "2026-11-18T10:35:26Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/44286841803",
     "sha": "041f369"
    },
    {
     "name": "Live Deploy (Skills master)",
     "branch": "master",
-    "event": "push",
+    "event": "workflow_dispatch",
     "status": "completed",
-    "conclusion": "failure",
-    "created_at": "2026-11-18T07:56:23Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/44262782850",
+    "conclusion": "success",
+    "created_at": "2026-11-18T10:34:36Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/44286708213",
     "sha": "041f369"
    },
    {
@@ -269,9 +269,19 @@
     "event": "workflow_run",
     "status": "completed",
     "conclusion": "skipped",
-    "created_at": "2026-11-18T07:05:57Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/44256235699",
-    "sha": "2c66301"
+    "created_at": "2026-11-18T10:34:09Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/44286635196",
+    "sha": "041f369"
+   },
+   {
+    "name": "Check (Skills)",
+    "branch": "master",
+    "event": "workflow_dispatch",
+    "status": "completed",
+    "conclusion": "success",
+    "created_at": "2026-11-18T10:33:36Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/44286548934",
+    "sha": "041f369"
    },
    {
     "name": "Check (Skills)",
@@ -359,7 +369,7 @@
     "number": 27,
     "title": "Dashboard-Lage: rot",
     "created_at": "2026-11-17T16:06:17Z",
-    "updated_at": "2026-11-18T07:06:08Z",
+    "updated_at": "2026-11-18T07:56:53Z",
     "labels": [
      "dashboard"
     ],
@@ -391,40 +401,33 @@
   ]
  },
  "assessment": {
-  "status": "red",
-  "signals": [
-   {
-    "level": "red",
-    "key": "ci:Live Deploy (Skills master):master",
-    "text": "„Live Deploy (Skills master)“ auf master ist rot (failure, 041f369)",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/44262782850"
-   }
-  ],
+  "status": "green",
+  "signals": [],
   "ai": {
-   "headline": "Live Deploy auf Master fehlgeschlagen; Branches synchron",
-   "lage": "Der master- und dev-Branch sind auf Commit 041f369 synchronisiert. Der Workflow „Live Deploy (Skills master)“ für diesen Commit ist fehlgeschlagen, obwohl der „Auto-Promote dev -> master (Check (Skills))“ Workflow für denselben Commit erfolgreich war. Issue #27 \"Dashboard-Lage: rot\" ist weiterhin offen.",
+   "headline": "Live Deploy auf Master erfolgreich; Branches synchron",
+   "lage": "Der master- und dev-Branch sind weiterhin auf Commit 041f369 synchronisiert. Der zuvor fehlgeschlagene Workflow „Live Deploy (Skills master)“ für diesen Commit ist nun erfolgreich abgeschlossen. Issue #27 „Dashboard-Lage: rot“ ist weiterhin offen.",
    "auffaelligkeiten": [
     {
      "level": "hoch",
-     "text": "„Live Deploy (Skills master)“ auf master ist rot (failure, 041f369)"
+     "text": "Issue #27 „Dashboard-Lage: rot“ ist weiterhin offen und wurde seit dem 18.11.2026 07:56 Uhr nicht aktualisiert."
     },
     {
      "level": "info",
-     "text": "Der „Gemini CI Agent“ Workflow für Commit 041f369 läuft noch."
+     "text": "Der aktuelle Head-Commit 041f369 ist ein Dokumentations-Update ('docs: Core-Skills-Stand (Skills + 6Pack) in TODO/NEXT nachgetragen (#28)')."
     }
    ],
    "naechste_schritte": [
-    "Analysieren: Ursache des Fehlers im „Live Deploy (Skills master)“ für Commit 041f369 untersuchen.",
-    "Prüfen: Status von Issue #27 \"Dashboard-Lage: rot\" im Kontext des fehlgeschlagenen Deploy.",
-    "Beobachten: Abschluss des laufenden Workflows „Gemini CI Agent“ für 041f369."
+    "Prüfen: Status und Ursache von Issue #27 „Dashboard-Lage: rot“ untersuchen.",
+    "Durchführen: Geräteabnahme für Core Skills auf dem Android-Handy gemäß TODO.md.",
+    "Prüfen: Gemeinsamen Login/Sync von Skills- und 6Pack-Daten auf zwei Geräten gemäß TODO.md."
    ],
-   "veraendert": "Der master- und dev-Branch sind nun auf Commit 041f369 synchronisiert, wobei der „Live Deploy (Skills master)“ Workflow für diesen neuen Commit ebenfalls fehlgeschlagen ist.",
+   "veraendert": "Der Workflow „Live Deploy (Skills master)“ für Commit 041f369, der in der letzten Einschätzung als fehlgeschlagen gemeldet wurde, ist nun erfolgreich abgeschlossen, ebenso der „Gemini CI Agent“ Workflow.",
    "fragen": [
-    "Abnehmen: Core Skills auf dem Android-Handy testen (Wechsel Skills ↔ 6Pack ↔ Setup, 6Pack-Runner).",
-    "Prüfen: Gemeinsamen Login/Sync von Skills- und 6Pack-Daten auf zwei Geräten verifizieren."
+    "Soll die Geräteabnahme für Core Skills auf dem Android-Handy priorisiert werden?",
+    "Wann soll der gemeinsame Login/Sync von Skills- und 6Pack-Daten auf zwei Geräten geprüft werden?"
    ],
    "model": "gemini-2.5-flash"
   },
-  "ai_at": "2026-11-18T07:56:41+00:00"
+  "ai_at": "2026-11-18T13:25:48+00:00"
  }
 }
