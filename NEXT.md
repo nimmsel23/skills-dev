@@ -18,6 +18,8 @@
 - [ ] Native Google-Anmeldung (Capacitor-Plugin + SHA-1/OAuth in Firebase — braucht Konsole)
 - [x] Datenschutzerklärung + öffentliche Löschanfrage-Seite: https://vos-skills.web.app/datenschutz, https://vos-skills.web.app/konto-loeschen (#19)
 - [ ] Release-Signierung (`SKILLS_UPLOAD_*`), Play-Eintrag
+- [x] 2026-11-14: Core Skills — Skills + vollständiges 6Pack in einer App, eingebettet auch in Fitness (Details `TODO.md`)
+- [ ] Core-Skills-Geräteabnahme (6Pack-Runner im Skills-Wrapper, Zurück nach Fitness)
 - [ ] Optional: „Letzte Einheit wiederholen“ / Vorlagen (bewusst einfach halten)
 
 - Remote `nimmsel23/skills-dev` + Firebase-Site `vos-skills` anlegen (nur auf Zuruf)
