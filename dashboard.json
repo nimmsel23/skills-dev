@@ -1,12 +1,12 @@
 {
  "evidence": {
-  "generated_at": "2026-11-18T07:05:47+00:00",
+  "generated_at": "2026-11-18T07:56:39+00:00",
   "repo": "nimmsel23/skills-dev",
   "meta": {
    "name": "skills-dev",
    "description": "Calisthenics-Skills als Standalone-Mini-App (VitalOS)",
    "html_url": "https://github.com/nimmsel23/skills-dev",
-   "pushed_at": "2026-11-18T07:05:27Z",
+   "pushed_at": "2026-11-18T07:56:28Z",
    "default_branch": "master",
    "visibility": "public",
    "pages_url": "https://nimmsel23.github.io/skills-dev/"
@@ -19,12 +19,18 @@
    "main": "master",
    "has_dev": true,
    "dev_behind": 0,
-   "dev_ahead": 1,
-   "oldest_unpromoted": "2026-11-18T08:05:27+01:00",
-   "dev_head": "c03b55a 2026-11-18T08:05:27+01:00",
-   "master_head": "2c66301 2026-11-17T17:05:34+01:00"
+   "dev_ahead": 0,
+   "oldest_unpromoted": null,
+   "dev_head": "041f369 2026-11-18T08:56:20+01:00",
+   "master_head": "041f369 2026-11-18T08:56:20+01:00"
   },
   "commits": [
+   {
+    "sha": "041f369",
+    "date": "2026-11-18T08:56:20+01:00",
+    "author": "vitalos-org-bot[bot]",
+    "subject": "docs: Core-Skills-Stand (Skills + 6Pack) in TODO/NEXT nachgetragen (#28)"
+   },
    {
     "sha": "c03b55a",
     "date": "2026-11-18T08:05:27+01:00",
@@ -138,12 +144,6 @@
     "date": "2026-11-12T23:14:39+01:00",
     "author": "nimmdaniel",
     "subject": "feat(legal): Datenschutz + öffentliche Löschanfrage-Seite (#19)"
-   },
-   {
-    "sha": "b09dc84",
-    "date": "2026-11-12T23:14:19+01:00",
-    "author": "nimmsel23",
-    "subject": "Calm classic Skills design (#22)"
    }
   ],
   "activity": [
@@ -229,29 +229,39 @@
    },
    {
     "day": "2026-11-18",
-    "n": 1
+    "n": 2
    }
   ],
   "workflows": [
-   {
-    "name": "Auto-Promote dev -> master (Check (Skills))",
-    "branch": "master",
-    "event": "workflow_run",
-    "status": "completed",
-    "conclusion": "skipped",
-    "created_at": "2026-11-18T07:05:43Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/44256203559",
-    "sha": "2c66301"
-   },
    {
     "name": "Gemini CI Agent",
     "branch": "master",
     "event": "workflow_run",
     "status": "in_progress",
     "conclusion": null,
-    "created_at": "2026-11-18T07:05:43Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/44256203497",
-    "sha": "2c66301"
+    "created_at": "2026-11-18T07:56:34Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/44262807759",
+    "sha": "041f369"
+   },
+   {
+    "name": "Auto-Promote dev -> master (Check (Skills))",
+    "branch": "master",
+    "event": "push",
+    "status": "completed",
+    "conclusion": "success",
+    "created_at": "2026-11-18T07:56:23Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/44262782869",
+    "sha": "041f369"
+   },
+   {
+    "name": "Live Deploy (Skills master)",
+    "branch": "master",
+    "event": "push",
+    "status": "completed",
+    "conclusion": "failure",
+    "created_at": "2026-11-18T07:56:23Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/44262782850",
+    "sha": "041f369"
    },
    {
     "name": "PR-AutoMerge (Dependabot -> dev)",
@@ -259,16 +269,16 @@
     "event": "workflow_run",
     "status": "completed",
     "conclusion": "skipped",
-    "created_at": "2026-11-18T07:05:43Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/44256203493",
+    "created_at": "2026-11-18T07:05:57Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/44256235699",
     "sha": "2c66301"
    },
    {
     "name": "Check (Skills)",
     "branch": "dev",
     "event": "push",
-    "status": "in_progress",
-    "conclusion": null,
+    "status": "completed",
+    "conclusion": "success",
     "created_at": "2026-11-18T07:05:30Z",
     "url": "https://github.com/nimmsel23/skills-dev/actions/runs/44256175894",
     "sha": "c03b55a"
@@ -302,16 +312,6 @@
     "created_at": "2026-11-18T07:05:10Z",
     "url": "https://github.com/nimmsel23/skills-dev/actions/runs/44256128436",
     "sha": "bfe30b7"
-   },
-   {
-    "name": "Live Deploy (Skills master)",
-    "branch": "master",
-    "event": "push",
-    "status": "completed",
-    "conclusion": "failure",
-    "created_at": "2026-11-17T16:05:37Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/44121782253",
-    "sha": "2c66301"
    },
    {
     "name": "Preview (vos-skills)",
@@ -359,7 +359,7 @@
     "number": 27,
     "title": "Dashboard-Lage: rot",
     "created_at": "2026-11-17T16:06:17Z",
-    "updated_at": "2026-11-17T16:06:17Z",
+    "updated_at": "2026-11-18T07:06:08Z",
     "labels": [
      "dashboard"
     ],
@@ -385,20 +385,7 @@
     "author": "nimmsel23"
    }
   ],
-  "pulls": [
-   {
-    "number": 28,
-    "title": "docs: Core-Skills-Stand (Skills + 6Pack) in TODO/NEXT nachgetragen",
-    "created_at": "2026-11-18T07:04:09Z",
-    "updated_at": "2026-11-18T07:04:40Z",
-    "labels": [],
-    "url": "https://github.com/nimmsel23/skills-dev/pull/28",
-    "author": "vitalos-org-bot[bot]",
-    "head": "claude/magical-ritchie-mwyer3",
-    "base": "master",
-    "draft": false
-   }
-  ],
+  "pulls": [],
   "live_sites": [
    "https://vos-skills.web.app"
   ]
@@ -409,47 +396,35 @@
    {
     "level": "red",
     "key": "ci:Live Deploy (Skills master):master",
-    "text": "„Live Deploy (Skills master)“ auf master ist rot (failure, 2c66301)",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/44121782253"
+    "text": "„Live Deploy (Skills master)“ auf master ist rot (failure, 041f369)",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/44262782850"
    }
   ],
   "ai": {
-   "headline": "Live Deploy auf Master fehlgeschlagen; Dev-Branch voraus",
-   "lage": "Der master-Branch steht auf Commit 2c66301, dessen „Live Deploy (Skills master)“ Workflow fehlgeschlagen ist. Der dev-Branch ist mit Commit c03b55a einen Commit voraus, für den der „Check (Skills)“ Workflow läuft. Issue #27 \"Dashboard-Lage: rot\" ist offen.",
+   "headline": "Live Deploy auf Master fehlgeschlagen; Branches synchron",
+   "lage": "Der master- und dev-Branch sind auf Commit 041f369 synchronisiert. Der Workflow „Live Deploy (Skills master)“ für diesen Commit ist fehlgeschlagen, obwohl der „Auto-Promote dev -> master (Check (Skills))“ Workflow für denselben Commit erfolgreich war. Issue #27 \"Dashboard-Lage: rot\" ist weiterhin offen.",
    "auffaelligkeiten": [
     {
      "level": "hoch",
-     "text": "Der Workflow „Live Deploy (Skills master)“ für Commit 2c66301 auf master ist fehlgeschlagen."
-    },
-    {
-     "level": "mittel",
-     "text": "Der „Auto-Promote dev -> master (Check (Skills))“ Workflow für Commit 2c66301 wurde übersprungen, was eine Änderung gegenüber der letzten Einschätzung darstellt."
+     "text": "„Live Deploy (Skills master)“ auf master ist rot (failure, 041f369)"
     },
     {
      "level": "info",
-     "text": "Der dev-Branch ist mit Commit c03b55a (docs: Core-Skills-Stand (Skills + 6Pack) in TODO/NEXT nachgetragen (#29)) einen Commit voraus, während der „Check (Skills)“ Workflow für diesen Commit läuft."
-    },
-    {
-     "level": "info",
-     "text": "Zwei Workflows, „Gemini CI Agent“ auf master (2c66301) und „Check (Skills)“ auf dev (c03b55a), sind aktuell in Bearbeitung."
-    },
-    {
-     "level": "info",
-     "text": "Pull Request #28 \"docs: Core-Skills-Stand (Skills + 6Pack) in TODO/NEXT nachgetragen\" ist offen und zielt auf master."
+     "text": "Der „Gemini CI Agent“ Workflow für Commit 041f369 läuft noch."
     }
    ],
    "naechste_schritte": [
-    "Analysieren: Ursache des Fehlers im „Live Deploy (Skills master)“ für Commit 2c66301 untersuchen.",
+    "Analysieren: Ursache des Fehlers im „Live Deploy (Skills master)“ für Commit 041f369 untersuchen.",
     "Prüfen: Status von Issue #27 \"Dashboard-Lage: rot\" im Kontext des fehlgeschlagenen Deploy.",
-    "Beobachten: Abschluss der laufenden Workflows „Check (Skills)“ für c03b55a und „Gemini CI Agent“ für 2c66301."
+    "Beobachten: Abschluss des laufenden Workflows „Gemini CI Agent“ für 041f369."
    ],
-   "veraendert": "Der dev-Branch ist nicht mehr mit master synchronisiert, sondern mit Commit c03b55a einen Commit voraus, und der „Auto-Promote dev -> master (Check (Skills))“ Workflow wurde übersprungen statt erfolgreich abgeschlossen.",
+   "veraendert": "Der master- und dev-Branch sind nun auf Commit 041f369 synchronisiert, wobei der „Live Deploy (Skills master)“ Workflow für diesen neuen Commit ebenfalls fehlgeschlagen ist.",
    "fragen": [
-    "Soll die Geräteabnahme am Android-Handy (gemäss NEXT.md) vorrangig behandelt werden, obwohl der Live Deploy fehlschlägt?",
-    "Soll der gemeinsame Login/Sync von Skills- und 6Pack-Daten auf zwei Geräten geprüft werden (Owner-Gate in TODO.md)?"
+    "Abnehmen: Core Skills auf dem Android-Handy testen (Wechsel Skills ↔ 6Pack ↔ Setup, 6Pack-Runner).",
+    "Prüfen: Gemeinsamen Login/Sync von Skills- und 6Pack-Daten auf zwei Geräten verifizieren."
    ],
    "model": "gemini-2.5-flash"
   },
-  "ai_at": "2026-11-18T07:05:49+00:00"
+  "ai_at": "2026-11-18T07:56:41+00:00"
  }
 }
