@@ -1,12 +1,12 @@
 {
  "evidence": {
-  "generated_at": "2026-11-18T13:25:46+00:00",
+  "generated_at": "2026-11-19T13:52:35+00:00",
   "repo": "nimmsel23/skills-dev",
   "meta": {
    "name": "skills-dev",
    "description": "Calisthenics-Skills als Standalone-Mini-App (VitalOS)",
    "html_url": "https://github.com/nimmsel23/skills-dev",
-   "pushed_at": "2026-11-18T10:37:15Z",
+   "pushed_at": "2026-11-18T13:26:03Z",
    "default_branch": "master",
    "visibility": "public",
    "pages_url": "https://nimmsel23.github.io/skills-dev/"
@@ -148,12 +148,8 @@
   ],
   "activity": [
    {
-    "day": "2026-10-29",
-    "n": 4
-   },
-   {
     "day": "2026-10-30",
-    "n": 8
+    "n": 2
    },
    {
     "day": "2026-10-31",
@@ -230,17 +226,31 @@
    {
     "day": "2026-11-18",
     "n": 2
+   },
+   {
+    "day": "2026-11-19",
+    "n": 0
    }
   ],
   "workflows": [
+   {
+    "name": "PR-AutoMerge (Dependabot -> dev)",
+    "branch": "master",
+    "event": "schedule",
+    "status": "completed",
+    "conclusion": "success",
+    "created_at": "2026-11-19T13:03:59Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/44529773384",
+    "sha": "041f369"
+   },
    {
     "name": "Auto-Promote dev -> master (Check (Skills))",
     "branch": "master",
     "event": "schedule",
     "status": "completed",
     "conclusion": "success",
-    "created_at": "2026-11-18T11:47:10Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/44297819716",
+    "created_at": "2026-11-19T10:23:51Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/44505273003",
     "sha": "041f369"
    },
    {
@@ -261,16 +271,6 @@
     "conclusion": "success",
     "created_at": "2026-11-18T10:34:36Z",
     "url": "https://github.com/nimmsel23/skills-dev/actions/runs/44286708213",
-    "sha": "041f369"
-   },
-   {
-    "name": "PR-AutoMerge (Dependabot -> dev)",
-    "branch": "master",
-    "event": "workflow_run",
-    "status": "completed",
-    "conclusion": "skipped",
-    "created_at": "2026-11-18T10:34:09Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/44286635196",
     "sha": "041f369"
    },
    {
@@ -366,17 +366,6 @@
   ],
   "issues": [
    {
-    "number": 27,
-    "title": "Dashboard-Lage: rot",
-    "created_at": "2026-11-17T16:06:17Z",
-    "updated_at": "2026-11-18T07:56:53Z",
-    "labels": [
-     "dashboard"
-    ],
-    "url": "https://github.com/nimmsel23/skills-dev/issues/27",
-    "author": "github-actions[bot]"
-   },
-   {
     "number": 24,
     "title": "[fitness] Check + Live Deploy rot: sixpackData.generated.js fehlt; roter Stand wurde promotet",
     "created_at": "2026-11-15T06:36:33Z",
@@ -404,30 +393,33 @@
   "status": "green",
   "signals": [],
   "ai": {
-   "headline": "Live Deploy auf Master erfolgreich; Branches synchron",
-   "lage": "Der master- und dev-Branch sind weiterhin auf Commit 041f369 synchronisiert. Der zuvor fehlgeschlagene Workflow „Live Deploy (Skills master)“ für diesen Commit ist nun erfolgreich abgeschlossen. Issue #27 „Dashboard-Lage: rot“ ist weiterhin offen.",
+   "headline": "Branches synchron, Live Deploy erfolgreich, Issue #27 nicht mehr sichtbar",
+   "lage": "Der master- und dev-Branch sind weiterhin auf Commit 041f369 synchronisiert. Der Workflow „Live Deploy (Skills master)“ für diesen Commit ist erfolgreich abgeschlossen. Issue #27 „Dashboard-Lage: rot“ ist nicht mehr in der Evidenz.",
    "auffaelligkeiten": [
     {
      "level": "hoch",
-     "text": "Issue #27 „Dashboard-Lage: rot“ ist weiterhin offen und wurde seit dem 18.11.2026 07:56 Uhr nicht aktualisiert."
+     "text": "Issue #27 „Dashboard-Lage: rot“ ist nicht mehr in der Evidenz enthalten, was auf eine Schließung oder Löschung hindeutet."
     },
     {
      "level": "info",
-     "text": "Der aktuelle Head-Commit 041f369 ist ein Dokumentations-Update ('docs: Core-Skills-Stand (Skills + 6Pack) in TODO/NEXT nachgetragen (#28)')."
+     "text": "Die letzten Commits 041f369 und c03b55a sind Dokumentationsaktualisierungen zu Core Skills."
+    },
+    {
+     "level": "info",
+     "text": "Mehrere Aufgaben zur Verifizierung des Gemini CI Agenten sind in NEXT.md noch offen."
     }
    ],
    "naechste_schritte": [
-    "Prüfen: Status und Ursache von Issue #27 „Dashboard-Lage: rot“ untersuchen.",
     "Durchführen: Geräteabnahme für Core Skills auf dem Android-Handy gemäß TODO.md.",
-    "Prüfen: Gemeinsamen Login/Sync von Skills- und 6Pack-Daten auf zwei Geräten gemäß TODO.md."
+    "Prüfen: Gemeinsamen Login/Sync von Skills- und 6Pack-Daten auf zwei Geräten gemäß TODO.md.",
+    "Beobachten: Echten roten CI-Lauf und den Reparaturpfad des Gemini CI Agenten verifizieren (NEXT.md)."
    ],
-   "veraendert": "Der Workflow „Live Deploy (Skills master)“ für Commit 041f369, der in der letzten Einschätzung als fehlgeschlagen gemeldet wurde, ist nun erfolgreich abgeschlossen, ebenso der „Gemini CI Agent“ Workflow.",
+   "veraendert": "Issue #27 „Dashboard-Lage: rot“ ist nicht mehr in der Evidenz aufgeführt.",
    "fragen": [
-    "Soll die Geräteabnahme für Core Skills auf dem Android-Handy priorisiert werden?",
     "Wann soll der gemeinsame Login/Sync von Skills- und 6Pack-Daten auf zwei Geräten geprüft werden?"
    ],
    "model": "gemini-2.5-flash"
   },
-  "ai_at": "2026-11-18T13:25:48+00:00"
+  "ai_at": "2026-11-19T13:52:37+00:00"
  }
 }
