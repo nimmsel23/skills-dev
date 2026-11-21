@@ -1,12 +1,12 @@
 {
  "evidence": {
-  "generated_at": "2026-11-20T13:35:46+00:00",
+  "generated_at": "2026-11-21T12:59:37+00:00",
   "repo": "nimmsel23/skills-dev",
   "meta": {
    "name": "skills-dev",
    "description": "Calisthenics-Skills als Standalone-Mini-App (VitalOS)",
    "html_url": "https://github.com/nimmsel23/skills-dev",
-   "pushed_at": "2026-11-19T13:52:54Z",
+   "pushed_at": "2026-11-20T13:36:04Z",
    "default_branch": "master",
    "visibility": "public",
    "pages_url": "https://nimmsel23.github.io/skills-dev/"
@@ -148,10 +148,6 @@
   ],
   "activity": [
    {
-    "day": "2026-10-31",
-    "n": 0
-   },
-   {
     "day": "2026-11-01",
     "n": 0
    },
@@ -230,6 +226,10 @@
    {
     "day": "2026-11-20",
     "n": 0
+   },
+   {
+    "day": "2026-11-21",
+    "n": 0
    }
   ],
   "workflows": [
@@ -239,8 +239,8 @@
     "event": "schedule",
     "status": "completed",
     "conclusion": "success",
-    "created_at": "2026-11-20T11:38:01Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/44729190026",
+    "created_at": "2026-11-21T09:48:28Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/44891313540",
     "sha": "041f369"
    },
    {
@@ -249,8 +249,8 @@
     "event": "schedule",
     "status": "completed",
     "conclusion": "success",
-    "created_at": "2026-11-20T09:12:11Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/44708707306",
+    "created_at": "2026-11-21T07:13:18Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/44879218569",
     "sha": "041f369"
    },
    {
@@ -332,36 +332,6 @@
     "created_at": "2026-11-15T14:58:23Z",
     "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43727237995",
     "sha": "422fe84"
-   },
-   {
-    "name": "Preview (vos-skills)",
-    "branch": "fix/issue-24",
-    "event": "pull_request",
-    "status": "completed",
-    "conclusion": "success",
-    "created_at": "2026-11-15T06:39:55Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43686470410",
-    "sha": "288ccf8"
-   },
-   {
-    "name": "Gemini CI Agent",
-    "branch": "fix/issue-24",
-    "event": "pull_request_target",
-    "status": "completed",
-    "conclusion": "skipped",
-    "created_at": "2026-11-15T06:39:54Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43686470257",
-    "sha": "288ccf8"
-   },
-   {
-    "name": "Check (Skills)",
-    "branch": "fix/issue-24",
-    "event": "pull_request",
-    "status": "completed",
-    "conclusion": "success",
-    "created_at": "2026-11-15T06:39:54Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/43686470253",
-    "sha": "288ccf8"
    }
   ],
   "issues": [
@@ -393,12 +363,16 @@
   "status": "green",
   "signals": [],
   "ai": {
-   "headline": "Repo stabil, Branches synchron, Automatisierung läuft erfolgreich",
-   "lage": "Der master- und dev-Branch sind weiterhin auf Commit 041f369 synchronisiert. Der Workflow „Live Deploy (Skills master)“ für diesen Commit ist erfolgreich abgeschlossen. Issue #27 ist nicht mehr in der Evidenz.",
+   "headline": "Repo stabil, Branches synchron, Automatisierung läuft erfolgreich weiter",
+   "lage": "Der master- und dev-Branch sind weiterhin auf Commit 041f369 synchronisiert. Mehrere automatisierte Workflows, darunter „PR-AutoMerge (Dependabot -> dev)“ und „Auto-Promote dev -> master (Check (Skills))“, wurden erfolgreich abgeschlossen. Der „Live Deploy (Skills master)“ für Commit 041f369 war ebenfalls erfolgreich.",
    "auffaelligkeiten": [
     {
      "level": "info",
-     "text": "Issue #23 'Classic design: understated major redesign' ist offen und erwähnt eine Owner-Ausnahme vom Freeze."
+     "text": "Issue #24 „[fitness] Check + Live Deploy rot: sixpackData.generated.js fehlt; roter Stand wurde promotet“ ist noch offen, obwohl Commit 422fe84 eine Behebung dafür angibt."
+    },
+    {
+     "level": "info",
+     "text": "Die Verifizierung eines echten roten CI-Laufs und des Reparaturpfads des Gemini CI Agenten ist gemäß NEXT.md noch ausstehend."
     }
    ],
    "naechste_schritte": [
@@ -406,13 +380,12 @@
     "Prüfen: Gemeinsamen Login/Sync von Skills- und 6Pack-Daten auf zwei Geräten gemäß TODO.md.",
     "Beobachten: Echten roten CI-Lauf und den Reparaturpfad des Gemini CI Agenten verifizieren gemäß NEXT.md."
    ],
-   "veraendert": "Zusätzlich zum erfolgreichen Live Deploy wurden weitere automatisierte Workflows wie 'PR-AutoMerge (Dependabot -> dev)' und 'Auto-Promote dev -> master (Check (Skills))' auf Commit 041f369 erfolgreich abgeschlossen.",
+   "veraendert": "Seit der letzten Einschätzung wurden weitere automatisierte Workflows wie „PR-AutoMerge“ und „Auto-Promote“ erfolgreich ausgeführt, was die fortlaufende Stabilität der Automatisierung bestätigt.",
    "fragen": [
-    "Entscheiden: Wann soll der gemeinsame Login/Sync von Skills- und 6Pack-Daten auf zwei Geräten geprüft werden?",
-    "Entscheiden: Soll Issue #23 'Classic design: understated major redesign' aktiv bearbeitet werden?"
+    "Entscheiden: Soll der gemeinsame Login/Sync von Skills- und 6Pack-Daten auf zwei Geräten geprüft werden (Owner-Gate in TODO.md)?"
    ],
    "model": "gemini-2.5-flash"
   },
-  "ai_at": "2026-11-20T13:35:48+00:00"
+  "ai_at": "2026-11-21T12:59:39+00:00"
  }
 }
