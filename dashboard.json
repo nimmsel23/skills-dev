@@ -1,12 +1,12 @@
 {
  "evidence": {
-  "generated_at": "2026-11-23T18:03:55+00:00",
+  "generated_at": "2026-11-23T18:12:49+00:00",
   "repo": "nimmsel23/skills-dev",
   "meta": {
    "name": "skills-dev",
    "description": "Calisthenics-Skills als Standalone-Mini-App (VitalOS)",
    "html_url": "https://github.com/nimmsel23/skills-dev",
-   "pushed_at": "2026-11-23T15:17:29Z",
+   "pushed_at": "2026-11-23T18:11:58Z",
    "default_branch": "master",
    "visibility": "public",
    "pages_url": "https://nimmsel23.github.io/skills-dev/"
@@ -19,10 +19,14 @@
    "main": "master",
    "has_dev": true,
    "dev_behind": 0,
-   "dev_ahead": 0,
-   "oldest_unpromoted": null,
-   "dev_head": "35b00da 2026-11-21T19:31:17+01:00",
+   "dev_ahead": 1,
+   "oldest_unpromoted": "2026-11-23T19:11:58+01:00",
+   "dev_head": "d659be6 2026-11-23T19:11:58+01:00",
    "master_head": "35b00da 2026-11-21T19:31:17+01:00"
+  },
+  "work": {
+   "branch": "master",
+   "sha": "35b00da2b35df7516ccc21f4c0e1609fa89bccc0"
   },
   "commits": [
    {
@@ -234,34 +238,54 @@
   ],
   "workflows": [
    {
-    "name": "Auto-Promote dev -> master (Check (Skills))",
-    "branch": "master",
-    "event": "schedule",
-    "status": "completed",
-    "conclusion": "success",
-    "created_at": "2026-11-23T12:50:25Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/45178092074",
-    "sha": "35b00da"
-   },
-   {
-    "name": "PR-AutoMerge (Dependabot -> dev)",
-    "branch": "master",
-    "event": "schedule",
-    "status": "completed",
-    "conclusion": "success",
-    "created_at": "2026-11-23T09:03:04Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/45143581774",
-    "sha": "35b00da"
-   },
-   {
     "name": "Gemini CI Agent",
     "branch": "master",
     "event": "workflow_run",
     "status": "completed",
     "conclusion": "success",
-    "created_at": "2026-11-21T18:59:58Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/44938518160",
+    "created_at": "2026-11-23T18:12:31Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/45235892610",
     "sha": "35b00da"
+   },
+   {
+    "name": "Auto-Promote dev -> master (Check (Skills))",
+    "branch": "master",
+    "event": "workflow_run",
+    "status": "queued",
+    "conclusion": null,
+    "created_at": "2026-11-23T18:12:31Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/45235892399",
+    "sha": "35b00da"
+   },
+   {
+    "name": "PR-AutoMerge (Dependabot -> dev)",
+    "branch": "master",
+    "event": "workflow_run",
+    "status": "completed",
+    "conclusion": "skipped",
+    "created_at": "2026-11-23T18:12:31Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/45235892347",
+    "sha": "35b00da"
+   },
+   {
+    "name": "Preview (vos-skills)",
+    "branch": "dev",
+    "event": "push",
+    "status": "in_progress",
+    "conclusion": null,
+    "created_at": "2026-11-23T18:12:00Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/45235801844",
+    "sha": "d659be6"
+   },
+   {
+    "name": "Check (Skills)",
+    "branch": "dev",
+    "event": "push",
+    "status": "completed",
+    "conclusion": "success",
+    "created_at": "2026-11-23T18:12:00Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/45235801832",
+    "sha": "d659be6"
    },
    {
     "name": "Live Deploy (Skills master)",
@@ -271,26 +295,6 @@
     "conclusion": "success",
     "created_at": "2026-11-21T18:59:41Z",
     "url": "https://github.com/nimmsel23/skills-dev/actions/runs/44938497848",
-    "sha": "35b00da"
-   },
-   {
-    "name": "Check (Skills)",
-    "branch": "dev",
-    "event": "push",
-    "status": "completed",
-    "conclusion": "success",
-    "created_at": "2026-11-21T18:59:02Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/44938442140",
-    "sha": "35b00da"
-   },
-   {
-    "name": "Preview (vos-skills)",
-    "branch": "dev",
-    "event": "push",
-    "status": "completed",
-    "conclusion": "success",
-    "created_at": "2026-11-21T18:59:02Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/44938442137",
     "sha": "35b00da"
    },
    {
@@ -363,30 +367,29 @@
   "status": "green",
   "signals": [],
   "ai": {
-   "headline": "Branches synchron, CI/CD weiterhin erfolgreich",
-   "lage": "Die Branches `dev` und `master` sind weiterhin auf Commit `35b00da` synchronisiert. Alle zugehörigen CI/CD-Workflows, einschließlich Auto-Promote und Live Deploy, wurden erfolgreich abgeschlossen.",
+   "headline": "Dev-Branch voraus, CI für neuen Commit erfolgreich",
+   "lage": "Der `dev`-Branch ist mit Commit `d659be6` einen Commit vor `master` (`35b00da`). Der `Check (Skills)`-Workflow für den neuen `dev`-Commit `d659be6` wurde erfolgreich abgeschlossen, und ein `Preview`-Build ist in Bearbeitung. Der `master`-Branch hat zuletzt mit Commit `35b00da` den `Gemini CI Agent`-Workflow erfolgreich durchlaufen.",
    "auffaelligkeiten": [
     {
-     "level": "info",
-     "text": "Issue #24 ist weiterhin offen, obwohl der zugrundeliegende Fehler durch Commit `422fe84` behoben wurde."
+     "level": "hoch",
+     "text": "Der `dev`-Branch ist mit Commit `d659be6` einen Commit vor `master` (`35b00da`), was die Synchronität der letzten Einschätzung aufhebt."
     },
     {
      "level": "info",
-     "text": "Der letzte Push (2026-11-23T15:17:29Z) ist neuer als der letzte Code-Commit (`35b00da` vom 2026-11-21), ohne dass neue Commits vorliegen."
+     "text": "Der Workflow \"Auto-Promote dev -> master (Check (Skills))\" ist für den `master`-Commit `35b00da` in der Warteschlange, obwohl der `dev`-Branch mit `d659be6` einen neueren, erfolgreich geprüften Commit enthält."
     }
    ],
    "naechste_schritte": [
     "Abnehmen: Core Skills auf dem Android-Handy gemäß TODO.md.",
-    "Prüfen: Gemeinsamen Login/Sync von Skills- und 6Pack-Daten auf zwei Geräten gemäß TODO.md.",
     "Beobachten: Echten roten CI-Lauf und den Reparaturpfad des Gemini CI Agenten verifizieren gemäß NEXT.md."
    ],
-   "veraendert": "Keine signifikanten Änderungen gegenüber der letzten Einschätzung; die Branches sind weiterhin synchron und alle CI/CD-Läufe erfolgreich.",
+   "veraendert": "Die Branches `dev` und `master` sind nicht mehr synchronisiert; `dev` ist nun einen Commit vor `master`.",
    "fragen": [
-    "Soll Issue #24 geschlossen werden, da der Fehler durch Commit `422fe84` behoben wurde?",
-    "Wann sollen die ausstehenden Abnahmen (Core Skills auf Android, Login/Sync auf zwei Geräten) und die Verifizierung des roten CI-Laufs durchgeführt werden?"
+    "Prüfen: Soll der gemeinsame Login/Sync von Skills- und 6Pack-Daten auf zwei Geräten gemäß TODO.md durchgeführt werden (Owner-Gate)?",
+    "Abnehmen: Soll der echte Offline-/Zweigeräte-Sync mit Anmeldung gemäß TODO.md abgenommen werden (Owner-Gate)?"
    ],
    "model": "gemini-2.5-flash"
   },
-  "ai_at": "2026-11-23T18:03:58+00:00"
+  "ai_at": "2026-11-23T18:12:52+00:00"
  }
 }
