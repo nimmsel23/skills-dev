@@ -1,12 +1,12 @@
 {
  "evidence": {
-  "generated_at": "2026-11-23T15:17:06+00:00",
+  "generated_at": "2026-11-23T18:03:55+00:00",
   "repo": "nimmsel23/skills-dev",
   "meta": {
    "name": "skills-dev",
    "description": "Calisthenics-Skills als Standalone-Mini-App (VitalOS)",
    "html_url": "https://github.com/nimmsel23/skills-dev",
-   "pushed_at": "2026-11-22T12:51:30Z",
+   "pushed_at": "2026-11-23T15:17:29Z",
    "default_branch": "master",
    "visibility": "public",
    "pages_url": "https://nimmsel23.github.io/skills-dev/"
@@ -363,16 +363,16 @@
   "status": "green",
   "signals": [],
   "ai": {
-   "headline": "Dev- und Master-Branch weiterhin synchron, CI/CD erfolgreich",
-   "lage": "Der `dev`- und `master`-Branch sind weiterhin auf Commit `35b00da` synchronisiert. Alle zugehörigen Checks, Previews und der Live-Deploy des `master`-Branches wurden erfolgreich abgeschlossen.",
+   "headline": "Branches synchron, CI/CD weiterhin erfolgreich",
+   "lage": "Die Branches `dev` und `master` sind weiterhin auf Commit `35b00da` synchronisiert. Alle zugehörigen CI/CD-Workflows, einschließlich Auto-Promote und Live Deploy, wurden erfolgreich abgeschlossen.",
    "auffaelligkeiten": [
     {
      "level": "info",
-     "text": "Keine neuen Commits seit `35b00da` vom 2026-11-21."
+     "text": "Issue #24 ist weiterhin offen, obwohl der zugrundeliegende Fehler durch Commit `422fe84` behoben wurde."
     },
     {
      "level": "info",
-     "text": "Die in TODO.md und NEXT.md vermerkten Abnahme- und Verifikationsschritte sind noch offen."
+     "text": "Der letzte Push (2026-11-23T15:17:29Z) ist neuer als der letzte Code-Commit (`35b00da` vom 2026-11-21), ohne dass neue Commits vorliegen."
     }
    ],
    "naechste_schritte": [
@@ -380,12 +380,13 @@
     "Prüfen: Gemeinsamen Login/Sync von Skills- und 6Pack-Daten auf zwei Geräten gemäß TODO.md.",
     "Beobachten: Echten roten CI-Lauf und den Reparaturpfad des Gemini CI Agenten verifizieren gemäß NEXT.md."
    ],
-   "veraendert": "",
+   "veraendert": "Keine signifikanten Änderungen gegenüber der letzten Einschätzung; die Branches sind weiterhin synchron und alle CI/CD-Läufe erfolgreich.",
    "fragen": [
-    "Wann soll der gemeinsame Login/Sync von Skills- und 6Pack-Daten auf zwei Geräten geprüft werden (Owner-Gate in TODO.md)?"
+    "Soll Issue #24 geschlossen werden, da der Fehler durch Commit `422fe84` behoben wurde?",
+    "Wann sollen die ausstehenden Abnahmen (Core Skills auf Android, Login/Sync auf zwei Geräten) und die Verifizierung des roten CI-Laufs durchgeführt werden?"
    ],
    "model": "gemini-2.5-flash"
   },
-  "ai_at": "2026-11-23T15:17:12+00:00"
+  "ai_at": "2026-11-23T18:03:58+00:00"
  }
 }
