@@ -40,16 +40,15 @@ export default function CoreSkills({ route: controlledRoute, onRouteChange, onCl
   const settings = route === 'settings' || route === 'setup';
   const sixpack = settings || route === 'sixpack' || route.startsWith('sixpack/');
   return <main data-theme="skills" className="core-skills min-h-dvh">
-    <header className="max-w-xl mx-auto p-4">
-      <h1 className="text-2xl font-bold">Core Skills</h1>
-      <nav aria-label="Core Skills" className="flex gap-4 py-3">
-        {onClose && <button type="button" onClick={onClose}>← Fitness</button>}
-        {controlled
-          ? <><button type="button" onClick={() => navigate('')}>Skills</button><button type="button" onClick={() => navigate('sixpack')}>6Pack</button><button type="button" onClick={() => navigate('settings')}>Setup</button></>
-          : <><a href="#">Skills</a><a href="#sixpack">6Pack</a><a href="#settings">Setup</a></>}
+    <header className="core-skills-header">
+      {onClose && <button type="button" className="core-skills-back" onClick={onClose}>← Training</button>}
+      <nav aria-label="Core Skills" className="core-skills-nav">
+        <button type="button" aria-pressed={!sixpack} onClick={() => navigate('')}>Skills</button>
+        <button type="button" aria-pressed={sixpack && !settings} onClick={() => navigate('sixpack')}>6Pack</button>
       </nav>
+      <button type="button" className="core-skills-setup" aria-pressed={settings} onClick={() => navigate('settings')}>Setup</button>
     </header>
-    {sixpack ? <div className="core-skills-sixpack max-w-xl mx-auto h-[85dvh]">
+    {sixpack ? <div className="core-skills-sixpack core-skills-content">
       <SixPackEmbed uid={sync.user?.uid || 'local'} route={settings ? 'settings' : route.replace(/^sixpack\/?/, '')}
         onRouteChange={next => navigate(next.startsWith('skills') ? next.replace(/^skills\/?/, '') : next === 'settings' ? 'settings' : `sixpack/${next}`)}
         onWorkoutComplete={submitWorkout} loadRemoteProgram={loadProgram} saveRemoteProgram={saveProgram}
