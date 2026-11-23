@@ -1,12 +1,12 @@
 {
  "evidence": {
-  "generated_at": "2026-11-22T12:51:13+00:00",
+  "generated_at": "2026-11-23T15:17:06+00:00",
   "repo": "nimmsel23/skills-dev",
   "meta": {
    "name": "skills-dev",
    "description": "Calisthenics-Skills als Standalone-Mini-App (VitalOS)",
    "html_url": "https://github.com/nimmsel23/skills-dev",
-   "pushed_at": "2026-11-21T20:08:55Z",
+   "pushed_at": "2026-11-22T12:51:30Z",
    "default_branch": "master",
    "visibility": "public",
    "pages_url": "https://nimmsel23.github.io/skills-dev/"
@@ -148,10 +148,6 @@
   ],
   "activity": [
    {
-    "day": "2026-11-02",
-    "n": 0
-   },
-   {
     "day": "2026-11-03",
     "n": 0
    },
@@ -230,27 +226,31 @@
    {
     "day": "2026-11-22",
     "n": 0
+   },
+   {
+    "day": "2026-11-23",
+    "n": 0
    }
   ],
   "workflows": [
-   {
-    "name": "PR-AutoMerge (Dependabot -> dev)",
-    "branch": "master",
-    "event": "schedule",
-    "status": "completed",
-    "conclusion": "success",
-    "created_at": "2026-11-22T11:22:55Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/45017043634",
-    "sha": "35b00da"
-   },
    {
     "name": "Auto-Promote dev -> master (Check (Skills))",
     "branch": "master",
     "event": "schedule",
     "status": "completed",
     "conclusion": "success",
-    "created_at": "2026-11-22T08:52:18Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/45004819444",
+    "created_at": "2026-11-23T12:50:25Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/45178092074",
+    "sha": "35b00da"
+   },
+   {
+    "name": "PR-AutoMerge (Dependabot -> dev)",
+    "branch": "master",
+    "event": "schedule",
+    "status": "completed",
+    "conclusion": "success",
+    "created_at": "2026-11-23T09:03:04Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/45143581774",
     "sha": "35b00da"
    },
    {
@@ -363,12 +363,16 @@
   "status": "green",
   "signals": [],
   "ai": {
-   "headline": "Dev- und Master-Branch synchron, Live-Deploy erfolgreich",
+   "headline": "Dev- und Master-Branch weiterhin synchron, CI/CD erfolgreich",
    "lage": "Der `dev`- und `master`-Branch sind weiterhin auf Commit `35b00da` synchronisiert. Alle zugehörigen Checks, Previews und der Live-Deploy des `master`-Branches wurden erfolgreich abgeschlossen.",
    "auffaelligkeiten": [
     {
      "level": "info",
-     "text": "Die in der letzten Einschätzung genannten nächsten Schritte zur Abnahme der Core Skills auf dem Android-Handy, zur Prüfung des gemeinsamen Login/Sync und zur Verifizierung des Gemini CI Agenten sind laut TODO.md und NEXT.md noch offen."
+     "text": "Keine neuen Commits seit `35b00da` vom 2026-11-21."
+    },
+    {
+     "level": "info",
+     "text": "Die in TODO.md und NEXT.md vermerkten Abnahme- und Verifikationsschritte sind noch offen."
     }
    ],
    "naechste_schritte": [
@@ -378,11 +382,10 @@
    ],
    "veraendert": "",
    "fragen": [
-    "Soll der gemeinsame Login/Sync von Skills- und 6Pack-Daten auf zwei Geräten geprüft werden?",
-    "Soll der echte Offline-/Zweigeräte-Sync mit Anmeldung abgenommen werden?"
+    "Wann soll der gemeinsame Login/Sync von Skills- und 6Pack-Daten auf zwei Geräten geprüft werden (Owner-Gate in TODO.md)?"
    ],
    "model": "gemini-2.5-flash"
   },
-  "ai_at": "2026-11-22T12:51:14+00:00"
+  "ai_at": "2026-11-23T15:17:12+00:00"
  }
 }
