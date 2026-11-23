@@ -36,6 +36,7 @@ test('Core Skills keeps all 6Pack callbacks and isolates account controls to Set
     await act(async () => root.render(React.createElement(module.exports.default)));
     assert.equal(document.querySelectorAll('[data-account]').length, 0);
     assert(document.querySelector('[data-skills]'));
+    assert.equal(document.querySelector('.core-skills-header'), null);
     async function go(hash) { await act(async () => { location.hash = hash; window.dispatchEvent(new window.HashChangeEvent('hashchange')); }); }
     await go('#sixpack/track');
     assert.equal(document.querySelector('[data-sixpack]').dataset.sixpack, 'track');

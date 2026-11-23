@@ -18,7 +18,7 @@ export function readRoute(hash) {
 
 // 6Pack keeps its complete UI and durable workout/program storage.
 // Optional kontrolliert (Einbettung in Fitness): route/onRouteChange statt location.hash, onClose = Zurück.
-export default function CoreSkills({ route: controlledRoute, onRouteChange, onClose } = {}) {
+export default function CoreSkills({ route: controlledRoute, onRouteChange } = {}) {
   const controlled = controlledRoute !== undefined;
   const [hashRoute, setRoute] = useState(() => controlled ? '' : readRoute(location.hash));
   const route = controlled ? controlledRoute : hashRoute;
@@ -40,14 +40,6 @@ export default function CoreSkills({ route: controlledRoute, onRouteChange, onCl
   const settings = route === 'settings' || route === 'setup';
   const sixpack = settings || route === 'sixpack' || route.startsWith('sixpack/');
   return <main data-theme="skills" className="core-skills min-h-dvh">
-    <header className="core-skills-header">
-      {onClose && <button type="button" className="core-skills-back" onClick={onClose}>← Training</button>}
-      <nav aria-label="Core Skills" className="core-skills-nav">
-        <button type="button" aria-pressed={!sixpack} onClick={() => navigate('')}>Skills</button>
-        <button type="button" aria-pressed={sixpack && !settings} onClick={() => navigate('sixpack')}>6Pack</button>
-      </nav>
-      <button type="button" className="core-skills-setup" aria-pressed={settings} onClick={() => navigate('settings')}>Setup</button>
-    </header>
     {sixpack ? <div className="core-skills-sixpack core-skills-content">
       <SixPackEmbed uid={sync.user?.uid || 'local'} route={settings ? 'settings' : route.replace(/^sixpack\/?/, '')}
         onRouteChange={next => navigate(next.startsWith('skills') ? next.replace(/^skills\/?/, '') : next === 'settings' ? 'settings' : `sixpack/${next}`)}
