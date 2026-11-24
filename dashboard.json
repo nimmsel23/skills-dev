@@ -1,12 +1,12 @@
 {
  "evidence": {
-  "generated_at": "2026-11-23T18:12:49+00:00",
+  "generated_at": "2026-11-24T05:10:17+00:00",
   "repo": "nimmsel23/skills-dev",
   "meta": {
    "name": "skills-dev",
    "description": "Calisthenics-Skills als Standalone-Mini-App (VitalOS)",
    "html_url": "https://github.com/nimmsel23/skills-dev",
-   "pushed_at": "2026-11-23T18:11:58Z",
+   "pushed_at": "2026-11-23T21:12:32Z",
    "default_branch": "master",
    "visibility": "public",
    "pages_url": "https://nimmsel23.github.io/skills-dev/"
@@ -19,16 +19,28 @@
    "main": "master",
    "has_dev": true,
    "dev_behind": 0,
-   "dev_ahead": 1,
-   "oldest_unpromoted": "2026-11-23T19:11:58+01:00",
-   "dev_head": "d659be6 2026-11-23T19:11:58+01:00",
-   "master_head": "35b00da 2026-11-21T19:31:17+01:00"
+   "dev_ahead": 0,
+   "oldest_unpromoted": null,
+   "dev_head": "8e3154e 2026-11-23T22:11:14+01:00",
+   "master_head": "8e3154e 2026-11-23T22:11:14+01:00"
   },
   "work": {
    "branch": "master",
-   "sha": "35b00da2b35df7516ccc21f4c0e1609fa89bccc0"
+   "sha": "8e3154e93fb054a1c096aee95b6153b9e8d233b3"
   },
   "commits": [
+   {
+    "sha": "8e3154e",
+    "date": "2026-11-23T22:11:14+01:00",
+    "author": "Alpha",
+    "subject": "Refine Core Skills navigation and embedded app spacing"
+   },
+   {
+    "sha": "d659be6",
+    "date": "2026-11-23T19:11:58+01:00",
+    "author": "nimmsel23",
+    "subject": "ci(dashboard): Board baut master, Push-Trigger master (Daniel 23.11.)"
+   },
    {
     "sha": "35b00da",
     "date": "2026-11-21T19:31:17+01:00",
@@ -136,25 +148,9 @@
     "date": "2026-11-13T01:12:06+01:00",
     "author": "Alpha",
     "subject": "chore(portal): portal.mjs + docs/apps.* aus vitalos vos-portal --all synchronisiert"
-   },
-   {
-    "sha": "d900abc",
-    "date": "2026-11-13T01:09:25+01:00",
-    "author": "Alpha",
-    "subject": "feat(ci): Living Dashboard als GitHub Page"
-   },
-   {
-    "sha": "b6bff75",
-    "date": "2026-11-12T23:15:17+01:00",
-    "author": "Alpha",
-    "subject": "Merge PR #20: feat(legal): Datenschutz + öffentliche Löschanfrage-Seite"
    }
   ],
   "activity": [
-   {
-    "day": "2026-11-03",
-    "n": 0
-   },
    {
     "day": "2026-11-04",
     "n": 1
@@ -233,59 +229,43 @@
    },
    {
     "day": "2026-11-23",
+    "n": 2
+   },
+   {
+    "day": "2026-11-24",
     "n": 0
    }
   ],
   "workflows": [
+   {
+    "name": "Auto-Promote dev -> master (Check (Skills))",
+    "branch": "master",
+    "event": "schedule",
+    "status": "completed",
+    "conclusion": "success",
+    "created_at": "2026-11-24T00:54:35Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/45300943777",
+    "sha": "8e3154e"
+   },
+   {
+    "name": "PR-AutoMerge (Dependabot -> dev)",
+    "branch": "master",
+    "event": "schedule",
+    "status": "completed",
+    "conclusion": "success",
+    "created_at": "2026-11-23T21:22:31Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/45268998655",
+    "sha": "8e3154e"
+   },
    {
     "name": "Gemini CI Agent",
     "branch": "master",
     "event": "workflow_run",
     "status": "completed",
     "conclusion": "success",
-    "created_at": "2026-11-23T18:12:31Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/45235892610",
-    "sha": "35b00da"
-   },
-   {
-    "name": "Auto-Promote dev -> master (Check (Skills))",
-    "branch": "master",
-    "event": "workflow_run",
-    "status": "queued",
-    "conclusion": null,
-    "created_at": "2026-11-23T18:12:31Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/45235892399",
-    "sha": "35b00da"
-   },
-   {
-    "name": "PR-AutoMerge (Dependabot -> dev)",
-    "branch": "master",
-    "event": "workflow_run",
-    "status": "completed",
-    "conclusion": "skipped",
-    "created_at": "2026-11-23T18:12:31Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/45235892347",
-    "sha": "35b00da"
-   },
-   {
-    "name": "Preview (vos-skills)",
-    "branch": "dev",
-    "event": "push",
-    "status": "in_progress",
-    "conclusion": null,
-    "created_at": "2026-11-23T18:12:00Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/45235801844",
-    "sha": "d659be6"
-   },
-   {
-    "name": "Check (Skills)",
-    "branch": "dev",
-    "event": "push",
-    "status": "completed",
-    "conclusion": "success",
-    "created_at": "2026-11-23T18:12:00Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/45235801832",
-    "sha": "d659be6"
+    "created_at": "2026-11-23T21:12:49Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/45267339619",
+    "sha": "8e3154e"
    },
    {
     "name": "Live Deploy (Skills master)",
@@ -293,9 +273,29 @@
     "event": "workflow_dispatch",
     "status": "completed",
     "conclusion": "success",
-    "created_at": "2026-11-21T18:59:41Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/44938497848",
-    "sha": "35b00da"
+    "created_at": "2026-11-23T21:12:34Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/45267297419",
+    "sha": "8e3154e"
+   },
+   {
+    "name": "Preview (vos-skills)",
+    "branch": "dev",
+    "event": "push",
+    "status": "completed",
+    "conclusion": "success",
+    "created_at": "2026-11-23T21:11:48Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/45267163846",
+    "sha": "8e3154e"
+   },
+   {
+    "name": "Check (Skills)",
+    "branch": "dev",
+    "event": "push",
+    "status": "completed",
+    "conclusion": "success",
+    "created_at": "2026-11-23T21:11:48Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/45267163816",
+    "sha": "8e3154e"
    },
    {
     "name": "Check (Skills)",
@@ -367,29 +367,30 @@
   "status": "green",
   "signals": [],
   "ai": {
-   "headline": "Dev-Branch voraus, CI für neuen Commit erfolgreich",
-   "lage": "Der `dev`-Branch ist mit Commit `d659be6` einen Commit vor `master` (`35b00da`). Der `Check (Skills)`-Workflow für den neuen `dev`-Commit `d659be6` wurde erfolgreich abgeschlossen, und ein `Preview`-Build ist in Bearbeitung. Der `master`-Branch hat zuletzt mit Commit `35b00da` den `Gemini CI Agent`-Workflow erfolgreich durchlaufen.",
+   "headline": "Branches synchronisiert, alle CI-Läufe erfolgreich",
+   "lage": "Die Branches `dev` und `master` sind auf dem Commit `8e3154e` synchronisiert. Alle aktuellen CI-Workflows für diesen Commit, inklusive `Auto-Promote dev -> master`, `Gemini CI Agent`, `Live Deploy (Skills master)` und `Preview (vos-skills)`, wurden erfolgreich abgeschlossen.",
    "auffaelligkeiten": [
     {
-     "level": "hoch",
-     "text": "Der `dev`-Branch ist mit Commit `d659be6` einen Commit vor `master` (`35b00da`), was die Synchronität der letzten Einschätzung aufhebt."
+     "level": "info",
+     "text": "Issue #24 bezüglich eines roten CI/Deploy-Fehlers wurde durch Commit `422fe84` adressiert, und die aktuellen CI-Läufe sind grün."
     },
     {
-     "level": "info",
-     "text": "Der Workflow \"Auto-Promote dev -> master (Check (Skills))\" ist für den `master`-Commit `35b00da` in der Warteschlange, obwohl der `dev`-Branch mit `d659be6` einen neueren, erfolgreich geprüften Commit enthält."
+     "level": "mittel",
+     "text": "Mehrere Abnahme-Punkte für Core Skills auf dem Android-Handy und die Verifizierung des Gemini CI Agenten sind in `TODO.md` und `NEXT.md` noch offen."
     }
    ],
    "naechste_schritte": [
     "Abnehmen: Core Skills auf dem Android-Handy gemäß TODO.md.",
-    "Beobachten: Echten roten CI-Lauf und den Reparaturpfad des Gemini CI Agenten verifizieren gemäß NEXT.md."
+    "Beobachten: Echten roten CI-Lauf und den Reparaturpfad des Gemini CI Agenten verifizieren gemäß NEXT.md.",
+    "Prüfen: Gemeinsamen Login/Sync von Skills- und 6Pack-Daten auf zwei Geräten gemäß TODO.md."
    ],
-   "veraendert": "Die Branches `dev` und `master` sind nicht mehr synchronisiert; `dev` ist nun einen Commit vor `master`.",
+   "veraendert": "Der `dev`-Branch ist nicht mehr vor `master`, sondern beide Branches sind auf dem gleichen Commit `8e3154e` synchronisiert.",
    "fragen": [
-    "Prüfen: Soll der gemeinsame Login/Sync von Skills- und 6Pack-Daten auf zwei Geräten gemäß TODO.md durchgeführt werden (Owner-Gate)?",
-    "Abnehmen: Soll der echte Offline-/Zweigeräte-Sync mit Anmeldung gemäß TODO.md abgenommen werden (Owner-Gate)?"
+    "Entscheiden: Wann soll der gemeinsame Login/Sync von Skills- und 6Pack-Daten auf zwei Geräten geprüft werden?",
+    "Entscheiden: Wann soll die native Google-Anmeldung (Capacitor-Plugin + SHA-1/OAuth in Firebase) implementiert werden?"
    ],
    "model": "gemini-2.5-flash"
   },
-  "ai_at": "2026-11-23T18:12:52+00:00"
+  "ai_at": "2026-11-24T05:10:19+00:00"
  }
 }
