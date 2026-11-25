@@ -1,12 +1,12 @@
 {
  "evidence": {
-  "generated_at": "2026-11-24T15:16:06+00:00",
+  "generated_at": "2026-11-25T14:55:41+00:00",
   "repo": "nimmsel23/skills-dev",
   "meta": {
    "name": "skills-dev",
    "description": "Calisthenics-Skills als Standalone-Mini-App (VitalOS)",
    "html_url": "https://github.com/nimmsel23/skills-dev",
-   "pushed_at": "2026-11-24T09:40:53Z",
+   "pushed_at": "2026-11-24T15:16:31Z",
    "default_branch": "master",
    "visibility": "public",
    "pages_url": "https://nimmsel23.github.io/skills-dev/"
@@ -152,12 +152,8 @@
   ],
   "activity": [
    {
-    "day": "2026-11-04",
-    "n": 0
-   },
-   {
     "day": "2026-11-05",
-    "n": 17
+    "n": 12
    },
    {
     "day": "2026-11-06",
@@ -234,6 +230,10 @@
    {
     "day": "2026-11-24",
     "n": 8
+   },
+   {
+    "day": "2026-11-25",
+    "n": 0
    }
   ],
   "workflows": [
@@ -243,8 +243,38 @@
     "event": "schedule",
     "status": "completed",
     "conclusion": "success",
-    "created_at": "2026-11-24T10:57:40Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/45379677884",
+    "created_at": "2026-11-25T14:37:12Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/45636049854",
+    "sha": "ee962c3"
+   },
+   {
+    "name": "CI-Heilung (rote Läufe wiederholen)",
+    "branch": "master",
+    "event": "schedule",
+    "status": "completed",
+    "conclusion": "success",
+    "created_at": "2026-11-25T13:24:52Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/45623328674",
+    "sha": "ee962c3"
+   },
+   {
+    "name": "PR-AutoMerge (Dependabot -> dev)",
+    "branch": "master",
+    "event": "schedule",
+    "status": "completed",
+    "conclusion": "success",
+    "created_at": "2026-11-25T12:52:29Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/45617953864",
+    "sha": "ee962c3"
+   },
+   {
+    "name": "Org-Bot (PR anlegen & mergen)",
+    "branch": "master",
+    "event": "schedule",
+    "status": "completed",
+    "conclusion": "success",
+    "created_at": "2026-11-25T12:46:22Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/45616979496",
     "sha": "ee962c3"
    },
    {
@@ -266,16 +296,6 @@
     "created_at": "2026-11-24T09:40:55Z",
     "url": "https://github.com/nimmsel23/skills-dev/actions/runs/45367494583",
     "sha": "ee962c3"
-   },
-   {
-    "name": "PR-AutoMerge (Dependabot -> dev)",
-    "branch": "master",
-    "event": "workflow_run",
-    "status": "completed",
-    "conclusion": "skipped",
-    "created_at": "2026-11-24T09:40:24Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/45367413402",
-    "sha": "fc5015e"
    },
    {
     "name": "Check (Skills)",
@@ -326,31 +346,7 @@
  "assessment": {
   "status": "green",
   "signals": [],
-  "ai": {
-   "headline": "Branches synchronisiert, CI-Läufe erfolgreich nach Anpassungen",
-   "lage": "Die Branches `dev` und `master` sind auf dem Commit `ee962c3` synchronisiert. Alle aktuellen CI-Workflows, inklusive `Auto-Promote dev -> master` und `Gemini CI Agent`, wurden erfolgreich abgeschlossen. Es gab mehrere Commits zur Verbesserung der CI-Merge-Logik und Sicherheitsprüfung.",
-   "auffaelligkeiten": [
-    {
-     "level": "mittel",
-     "text": "Die CI-Merge- und Freigabelogik wurde durch mehrere Commits (`ee962c3` bis `866bb84`) umfassend angepasst, um Sicherheitsbefunde zu berücksichtigen und den Merge-Prozess zu straffen."
-    },
-    {
-     "level": "info",
-     "text": "Der Workflow 'PR-AutoMerge (Dependabot -> dev)' wurde zuletzt als 'skipped' abgeschlossen."
-    }
-   ],
-   "naechste_schritte": [
-    "Abnehmen: Core Skills auf dem Android-Handy gemäß TODO.md.",
-    "Beobachten: Echten roten CI-Lauf und den Reparaturpfad des Gemini CI Agenten verifizieren gemäß NEXT.md.",
-    "Prüfen: Gemeinsamen Login/Sync von Skills- und 6Pack-Daten auf zwei Geräten gemäß TODO.md."
-   ],
-   "veraendert": "Der Head-Commit der synchronisierten Branches `dev` und `master` hat sich von `8e3154e` auf `ee962c3` geändert, begleitet von mehreren Anpassungen an der CI-Merge- und Freigabelogik.",
-   "fragen": [
-    "Gemeinsamen Login/Sync von Skills- und 6Pack-Daten auf zwei Geräten prüfen (Owner-Gate).",
-    "Native Google-Anmeldung (Capacitor-Plugin + SHA-1/OAuth in Firebase — braucht Konsole) umsetzen."
-   ],
-   "model": "gemini-2.5-flash"
-  },
-  "ai_at": "2026-11-24T15:16:10+00:00"
+  "ai": null,
+  "ai_at": null
  }
 }
