@@ -1,6 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
+import { existsSync } from 'node:fs';
 import vm from 'node:vm';
 import { createRequire } from 'node:module';
 import { transform } from 'esbuild';
@@ -21,11 +22,11 @@ test('Core Skills keeps all 6Pack callbacks and isolates account controls to Set
     './PersistenceStatus.jsx': { __esModule: true, default: () => React.createElement('div', { 'data-account': '' }, 'Mit Firestore verbunden') },
     './designs/DesignSwitcher.jsx': { __esModule: true, default: () => null },
     './designs/index.js': { readDesign: () => 'classic', saveDesign() {} },
-    '@vos-sixpack/embed.jsx': { SixPackEmbed: props => { sixpackProps = props; return React.createElement('div', { 'data-sixpack': props.route }, props.route === 'settings' ? props.setupContent : 'Complete 6Pack'); } },
-    '@vos-sixpack/sixpackCloud.js': { subscribeSync: cb => { cb({ user: { uid: 'test-user' } }); return () => {}; }, submitWorkout, loadProgram, saveProgram, enableSixpackPush },
-    '@vos-sixpack/nativeReminders.js': { isNativeApp: false, nativeReminderDelivery: undefined, watchNativeResume: async () => () => {} },
+    '../embed.jsx': { SixPackEmbed: props => { sixpackProps = props; return React.createElement('div', { 'data-sixpack': props.route }, props.route === 'settings' ? props.setupContent : 'Complete 6Pack'); } },
+    '../sixpackCloud.js': { subscribeSync: cb => { cb({ user: { uid: 'test-user' } }); return () => {}; }, submitWorkout, loadProgram, saveProgram, enableSixpackPush },
+    '../nativeReminders.js': { isNativeApp: false, nativeReminderDelivery: undefined, watchNativeResume: async () => () => {} },
   };
-  const { code } = await transform(await fs.readFile(new URL('../CoreSkills.jsx', import.meta.url), 'utf8'), { loader: 'jsx', format: 'cjs', jsx: 'automatic' });
+  const { code } = await transform(await fs.readFile(new URL(existsSync(new URL('../.sixpack-dependency/skills/CoreSkills.jsx', import.meta.url)) ? '../.sixpack-dependency/skills/CoreSkills.jsx' : '../../6pack-dev/skills/CoreSkills.jsx', import.meta.url), 'utf8'), { loader: 'jsx', format: 'cjs', jsx: 'automatic' });
   const module = { exports: {} };
   vm.runInNewContext(code, { module, exports: module.exports, require: name => name in deps ? deps[name] : require(name), window, document, location, URLSearchParams, Event: dom.window.Event });
   assert.equal(module.exports.readRoute('#?skill=front-lever'), 'front-lever');

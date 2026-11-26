@@ -58,3 +58,6 @@
 ## 2026-11-09 — Shell-Pin auf origin/master (CI/AGENTS)
 
 CI/AGENTS: kein vitalos-Vorspulen; Merge-Agent nur master; Release-Weg = dev→master + Shell-Pin.
+## 2026-11-26 — Gemeinsame Skills-/6Pack-Quelle
+
+- CoreSkills-Kompatibilitaetseinstieg verwendet 6pack-dev/CoreSkills.jsx; Produktquelle und Tests liegen dort unter skills/. Release-/Host-Umstellung bleibt separat nachvollziehbar, keine Nutzerdaten oder Repo-Loeschung.

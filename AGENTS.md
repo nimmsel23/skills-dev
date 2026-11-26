@@ -60,3 +60,7 @@ Verbindlich fuer alle Agenten (Vibe, Claude, Codex, Gemini) in Org-Kontexten
 8. Uebersicht/Rang: `TASKRC=~/.local/state/vitalos-org/taskrc \
    ~/.org/venv/bin/python ~/aos/bin/aos door plan quadrants --json`
    (Eisenhower-Sicht Q1–Q4).
+
+## Gemeinsame Produktquelle (2026-11-26)
+
+CoreSkills.jsx ist ein Kompatibilitaetseinstieg zur gemeinsamen Quelle in 6pack-dev/CoreSkills.jsx. Neue Skills-Produktfunktionen dort unter skills/ pflegen. Dieses Repo und seine Hosting-/Native-Einstiege erst nach Umstellung aller Hosts entfernen. Details: ../6pack-dev/skills/MIGRATION.md.
