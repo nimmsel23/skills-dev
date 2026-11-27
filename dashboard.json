@@ -1,12 +1,12 @@
 {
  "evidence": {
-  "generated_at": "2026-11-26T14:26:06+00:00",
+  "generated_at": "2026-11-27T14:19:16+00:00",
   "repo": "nimmsel23/skills-dev",
   "meta": {
    "name": "skills-dev",
    "description": "Calisthenics-Skills als Standalone-Mini-App (VitalOS)",
    "html_url": "https://github.com/nimmsel23/skills-dev",
-   "pushed_at": "2026-11-26T14:14:51Z",
+   "pushed_at": "2026-11-26T14:26:11Z",
    "default_branch": "master",
    "visibility": "public",
    "pages_url": "https://nimmsel23.github.io/skills-dev/"
@@ -152,12 +152,8 @@
   ],
   "activity": [
    {
-    "day": "2026-11-06",
-    "n": 7
-   },
-   {
     "day": "2026-11-07",
-    "n": 16
+    "n": 12
    },
    {
     "day": "2026-11-08",
@@ -234,9 +230,53 @@
    {
     "day": "2026-11-26",
     "n": 2
+   },
+   {
+    "day": "2026-11-27",
+    "n": 0
    }
   ],
   "workflows": [
+   {
+    "name": "Auto-Promote dev -> master (Check (Skills))",
+    "branch": "master",
+    "event": "schedule",
+    "status": "completed",
+    "conclusion": "success",
+    "created_at": "2026-11-27T09:07:42Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/45971104996",
+    "sha": "244558d"
+   },
+   {
+    "name": "PR-AutoMerge (Dependabot -> dev)",
+    "branch": "master",
+    "event": "schedule",
+    "status": "completed",
+    "conclusion": "success",
+    "created_at": "2026-11-27T08:29:35Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/45966074382",
+    "sha": "244558d"
+   },
+   {
+    "name": "CI-Heilung (rote Läufe wiederholen)",
+    "branch": "master",
+    "event": "schedule",
+    "status": "completed",
+    "conclusion": "success",
+    "created_at": "2026-11-27T08:04:02Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/45962827339",
+    "sha": "244558d"
+   },
+   {
+    "name": "Org-Bot (PR anlegen & mergen)",
+    "branch": "master",
+    "event": "schedule",
+    "status": "completed",
+    "conclusion": "success",
+    "created_at": "2026-11-27T05:00:24Z",
+    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/45943183306",
+    "sha": "244558d"
+   },
    {
     "name": "Gemini CI Agent",
     "branch": "master",
@@ -258,26 +298,6 @@
     "sha": "244558d"
    },
    {
-    "name": "Auto-Promote dev -> master (Check (Skills))",
-    "branch": "master",
-    "event": "workflow_run",
-    "status": "completed",
-    "conclusion": "success",
-    "created_at": "2026-11-26T14:14:35Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/45837012993",
-    "sha": "ee962c3"
-   },
-   {
-    "name": "PR-AutoMerge (Dependabot -> dev)",
-    "branch": "master",
-    "event": "workflow_run",
-    "status": "completed",
-    "conclusion": "skipped",
-    "created_at": "2026-11-26T14:14:35Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/45837012959",
-    "sha": "ee962c3"
-   },
-   {
     "name": "Preview (vos-skills)",
     "branch": "dev",
     "event": "push",
@@ -296,26 +316,6 @@
     "created_at": "2026-11-26T14:14:05Z",
     "url": "https://github.com/nimmsel23/skills-dev/actions/runs/45836924480",
     "sha": "244558d"
-   },
-   {
-    "name": "Org-Bot (PR anlegen & mergen)",
-    "branch": "master",
-    "event": "schedule",
-    "status": "completed",
-    "conclusion": "success",
-    "created_at": "2026-11-26T13:51:40Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/45833245887",
-    "sha": "ee962c3"
-   },
-   {
-    "name": "CI-Heilung (rote Läufe wiederholen)",
-    "branch": "master",
-    "event": "schedule",
-    "status": "completed",
-    "conclusion": "success",
-    "created_at": "2026-11-26T04:53:58Z",
-    "url": "https://github.com/nimmsel23/skills-dev/actions/runs/45758089157",
-    "sha": "ee962c3"
    }
   ],
   "issues": [
